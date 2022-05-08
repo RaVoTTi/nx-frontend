@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "robinbook": "apps/robinbook",
+    "robinbook-e2e": "apps/robinbook-e2e"
+  }
+}
