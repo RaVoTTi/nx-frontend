@@ -8,9 +8,9 @@ export interface IUser {
   email: string;
   isAdmin: boolean;
   state: boolean;
-  password?: string;
   phone: number;
   dateCreated: Date;
+  password?: string;
   cryptoAddress?: ICryptoAddress;
   address?: IAddress;
 }

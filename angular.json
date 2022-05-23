@@ -3,6 +3,7 @@
   "projects": {
     "admin": "apps/admin",
     "admin-e2e": "apps/admin-e2e",
+    "auth": "libs/auth",
     "order": "libs/order",
     "product": "libs/product",
     "robinbook": "apps/robinbook",

@@ -1,5 +1,7 @@
+// ANGULAR
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+// ME
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
@@ -11,8 +13,8 @@ import { AutorsListComponent } from './pages/autors/autors-list/autors-list.comp
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
+import { AuthModule } from '@frontend/auth';
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
-import { UserModule } from '@frontend/user';
 
 const routes: Routes = [
   {
@@ -90,7 +92,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), UserModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true }), AuthModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

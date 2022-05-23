@@ -6,4 +6,6 @@ export * from './IAddress'
 export * from './ICryptoAddress'
 export * from './IUser'
 export * from './IOrder'
+export * from './ILogin';
+export * from './IRegister';
 
