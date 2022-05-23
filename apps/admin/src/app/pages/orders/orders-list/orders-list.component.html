@@ -1,0 +1,94 @@
+<p-toast></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>
+<div class="admin-page">
+  <p-card header="Orders" subheader="List of all orders">
+    <div class="grid">
+      <div class="col-12">
+        <p-table
+          [paginator]="true"
+          [rows]="10"
+          [showCurrentPageReport]="true"
+          [value]="orders"
+          styleClass="p-datatable-gridlines"
+          responsiveLayout="scroll"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="user.name">
+                Name <p-sortIcon field="user.name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="user.lastName">
+                LastName <p-sortIcon field="user.lastName"></p-sortIcon>
+              </th>
+              <th pSortableColumn="user.lastName">
+                Book <p-sortIcon field="book.name"></p-sortIcon>
+              </th>
+
+              <th>State</th>
+              <th pSortableColumn="condition">
+                Condition <p-sortIcon field="condition"></p-sortIcon>
+              </th>
+
+              <th pSortableColumn="orderPrice">
+                Price<p-sortIcon field="orderPrice"></p-sortIcon>
+              </th>
+              <th pSortableColumn="dateCreated">
+                Date Created <p-sortIcon field="dateCreated"></p-sortIcon>
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-order>
+            <tr>
+              <td>
+                {{ order.user.name }}
+              </td>
+              <td>
+                {{ order.user.lastName | uppercase}}
+
+              </td>
+              <td>
+                {{ order.book.name | uppercase}}
+
+              </td>
+              <td>
+                <p-tag
+                  [icon]="order.state === true ? 'pi pi-check' : 'pi pi-times'"
+                  [severity]="order.state === true ? 'success' : 'danger'"
+                ></p-tag>
+              </td>
+              <td>
+                <p-tag
+                  [value]="orderCondition[order.condition].label"
+                  [severity]="orderCondition[order.condition].color"
+                ></p-tag>
+              </td>
+              <td>
+                {{ '$' + order.price }}
+              </td>
+              <td>
+                {{ order.dateCreated | date: 'short' }}
+              </td>
+              <td>
+                <p-button
+                  styleClass="p-button-danger m-2"
+                  icon="pi pi-trash "
+                  (click)="deleteOrder(order._id)"
+                ></p-button>
+                <p-button
+                  [routerLink]="['/orders/detail/', order._id]"
+                  styleClass="m-2"
+                  icon="pi pi-eye"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>

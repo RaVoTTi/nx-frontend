@@ -1,7 +1,14 @@
 {
   "version": 2,
   "projects": {
+    "admin": "apps/admin",
+    "admin-e2e": "apps/admin-e2e",
+    "order": "libs/order",
+    "product": "libs/product",
     "robinbook": "apps/robinbook",
-    "robinbook-e2e": "apps/robinbook-e2e"
+    "robinbook-e2e": "apps/robinbook-e2e",
+    "ui": "libs/ui",
+    "user": "libs/user",
+    "user-admin": "libs/user-admin"
   }
 }

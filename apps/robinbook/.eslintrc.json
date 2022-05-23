@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "frontend",
+            "prefix": "robinbook",
             "style": "camelCase"
           }
         ],
@@ -21,10 +21,14 @@
           "error",
           {
             "type": "element",
-            "prefix": "frontend",
+            "prefix": "robinbook",
             "style": "kebab-case"
           }
-        ]
+        ],
+        "no-empty-function": "off",
+        "@typescript-eslint/no-empty-function": "off"
+
+
       }
     },
     {

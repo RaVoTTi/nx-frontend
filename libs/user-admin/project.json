@@ -1,0 +1,17 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/user-admin/src",
+  "prefix": "userAdmin",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/user-admin/**/*.ts",
+          "libs/user-admin/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

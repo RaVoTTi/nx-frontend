@@ -1,0 +1,75 @@
+<p-toast></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>
+<div class="admin-page">
+  <p-card header="Autors" subheader="List of all autors">
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <p-button
+              label="New"
+              routerLink="form"
+              icon="pi pi-plus"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12">
+        <p-table
+          [value]="autors"
+          styleClass="p-datatable-gridlines"
+          responsiveLayout="scroll"
+          [paginator]="true"
+          [rows]="10"
+          [showCurrentPageReport]="true"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="name">
+                Name <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th>State</th>
+              <th>UrlWiki</th>
+
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-autor>
+            <tr>
+              <td>
+                {{ autor.name }}
+              </td>
+              <td>
+                <p-tag
+                  [value]="autor.state"
+                  [severity]="autor.state === true ? 'success' : 'danger'"
+                ></p-tag>
+              </td>
+              <td>
+                {{ autor.urlWiki }}
+              </td>
+              <td>
+                <p-button
+                  (click)="deleteAutor(autor.id)"
+                  styleClass="p-button-danger m-2"
+                  icon="pi pi-trash "
+                ></p-button>
+                <p-button
+                  [routerLink]="['/autors/form/', autor.id]"
+                  styleClass="m-2"
+                  icon="pi pi-pencil"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>

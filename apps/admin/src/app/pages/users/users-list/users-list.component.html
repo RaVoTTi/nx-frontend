@@ -1,0 +1,94 @@
+<p-toast></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>
+<div class="admin-page">
+  <p-card header="users" subheader="List of all users">
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <p-button
+              label="New"
+              routerLink="form"
+              icon="pi pi-plus"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12">
+        <p-table
+          [paginator]="true"
+          [rows]="10"
+          [showCurrentPageReport]="true"
+          [value]="users"
+          styleClass="p-datatable-gridlines"
+          responsiveLayout="scroll"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="name">
+                Name <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th pSortableColumn="lastName">
+                LastName <p-sortIcon field="lastName"></p-sortIcon>
+              </th>
+              <th>State</th>
+              <th>Admin</th>
+
+              <th>Email</th>
+              <th pSortableColumn="dateCreated">
+                Date Created <p-sortIcon field="dateCreated"></p-sortIcon>
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-user>
+            <tr>
+              <td>
+                {{ user.name }}
+              </td>
+              <td>
+                {{ user.lastName }}
+              </td>
+              <td>
+                <p-tag
+                  [icon]="user.state === true ? 'pi pi-check' : 'pi pi-times'"
+                  [severity]="user.state === true ? 'success' : 'danger'"
+                ></p-tag>
+              </td>
+              <td>
+                <p-tag
+                  [icon]="user.isAdmin === true ? 'pi pi-check' : 'pi pi-times'"
+                  [severity]="user.isAdmin === true ? 'success' : 'danger'"
+                ></p-tag>
+              </td>
+              <td>
+                {{ user.email }}
+              </td>
+              <td>
+                {{ user.dateCreated | date: 'short' }}
+              </td>
+              <td>
+                <p-button
+                  styleClass="p-button-danger m-2"
+                  icon="pi pi-trash "
+                  (click)="deleteUser(user.uid)"
+                ></p-button>
+                <p-button
+                  [routerLink]="['/users/form/', user.uid]"
+                  styleClass="m-2"
+                  icon="pi pi-pencil"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>

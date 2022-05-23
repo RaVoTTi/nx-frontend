@@ -1,0 +1,104 @@
+<p-toast></p-toast>
+<div class="admin-page">
+  <p-card
+    [header]="editMode ? 'Edit user' : 'Add user'"
+    subheader="You can add or edit users"
+  >
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left"></div>
+          <div class="p-toolbar-group-right">
+            <p-button
+              [label]="editMode ? 'Update' : 'Add'"
+              (click)="onSubmit()"
+              icon="pi pi-plus"
+            ></p-button>
+            <p-button
+              label="Cancel"
+              (click)="back()"
+              styleClass="p-button-secondary ml-2"
+              icon="pi pi-times"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+      <div class="col-12">
+        <form [formGroup]="userForm">
+          <h2>Personal Information</h2><br>
+          <div class="grid formgrid">
+            <div class="field col-12 md:col-6">
+              <label for="name">Name</label>
+              <input
+                formControlName="name"
+                id="name"
+                type="text"
+                class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+              />
+              <small *ngIf="validateCamp('name')" class="ml-2 p-error"
+                >*Name is required
+              </small>
+            </div>
+            <div class="field col-12 md:col-6">
+              <label for="lastName">Last Name</label>
+              <input
+                formControlName="lastName"
+                id="lastName"
+                type="text"
+                class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+              />
+              <small *ngIf="validateCamp('lastName')" class="ml-2 p-error"
+                >*LastName is required
+              </small>
+            </div>
+            <div class="field col-12 md:col-6">
+              <label for="email">Email</label>
+              <input
+                formControlName="email"
+                id="email"
+                type="text"
+                class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+              />
+              <small *ngIf="validateCamp('email')" class="ml-2 p-error"
+                >*Email is required
+              </small>
+            </div>
+            <div class="field col-12 md:col-6">
+              <label for="password">Password</label>
+              <input
+                formControlName="password"
+                id="password"
+                type="password"
+                class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+              />
+              <small *ngIf="validateCamp('password')" class="ml-2 p-error"
+                >*Password is required
+              </small>
+            </div>
+            <div class="field col-12 md:col-6">
+              <label for="phone">Phone</label>
+              <input
+                formControlName="phone"
+                id="phone"
+                type="number"
+                class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+              />
+              <small *ngIf="validateCamp('phone')" class="ml-2 p-error"
+                >*Phone is required
+              </small>
+            </div>
+            <div class="text-center col field">
+              <label for="isAdmin">IsAdmin</label><br />
+              <p-inputSwitch formControlName="isAdmin"></p-inputSwitch>
+            </div>
+            <div class="text-center col field">
+              <label for="state">State</label><br />
+              <p-inputSwitch formControlName="state"></p-inputSwitch>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+</div>

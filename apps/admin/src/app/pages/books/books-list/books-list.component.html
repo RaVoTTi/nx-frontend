@@ -1,0 +1,109 @@
+<p-toast></p-toast>
+<p-confirmDialog
+  [style]="{ width: '50vw' }"
+  [baseZIndex]="10000"
+  rejectButtonStyleClass="p-button-text"
+></p-confirmDialog>
+<div class="admin-page">
+  <p-card header="Books" subheader="List of all Books">
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left">
+            <p-button
+              label="New"
+              routerLink="form"
+              icon="pi pi-plus"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="col-12">
+        <p-table
+          [paginator]="true"
+          [rows]="10"
+          [showCurrentPageReport]="true"
+          [value]="books"
+          styleClass="p-datatable-gridlines"
+          responsiveLayout="scroll"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="name">
+                Name <p-sortIcon field="name"></p-sortIcon>
+              </th>
+              <th>State</th>
+              <th>Image</th>
+              <th pSortableColumn="minPrice">
+                Min Price <p-sortIcon field="minPrice"></p-sortIcon>
+              </th>
+              <th pSortableColumn="maxPrice">
+                MaxPrice <p-sortIcon field="maxPrice"></p-sortIcon>
+              </th>
+              <th>Subject</th>
+              <th>Autor</th>
+              <th pSortableColumn="dateCreated">
+                DateCreated <p-sortIcon field="dateCreated"></p-sortIcon>
+              </th>
+              <th></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-book>
+            <tr>
+              <td>
+                {{ book.name }}
+              </td>
+              <td>
+                <p-tag
+                  [value]="book.state"
+                  [severity]="book.state === true ? 'success' : 'danger'"
+                ></p-tag>
+              </td>
+              <td>
+                <img
+                  style="height: 10vmax; object-fit: contain"
+                  src="{{ rawUrl + book.image }}"
+                  alt="{{ book.image }}"
+                />
+              </td>
+              <td>
+                <span>
+                  {{ book.minPrice | currency }}
+                </span>
+              </td>
+              <td>
+                <span>
+                  {{ book.maxPrice | currency }}
+                </span>
+              </td>
+              <td>
+                {{ book.subject.name }}
+              </td>
+              <td>
+                {{ book.autor.name }}
+              </td>
+              <td>
+                {{ book.dateCreated | date: 'short' }}
+              </td>
+
+              <td>
+                <p-button
+                  styleClass="p-button-danger m-2"
+                  icon="pi pi-trash "
+                  (click)="deleteBook(book._id)"
+                ></p-button>
+                <p-button
+                  [routerLink]="['/books/form/', book._id]"
+                  styleClass="m-2"
+                  icon="pi pi-pencil"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</div>

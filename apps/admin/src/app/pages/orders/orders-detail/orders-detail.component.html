@@ -1,0 +1,87 @@
+<p-toast></p-toast>
+<div class="admin-page" *ngIf="order">
+  <p-card header="Order Detail" subheader="You can see details of any order">
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left"></div>
+          <div class="p-toolbar-group-right">
+            <p-button
+              label="Update"
+              (click)="onSubmit()"
+              icon="pi pi-plus"
+            ></p-button>
+            <p-button
+              label="Cancel"
+              (click)="back()"
+              styleClass="p-button-secondary ml-2"
+              icon="pi pi-times"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+      </div>
+    <p-fieldset [toggleable]="true" legend="Order" styleClass="mb-4">
+      <div>
+        <div class="grid">
+          <div class="field col-12 lg:col-6">
+            <h5>Order Id</h5>
+            <p>{{ order._id }}</p>
+          </div>
+          <div class="field col-12 sm:col-6 lg:col-3">
+            <h5>Order Date</h5>
+            <p>{{ order.dateCreated | date: 'short' }}</p>
+          </div>
+          <div class="field col-12 sm:col-6 lg:col-3">
+            <h5>Order Condition</h5>
+            <p-dropdown [options]="orderConditions" [formControl]="condition" optionLabel="label" optionValue="index" ></p-dropdown>
+          </div>
+          <div class="field col-12 sm:col-6 lg:col-3">
+            <h5>Order Price</h5>
+            <p>{{ order.price | currency }}</p>
+          </div>
+        </div>
+      </div>
+    </p-fieldset>
+    <p-fieldset [toggleable]="true" legend="Order Book" styleClass="mb-4">
+      Content
+    </p-fieldset>
+    <p-fieldset [toggleable]="true" legend="User Information" styleClass="mb-4">
+      <div class="grid">
+        <div class="field col-12 md:col-6">
+          <h5>User Id</h5>
+          <p>{{ order.user._id }}</p>
+        </div>
+        <div class="field col-12 md:col-6">
+          <h5>User Name</h5>
+          <p>
+            {{ order.user.name }}
+            {{ order.user.lastName }}
+          </p>
+        </div>
+        <div class="field col-12 md:col-6">
+          <h5>Email</h5>
+          <p>
+            {{ order.user.email }}
+          </p>
+        </div>
+        <div class="field col-12 md:col-6">
+          <h5>Phone</h5>
+          <p>
+            {{ order.user.phone }}
+          </p>
+        </div>
+        <div class="field col-12 md:col-4">
+          <h5>Crypto</h5>
+          <p>
+          </p>
+        </div>
+        <div class="field col-12 md:col-8">
+          <h5>Crypto Address</h5>
+          <p>
+          </p>
+        </div>
+      </div>
+    </p-fieldset>
+  </p-card>
+</div>

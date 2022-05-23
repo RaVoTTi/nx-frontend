@@ -1,0 +1,63 @@
+<p-toast></p-toast>
+<div class="admin-page" *ngIf="(editMode && form) || editMode === false ">
+
+  <p-card
+    [header]="editMode ? 'Edit Autor' : 'Add Autor'"
+    subheader="You can add or edit Autors"
+  >
+    <div class="grid">
+      <div class="col-12">
+        <p-toolbar>
+          <div class="p-toolbar-group-left"></div>
+          <div class="p-toolbar-group-right">
+            <p-button
+              [label]="editMode ? 'Update' : 'Add'"
+              (click)="onSubmit()"
+              icon="pi pi-plus"
+            ></p-button>
+            <p-button
+              label="Cancel"
+              (click)="back()"
+              styleClass="p-button-secondary ml-2"
+              icon="pi pi-times"
+            ></p-button>
+          </div>
+        </p-toolbar>
+      </div>
+      <div class="col-12">
+        <form [formGroup]="form">
+          <div class="grid formgrid">
+            <div class="field col">
+              <label for="name">Name</label>
+              <input
+                formControlName="name"
+                id="name"
+                type="text"
+                class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+              />
+              <small *ngIf="validateCamp('name')" class="p-error"
+                >*Name is required
+              </small>
+            </div>
+            <div class="field col">
+              <label for="urlWiki">urlWiki</label>
+              <input
+                formControlName="urlWiki"
+                id="urlWiki"
+                type="text"
+                class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+              />
+              <small *ngIf="this.validateCamp('urlWiki')" class="p-error"
+                >*urlWiki is required
+              </small>
+            </div>
+            <div class="col-1 field">
+              <label for="state">State</label><br />
+              <p-inputSwitch formControlName="state"></p-inputSwitch>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </p-card>
+</div>

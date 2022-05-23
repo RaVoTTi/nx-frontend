@@ -1,0 +1,14 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/user/src",
+  "prefix": "frontend",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/user/**/*.ts", "libs/user/**/*.html"]
+      }
+    }
+  },
+  "tags": []
+}
