@@ -17,10 +17,14 @@ export class BookService {
       `${this.apiUrl}/book?state=${state}`
     );
   }
-
+  getBookCount(): Observable<IResponse<number>> {
+    return this.http.get<IResponse<number>>(
+      `${this.apiUrl}/book/admin/count`
+    );
+  }
   getBookById(id: string): Observable<IResponse<IBook>> {
     return this.http.get<IResponse<IBook>>(
-      `${this.apiUrl}/book/${id}`
+      `${this.apiUrl}/book/admin/${id}`
     );
   }
   postBook(book: FormData): Observable<IResponse> {

@@ -77,10 +77,10 @@
                 <p-button
                   styleClass="p-button-danger m-2"
                   icon="pi pi-trash "
-                  (click)="deleteUser(user.uid)"
+                  (click)="deleteUser(user._id)"
                 ></p-button>
                 <p-button
-                  [routerLink]="['/users/form/', user.uid]"
+                  [routerLink]="['/users/form/', user._id]"
                   styleClass="m-2"
                   icon="pi pi-pencil"
                 ></p-button>

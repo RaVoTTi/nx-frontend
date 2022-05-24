@@ -17,6 +17,11 @@ export class UserService {
     );
   }
 
+  getUserCount(): Observable<IResponse<number>> {
+    return this.http.get<IResponse<number>>(
+      `${this.apiUrl}/user/admin/count`
+    );
+  }
   getUserById(id: string): Observable<IResponse<IUser>> {
     return this.http.get<IResponse<IUser>>(
       `${this.apiUrl}/user/admin/${id}`

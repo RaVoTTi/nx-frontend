@@ -2,9 +2,11 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 // PRIMENG
 import { MessageService } from 'primeng/api';
+import { LocalStorageService } from '../../services/local-storage.service';
 
 // ME
 import { AuthService } from './../../services/auth.service';
@@ -20,8 +22,9 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private messageService: MessageService,
-
-    private auth: AuthService
+    private localStorageService: LocalStorageService,
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -43,12 +46,11 @@ export class LoginComponent implements OnInit {
     }
     this.auth.postLogin(this.form.value).subscribe(
       (response) => {
-        if (response.ok === true) {
-          this.messageService.add({
-            severity: 'success',
-            summary: 'Success',
-            detail: response.msg[0],
-          });
+        if (response.token ) {
+          
+          this.localStorageService.setToken(response.token)
+          this.router.navigate(['/'])
+
         } else {
           this.messageService.add({
             severity: 'error',

@@ -1,1 +1,50 @@
-<h1>dashboard works!</h1>
+<div class="admin-page">
+  <p-card header="Dashboard" subheader="Lastest Updates">
+    <div class="grid">
+        <div class="col-12 sm:col-6 lg:col-3">
+          <p-card styleClass="d-order">
+            <div class="d-item">
+              <div>
+                <i class="icon pi pi-shopping-cart"> </i><br />
+                <span class="name">Orders</span>
+              </div>
+              <span class="number">{{orderCount}}</span>
+            </div>
+          </p-card>
+        </div>
+        <div class="col-12 sm:col-6 lg:col-3">
+          <p-card styleClass="d-order">
+            <div class="d-item">
+              <div>
+                <i class="icon pi pi-book"> </i><br />
+                <span class="name">Books</span>
+              </div>
+              <span class="number">{{bookCount}}</span>
+            </div>
+          </p-card>
+        </div>
+        <div class="col-12 sm:col-6 lg:col-3">
+          <p-card styleClass="d-order">
+            <div class="d-item">
+              <div>
+                <i class="icon pi pi-users"> </i><br />
+                <span class="name">Users</span>
+              </div>
+              <span class="number">{{userCount}}</span>
+            </div>
+          </p-card>
+        </div>
+        <div class="col-12 sm:col-6 lg:col-3">
+          <p-card styleClass="d-order">
+            <div class="d-item">
+              <div>
+                <i class="icon pi pi-dollar"> </i><br />
+                <span class="name">Income</span>
+              </div>
+              <span class="number">{{ '$'+ '132' }}</span>
+            </div>
+          </p-card>
+        </div>
+      </div>
+  </p-card>
+</div>

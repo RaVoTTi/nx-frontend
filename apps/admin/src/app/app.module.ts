@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 // PRIME NG
 import { CardModule } from 'primeng/card';
@@ -39,6 +39,7 @@ import { UsersListComponent } from './pages/users/users-list/users-list.componen
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
+import { JwtInterceptor } from '@frontend/auth';
 
 const UX_MODULE = [
   CardModule,
@@ -89,6 +90,7 @@ const UX_MODULE = [
     SubjectService,
     AutorService,
     BookService,
+    {provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
 })
