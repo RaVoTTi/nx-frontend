@@ -80,8 +80,8 @@ const UX_MODULE = [
     FormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
     HttpClientModule,
+    AppRoutingModule,
     ...UX_MODULE,
   ],
   providers: [

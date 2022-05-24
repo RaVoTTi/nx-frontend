@@ -5,6 +5,7 @@ import { UserService } from '@frontend/user-admin';
 import { IUser } from 'interfaces';
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'admin-users-list',
@@ -29,7 +30,7 @@ export class UsersListComponent implements OnInit {
       header: 'Delete User',
       icon: 'pi pi-danger',
       accept: () => {
-        this.userService.deleteUser(id).subscribe((response) => {
+        this.userService.deleteUser(id).pipe(take(1)).subscribe((response) => {
           if (response.ok === true) {
             this._getUsers();
             this.messageService.add({
@@ -51,7 +52,7 @@ export class UsersListComponent implements OnInit {
     });
   }
   _getUsers() {
-    this.userService.getUsers('both').subscribe((response) => {
+    this.userService.getUsers('both').pipe(take(1)).subscribe((response) => {
       this.users = response.result ? response.result : [];
     });
   }

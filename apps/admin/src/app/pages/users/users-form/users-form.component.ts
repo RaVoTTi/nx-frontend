@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { UserService } from '@frontend/user-admin';
 import { IUser } from 'interfaces';
 import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
+import { take, timer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'admin-users-form',
@@ -47,14 +47,14 @@ export class UsersFormComponent implements OnInit {
     }
   }
   private _postUser(user: IUser) {
-    this.userService.postUser(user).subscribe((response) => {
+    this.userService.postUser(user).pipe(take(1)).subscribe((response) => {
       if (response.ok === true) {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: response.msg[0],
         });
-        timer(1000).subscribe(() => {
+        timer(1000).pipe(take(1)).subscribe(() => {
           this.back();
         });
       } else {
@@ -69,14 +69,14 @@ export class UsersFormComponent implements OnInit {
     });
   }
   private _putUser(id: string, user: IUser) {
-    this.userService.putUser(id, user).subscribe((response) => {
+    this.userService.putUser(id, user).pipe(take(1)).subscribe((response) => {
       if (response.ok === true) {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: response.msg[0],
         });
-        timer(1000).subscribe(() => {
+        timer(1000).pipe(take(1)).subscribe(() => {
           this.back();
         });
       } else {

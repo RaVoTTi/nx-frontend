@@ -25,7 +25,7 @@ const routes: Routes = [
 
     children: [
       {
-        path: 'dashboard',
+        path: '',
         component: DashboardComponent,
       },
       {
@@ -90,12 +90,12 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: '/dashboard',
+    redirectTo: '/',
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true }), AuthModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true , initialNavigation: 'enabled'}), AuthModule],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { SubjectService } from '@frontend/product';
 import {ISubject} from '../../../../../../../interfaces' 
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
+import { Subject, take } from 'rxjs';
 @Component({
   selector: 'admin-subjects-list',
   templateUrl: './subjects-list.component.html',
@@ -25,7 +26,7 @@ export class SubjectsListComponent implements OnInit {
       header: 'Delete Subject',
       icon: 'pi pi-danger',
       accept: () => {
-        this.subjectService.deleteSubject(id).subscribe((response) => {
+        this.subjectService.deleteSubject(id).pipe(take(1)).subscribe((response) => {
           if (response.ok === true) {
             this._getSubjects();
             this.messageService.add({
@@ -47,8 +48,11 @@ export class SubjectsListComponent implements OnInit {
     });
   }
   _getSubjects() {
-    this.subjectService.getSubjects('both').subscribe((response) => {
-      this.subjects = response.result ? response.result : [] ;
-    });
+    this.subjectService
+      .getSubjects('both')
+      .pipe(take(1))
+      .subscribe((response) => {
+        this.subjects = response.result ? response.result : [];
+      });
   }
 }

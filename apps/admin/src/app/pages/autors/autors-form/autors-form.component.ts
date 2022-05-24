@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutorService } from '@frontend/product';
 import { IAutor } from '../../../../../../../interfaces';
 import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
+import { take, timer } from 'rxjs';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
@@ -54,12 +54,13 @@ export class AutorsFormComponent implements OnInit {
     return this.form.controls[key].errors && this.form.controls[key].touched;
   }
   _checkEditMode() {
-    this.route.params.subscribe((params) => {
+    this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
         this.editMode = true;
         this.autorId = params['id'];
         this.autorService
           .getAutorById(this.autorId)
+          .pipe(take(1))
           .subscribe(({ ok, result }) => {
             this.form.reset({ ...result });
 
@@ -75,47 +76,57 @@ export class AutorsFormComponent implements OnInit {
     this.location.back();
   }
   private _putAutor(id: string, autor: IAutor) {
-    this.autorService.putAutor(id, autor).subscribe((response) => {
-      if (response.ok === true) {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: response.msg[0],
-        });
-        timer(1000).subscribe(() => {
-          this.back();
-        });
-      } else {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Success',
-          detail: response.msg[0] as
-            | string
-            | 'The Category could not be created',
-        });
-      }
-    });
+    this.autorService
+      .putAutor(id, autor)
+      .pipe(take(1))
+      .subscribe((response) => {
+        if (response.ok === true) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: response.msg[0],
+          });
+          timer(1000)
+            .pipe(take(1))
+            .subscribe(() => {
+              this.back();
+            });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Success',
+            detail: response.msg[0] as
+              | string
+              | 'The Category could not be created',
+          });
+        }
+      });
   }
   private _postAutor(autor: IAutor) {
-    this.autorService.postAutor(autor).subscribe((response) => {
-      if (response.ok === true) {
-        this.messageService.add({
-          severity: 'success',
-          summary: 'Success',
-          detail: response.msg[0],
-        });
-        timer(1000).subscribe(() => {
-          this.back();
-        });
-      } else {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: response.msg[0] as
-            | string
-            | 'The Category could not be created',
-        });
-      }
-    });
+    this.autorService
+      .postAutor(autor)
+      .pipe(take(1))
+      .subscribe((response) => {
+        if (response.ok === true) {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: response.msg[0],
+          });
+          timer(1000)
+            .pipe(take(1))
+            .subscribe(() => {
+              this.back();
+            });
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: response.msg[0] as
+              | string
+              | 'The Category could not be created',
+          });
+        }
+      });
   }
 }

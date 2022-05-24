@@ -17,19 +17,17 @@ export class OrderService {
     );
   }
   getOrderCount(): Observable<IResponse<number>> {
-    return this.http.get<IResponse<number>>(
-      `${this.apiUrl}/order/admin/count`
-    );
+    return this.http.get<IResponse<number>>(`${this.apiUrl}/order/admin/count`);
+  }
+  getOrderIncome(): Observable<IResponse<number>> {
+    return this.http.get<IResponse<number>>(`${this.apiUrl}/order/admin/income`);
   }
   getOrderById(id: string): Observable<IResponse<IOrder>> {
     return this.http.get<IResponse<IOrder>>(`${this.apiUrl}/order/admin/${id}`);
   }
   patchOrder(id: string, condition: number): Observable<IResponse> {
     return this.http
-      .patch<IResponse>(
-        `${this.apiUrl}/order/admin/${id}`,
-        {condition}
-      )
+      .patch<IResponse>(`${this.apiUrl}/order/admin/${id}`, { condition })
       .pipe(catchError((err) => of(err.error as IResponse)));
   }
   // putOrder(

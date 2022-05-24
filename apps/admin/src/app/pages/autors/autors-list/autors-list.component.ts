@@ -3,6 +3,7 @@ import { AutorService } from '@frontend/product';
 import {IAutor} from '../../../../../../../interfaces' 
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
+import { take } from 'rxjs';
 @Component({
   selector: 'admin-autors-list',
   templateUrl: './autors-list.component.html'
@@ -26,7 +27,7 @@ export class AutorsListComponent implements OnInit {
       header: 'Delete Autor',
       icon: 'pi pi-danger',
       accept: () => {
-        this.autorService.deleteAutor(id).subscribe((response) => {
+        this.autorService.deleteAutor(id).pipe(take(1)).subscribe((response) => {
           if (response.ok === true) {
             this._getAutors();
             this.messageService.add({
@@ -48,7 +49,7 @@ export class AutorsListComponent implements OnInit {
     });
   }
   _getAutors() {
-    this.autorService.getAutors('both').subscribe((response) => {
+    this.autorService.getAutors('both').pipe(take(1)).subscribe((response) => {
       this.autors = response.result ? response.result : [] ;
     });
   }

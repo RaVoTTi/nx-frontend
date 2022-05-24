@@ -5,6 +5,7 @@ import { BookService } from '@frontend/product';
 import {IBook} from 'interfaces' 
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
+import { take } from 'rxjs';
 @Component({
   selector: 'admin-books-list',
   templateUrl: './books-list.component.html'
@@ -30,7 +31,7 @@ export class BooksListComponent implements OnInit {
       header: 'Delete Book',
       icon: 'pi pi-danger',
       accept: () => {
-        this.bookService.deleteBook(id).subscribe((response) => {
+        this.bookService.deleteBook(id).pipe(take(1)).subscribe((response) => {
           if (response.ok === true) {
             this._getBooks();
             this.messageService.add({
@@ -51,7 +52,7 @@ export class BooksListComponent implements OnInit {
     });
   }
   _getBooks() {
-    this.bookService.getBooks('both').subscribe((response) => {
+    this.bookService.getBooks('both').pipe(take(1)).subscribe((response) => {
       this.books = response.result ? response.result : [] ;
     });
   }

@@ -6,7 +6,7 @@ import { IOrder } from 'interfaces';
 import { FormControl } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
+import { take, timer } from 'rxjs';
 
 @Component({
   selector: 'admin-orders-detail',
@@ -29,12 +29,13 @@ export class OrdersDetailComponent implements OnInit {
     this._initDetail();
   }
   private _initDetail() {
-    this.route.params.subscribe((params) => {
+    this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
         this.orderId = params['id'];
 
         this.orderService
           .getOrderById(this.orderId)
+          .pipe(take(1))
           .subscribe(({ ok, result }) => {
             if (!result) {
               this.location.back();
@@ -51,7 +52,8 @@ export class OrdersDetailComponent implements OnInit {
   onSubmit() {
     if (!this.condition.pristine) {
       this.orderService
-        .patchOrder(this.orderId,this.condition.value)
+        .patchOrder(this.orderId, this.condition.value)
+        .pipe(take(1))
         .subscribe((response) => {
           if (response.ok === true) {
             this.messageService.add({
@@ -59,9 +61,11 @@ export class OrdersDetailComponent implements OnInit {
               summary: 'Success',
               detail: response.msg[0],
             });
-            timer(1000).subscribe(() => {
-              this.back();
-            });
+            timer(1000)
+              .pipe(take(1))
+              .subscribe(() => {
+                this.back();
+              });
           } else {
             this.messageService.add({
               severity: 'error',

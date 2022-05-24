@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { AutorService, BookService, SubjectService } from '@frontend/product';
 import { IAutor, IBook, ISubject } from 'interfaces';
 import { MessageService } from 'primeng/api';
-import { timer } from 'rxjs';
+import { take, timer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -57,14 +57,14 @@ export class BooksFormComponent implements OnInit {
     }
   }
   private _postBook(book: FormData) {
-    this.bookService.postBook(book).subscribe((response) => {
+    this.bookService.postBook(book).pipe(take(1)).subscribe((response) => {
       if (response.ok === true) {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: response.msg[0],
         });
-        timer(1000).subscribe(() => {
+        timer(1000).pipe(take(1)).subscribe(() => {
           this.back();
         });
       } else {
@@ -79,14 +79,14 @@ export class BooksFormComponent implements OnInit {
     });
   }
   private _putBook(id: string, book: FormData) {
-    this.bookService.putBook(id, book).subscribe((response) => {
+    this.bookService.putBook(id, book).pipe(take(1)).subscribe((response) => {
       if (response.ok === true) {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: response.msg[0],
         });
-        timer(1000).subscribe(() => {
+        timer(1000).pipe(take(1)).subscribe(() => {
           this.back();
         });
       } else {
