@@ -1,7 +1,9 @@
-.cardbook{
-  height: 350px;
+.itembook{
   &-image{
-    background-color: #FBFBFb;
+    width: 100%;
+    background-color: lightgrey;
+    margin: 0 auto;
+
   }
   &-content{
     padding: 15px ;

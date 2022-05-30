@@ -53,7 +53,7 @@
           <ng-template pTemplate="body" let-book>
             <tr>
               <td>
-                {{ book.name }}
+                {{ book.name | titlecase }}
               </td>
               <td>
                 <p-tag

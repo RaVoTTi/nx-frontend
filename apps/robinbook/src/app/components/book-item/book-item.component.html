@@ -1,6 +1,8 @@
-<div>
-    <div class="bookbook-image" ></div>
-    <div class="bookbook-content">
+<div class="flex flex-column justify-content-center">
+    <div class="itembook-image " >
+        <img src="{{rawUrl + book.image}}" alt="" [style]="{'max-width': '140px'}">
+    </div>
+    <div class="itembook-content ">
         <div>
             <span> {{book.subject.name | uppercase}}</span>
         </div>
