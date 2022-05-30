@@ -1,13 +1,18 @@
 .header{
+
     &-main{
         width:100%;
         background-color: white;
         height: 85px;
-        
+        border-bottom: black;
+        border-style: solid;
+        border-width: 1px;
     }
     &-container{
         max-width: 1200px;
         margin:0 auto;
+        padding: 15px;
+
 
     }
     

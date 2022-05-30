@@ -21,6 +21,8 @@ import { UiModule } from '@frontend/ui';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
 import { BooksViewComponent } from './pages/books/books-view/books-view.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { BookItemComponent } from './components/book-item/book-item.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const UX_MODULE = [
   MenubarModule,
@@ -55,13 +57,16 @@ const UX_MODULE = [
     BooksListComponent,
     BooksViewComponent,
     NavbarComponent,
+    BookItemComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
+
     UiModule,
-    ...UX_MODULE
+    ...UX_MODULE,
   ],
   providers: [],
   bootstrap: [AppComponent],
