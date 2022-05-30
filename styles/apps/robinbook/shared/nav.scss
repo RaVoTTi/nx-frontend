@@ -1,0 +1,16 @@
+.nav {
+    justify-content: end;
+  li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 15px;
+    a {
+
+      color: grey;
+      cursor: pointer;
+      &:hover {
+        color: var(--primary-color);
+      }
+    }
+  }
+}

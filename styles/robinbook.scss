@@ -1,4 +1,5 @@
 // BASE
+@import '~normalize.css/normalize.css';
 @import './base/colors.scss';
 @import './base/fonts.scss';
 @import './base/mixins.scss';
@@ -6,7 +7,12 @@
 
 // LIBRARIES
 @import '~primeicons/primeicons.css';
+// @import '~primeng/resources/themes/saga-orange/theme.css';
+// @import '~primeng/resources/themes/saga-blue/theme.css';
 @import '~primeng/resources/themes/saga-green/theme.css';
+
+
+// @import '~primeng/resources/themes/fluent-light/theme.css';
 @import '~primeng/resources/primeng.min.css';
 @import '~primeflex/primeflex.css';
 
@@ -17,6 +23,25 @@
 // SHARED
 @import './apps/robinbook/shared/footer.scss';
 @import './apps/robinbook/shared/header.scss';
+@import './apps/robinbook/shared/nav.scss';
+
 
 //LIBS
 @import './libs/ui/ui.scss';
+
+// html , body {
+//     // background-image: linear-gradient(90deg, #ffecd2 10%, #FFD5C4 100%);
+   
+//     // background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
+// }
+.robin{
+    &-main{
+        width: 100%;
+    }
+    &-container{
+        max-width: 1200px;
+        padding: 15px;
+        margin:0 auto;
+
+    }
+}
