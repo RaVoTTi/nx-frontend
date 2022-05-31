@@ -1,0 +1,20 @@
+.footer{
+
+    &-main{
+        width:100%;
+        background-color: var(--primary-color);
+        height: 300px;
+        border-bottom: lightgrey;
+        border-style: none none solid;
+        border-width: 1px;
+    }
+    &-container{
+        max-width: 1200px;
+        margin:0 auto;
+        padding: 15px;
+        color: white;
+
+
+    }
+    
+}
