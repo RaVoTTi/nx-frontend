@@ -1,6 +1,6 @@
 <div class="book-header">
   <div class="flex book-search align-items-center justify-content-between">
-    <h1>Search Book</h1>
+    <h1>Search Book </h1>
     <span class="p-input-icon-left">
       <i class="pi pi-search"></i>
       <input type="text" pInputText placeholder="Search" [style]="{'height': '50px'}"/>
@@ -8,9 +8,10 @@
   </div>
 </div>
 
-<div class="book-container">
+<div class="robin-container">
   <div class="grid" *ngIf="books">
-    <robinbook-book-item class="col-6 lg:col-3" *ngFor="let book of books" [book]="book">
+    <robinbook-book-item class="col-6 md:col-4 lg:col-3" *ngFor="let book of books" [book]="book">
     </robinbook-book-item>
   </div>
+
 </div>

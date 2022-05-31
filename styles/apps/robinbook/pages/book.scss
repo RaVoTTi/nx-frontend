@@ -1,8 +1,9 @@
 .book {
   &-header {
     width: 100%;
-    background-color: #fcfaf8;
+    background-color: var(--primary-color);
     height: 85px;
+    color: whitesmoke;
   }
   &-search {
     max-width: 1200px;
