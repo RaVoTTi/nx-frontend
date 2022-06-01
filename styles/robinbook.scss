@@ -24,8 +24,10 @@
 @import './apps/robinbook/shared/footer.scss';
 @import './apps/robinbook/shared/header.scss';
 @import './apps/robinbook/shared/nav.scss';
-@import './apps/robinbook/shared/card.scss';
+@import './apps/robinbook/shared/button.scss';
 
+// COMPONENTS
+@import './libs/book/item-book.scss';
 
 //LIBS
 @import './libs/ui/ui.scss';
@@ -43,8 +45,10 @@
         max-width: 1200px;
         padding: 15px;
         margin:0 auto;
+        position: relative;
     }
     &-shell{
         padding-top: 15px;
     }
 }
+//   --primary-color:#D93829;

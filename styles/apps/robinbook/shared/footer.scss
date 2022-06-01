@@ -1,8 +1,9 @@
 .footer{
 
     &-main{
+        position: absolute;
         width:100%;
-        background-color: var(--primary-color);
+        background-color: black;
         height: 300px;
         border-bottom: lightgrey;
         border-style: none none solid;
@@ -13,6 +14,9 @@
         margin:0 auto;
         padding: 15px;
         color: white;
+        h4{
+            font-size: 1.5rem;
+        }
 
 
     }

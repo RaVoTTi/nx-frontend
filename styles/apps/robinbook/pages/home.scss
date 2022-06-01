@@ -1,0 +1,30 @@
+.home {
+  &-text {
+    max-width: 600px;
+    h2 {
+      color: var(--primary-color);
+      font-size: 4em;
+      line-height: 1.4em;
+      font-weight: 600;
+    }
+    p {
+      color: #333;
+      font-size: 1.5em;
+      line-height: 1.4em;
+      font-weight: 200;
+    }
+  }
+
+  &-img {
+    position: relative;
+    right: 40px;
+    top: 40px;
+    width: 600px;
+    display: flex;
+    justify-content: flex-end;
+    align-self: start;
+    img {
+      width: 200px;
+    }
+  }
+}

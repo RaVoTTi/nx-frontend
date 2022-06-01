@@ -4,7 +4,7 @@
     border-radius: 2px;
     cursor: pointer;
     border-style: solid;
-    border-color: #D93829;
+    border-color: var(--primary-color);
 
     .button {
       position: absolute;
@@ -12,7 +12,9 @@
       right: 0;
       padding: 1rem;
       color: black;
-      background-color: #D93829;
+      transition: ease-out 0.3s;
+
+      background-color: var(--primary-color);
     }
     .image {
       height: 300px;
@@ -23,14 +25,15 @@
   }
   &-unit:hover {
     border-color: black;
+          transform: scale(1.02);
+      transition-duration: 0.5s;
     .button {
-      color: white;
+      color: var(--primary-color);
       background-color: black;
     }
     .image {
-      transform: scale(1.1);
-      transition-duration: 0.5s;
-      box-shadow: 7px 10px black;
+
+      // box-shadow: 7px 10px black;
     }
   }
 
@@ -43,8 +46,9 @@
   &-lower {
     // border-style: solid;
     // border-color: purple;
+    background-color:#F48167 ;
 
-    background-color: #D9C7B8;
+    // background-color: #D9C7B8;
     padding-left: 1rem;
   }
 }
