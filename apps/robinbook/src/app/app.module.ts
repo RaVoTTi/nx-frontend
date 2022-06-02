@@ -1,28 +1,29 @@
 // ANGULAR
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 // PRIME NG
 import { AccordionModule } from 'primeng/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {DividerModule} from 'primeng/divider';
-import {CardModule} from 'primeng/card';
-import {ButtonModule} from 'primeng/button';
-import {MenubarModule} from 'primeng/menubar';
-import {TabMenuModule} from 'primeng/tabmenu';
-import {InputTextModule} from 'primeng/inputtext';
-import {TabViewModule} from 'primeng/tabview';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
+import { InputTextModule } from 'primeng/inputtext';
+import { MenubarModule } from 'primeng/menubar';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TabViewModule } from 'primeng/tabview';
+import { RatingModule } from 'primeng/rating';
 // ME
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
-import { UiModule } from '@frontend/ui';
+import { BookItemComponent } from './components/book-item/book-item.component';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
 import { BooksViewComponent } from './pages/books/books-view/books-view.component';
+import { FooterComponent } from './shared/footer/footer.component';
+import { HeaderComponent } from './shared/header/header.component';
+import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { BookItemComponent } from './components/book-item/book-item.component';
-import { HttpClientModule } from '@angular/common/http';
+import { UiModule } from '@frontend/ui';
 
 const UX_MODULE = [
   MenubarModule,
@@ -32,7 +33,8 @@ const UX_MODULE = [
   CardModule,
   TabMenuModule,
   InputTextModule,
-  TabViewModule
+  TabViewModule,
+  RatingModule,
   // InputTextModule,
   // ToastModule,
   // ToolbarModule,
@@ -51,13 +53,13 @@ const UX_MODULE = [
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    HeaderComponent,
-    FooterComponent,
+    BookItemComponent,
     BooksListComponent,
     BooksViewComponent,
+    FooterComponent,
+    HomeComponent,
+    HeaderComponent,
     NavbarComponent,
-    BookItemComponent,
   ],
   imports: [
     BrowserModule,

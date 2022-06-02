@@ -107,12 +107,12 @@ export class BooksFormComponent implements OnInit {
     this.location.back();
   }
   private _getSubjects() {
-    this.subjectService.getSubjects().subscribe(({ result }) => {
+    this.subjectService.getSubjects().pipe(take(1)).subscribe(({ result }) => {
       this.subjects = result ? result : [];
     });
   }
   private _getAutors() {
-    this.autorService.getAutors().subscribe(({ result }) => {
+    this.autorService.getAutors().pipe(take(1)).subscribe(({ result }) => {
       this.autors = result ? result : [];
     });
   }
@@ -121,7 +121,7 @@ export class BooksFormComponent implements OnInit {
       if (params['id']) {
         this.editMode = true;
         this.bookId = params['id'];
-        this.bookService.getBookById(this.bookId).subscribe(({ result }) => {
+        this.bookService.getBookByIdAdmin(this.bookId).pipe(take(1)).subscribe(({ result }) => {
           this.form.reset({ ...result });
         });
       } else {

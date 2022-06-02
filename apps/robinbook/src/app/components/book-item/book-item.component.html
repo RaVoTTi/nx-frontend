@@ -1,13 +1,13 @@
 <div class="itembook-unit">
 
-    <div class=" flex flex-column ">
+    <div class=" flex flex-column " [routerLink]="['/app/books/', book._id]">
         <div class="itembook-upper flex align-items-center justify-content-center">
             <img class="image" src="{{ rawUrl + book.image }}"  alt="" />
         </div>
         <div class="itembook-lower ">
             <div>
-                <h5> {{ book.subject.name | uppercase }}</h5>
-                <h4> {{ book.name | uppercase }}</h4>
+                <h4> {{ book.subject.name | uppercase }}</h4>
+                <h2> {{ book.name | uppercase }}</h2>
                 <h5> {{ 'By ' + book.autor.name | titlecase }}</h5>
             </div>
             

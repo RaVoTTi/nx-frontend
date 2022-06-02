@@ -2,6 +2,7 @@ import { IAutor } from "./IAutor"
 import { ISubject } from "./ISubject"
 
 export interface IBook {
+  _id:string
   autor: IAutor
   subject: ISubject
   name: string

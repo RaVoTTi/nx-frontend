@@ -15,6 +15,34 @@
     max-width: 1200px;
     padding: 15px;
     margin: 0 auto;
+    min-height: 1000px;
+  }
+  &-image {
+    padding: 1rem;
+    border: solid;
+    border-color: var(--primary-color);
+  }
+
+  &-content {
+    h2 {
+      font-size: 2.2em;
+    }
+    h3 {
+      font-size: 2em;
+    }
+    h4 {
+      font-size: 1.7em;
+      font-weight: normal;
+    }
+    h5 {
+      font-size: 1.7em;
+      font-weight: lighter;
+    }
+    p {
+      font-size: 1.2em;
+      font-weight: normal;
+      color: #333;
+    }
   }
 }
 .icon {
@@ -24,7 +52,27 @@
     border: solid;
     height: 40px;
     width: 40px;
-      font-weight: bold;
+    font-weight: bold;
+
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: inset 0 0 0 0 white;
+    transition: ease-out 0.3s;
+    outline: none;
+    &:hover {
+      box-shadow: inset 40px 0 0 0 white;
+      border-color: white;
+
+      color: var(--primary-color);
+    }
+  }
+  &-back {
+    cursor: pointer;
+    margin-right: 15px;
+    border: solid;
+    height: 40px;
+    width: 40px;
+    font-weight: bold;
 
     padding: 5px;
     border-radius: 2px;
