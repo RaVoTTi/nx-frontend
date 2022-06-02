@@ -1,9 +1,9 @@
 .book {
   &-header {
     width: 100%;
-    background-color: black;
+    background-color: #F2FBE0;
     height: 85px;
-    color: whitesmoke;
+    color: #020122;
   }
   &-search {
     max-width: 1200px;
@@ -50,20 +50,22 @@
     cursor: pointer;
     margin-left: 15px;
     border: solid;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
     height: 40px;
     width: 40px;
     font-weight: bold;
 
     padding: 5px;
     border-radius: 2px;
-    box-shadow: inset 0 0 0 0 white;
+    box-shadow: inset 0 0 0 0 var(--primary-color);
     transition: ease-out 0.3s;
     outline: none;
     &:hover {
-      box-shadow: inset 40px 0 0 0 white;
-      border-color: white;
+      box-shadow: inset 40px 0 0 0 var(--primary-color);
+      border-color: var(--primary-color);
 
-      color: var(--primary-color);
+      color:WHITE;
     }
   }
   &-back {

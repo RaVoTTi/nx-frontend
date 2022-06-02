@@ -11,7 +11,7 @@
       bottom: 0;
       right: 0;
       padding: 1rem;
-      color: black;
+      color: #020122;
       transition: ease-out 0.3s;
 
       background-color: var(--primary-color);
@@ -24,12 +24,12 @@
     }
   }
   &-unit:hover {
-    border-color: black;
+    border-color: #020122;
           transform: scale(1.02);
       transition-duration: 0.5s;
     .button {
       color: var(--primary-color);
-      background-color: black;
+      background-color: #020122;
     }
     .image {
 
@@ -41,13 +41,16 @@
     background-color: white;
     // border-style: solid;
     // border-color: purple;
+
     padding: 2rem;
   }
   &-lower {
     // border-style: solid;
     // border-color: purple;
-    background-color:#F48167 ;
+    color: var(--primary-text-color);
 
+    background-color:#F2FBE0  ;
+// #F48167
     // background-color: #D9C7B8;
     padding-left: 1rem;
     h2{
