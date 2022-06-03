@@ -16,11 +16,19 @@ export class OrderService {
       `${this.apiUrl}/order/admin?state=${state}`
     );
   }
+  getMyOrders(): Observable<IResponse<IOrder[]>> {
+    return this.http.get<IResponse<IOrder[]>>(`${this.apiUrl}/order/user`);
+  }
+  getMyOrderById(id: string): Observable<IResponse<IOrder[]>> {
+    return this.http.get<IResponse<IOrder[]>>(`${this.apiUrl}/order/user/${id}`);
+  }
   getOrderCount(): Observable<IResponse<number>> {
     return this.http.get<IResponse<number>>(`${this.apiUrl}/order/admin/count`);
   }
   getOrderIncome(): Observable<IResponse<number>> {
-    return this.http.get<IResponse<number>>(`${this.apiUrl}/order/admin/income`);
+    return this.http.get<IResponse<number>>(
+      `${this.apiUrl}/order/admin/income`
+    );
   }
   getOrderById(id: string): Observable<IResponse<IOrder>> {
     return this.http.get<IResponse<IOrder>>(`${this.apiUrl}/order/admin/${id}`);

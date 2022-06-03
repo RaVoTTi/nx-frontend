@@ -22,7 +22,11 @@ import { BooksViewComponent } from './pages/books/books-view/books-view.componen
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
+import { MyLearningListComponent } from './pages/myLearning/my-learning-list/my-learning-list.component';
+import { MyLearningViewComponent } from './pages/myLearning/my-learning-view/my-learning-view.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+
+import { OrderModule } from '@frontend/order';
 import { UiModule } from '@frontend/ui';
 
 const UX_MODULE = [
@@ -60,12 +64,16 @@ const UX_MODULE = [
     HomeComponent,
     HeaderComponent,
     NavbarComponent,
+    MyLearningListComponent,
+    MyLearningViewComponent,
+
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    OrderModule,
 
     UiModule,
     ...UX_MODULE,
