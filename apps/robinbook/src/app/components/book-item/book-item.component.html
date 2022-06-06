@@ -1,6 +1,9 @@
 <div class="itembook">
-  <div class="flex flex-column" [routerLink]="['/app/books/', book._id]">
-    <div class="itembook-upper flex align-items-center justify-content-center">
+  <div class="flex flex-column">
+    <div
+      class="itembook-upper flex align-items-center justify-content-center"
+      [routerLink]="['/app/books/', book._id]"
+    >
       <img
         class="image"
         src="{{ rawUrl + book.image }}"
@@ -8,7 +11,7 @@
         style="width: 90%; object-fit: contain"
       />
     </div>
-    <div class="itembook-lower">
+    <div class="itembook-lower" [routerLink]="['/app/books/', book._id]">
       <div>
         <h4>{{ book.subject.name | uppercase }}</h4>
         <h2>{{ book.name | uppercase }}</h2>
@@ -16,14 +19,21 @@
       </div>
     </div>
     <div class="itembook-toolfooter flex justify-content-between align-items-center">
-        <div class="button-ellipsis">
-          <i class="pi pi-ellipsis-v" style="font-size: 1.5rem"></i>
-        </div>
+      <h2 style="color: #F2FBE0; font-size: 1.5rem; margin-left: 0.5rem;">
 
+        {{book.minPrice | currency }}
+      </h2>
+      <p-splitButton
+        icon="pi pi-heart-fill"
+        [model]="this.items"
+        styleClass="p-button-text p-button-plain "
+        [style]="{
+          height: '45px',
+          width: '80px',
+          'background-color': 'transparent'
 
-      <div class="button-arrow">
-        <i class="pi pi-arrow-right" style="font-size: 1.5rem"></i>
-      </div>
+        }"
+      ></p-splitButton>
     </div>
   </div>
 </div>

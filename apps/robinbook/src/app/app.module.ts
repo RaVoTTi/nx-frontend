@@ -13,6 +13,7 @@ import { MenubarModule } from 'primeng/menubar';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TabViewModule } from 'primeng/tabview';
 import { RatingModule } from 'primeng/rating';
+import {SplitButtonModule} from 'primeng/splitbutton';
 // ME
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -28,6 +29,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 
 import { OrderModule } from '@frontend/order';
 import { UiModule } from '@frontend/ui';
+import { MessageService } from 'primeng/api';
 
 const UX_MODULE = [
   MenubarModule,
@@ -39,6 +41,7 @@ const UX_MODULE = [
   InputTextModule,
   TabViewModule,
   RatingModule,
+  SplitButtonModule
   // InputTextModule,
   // ToastModule,
   // ToolbarModule,
@@ -71,6 +74,7 @@ const UX_MODULE = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
     AppRoutingModule,
     HttpClientModule,
     OrderModule,
@@ -78,7 +82,10 @@ const UX_MODULE = [
     UiModule,
     ...UX_MODULE,
   ],
-  providers: [],
+  providers: [
+    MessageService,
+
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

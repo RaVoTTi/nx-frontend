@@ -46,19 +46,19 @@
     }
   }
   &-primary {
-    border-radius: 2px;
 
-    height: 40px;
+    height: 100%;
+    width: 100%;
+
     border: none;
     color: white;
-    background-color: var(--primary-color);
-    cursor: pointer;
+    background-color: transparent;
     outline: none;
     font-weight: bold;
-    font-size: 1rem;
-
+    font-size: 3rem;
     &:hover {
       background-color: var(--primary-color-dark);
+      color: var(--primary-color-dark);;
     }
   }
   &-secondary {
