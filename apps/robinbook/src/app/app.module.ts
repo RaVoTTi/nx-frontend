@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
+import {MenuModule} from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { TabViewModule } from 'primeng/tabview';
@@ -26,7 +27,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { MyLearningListComponent } from './pages/myLearning/my-learning-list/my-learning-list.component';
 import { MyLearningViewComponent } from './pages/myLearning/my-learning-view/my-learning-view.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-
 import { OrderModule } from '@frontend/order';
 import { UiModule } from '@frontend/ui';
 import { MessageService } from 'primeng/api';
@@ -38,6 +38,7 @@ const UX_MODULE = [
   ButtonModule,
   CardModule,
   TabMenuModule,
+  MenuModule,
   InputTextModule,
   TabViewModule,
   RatingModule,

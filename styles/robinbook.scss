@@ -28,6 +28,8 @@
 
 // COMPONENTS
 @import './libs/book/item-book.scss';
+@import './libs/order/item-wishlist.scss';
+
 
 //LIBS
 @import './libs/ui/ui.scss';
@@ -40,6 +42,7 @@
 .robin{
     &-main{
         width: 100%;
+        min-width: 300px;
     }
     &-container{
         max-width: 1200px;

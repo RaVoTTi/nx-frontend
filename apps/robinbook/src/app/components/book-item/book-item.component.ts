@@ -2,6 +2,7 @@ import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
+import { WishlistService } from '@frontend/order';
 
 @Component({
   selector: 'robinbook-book-item',
@@ -10,9 +11,11 @@ import { MenuItem, MessageService } from 'primeng/api';
 export class BookItemComponent implements OnInit {
   rawUrl = environment.rawUrl
   @Input() book! : IBook;
+  @Input() isFavorite! : boolean;
+
   items: MenuItem[] = [];
 
-  constructor( private messageService: MessageService) { }
+  constructor( private wishlistService:WishlistService ,private messageService: MessageService) { }
 
     ngOnInit(): void {
       this.items = [
@@ -26,8 +29,18 @@ export class BookItemComponent implements OnInit {
     
     ];
     }
-  save(severity: string) {
-    this.messageService.add({severity:severity, summary:'Success', detail:'Data Saved'});
+
+addBookToWishlist(){
+  if( this.isFavorite === false){
+
+    this.isFavorite = true
+    this.wishlistService.setBookWishlist(this.book._id)
+  }
+  else{
+
+    this.isFavorite = false
+      this.wishlistService.deleteBookWishlist(this.book._id)
+  }
 }
 
 

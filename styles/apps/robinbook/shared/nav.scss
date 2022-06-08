@@ -1,19 +1,48 @@
 .nav {
+  
+
 
   li {
     margin-top: 23px;
     list-style: none;
     display: inline-block;
-    margin-right: 15px;
+    margin-right: 1rem;
 
     a {
-
+      font-size: 1.2em;
       color: black;
       cursor: pointer;
       &:hover {
         color: var(--primary-color);
       }
     }
+    .active{
+      cursor: pointer;
+      color: var(--primary-color);
+    }
   
   }
+
+
 }
+.icons{
+  color: black;
+  cursor: pointer;
+  &:hover {
+    color: var(--primary-color);
+  }
+}
+.menu{
+  width: 100%;
+  color: --primary-color;
+  &-separator{
+    height: 2px;
+    max-height: 2px;
+    width: 100%;
+    background-color: var(--primary-color);
+  }
+
+
+
+}
+

@@ -5,6 +5,7 @@ import { BooksViewComponent } from './pages/books/books-view/books-view.componen
 import { HomeComponent } from './pages/home/home.component';
 import { MyLearningListComponent } from './pages/myLearning/my-learning-list/my-learning-list.component';
 import { MyLearningViewComponent } from './pages/myLearning/my-learning-view/my-learning-view.component';
+import { WishlistComponent } from '../../../../libs/order/src/lib/pages/wishlist/wishlist.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'mylearning/:id',
         component: MyLearningViewComponent,
+      },
+      {
+        path: 'wishlist',
+        component: WishlistComponent,
       },
     ],
   },

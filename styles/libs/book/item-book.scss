@@ -27,6 +27,16 @@
     height: 50px;
     width: 100%;
     background-color: var(--primary-color);
+    div{
+      margin-top: 3px;
+      height: 90%;
+      button{
+        margin-right: 3px;
+        min-width: 35px;
+      }
+
+    }
+
   }
   .button {
     &-ellipsis {
@@ -50,10 +60,15 @@
     .itembook-toolfooter {
       background-color: #020122;
       transition-duration: 0.5s;
+
+    //   i{
+    //     color: white
+    //   }
     }
     .button-arrow {
       background-color: #020122;
       transition-duration: 0.5s;
     }
   }
+
 }

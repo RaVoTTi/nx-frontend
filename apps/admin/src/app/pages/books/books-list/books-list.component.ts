@@ -17,7 +17,8 @@ export class BooksListComponent implements OnInit {
   constructor(
     private bookService: BookService,
     private messageService: MessageService,
-    private confirmationService: ConfirmationService
+    private confirmationService: ConfirmationService,
+
   ) {}
 
   ngOnInit(): void {
@@ -56,4 +57,5 @@ export class BooksListComponent implements OnInit {
       this.books = response.result ? response.result : [] ;
     });
   }
+
 }
