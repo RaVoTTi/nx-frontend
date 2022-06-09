@@ -2,7 +2,7 @@ import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
-import { WishlistService } from '@frontend/order';
+import { WishlistService } from '@frontend/book-base';
 
 @Component({
   selector: 'robinbook-book-item',

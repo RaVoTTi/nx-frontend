@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '@frontend/order';
-import { BookService } from '@frontend/product';
+import { BookService } from '@frontend/book-admin';
 import { UserService } from '@frontend/user-admin';
 import { take } from 'rxjs';
 

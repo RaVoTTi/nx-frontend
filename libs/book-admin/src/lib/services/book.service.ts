@@ -20,9 +20,7 @@ export class BookService {
   getBookCount(): Observable<IResponse<number>> {
     return this.http.get<IResponse<number>>(`${this.apiUrl}/book/admin/count`);
   }
-  getBookByIdUser(id: string): Observable<IResponse<IBook>> {
-    return this.http.get<IResponse<IBook>>(`${this.apiUrl}/book/${id}`);
-  }
+
   getBookByIdAdmin(id: string): Observable<IResponse<IBook>> {
     return this.http.get<IResponse<IBook>>(`${this.apiUrl}/book/admin/${id}`);
   }

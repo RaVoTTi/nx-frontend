@@ -31,7 +31,7 @@ import { SubjectsListComponent } from './pages/subjects/subjects-list/subjects-l
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
 import { SubjectsFormComponent } from './pages/subjects/subjects-form/subjects-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AutorService, BookService, SubjectService } from '@frontend/product';
+import { AutorService, BookService, SubjectService } from '@frontend/book-admin';
 import { BooksFormComponent } from './pages/books/books-form/books-form.component';
 import { AutorsListComponent } from './pages/autors/autors-list/autors-list.component';
 import { AutorsFormComponent } from './pages/autors/autors-form/autors-form.component';

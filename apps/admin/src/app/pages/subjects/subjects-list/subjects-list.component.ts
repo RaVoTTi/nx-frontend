@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { SubjectService } from '@frontend/product';
+import { SubjectService } from '@frontend/book-admin';
 import {ISubject} from '../../../../../../../interfaces' 
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';

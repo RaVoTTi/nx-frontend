@@ -1,8 +1,8 @@
-import { BookService } from '@frontend/product';
+import { BookBaseService } from '@frontend/book-base';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { IBook } from 'interfaces';
-import { WishlistService } from '@frontend/order';
+import { WishlistService } from '@frontend/book-base';
 
 @Component({
   selector: 'robinbook-books-list',
@@ -13,7 +13,7 @@ export class BooksListComponent implements OnInit {
   wishlistBooks: string[] = [];
 
   constructor(
-    private bookService: BookService,
+    private bookBaseService: BookBaseService,
     private wishlistService: WishlistService,
     
     ) {}
@@ -21,7 +21,7 @@ export class BooksListComponent implements OnInit {
   ngOnInit(): void {
     this.wishlistBooks = this.wishlistService.getWishlist().books
 
-    this.bookService
+    this.bookBaseService
       .getBooks()
       .pipe(take(1))
       .subscribe((response) => {

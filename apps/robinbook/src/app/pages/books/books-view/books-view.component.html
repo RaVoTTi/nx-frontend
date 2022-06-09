@@ -27,7 +27,10 @@
       <button class="col-12 sm:col-5 button-primary">
         {{ 'buy now' | uppercase }}
       </button>
-      <button class="col-12 sm:col-6 sm:col-offset-1 button-secondary">
+      <button class="col-12 sm:col-6 sm:col-offset-1 button-secondary"
+      (click)="addBookToWishlist()"
+      
+      >
         {{ 'to wishlist' | uppercase }}
       </button>
     </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AutorService } from '@frontend/product';
+import { AutorService } from '@frontend/book-admin';
 import { IAutor } from '../../../../../../../interfaces';
 import { MessageService } from 'primeng/api';
 import { take, timer } from 'rxjs';

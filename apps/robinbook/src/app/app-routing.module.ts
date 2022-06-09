@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { WishlistComponent } from '@frontend/book-base';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
 import { BooksViewComponent } from './pages/books/books-view/books-view.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyLearningListComponent } from './pages/myLearning/my-learning-list/my-learning-list.component';
 import { MyLearningViewComponent } from './pages/myLearning/my-learning-view/my-learning-view.component';
-import { WishlistComponent } from '../../../../libs/order/src/lib/pages/wishlist/wishlist.component';
 
 
 const routes: Routes = [

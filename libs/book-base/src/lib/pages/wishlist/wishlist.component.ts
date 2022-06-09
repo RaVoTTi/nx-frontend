@@ -1,9 +1,9 @@
-import { BookService } from '@frontend/product';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { IBook } from 'interfaces';
-import { WishlistService } from '../../services/wishlist.service';
 import { Location } from '@angular/common';
+import { BookBaseService } from '../../services/book-base.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class WishlistComponent implements OnInit {
   wishlistBooks: IBook[] = [];
 
   constructor(
-    private bookService: BookService,
+    private bookBaseService: BookBaseService,
     private location: Location,
     private wishlistService: WishlistService
   ) {}
@@ -25,9 +25,9 @@ export class WishlistComponent implements OnInit {
   }
   _getWishlist() {
     this.wishlistService.wishlist$.pipe(take(1)).subscribe((respWishlist) => {
-      respWishlist.books.forEach((bookId) => {
-        this.bookService
-          .getBookByIdUser(bookId)
+      respWishlist.books.forEach((bookId: string) => {
+        this.bookBaseService
+          .getBookBaseById(bookId)
           .pipe(take(1))
           .subscribe(({ result }) => {
             if (result) {

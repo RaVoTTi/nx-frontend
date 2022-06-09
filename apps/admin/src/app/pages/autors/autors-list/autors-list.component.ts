@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AutorService } from '@frontend/product';
+import { AutorService } from '@frontend/book-admin';
 import {IAutor} from '../../../../../../../interfaces' 
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';

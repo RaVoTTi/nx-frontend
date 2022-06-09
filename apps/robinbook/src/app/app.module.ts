@@ -27,9 +27,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { MyLearningListComponent } from './pages/myLearning/my-learning-list/my-learning-list.component';
 import { MyLearningViewComponent } from './pages/myLearning/my-learning-view/my-learning-view.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { OrderModule } from '@frontend/order';
 import { UiModule } from '@frontend/ui';
 import { MessageService } from 'primeng/api';
+import { BookBaseModule } from '@frontend/book-base';
 
 const UX_MODULE = [
   MenubarModule,
@@ -78,7 +78,7 @@ const UX_MODULE = [
 
     AppRoutingModule,
     HttpClientModule,
-    OrderModule,
+    BookBaseModule,
 
     UiModule,
     ...UX_MODULE,

@@ -8,5 +8,5 @@
     "types": []
   },
   "exclude": ["**/*.test.ts", "**/*.spec.ts"],
-  "include": ["**/*.ts", "../book-base/src/lib/services/wishlist.service.ts"]
+  "include": ["**/*.ts"]
 }

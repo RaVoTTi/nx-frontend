@@ -17,8 +17,9 @@
     "paths": {
       "@env/*": ["environments/*"],
       "@frontend/auth": ["libs/auth/src/index.ts"],
+      "@frontend/book-admin": ["libs/book-admin/src/index.ts"],
+      "@frontend/book-base": ["libs/book-base/src/index.ts"],
       "@frontend/order": ["libs/order/src/index.ts"],
-      "@frontend/product": ["libs/product/src/index.ts"],
       "@frontend/ui": ["libs/ui/src/index.ts"],
       "@frontend/user": ["libs/user/src/index.ts"],
       "@frontend/user-admin": ["libs/user-admin/src/index.ts"]

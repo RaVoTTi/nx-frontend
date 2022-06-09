@@ -1,6 +1,6 @@
 import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
-import { BookService } from '@frontend/product';
+import { BookBaseService, WishlistService } from '@frontend/book-base';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { ActivatedRoute} from '@angular/router';
@@ -16,7 +16,8 @@ export class BooksViewComponent implements OnInit {
   book!: IBook;
   bookId!: string;
   constructor(
-    private bookService: BookService,
+    private bookBaseService: BookBaseService,
+    private wishlistService:WishlistService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
@@ -25,8 +26,8 @@ export class BooksViewComponent implements OnInit {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
         this.bookId = params['id'];
-        this.bookService
-          .getBookByIdUser(this.bookId)
+        this.bookBaseService
+          .getBookBaseById(this.bookId)
           .pipe(take(1))
           .subscribe(({ result }) => {
             if (result) {
@@ -36,7 +37,13 @@ export class BooksViewComponent implements OnInit {
       }
     });
   }
+
   back(){
     this.location.back()
+  }
+  addBookToWishlist(){
+  
+      this.wishlistService.setBookWishlist(this.bookId)
+  
   }
 }

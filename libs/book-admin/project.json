@@ -1,0 +1,17 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/book-admin/src",
+  "prefix": "frontend",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/book-admin/**/*.ts",
+          "libs/book-admin/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
