@@ -11,21 +11,16 @@ import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
 import {MenuModule} from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
-import { TabMenuModule } from 'primeng/tabmenu';
-import { TabViewModule } from 'primeng/tabview';
 import { RatingModule } from 'primeng/rating';
 import {SplitButtonModule} from 'primeng/splitbutton';
 // ME
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BookItemComponent } from './components/book-item/book-item.component';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
 import { BooksViewComponent } from './pages/books/books-view/books-view.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MyLearningListComponent } from './pages/myLearning/my-learning-list/my-learning-list.component';
-import { MyLearningViewComponent } from './pages/myLearning/my-learning-view/my-learning-view.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { UiModule } from '@frontend/ui';
 import { MessageService } from 'primeng/api';
@@ -37,10 +32,8 @@ const UX_MODULE = [
   DividerModule,
   ButtonModule,
   CardModule,
-  TabMenuModule,
   MenuModule,
   InputTextModule,
-  TabViewModule,
   RatingModule,
   SplitButtonModule
   // InputTextModule,
@@ -61,15 +54,13 @@ const UX_MODULE = [
 @NgModule({
   declarations: [
     AppComponent,
-    BookItemComponent,
     BooksListComponent,
     BooksViewComponent,
     FooterComponent,
     HomeComponent,
     HeaderComponent,
     NavbarComponent,
-    MyLearningListComponent,
-    MyLearningViewComponent,
+
 
   ],
   imports: [

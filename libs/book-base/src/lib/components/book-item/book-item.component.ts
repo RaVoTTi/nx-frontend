@@ -2,10 +2,10 @@ import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
-import { WishlistService } from '@frontend/book-base';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
-  selector: 'robinbook-book-item',
+  selector: 'frontend-book-item',
   templateUrl: './book-item.component.html'
 })
 export class BookItemComponent implements OnInit {

@@ -16,8 +16,10 @@ export class OrderService {
       `${this.apiUrl}/order/admin?state=${state}`
     );
   }
-  getMyOrders(): Observable<IResponse<IOrder[]>> {
-    return this.http.get<IResponse<IOrder[]>>(`${this.apiUrl}/order/user`);
+  getMyOrders(condition : number): Observable<IResponse<IOrder[]>> {
+    return this.http.get<IResponse<IOrder[]>>(
+      `${this.apiUrl}/order/user?state=${condition}`
+    );
   }
   getMyOrderById(id: string): Observable<IResponse<IOrder[]>> {
     return this.http.get<IResponse<IOrder[]>>(`${this.apiUrl}/order/user/${id}`);

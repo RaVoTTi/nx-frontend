@@ -4,7 +4,7 @@ import { IOrder } from 'interfaces';
 import { take } from 'rxjs';
 
 @Component({
-  selector: 'robinbook-my-learning-list',
+  selector: 'frontend-my-learning-list',
   templateUrl: './my-learning-list.component.html'
 })
 export class MyLearningListComponent implements OnInit {
@@ -16,7 +16,7 @@ export class MyLearningListComponent implements OnInit {
 
   ngOnInit(): void {
      this.orderService
-       .getMyOrders()
+       .getMyOrders(1)
        .pipe(take(1))
        .subscribe(({result}) => {
          if(result){

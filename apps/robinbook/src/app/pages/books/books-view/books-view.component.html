@@ -8,12 +8,14 @@
 </div>
 
 <div class="robin-container grid">
-  <div class="col-12 sm:col-5 book-img align-self-center flex justify-content-center">
+  <div
+    class="col-12 sm:col-5 book-img align-self-center flex justify-content-center"
+  >
     <img
       src="{{ rawUrl + book.image }}"
       alt=""
       class=""
-      style="width:90%; object-fit: contain; "
+      style="width: 90%; object-fit: contain"
     />
   </div>
   <div class="col-12 sm:col-6 sm:col-offset-1 book-content">
@@ -24,12 +26,12 @@
     <h5>{{ 'By ' + book.autor.name | titlecase }}</h5>
     <p>{{ book.description }}</p>
     <div class="grid row-gap-3">
-      <button class="col-12 sm:col-5 button-primary">
+      <button class="col-12 sm:col-5 button-primary" (click)="toCheckOut()">
         {{ 'buy now' | uppercase }}
       </button>
-      <button class="col-12 sm:col-6 sm:col-offset-1 button-secondary"
-      (click)="addBookToWishlist()"
-      
+      <button
+        class="col-12 sm:col-6 sm:col-offset-1 button-secondary"
+        (click)="addBookToWishlist()"
       >
         {{ 'to wishlist' | uppercase }}
       </button>

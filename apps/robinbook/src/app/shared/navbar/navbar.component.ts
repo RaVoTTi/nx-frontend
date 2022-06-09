@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 
@@ -8,13 +9,14 @@ import { MenuItem, MessageService } from 'primeng/api';
 export class NavbarComponent implements OnInit {
   items: MenuItem[] = [];
 
-  constructor(private messageService: MessageService) {}
+  constructor(private router: Router, private messageService: MessageService) {}
 
   ngOnInit(): void {
     this.items = [
       {
         label: 'MyOrdering',
         styleClass: 'menu',
+        routerLink: 'app/order/myordering',
         icon: 'pi pi-shopping-cart',
         command: () => {
           console.log('asdasdsa');
@@ -23,7 +25,7 @@ export class NavbarComponent implements OnInit {
       {
         label: 'MyRefunding',
         styleClass: 'menu',
-
+        routerLink: 'app/order/myrefunding',
         icon: 'pi pi-money-bill',
         command: () => {
           console.log('asdasdsa');
@@ -32,7 +34,7 @@ export class NavbarComponent implements OnInit {
       {
         label: 'MySupport',
         styleClass: 'menu',
-        
+
         icon: 'pi pi-phone',
         command: () => {
           console.log('asdasdsa');
@@ -48,30 +50,21 @@ export class NavbarComponent implements OnInit {
       },
       {
         styleClass: 'menu-separator',
-        disabled: true
-
+        disabled: true,
       },
       {
         label: 'Log Out',
         styleClass: 'menu',
         icon: 'pi pi-power-off',
 
-
         command: () => {
           console.log('asdasdsa');
         },
       },
- 
-
-
     ];
   }
 
-  save(severity: string) {
-    this.messageService.add({
-      severity: severity,
-      summary: 'Success',
-      detail: 'Data Saved',
-    });
+  toLogin() {
+    this.router.navigate(['/login']);
   }
 }

@@ -18,8 +18,8 @@
 
 <div class="robin-container">
   <div class="grid" *ngIf="books">
-    <robinbook-book-item class="col-6 md:col-4 lg:col-3" *ngFor="let book of books" [book]="book" [isFavorite]="isFavorite(book._id)">
-    </robinbook-book-item>
+    <frontend-book-item class="col-6 md:col-4 lg:col-3" *ngFor="let book of books" [book]="book" [isFavorite]="isFavorite(book._id)">
+    </frontend-book-item>
   </div>
 
 </div>

@@ -11,7 +11,6 @@ import { WishlistService } from '../../services/wishlist.service';
   templateUrl: './wishlist.component.html',
 })
 export class WishlistComponent implements OnInit {
-  books: IBook[] = [];
   wishlistBooks: IBook[] = [];
 
   constructor(

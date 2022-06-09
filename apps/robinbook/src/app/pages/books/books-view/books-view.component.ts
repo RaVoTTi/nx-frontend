@@ -3,7 +3,7 @@ import { IBook } from 'interfaces';
 import { BookBaseService, WishlistService } from '@frontend/book-base';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 
@@ -19,7 +19,8 @@ export class BooksViewComponent implements OnInit {
     private bookBaseService: BookBaseService,
     private wishlistService:WishlistService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +45,9 @@ export class BooksViewComponent implements OnInit {
   addBookToWishlist(){
   
       this.wishlistService.setBookWishlist(this.bookId)
-  
+  }
+  toCheckOut(){
+          this.router.navigate(['/checkout']);
+
   }
 }
