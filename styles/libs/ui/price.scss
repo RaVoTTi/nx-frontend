@@ -1,0 +1,17 @@
+.price-toolbar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    border-radius: 0px 0px 0px 2px;
+    color: white;
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+
+    span {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+  }

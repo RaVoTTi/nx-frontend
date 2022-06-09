@@ -1,1 +1,16 @@
-<p>my-ordering works!</p>
+<div class="book-header">
+    <div class="flex book-search align-items-center justify-content-start">
+      <div class="icon-back" (click)="back()">
+        <i class="pi pi-arrow-left" style="font-size: 1.5rem"></i>
+      </div>
+      <h1>Back</h1>
+    </div>
+    </div>
+    
+    <div class="robin-container">
+      <div class="grid" *ngIf="orders">
+        <frontend-order-item class="col-12 " *ngFor="let order of orders" [order]="order" >
+        </frontend-order-item>
+      </div>
+    
+    </div>

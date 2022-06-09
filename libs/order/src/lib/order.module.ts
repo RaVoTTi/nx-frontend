@@ -8,7 +8,9 @@ import { MyLearningViewComponent } from './pages/my-learning/my-learning-view/my
 import { InputTextModule } from 'primeng/inputtext';
 import { MyOrderingComponent } from './pages/my-ordering/my-ordering.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
-
+import { LearningItemComponent } from './components/learning-item/learning-item.component';
+import {RatingModule} from 'primeng/rating';
+import { TagModule } from 'primeng/tag';
 const routes: Routes = [
   {
     path: 'checkout',
@@ -26,14 +28,12 @@ const routes: Routes = [
     path: 'myordering',
     component: MyOrderingComponent,
   },
-  {
-    path: 'myrefunding',
-    component: MyOrderingComponent,
-  },
+
 ];
 const UX_MODULE = [
   // CardModule,
   InputTextModule,
+  TagModule
   // ToastModule,
   // ToolbarModule,
   // ButtonModule,
@@ -55,6 +55,7 @@ const UX_MODULE = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
+    RatingModule,
     ...UX_MODULE,
   ],
   declarations: [
@@ -62,7 +63,8 @@ const UX_MODULE = [
     MyLearningListComponent,
     MyLearningViewComponent,
     MyOrderingComponent,
-    OrderItemComponent,
+    LearningItemComponent,
+    OrderItemComponent
   ],
 })
 export class OrderModule {}

@@ -6,8 +6,7 @@ export const ORDER_CONDITION = [
     },
     {
       label: 'Purchased',
-      color: 'primary',
-  
+      color: 'success',
       index: 1,
     },
     {

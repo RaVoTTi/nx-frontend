@@ -9,48 +9,42 @@
   h2 {
     font-size: 1.5em;
   }
-
   h4 {
     font-size: 1.2em;
     font-weight: normal;
   }
-
   h5 {
     font-size: 1.2em;
     font-weight: lighter;
   }
-
   &-left {
     padding: 1rem;
     background-color: white;
   }
-
   &-right {
     background-color: var(--secondary-color);
     padding-left: 1rem;
-
   }
-
-  &-toolbar {
+  &-condition{
     position: absolute;
-    top: 0;
+    bottom: 0;
     right: 0;
-    background-color: var(--primary-color);
-    border-radius: 0px 0px 0px 2px;
-
-
-
+    color: white;
+border-radius: 0px 0px 0px 0px;
+    span {
+      font-size: 1em;
+      font-weight: normal;
+    }
   }
 
   &:hover {
     border-color: #020122;
     transform: scale(1.01);
     transition-duration: 0.5s;
-
-    .itemwishlist-toolbar {
-      background-color: #020122;
+    .price-toolbar {
+      background-color: var(--primary-text-color);
       transition-duration: 0.5s;
     }
-
   }
+
 }

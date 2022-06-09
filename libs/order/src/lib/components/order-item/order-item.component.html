@@ -1,45 +1,47 @@
-  <div class="itemorder grid">
-    <div class="itemorder-left col-4 flex justify-content-center">
-      <img
-
-        style="max-width: 90%; height: 300px; object-fit: contain"
-      />
-    </div>
-    <div class="itemorder-right col-8">
-      <div class="grid sm:row-gap-7">
-        <div class="col-12 sm:col-5">
-          <h4></h4>
-          <h2></h2>
-          <h5>{{ 'By '  }}</h5>
-        </div>
-        <div class="col-12 sm:col-6 col-offset-1">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem accusantium, eos deleniti recusandae reprehenderit, aliquam voluptatibus dolores impedit necessitatibus at corporis repudiandae optio provident, rerum laudantium doloribus? Rerum, ea cumque.</p>
-        </div>
-
-        <button
-          class="col-8 col-offset-2 sm:col-6 sm:col-offset-3 button-primary"
-        >
-          {{ 'buy now' | uppercase }}
-        </button>
+<div class="itemorder grid " (click)="print()">
+  <div class="itemorder-left col-2 flex justify-content-center">
+    <img
+      class="image"
+      src="{{ rawUrl + order.book.image }}"
+      alt=""
+      style="max-width: 90%; height: 100px; object-fit: contain"
+    />
+  </div>
+  <div class="itemorder-right col-10">
+    <div class="grid sm:row-gap-7">
+      <div class="col-12 sm:col-5">
+        <h4></h4>
+        <h2> {{order.book.name | titlecase}}</h2>
+        <h5> </h5>
       </div>
     </div>
-    <div class="itemorder-toolbar">
-      <button
-        class="pi pi-times button-times"
-      ></button>
-    </div>
+  </div>
+  <div class="price-toolbar">
+    <span>{{order.price | currency}}</span>
+
   </div>
 
-  <!-- <div
-      class="itembook-toolfooter flex justify-content-between align-items-center"
-    >
-    <h2
-    style="color: #fff; font-size: 1.5rem; margin-left: 0.5rem; width: 100%"
-    [routerLink]="['/app/books/', book._id]"
-    >
-    {{ book.minPrice | currency }}
-  </h2>
-  
-  <button class="button-icon pi pi-chevron-right"></button>
-  <div></div>
-</div> -->
+
+
+  <div class="itemorder-condition">
+    <p-tag
+    [value]="orderCondition[order.condition].label"
+    [severity]="orderCondition[order.condition].color"
+  ></p-tag>
+
+  </div>
+</div>
+
+<!-- <div
+        class="itembook-toolfooter flex justify-content-between align-items-center"
+      >
+      <h2
+      style="color: #fff; font-size: 1.5rem; margin-left: 0.5rem; width: 100%"
+      [routerLink]="['/app/books/', book._id]"
+      >
+      {{ book.minPrice | currency }}
+    </h2>
+    
+    <button class="button-icon pi pi-chevron-right"></button>
+    <div></div>
+  </div> -->

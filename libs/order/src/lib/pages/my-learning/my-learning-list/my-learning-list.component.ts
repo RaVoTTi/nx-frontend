@@ -1,7 +1,7 @@
-import { OrderService } from '@frontend/order';
 import { Component, OnInit } from '@angular/core';
 import { IOrder } from 'interfaces';
 import { take } from 'rxjs';
+import { OrderService } from '../../../services/order.service';
 
 @Component({
   selector: 'frontend-my-learning-list',

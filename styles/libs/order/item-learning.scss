@@ -1,0 +1,75 @@
+.itemlearning {
+    position: relative;
+    border-radius: 2px;
+    cursor: pointer;
+    border-style: solid;
+    border-color: var(--primary-color);
+    h2 {
+      font-size: 1.2em;
+    }
+    h4 {
+      font-size: 1em;
+      font-weight: normal;
+    }
+    h5 {
+      font-size: 1em;
+      font-weight: lighter;
+    }
+    &-upper {
+      padding: 1rem;
+      background-color: white;
+    }
+    &-lower {
+      background-color: var(--secondary-color);
+      padding-left: 1rem;
+    }
+    &-toolfooter {
+      height: 50px;
+      width: 100%;
+      background-color: var(--primary-color);
+      div{
+        margin-top: 3px;
+        height: 90%;
+        button{
+          margin-right: 3px;
+          min-width: 35px;
+        }
+      }
+    }
+    &-toolbar {
+      position: absolute;
+      top:0;
+      right: 0;
+      background-color: var(--primary-color);
+      border-radius: 0px 0px 0px 2px;
+      color: white;
+      h3 {
+        font-size: 1.2em;
+        margin-left:0.5em ;
+        margin-right:0.5em ;
+      }
+
+
+  
+    }
+
+    &:hover {
+      border-color: #020122;
+      transform: scale(1.02);
+      transition-duration: 0.5s;
+      .itemlearning-toolfooter {
+        background-color: #020122;
+        transition-duration: 0.5s;
+
+      .button-arrow {
+        background-color: #020122;
+        transition-duration: 0.5s;
+      }
+    }
+    .price-toolbar {
+      background-color: #020122;
+      transition-duration: 0.5s;
+  }
+
+  }
+}

@@ -13,19 +13,11 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [
+
       {
         label: 'MyOrdering',
         styleClass: 'menu',
         routerLink: 'app/order/myordering',
-        icon: 'pi pi-shopping-cart',
-        command: () => {
-          console.log('asdasdsa');
-        },
-      },
-      {
-        label: 'MyRefunding',
-        styleClass: 'menu',
-        routerLink: 'app/order/myrefunding',
         icon: 'pi pi-money-bill',
         command: () => {
           console.log('asdasdsa');

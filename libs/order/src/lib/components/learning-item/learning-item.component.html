@@ -1,0 +1,50 @@
+<div class="itemlearning">
+  <div class="flex flex-column"
+  [routerLink]="['/app/order/mylearning/', order._id]"
+  
+  >
+    <div
+      class="itemlearning-upper flex align-items-center justify-content-center"
+    >
+      <img
+        src="{{ rawUrl + order.book.image }}"
+        alt="{{ rawUrl + order.book.image }}"
+        style="max-width: 90%; height: 300px; object-fit: contain"
+      />
+    </div>
+    <div class="itemlearning-lower">
+      <div>
+        <!-- <h4>{{ order.book.subject.name | uppercase }}</h4> -->
+        <h2>{{ order.book.name | uppercase }}</h2>
+        <!-- <h5>{{ 'By ' + order.book.autor.name | titlecase }}</h5> -->
+      </div>
+    </div>
+    <div
+      class="itemlearning-toolfooter flex justify-content-between align-items-center"
+    >
+    <div class="flex align-items-center">
+
+      <p-rating
+      style="margin-left: 0.7em"
+      
+      [ngModel]="3"
+      [stars]="5"
+      [cancel]="false"
+      [iconOnStyle]="{color: 'white'}"
+      [iconOffStyle]="{color: 'white'}"
+      
+      
+      ></p-rating>
+    </div>
+
+      <div class="flex flex-row justify-content-end">
+        <button style="font-size: 1.3em;" class="button-icon pi pi-dollar"></button>
+        <div></div>
+        <!-- <p-menu #menu [popup]="true" [model]="items"></p-menu> -->
+      </div>
+    </div>
+    <div class="price-toolbar">
+      <span>{{ order.price | currency }}</span>
+    </div>
+  </div>
+</div>

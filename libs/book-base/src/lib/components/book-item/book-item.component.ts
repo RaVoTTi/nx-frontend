@@ -13,6 +13,7 @@ export class BookItemComponent implements OnInit {
   @Input() book! : IBook;
   @Input() isFavorite! : boolean;
 
+
   items: MenuItem[] = [];
 
   constructor( private wishlistService:WishlistService ,private messageService: MessageService) { }

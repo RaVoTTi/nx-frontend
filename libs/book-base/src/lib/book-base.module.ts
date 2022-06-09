@@ -11,7 +11,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WishlistService } from './services/wishlist.service';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { WishlistIconComponent } from './components/wishlist-icon/wishlist-icon.component';
-import { WishlistItemComponent } from './components/wishlist-item/wishlist-item.component';
 import { BookItemComponent } from './components/book-item/book-item.component';
 import { MessageService } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
@@ -23,7 +22,6 @@ const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
   declarations: [
     WishlistComponent,
     WishlistIconComponent,
-    WishlistItemComponent,
     BookItemComponent,
   ],
   exports: [WishlistIconComponent, BookItemComponent],

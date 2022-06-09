@@ -18,7 +18,7 @@ export class OrderService {
   }
   getMyOrders(condition : number): Observable<IResponse<IOrder[]>> {
     return this.http.get<IResponse<IOrder[]>>(
-      `${this.apiUrl}/order/user?state=${condition}`
+      `${this.apiUrl}/order/user?condition=${condition}`
     );
   }
   getMyOrderById(id: string): Observable<IResponse<IOrder[]>> {
