@@ -17,7 +17,5 @@ export class OrderItemComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  print(){
-    console.log(this.order.condition)
-  }
+
 }

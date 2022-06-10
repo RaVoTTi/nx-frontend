@@ -11,6 +11,7 @@ import { OrderItemComponent } from './components/order-item/order-item.component
 import { LearningItemComponent } from './components/learning-item/learning-item.component';
 import {RatingModule} from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
+import { DropdownModule } from 'primeng/dropdown';
 const routes: Routes = [
   {
     path: 'checkout',
@@ -33,7 +34,8 @@ const routes: Routes = [
 const UX_MODULE = [
   // CardModule,
   InputTextModule,
-  TagModule
+  TagModule,
+  DropdownModule,
   // ToastModule,
   // ToolbarModule,
   // ButtonModule,
@@ -45,7 +47,7 @@ const UX_MODULE = [
   // DropdownModule,
   // EditorModule,
   // InputMaskModule,
-  
+
   // FieldsetModule,
 ];
 

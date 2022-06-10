@@ -26,7 +26,9 @@
     <h5>{{ 'By ' + book.autor.name | titlecase }}</h5>
     <p>{{ book.description }}</p>
     <div class="grid row-gap-3">
-      <button class="col-12 sm:col-5 button-primary" (click)="toCheckOut()">
+      <button class="col-12 sm:col-5 button-primary" 
+      (click)="toCheckOut()
+      ">
         {{ 'buy now' | uppercase }}
       </button>
       <button

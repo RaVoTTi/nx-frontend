@@ -1,13 +1,92 @@
 <div class="book-header">
   <div class="flex book-search align-items-center justify-content-start">
-    <div class="icon-back" (click)="back()">
-      <i class="pi pi-arrow-left" style="font-size: 1.5rem"></i>
-    </div>
-    <h1>Back</h1>
+    <h1>Checkout</h1>
   </div>
-  </div>
-  
-  <div class="robin-container">
+</div>
 
-  
+<div class="robin-container grid">
+  <div class="col-8">
+    <form [formGroup]="userForm">
+      <h2>Please fill in your details for this order</h2>
+      <br />
+
+      <br />
+      <div class="grid formgrid">
+        <h3 class="col-12">1. Order Information</h3>
+        <div class="field col-12 md:col-6">
+          <label for="name">Name</label>
+          <input
+            formControlName="name"
+            id="name"
+            type="text"
+            class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+          />
+          <small *ngIf="validateCamp('name')" class="ml-2 p-error"
+            >*Name is required
+          </small>
+        </div>
+
+        <h3 class="col-12">2. Crypto Address Information</h3>
+
+        <div class="field col-12 md:col-6">
+          <label for="lastName">Last Name</label>
+          <input
+            formControlName="lastName"
+            id="lastName"
+            type="text"
+            class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+          />
+          <small *ngIf="validateCamp('lastName')" class="ml-2 p-error"
+            >*LastName is required
+          </small>
+        </div>
+        <div class="field col-6 md:col-3">
+          <label for="Coin">coin</label><br />
+          <p-dropdown
+            [options]="coins"
+            formControlName="cryptoAddress"
+            optionLabel="name"
+            optionValue="id"
+            placeholder="Select a coin"
+            filterBy="name"
+          ></p-dropdown
+          ><br />
+          <small *ngIf="validateCamp('coin')" class="ml-2 p-error"
+            >*Subject is required
+          </small>
+        </div>
+        <div class="field col-6 md:col-3">
+
+          <p-dropdown [options]="coins" formControlName="cryptoAddress" optionLabel="name" ></p-dropdown>
+        </div>
+      </div>
+    </form>
   </div>
+  <div class="col-4 itemsummary">
+    <div class="itemsummary-toolbar">
+      <h3>Order Summary</h3>
+      <div class="flex flex-row"></div>
+    </div>
+    <table class="itemsummary-content">
+      <tr class="flex flex-row justify-content-between">
+        <th>Algo</th>
+        <td>Algo</td>
+      </tr>
+      <tr class="flex flex-row justify-content-between">
+        <th>Algo</th>
+
+        <td>Algo</td>
+      </tr>
+      <tr class="flex flex-row justify-content-between">
+        <th>Algo</th>
+
+        <td>Algo</td>
+      </tr>
+      <tr class="flex flex-row justify-content-between">
+        <th>Algo</th>
+
+        <td>Algo</td>
+      </tr>
+    </table>
+  </div>
+</div>

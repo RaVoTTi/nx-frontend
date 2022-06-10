@@ -25,13 +25,13 @@
 @import './apps/robinbook/shared/header.scss';
 @import './apps/robinbook/shared/nav.scss';
 @import './apps/robinbook/shared/button.scss';
+@import './libs/ui/price.scss';
 
 // COMPONENTS
 @import './libs/book/item-book.scss';
 @import './libs/order/item-order.scss';
 @import './libs/order/item-learning.scss';
-@import './libs/ui/price.scss';
-
+@import './libs/order/item-summary.scss';
 
 
 
