@@ -140,9 +140,8 @@ export class BooksFormComponent implements OnInit {
       autor: ['', Validators.required],
       subject: ['', Validators.required],
       description: ['', Validators.required],
-      richDescription: [''],
       // evaluation: ['', Validators.required],
-      // content: ['', Validators.required],
+      content: ['', [Validators.required, Validators.minLength(20), ] ],
       image: [''],
     });
   }

@@ -14,7 +14,6 @@ export interface IBook {
   dateCreated: Date
   rating?: number
   description?: string
-  richDescription?: string
   evaluation?: string
   content?: string
   numReviews?: number

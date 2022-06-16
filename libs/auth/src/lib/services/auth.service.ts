@@ -3,39 +3,57 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 // OTHERS
-import { Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { environment } from 'environments/environment';
 // ME
 import { ILogin, IUser, IRegister, IResponse } from 'interfaces/index';
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
+import { AuthsFacade } from '../state/auths.facade';
+import { WishlistService } from '@frontend/book-base';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   apiUrl = environment.apiUrl;
+  // isAuthenticated$ : BehaviorSubject<boolean> = new BehaviorSubject(false)
 
   constructor(
+    private authsFacade: AuthsFacade,
     private http: HttpClient,
     private localStorageService: LocalStorageService,
-    private router : Router
-    
+    private wishlistService: WishlistService,
+
+    private router: Router
   ) {}
 
   postLogin(login: ILogin): Observable<IResponse<IUser>> {
     return this.http.post<IResponse<IUser>>(`${this.apiUrl}/auth/login`, login);
   }
-  postRegister(user: IRegister): Observable<IResponse<IUser>> {
-    return this.http.post<IResponse<IUser>>(
-      `${this.apiUrl}/auth/register`,
-      user
-    );
+  postSignUp(user: IRegister): Observable<IResponse> {
+    return this.http
+      .post<IResponse>(`${this.apiUrl}/auth/signup`, user)
+      .pipe(catchError((err) => of(err.error as IResponse)));
+  }
+  getUserByJWT(): Observable<IResponse<IUser>> {
+    return this.http.get<IResponse<IUser>>(`${this.apiUrl}/user`);
   }
 
-  logout() {
+  logout(route: string) {
     this.localStorageService.deleteToken();
-    this.router.navigate(['/login'])
+    this.wishlistService.emptyBookWishlist();
+    this.router.navigate([route]);
+  }
+  initAppSession() {
+    this.authsFacade.buildAuthSession();
+  }
+
+  observeUser() {
+    return this.authsFacade.currentUser$;
+  }
+  observeIsAuthenticated() {
+    return this.authsFacade.isAuthenticated$;
   }
 }
 

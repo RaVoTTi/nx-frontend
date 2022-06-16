@@ -9,34 +9,45 @@ import {
   UrlSegment,
   UrlTree,
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { IToken } from 'interfaces';
+import { Observable, of, tap } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class AuthGuard implements CanActivate, CanLoad {
   constructor(
     private router: Router,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private authService: AuthService
   ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean>  {
-    const token = this.localStorageService.getToken();
+  ): Observable<boolean> {
+    return this.authService.observeIsAuthenticated().pipe(
+      tap((isAuth) => {
+        if (!isAuth) {
+          this.router.navigate(['/auth/login']);
+        }
+      })
+    );
 
-    if (token) {
-      const tokenDecode = JSON.parse(atob(token.split('.')[1]))
-      if(tokenDecode.isAdmin){
+  }
+  canLoad(
+    route: Route,
+    segments: UrlSegment[]
+  ): Observable<boolean> {
+    return this.authService.observeIsAuthenticated().pipe(
+      tap((isAuth) => {
+        if (!isAuth) {
+          this.router.navigate(['/auth/login']);
+        }
+      })
+    );
 
-        return of(true);
-      }
-      console.log('Sos un simple mortal')
-
-    }
-    this.router.navigate(['/login']);
-    return of(false);
   }
   // canLoad(
   //   route: Route,

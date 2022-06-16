@@ -1,0 +1,174 @@
+<p-toast></p-toast>
+
+<div class="auth-main">
+  <div class="grid-nogutter">
+    <div class="col-5" *ngIf="loginForm">
+      <form [formGroup]="loginForm">
+        <div
+          class="flex auth-card flex-column justify-content-center align-items-center"
+        >
+          <h2 class="flex align-self-start ml-3">Login to Robin Book</h2>
+
+          <div>
+            <span class="p-input-icon-left auth-item">
+              <i class="pi pi-user"></i>
+              <input
+                type="text"
+                pInputText
+                placeholder="Email"
+                formControlName="email"
+                class="auth-item"
+              />
+            </span>
+            <small *ngIf="validateCamp('email')" class="ml-2 p-error"
+              >*Email is required
+            </small>
+          </div>
+          <div>
+            <span class="p-input-icon-left auth-item">
+              <i class="pi pi-lock"></i>
+              <input
+                type="password"
+                pInputText
+                class="auth-item"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </span>
+
+            <small *ngIf="validateCamp('password')" class="ml-2 p-error"
+              >*Password is required
+            </small>
+          </div>
+          <div>
+            <button
+              class="button-expand auth-item"
+              (click)="onSubmit()"
+              style="height: 40px"
+            >
+              LOGIN
+            </button>
+          </div>
+          <div class="flex justify-content-end">
+            <span
+              >New to Robin Book?
+              <a routerLink="/auth/signup"> SIGN UP NOW </a></span
+            >
+          </div>
+          <div class="flex justify-content-end">
+            <a> Forgot Password? </a>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-5" *ngIf="signUpForm">
+      <form [formGroup]="signUpForm">
+        <div
+          class="flex auth-card flex-column justify-content-center align-items-center"
+        >
+          <h2 class="flex align-self-start ml-3">Sign Up to Robin Book</h2>
+          <div>
+            <span class="p-input-icon-left auth-item">
+              <i class="pi pi-id-card"></i>
+              <input
+                type="text"
+                pInputText
+                placeholder="Name"
+                formControlName="name"
+                class="auth-item"
+              />
+            </span>
+            <small *ngIf="validateCamp('name')" class="ml-2 p-error"
+              >*Name is required
+            </small>
+          </div>
+          <div>
+            <span class="p-input-icon-left auth-item">
+              <i class="pi pi-id-card"></i>
+              <input
+                type="text"
+                pInputText
+                placeholder="LastName"
+                formControlName="lastName"
+                class="auth-item"
+              />
+            </span>
+            <small *ngIf="validateCamp('lastName')" class="ml-2 p-error"
+              >*LastName is required
+            </small>
+          </div>
+          <div>
+            <span class="p-input-icon-left auth-item">
+              <i class="pi pi-user"></i>
+              <input
+                type="text"
+                pInputText
+                placeholder="Email"
+                formControlName="email"
+                class="auth-item"
+              />
+            </span>
+            <small *ngIf="validateCamp('email')" class="ml-2 p-error"
+              >*Email is required
+            </small>
+          </div>
+          <div>
+            <span class="p-input-icon-left auth-item">
+              <i class="pi pi-lock"></i>
+              <input
+                type="password"
+                pInputText
+                class="auth-item"
+                placeholder="Password"
+                formControlName="password"
+              />
+            </span>
+
+            <small *ngIf="validateCamp('password')" class="ml-2 p-error"
+              >*Password is required
+            </small>
+          </div>
+          <div>
+            <span class="p-input-icon-left auth-item">
+              <i class="pi pi-phone"></i>
+              <input
+                type="number"
+                pInputText
+                class="auth-item"
+                placeholder="Phone"
+                formControlName="phone"
+              />
+            </span>
+
+            <small *ngIf="validateCamp('phone')" class="ml-2 p-error"
+              >*Phone is required
+            </small>
+          </div>
+          <div>
+            <small>
+              By creating an account, you agree to the
+              <a> Terms of Service</a> and <a>Privacy Policy.</a>
+            </small>
+          </div>
+          <div>
+            <button
+              class="button-expand auth-item"
+              (click)="onSubmit()"
+              style="height: 40px"
+            >
+              SIGN UP
+            </button>
+          </div>
+          <div class="flex justify-content-end">
+            <span
+              >Already have an account?
+              <a routerLink="/auth/login"> LOGIN NOW </a></span
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-8"></div>
+  </div>
+</div>

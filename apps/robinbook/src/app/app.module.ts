@@ -1,7 +1,7 @@
 // ANGULAR
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // PRIME NG
 import { AccordionModule } from 'primeng/accordion';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +25,13 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { UiModule } from '@frontend/ui';
 import { MessageService } from 'primeng/api';
 import { BookBaseModule } from '@frontend/book-base';
+import { MainComponent } from './shared/main/main.component';
+import { AuthModule, JwtInterceptor } from '@frontend/auth';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component';
+import { ToastModule } from 'primeng/toast';
 
 const UX_MODULE = [
   MenubarModule,
@@ -33,6 +40,8 @@ const UX_MODULE = [
   ButtonModule,
   CardModule,
   MenuModule,
+  ToastModule,
+
   InputTextModule,
   RatingModule,
   SplitButtonModule
@@ -60,23 +69,32 @@ const UX_MODULE = [
     HomeComponent,
     HeaderComponent,
     NavbarComponent,
+    AuthNavbarComponent,
+
+    MainComponent,
 
 
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-
     AppRoutingModule,
     HttpClientModule,
     BookBaseModule,
+    ReactiveFormsModule,
+    FormsModule,
 
     UiModule,
     ...UX_MODULE,
+    
+    AuthModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([])
+
   ],
   providers: [
     MessageService,
-
+    {provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
 })

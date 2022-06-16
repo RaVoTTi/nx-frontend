@@ -5,16 +5,22 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyLearningListComponent } from './pages/my-learning/my-learning-list/my-learning-list.component';
 import { MyLearningViewComponent } from './pages/my-learning/my-learning-view/my-learning-view.component';
-import { InputTextModule } from 'primeng/inputtext';
 import { MyOrderingComponent } from './pages/my-ordering/my-ordering.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { LearningItemComponent } from './components/learning-item/learning-item.component';
+
+
+// PRIME NG 
+import { ToastModule } from 'primeng/toast';
+
 import {RatingModule} from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
+import {InputTextModule} from 'primeng/inputtext';
+import { ThanksViewComponent } from './pages/thanks-view/thanks-view.component';
 const routes: Routes = [
   {
-    path: 'checkout',
+    path: 'checkout/:id',
     component: CheckoutViewComponent,
   },
   {
@@ -29,26 +35,18 @@ const routes: Routes = [
     path: 'myordering',
     component: MyOrderingComponent,
   },
+  {
+    path: 'thanks',
+    component: ThanksViewComponent,
+  },
 
 ];
 const UX_MODULE = [
-  // CardModule,
   InputTextModule,
+  RatingModule,
   TagModule,
   DropdownModule,
-  // ToastModule,
-  // ToolbarModule,
-  // ButtonModule,
-  // TableModule,
-  // ConfirmDialogModule,
-  // InputSwitchModule,
-  // ColorPickerModule,
-  // TagModule,
-  // DropdownModule,
-  // EditorModule,
-  // InputMaskModule,
-
-  // FieldsetModule,
+  ToastModule
 ];
 
 @NgModule({
@@ -57,7 +55,6 @@ const UX_MODULE = [
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    RatingModule,
     ...UX_MODULE,
   ],
   declarations: [
@@ -66,7 +63,8 @@ const UX_MODULE = [
     MyLearningViewComponent,
     MyOrderingComponent,
     LearningItemComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    ThanksViewComponent
   ],
 })
 export class OrderModule {}

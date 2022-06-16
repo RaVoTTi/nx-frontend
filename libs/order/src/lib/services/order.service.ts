@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
 import { environment } from '@env/environment';
-import { IResponse, IOrder } from 'interfaces/index';
+import { IResponse, IOrder, ICheckout } from 'interfaces/index';
 
 @Injectable({
   providedIn: 'root',
@@ -11,18 +11,30 @@ export class OrderService {
   apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) {}
 
-  getOrders(state = ''): Observable<IResponse<IOrder[]>> {
-    return this.http.get<IResponse<IOrder[]>>(
-      `${this.apiUrl}/order/admin?state=${state}`
-    );
-  }
-  getMyOrders(condition : number): Observable<IResponse<IOrder[]>> {
+  // USER
+  getMyOrders(condition: number): Observable<IResponse<IOrder[]>> {
     return this.http.get<IResponse<IOrder[]>>(
       `${this.apiUrl}/order/user?condition=${condition}`
     );
   }
-  getMyOrderById(id: string): Observable<IResponse<IOrder[]>> {
-    return this.http.get<IResponse<IOrder[]>>(`${this.apiUrl}/order/user/${id}`);
+  getMyOrderById(id: string): Observable<IResponse<IOrder>> {
+    return this.http.get<IResponse<IOrder>>(
+      `${this.apiUrl}/order/user/${id}`
+    );
+  }
+  postMyOrder(id: string , checkout: ICheckout): Observable<IResponse> {
+    return this.http.post<IResponse>(
+      `${this.apiUrl}/order/checkout/${id}`,  checkout
+    )
+    .pipe(catchError((err) => of(err.error as IResponse)));
+
+  }
+
+  // ADMIN
+  getOrders(state = ''): Observable<IResponse<IOrder[]>> {
+    return this.http.get<IResponse<IOrder[]>>(
+      `${this.apiUrl}/order/admin?state=${state}`
+    );
   }
   getOrderCount(): Observable<IResponse<number>> {
     return this.http.get<IResponse<number>>(`${this.apiUrl}/order/admin/count`);

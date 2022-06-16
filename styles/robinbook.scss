@@ -19,12 +19,16 @@
 // PAGES
 @import './apps/robinbook/pages/book.scss';
 @import './apps/robinbook/pages/home.scss';
+@import './apps/robinbook/pages/thanks.scss';
+
+
 
 // SHARED
 @import './apps/robinbook/shared/footer.scss';
 @import './apps/robinbook/shared/header.scss';
 @import './apps/robinbook/shared/nav.scss';
 @import './apps/robinbook/shared/button.scss';
+@import './apps/robinbook/shared/auth.scss';
 @import './libs/ui/price.scss';
 
 // COMPONENTS

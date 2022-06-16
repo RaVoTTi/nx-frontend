@@ -1,92 +1,146 @@
+
 <div class="book-header">
   <div class="flex book-search align-items-center justify-content-start">
     <h1>Checkout</h1>
+
   </div>
+<p-toast></p-toast>
+
 </div>
 
-<div class="robin-container grid">
-  <div class="col-8">
-    <form [formGroup]="userForm">
-      <h2>Please fill in your details for this order</h2>
-      <br />
+<div class="robin-container grid" *ngIf="book">
+  <div class="col-7">
+    <h2>Please fill in your details for this order</h2>
+    <div class="itemorder grid">
+      <div class="itemorder-left col-2 flex justify-content-center">
+        <img
+          class="image"
+          src="{{ rawUrl + book.image }}"
+          alt=""
+          style="max-width: 90%; height: 100px; object-fit: contain"
+        />
+      </div>
+      <div class="itemorder-right col-10">
+        <div class="grid sm:row-gap-7">
+          <div class="col-12 sm:col-5">
+            <h4></h4>
+            <h2>{{ book.name | titlecase }}</h2>
+            <h5></h5>
+          </div>
+        </div>
+      </div>
+      <div class="price-toolbar">
+        <span>{{ this.orderForm.value.price | currency }}</span>
+      </div>
 
-      <br />
+      <div class="itemorder-condition">
+        <p-tag
+          [value]="defaultCondition.label"
+          [severity]="defaultCondition.color"
+        ></p-tag>
+      </div>
+    </div>
+
+    <form [formGroup]="orderForm">
       <div class="grid formgrid">
         <h3 class="col-12">1. Order Information</h3>
         <div class="field col-12 md:col-6">
-          <label for="name">Name</label>
+          <label for="price">Price</label>
           <input
-            formControlName="name"
-            id="name"
-            type="text"
+            formControlName="price"
+            id="price"
+            type="number"
+            maxlength="6"
             class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
           />
-          <small *ngIf="validateCamp('name')" class="ml-2 p-error"
-            >*Name is required
+
+          <small *ngIf="validateCamp('price')" class="ml-2 p-error"
+            >*Price is required
           </small>
         </div>
-
-        <h3 class="col-12">2. Crypto Address Information</h3>
 
         <div class="field col-12 md:col-6">
-          <label for="lastName">Last Name</label>
+          <label class="mb-3" for="coupon">Coupon</label><br />
+          <div class="grid">
+            <div class="col-8">
+              <input
+                [formControl]="couponForm"
+                id="coupon"
+                type="text"
+                maxlength="5"
+                class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
+              />
+            </div>
+            <div class="col-4">
+              <button class="button-expand" (click)="onSubmitCoupon()">
+                Apply
+              </button>
+            </div>
+            <small *ngIf="validateCoupon()" class="mt-2 ml-2 p-error">
+              *The coupon isn't valid
+            </small>
+          </div>
+        </div>
+
+        <h3 class="col-12">2. Refund system information</h3>
+
+        <div class="field col-12">
+          <label for="addressLTC">Address LTC</label>
           <input
-            formControlName="lastName"
-            id="lastName"
+            formControlName="addressLTC"
+            id="addressLTC"
             type="text"
             class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
           />
-          <small *ngIf="validateCamp('lastName')" class="ml-2 p-error"
-            >*LastName is required
+          <small *ngIf="validateCamp('addressLTC')" class="ml-2 p-error"
+            >*Address LTC is required
           </small>
         </div>
-        <div class="field col-6 md:col-3">
-          <label for="Coin">coin</label><br />
-          <p-dropdown
-            [options]="coins"
-            formControlName="cryptoAddress"
-            optionLabel="name"
-            optionValue="id"
-            placeholder="Select a coin"
-            filterBy="name"
-          ></p-dropdown
-          ><br />
-          <small *ngIf="validateCamp('coin')" class="ml-2 p-error"
-            >*Subject is required
-          </small>
-        </div>
-        <div class="field col-6 md:col-3">
-
-          <p-dropdown [options]="coins" formControlName="cryptoAddress" optionLabel="name" ></p-dropdown>
+        <div class="col-4">
+          <button class="button-expand"
+          style="height: 35px;"
+          (click)="onSubmit()">
+            Continue to Payment
+          </button>
         </div>
       </div>
     </form>
   </div>
-  <div class="col-4 itemsummary">
-    <div class="itemsummary-toolbar">
-      <h3>Order Summary</h3>
-      <div class="flex flex-row"></div>
+  <div class="col-4 col-offset-1">
+    <div class="itemsummary">
+      <div
+        class="itemsummary-toolbar flex align-items-center justify-content-center"
+      >
+        <h3>Order Summary</h3>
+      </div>
+      <table class="itemsummary-content">
+        <tr class="flex flex-row justify-content-between">
+          <th>{{ book.name | titlecase }}</th>
+          <td>{{ this.orderForm.value.price | currency }}</td>
+        </tr>
+        <tr class="flex flex-row justify-content-between">
+          <th>Delivery</th>
+
+          <td>FREE</td>
+        </tr>
+
+        <tr class="flex flex-row justify-content-between">
+          <th>Commition to Giftback</th>
+          <td>-{{ this.orderForm.value.price * 0.2 | currency }}</td>
+        </tr>
+        <tr class="flex flex-row justify-content-between">
+          <th>Total Giftback</th>
+          <td>{{ this.orderForm.value.price * 0.8 | currency }}</td>
+        </tr>
+        <tr class="flex flex-row justify-content-between">
+          <th>Total to pay</th>
+
+          <td>{{ this.orderForm.value.price | currency }}</td>
+        </tr>
+      </table>
     </div>
-    <table class="itemsummary-content">
-      <tr class="flex flex-row justify-content-between">
-        <th>Algo</th>
-        <td>Algo</td>
-      </tr>
-      <tr class="flex flex-row justify-content-between">
-        <th>Algo</th>
-
-        <td>Algo</td>
-      </tr>
-      <tr class="flex flex-row justify-content-between">
-        <th>Algo</th>
-
-        <td>Algo</td>
-      </tr>
-      <tr class="flex flex-row justify-content-between">
-        <th>Algo</th>
-
-        <td>Algo</td>
-      </tr>
-    </table>
+    <div class="mt-3" >
+      <button class="button-expand" style="height: 35px" >Buy Now</button>
+    </div>
   </div>
 </div>

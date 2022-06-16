@@ -10,7 +10,6 @@
     "robinbook": "apps/robinbook",
     "robinbook-e2e": "apps/robinbook-e2e",
     "ui": "libs/ui",
-    "user": "libs/user",
     "user-admin": "libs/user-admin"
   }
 }

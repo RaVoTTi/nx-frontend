@@ -122,7 +122,10 @@
               </small>
             </div>
             <div class="field col-12">
-              <p-editor formControlName="richDescription" [style]="{ height: '320px' }"></p-editor>
+              <p-editor formControlName="content" [style]="{ height: '320px' }"></p-editor>
+              <small *ngIf="validateCamp('content')" class="p-error"
+              >*Content is required
+            </small>
             </div>
             <div class="field col-12">
               <label for="image">Image</label><br />

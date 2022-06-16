@@ -13,14 +13,18 @@ import { AutorsListComponent } from './pages/autors/autors-list/autors-list.comp
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
-import { AuthGuard, AuthModule } from '@frontend/auth';
+import { AuthAdminGuard, AuthGuard, AuthModule } from '@frontend/auth';
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
 
 const routes: Routes = [
+
+
   {
     path: '',
     component: ShellComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
+    canLoad: [AuthAdminGuard],
+
     // canLoad: [AuthGuard],
 
     children: [
@@ -85,17 +89,29 @@ const routes: Routes = [
         path: 'orders/detail/:id',
         component: OrdersDetailComponent,
       },
+
+
     ],
   },
+  {
+    path: 'auth',
+    loadChildren: () => import('@frontend/auth').then((m) => m.AuthModule),
 
+  },
   {
     path: '**',
     redirectTo: '/',
   },
+
+
+
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true , initialNavigation: 'enabled'}), AuthModule],
+  // imports: [RouterModule.forRoot(routes, { useHash: true , initialNavigation: 'enabled'}), AuthModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true})],
+
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

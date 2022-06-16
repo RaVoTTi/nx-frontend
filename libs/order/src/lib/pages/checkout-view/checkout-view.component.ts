@@ -1,73 +1,110 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { ORDER_CONDITION } from '../../helpers/order-conditions';
+import { ActivatedRoute, Router } from '@angular/router';
+import { take, timer } from 'rxjs';
+import { BookBaseService } from '@frontend/book-base';
+import { IBook } from 'interfaces';
+import { environment } from '@env/environment';
+import { OrderService } from '../../services/order.service';
 
-interface ICoin {
-  name: string,
-  id: number
-}
+import { MessageService } from 'primeng/api';
+
 @Component({
   selector: 'frontend-checkout-view',
   templateUrl: './checkout-view.component.html',
 })
 export class CheckoutViewComponent implements OnInit {
-  userForm!: FormGroup;
-  addressForm!: FormGroup;
-  cryptoAddressForm!: FormGroup;
+  orderForm!: FormGroup;
+  rawUrl = environment.rawUrl;
+  couponForm = new FormControl('');
+  bookId!: string;
+  book!: IBook;
+  checkoutComplete = false;
 
-  coins: ICoin[]
+  defaultCondition = ORDER_CONDITION[0];
 
   constructor(
     private formBuilder: FormBuilder,
+    private location: Location,
+    private route: ActivatedRoute,
+    private bookBaseService: BookBaseService,
+    private orderService: OrderService,
+    private messageService: MessageService,
+    private router: Router
 
-    private location: Location
-  ) {
-this.coins = [
-    {
-      name: 'BTC',
-      id: 1,
-    },
-    {
-      name: 'LTC',
-      id: 1,
-    },
-    
-    {
-      name: 'ADA',
-      id: 1,
-    },
-  ];
-
-
-  }
+  ) {}
 
   ngOnInit(): void {
+    this._getBook();
     this._initForm();
   }
   back() {
     this.location.back();
   }
+
   private _initForm() {
-    this.addressForm = this.formBuilder.group({});
-    this.cryptoAddressForm = this.formBuilder.group({});
+    this.orderForm = this.formBuilder.group({
+      price: [1, [Validators.required]],
+      addressLTC: ['', Validators.required],
+    });
+  }
+  onSubmit() {
+    if (this.orderForm.invalid) {
+      this.orderForm.markAllAsTouched();
+      return;
+    }
+    console.log(this.orderForm.value)
+    this.orderService
+      .postMyOrder(this.bookId, this.orderForm.value)
+      .pipe(take(1))
+      .subscribe((response) => {
+        if (response.ok === true) {
+          this.router.navigate([`app/order/thanks`]);
 
-    this.userForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      phone: [Number, Validators.required],
+        } else {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: response.msg[0] as
+              | string
+              | 'The book could not be purchased'
+          });
+        }
+      });
+  }
 
-      state: [true, Validators.required],
-      isAdmin: [false, Validators.required],
-
-      address: this.addressForm,
-      cryptoAddress: this.cryptoAddressForm,
+  onSubmitCoupon() {
+    this.couponForm.markAsTouched();
+  }
+  private _getBook() {
+    this.route.params.pipe(take(1)).subscribe((params) => {
+      if (params['id']) {
+        this.bookId = params['id'];
+        this.bookBaseService
+          .getBookBaseById(this.bookId)
+          .pipe(take(1))
+          .subscribe(({ result }) => {
+            if (result) {
+              this.book = result;
+            }
+          });
+      }
     });
   }
   validateCamp(key: string) {
     return (
-      this.userForm.controls[key].errors && this.userForm.controls[key].touched
+      this.orderForm.controls[key].errors &&
+      this.orderForm.controls[key].touched
     );
+  }
+  validateCoupon() {
+    return this.couponForm.touched;
   }
 }

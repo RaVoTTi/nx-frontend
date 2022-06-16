@@ -13,6 +13,7 @@ export class WishlistService {
   initWishlist: IWishlist = {
     books: [],
   };
+  initWishlistString = '{"books":[]}';
 //  implements OnInit
   // ngOnInit(): void {
   // }
@@ -57,5 +58,9 @@ export class WishlistService {
     }
 
     return wishlist;
+  }
+  emptyBookWishlist(){
+    localStorage.setItem(WISHLIST_KEY, this.initWishlistString);
+    this.wishlist$.next(this.initWishlist)
   }
 }

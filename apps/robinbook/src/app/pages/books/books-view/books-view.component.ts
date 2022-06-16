@@ -47,7 +47,7 @@ export class BooksViewComponent implements OnInit {
       this.wishlistService.setBookWishlist(this.bookId)
   }
   toCheckOut(){
-          this.router.navigate(['app/order/checkout']);
+          this.router.navigate([`app/order/checkout/${this.bookId}`]);
 
   }
 }

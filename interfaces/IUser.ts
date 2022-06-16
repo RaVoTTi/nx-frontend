@@ -1,16 +1,23 @@
 import { IAddress } from './IAddress';
-import { ICryptoAddress } from './ICryptoAddress';
 
 export interface IUser {
   _id: string;
   name: string;
   lastName: string;
   email: string;
-  isAdmin: boolean;
   state: boolean;
   phone: number;
-  dateCreated: Date;
+  isAdmin?: boolean;
+  dateCreated?: Date;
   password?: string;
-  cryptoAddress?: ICryptoAddress;
   address?: IAddress;
+}
+
+export const exampleIUser: IUser ={
+  _id: 'string',
+  name: 'string',
+  lastName: 'string',
+  email: 'string',
+  state: true,
+  phone: 123123123,
 }

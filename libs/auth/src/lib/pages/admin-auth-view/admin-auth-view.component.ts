@@ -12,10 +12,10 @@ import { LocalStorageService } from '../../services/local-storage.service';
 import { AuthService } from './../../services/auth.service';
 
 @Component({
-  selector: 'frontend-login',
-  templateUrl: './login.component.html',
+  selector: 'frontend-admin-auth-view',
+  templateUrl: './admin-auth-view.component.html'
 })
-export class LoginComponent implements OnInit {
+export class AdminAuthViewComponent implements OnInit {
   form!: FormGroup;
   rawUrl = environment.rawUrl;
 

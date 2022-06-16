@@ -8,8 +8,9 @@
         
       </div>
       <div class="col-5 col-offset-3">
-        <robinbook-navbar></robinbook-navbar>
         
+        <robinbook-navbar *ngIf="isAuthenticated === false"></robinbook-navbar>
+        <robinbook-auth-navbar *ngIf="isAuthenticated === true"></robinbook-auth-navbar>
       </div>
       
     </div>

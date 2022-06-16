@@ -10,12 +10,12 @@ export const ORDER_CONDITION = [
       index: 1,
     },
     {
-      label: 'Pending of refund',
+      label: 'Pending of Giftback',
       color: 'warning',
       index: 2,
     },
     {
-      label: 'Refunded',
+      label: 'GiftBack',
       color: 'info',
   
       index: 3,
