@@ -5,7 +5,6 @@ import { take } from 'rxjs';
 import { OrderService } from '../../../services/order.service';
 import { Location } from '@angular/common';
 
-
 @Component({
   selector: 'frontend-my-learning-view',
   templateUrl: './my-learning-view.component.html',
@@ -29,15 +28,15 @@ export class MyLearningViewComponent implements OnInit {
           .getMyOrderById(this.orderId)
           .pipe(take(1))
           .subscribe(({ result }) => {
-            console.log(result)
             if (result) {
               this.order = result;
+              
             }
           });
       }
     });
   }
-  back(){
-    this.location.back()
+  back() {
+    this.location.back();
   }
 }

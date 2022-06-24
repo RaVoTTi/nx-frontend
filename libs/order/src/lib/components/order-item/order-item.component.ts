@@ -15,7 +15,8 @@ export class OrderItemComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
 
 }

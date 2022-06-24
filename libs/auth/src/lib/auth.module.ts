@@ -11,26 +11,28 @@ import { ToastModule } from 'primeng/toast';
 // ME
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromAuths from './state/auths.reducer';
-import { AuthsEffects } from './state/auths.effects';
-import { AuthsFacade } from './state/auths.facade';
 import { AuthViewComponent } from './pages/auth-view/auth-view.component';
 import { AdminAuthViewComponent } from './pages/admin-auth-view/admin-auth-view.component';
+import { authReducer } from './state/auth.reducer';
+import { AuthEffects } from './state/auth.effects';
+import { AuthGuard } from './guard/auth.guard';
+import { LoginGuard } from './guard/login.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canActivate: [LoginGuard],
     children: [
       {
-        path: 'login',
+        path: 'auth/login',
         component: AuthViewComponent,
       },
       {
-        path: 'signup',
+        path: 'auth/signup',
         component: AuthViewComponent,
       },
       {
-        path: 'login/admin/pppp',
+        path: 'auth/login/admin/pppp',
         component: AdminAuthViewComponent,
       },
       {
@@ -38,10 +40,7 @@ const routes: Routes = [
         redirectTo: '/auth/login',
       },
     ],
-    
   },
-
-
 ];
 @NgModule({
   imports: [
@@ -53,11 +52,10 @@ const routes: Routes = [
     ReactiveFormsModule,
 
     InputTextModule,
-
-    StoreModule.forFeature(fromAuths.AUTHS_FEATURE_KEY, fromAuths.reducer),
-    EffectsModule.forFeature([AuthsEffects]),
+    StoreModule.forFeature( 'auth' , authReducer ),
+    EffectsModule.forFeature([AuthEffects])
   ],
   declarations: [AuthViewComponent, AdminAuthViewComponent],
-  providers: [MessageService, AuthsFacade],
+  providers: [MessageService],
 })
 export class AuthModule {}

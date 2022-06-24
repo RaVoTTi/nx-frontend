@@ -18,6 +18,7 @@ import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import { ThanksViewComponent } from './pages/thanks-view/thanks-view.component';
+import { BookBaseModule } from '@frontend/book-base';
 const routes: Routes = [
   {
     path: 'checkout/:id',

@@ -54,7 +54,7 @@ export class AuthNavbarComponent implements OnInit {
         icon: 'pi pi-power-off',
 
         command: () => {
-          this.authService.logout('/app/home')
+          this.authService.logout()
         },
       },
     ];

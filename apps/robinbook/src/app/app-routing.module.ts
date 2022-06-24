@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@frontend/auth';
+// import { AuthGuard } from '@frontend/auth';
 import { WishlistComponent } from '@frontend/book-base';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
 import { BooksViewComponent } from './pages/books/books-view/books-view.component';
@@ -33,13 +34,14 @@ const routes: Routes = [
         path: 'order',
         loadChildren: () =>
           import('@frontend/order').then((m) => m.OrderModule),
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         canLoad: [AuthGuard],
       },
       {
         path: '**',
         redirectTo: '/app/home',
       },
+
     ],
   },
   {
@@ -47,6 +49,7 @@ const routes: Routes = [
     loadChildren: () => import('@frontend/auth').then((m) => m.AuthModule),
 
   },
+
 
 ];
 

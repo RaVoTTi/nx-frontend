@@ -1,0 +1,41 @@
+<div
+formArray="evaluation"
+id="evaluation"
+*ngFor="let test of evaluation.controls; let i = index"
+>
+<form [formGroupName]="i">
+    <input
+      type="text"
+      pInputText
+      formControlName="question"
+    />
+
+  </form>
+
+  <!-- <div
+    class="col-12"
+    *ngFor="let select of evaluationGroup(i).controls; let y = index"
+  >
+    <div [formGroupName]="y">
+      <div class="p-inputgroup">
+        <input
+          type="text"
+          formControlName="option"
+          pInputText
+        />
+        <span class="p-inputgroup-addon"
+          ><p-radioButton
+            name="isIt"
+            formControlName="isIt"
+          ></p-radioButton
+        ></span>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+<span>
+    <pre>
+        {{ evaluation.value | json }}
+    </pre>
+</span>

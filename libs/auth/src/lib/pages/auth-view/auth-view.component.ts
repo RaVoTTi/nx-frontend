@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { timer } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 import { LocalStorageService } from '../../services/local-storage.service';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'frontend-auth-view',
@@ -21,9 +22,9 @@ export class AuthViewComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private authService: AuthService,
-        private localStorageService: LocalStorageService,
-    private messageService: MessageService,
-
+    private store: Store,
+    private localStorageService: LocalStorageService,
+    private messageService: MessageService
   ) {
     this.router.url.includes('login')
       ? (this.login = true)
@@ -35,30 +36,31 @@ export class AuthViewComponent implements OnInit {
   }
   onSubmit() {
     if (this.login) {
-      this._postLogin();
+      this._login();
     } else {
       this._postSignUp();
     }
   }
-  private _postLogin() {
+  private _login() {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
       return;
     }
-    this.authService.postLogin(this.loginForm.value).subscribe((response) => {
-      if (response.token) {
-        this.localStorageService.setToken(response.token);
-        this.router.navigate(['/app']);
-      } else {
-        this.messageService.add({
-          severity: 'error',
-          summary: 'Error',
-          detail: response.msg[0] as
-            | string
-            | 'The Category could not be created',
-        });
-      }
-    });
+    this.authService.login(this.loginForm.value)
+    // this.authService.postLogin(this.loginForm.value).subscribe((response) => {
+    //   if (response.token) {
+    //     this.localStorageService.setToken(response.token);
+    //     this.router.navigate(['/app']);
+    //   } else {
+    //     this.messageService.add({
+    //       severity: 'error',
+    //       summary: 'Error',
+    //       detail: response.msg[0] as
+    //         | string
+    //         | 'The Category could not be created',
+    //     });
+    //   }
+    // });
   }
   private _postSignUp() {
     if (this.signUpForm.invalid) {
@@ -74,7 +76,6 @@ export class AuthViewComponent implements OnInit {
         });
         timer(1000).subscribe(() => {
           this.router.navigate(['/auth/login']);
-
         });
       } else {
         this.messageService.add({

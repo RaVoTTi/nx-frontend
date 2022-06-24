@@ -20,6 +20,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import {EditorModule} from 'primeng/editor';
 import {InputMaskModule} from 'primeng/inputmask';
 import {FieldsetModule} from 'primeng/fieldset';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 // ME
 import { AppComponent } from './app.component';
@@ -42,6 +43,7 @@ import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detai
 import { AuthModule, JwtInterceptor } from '@frontend/auth';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { EvaluationComponent } from './books/components/evaluation/evaluation.component';
 
 const UX_MODULE = [
   CardModule,
@@ -57,7 +59,8 @@ const UX_MODULE = [
   DropdownModule,
   EditorModule,
   InputMaskModule,
-  FieldsetModule
+  FieldsetModule,
+  RadioButtonModule
 ];
 
 @NgModule({
@@ -76,6 +79,7 @@ const UX_MODULE = [
     UsersFormComponent,
     OrdersListComponent,
     OrdersDetailComponent,
+    EvaluationComponent,
   ],
   imports: [
     BrowserModule,

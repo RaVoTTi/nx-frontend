@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService } from '@frontend/auth';
+import { AuthService, AuthState , authSelector } from '@frontend/auth';
+import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
 import { of, Subject, take, takeUntil } from 'rxjs';
 
@@ -10,16 +11,15 @@ import { of, Subject, take, takeUntil } from 'rxjs';
 export class HeaderComponent implements OnInit {
   items!: MenuItem[];
   isAuthenticated!: boolean;
+  isAuth$ = this.store.select(authSelector.selectIsAuth)
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private store: Store<AuthState>
+  ) {}
 
-  ngOnInit() {
-    this.authService.observeIsAuthenticated().subscribe(auth =>{
+  ngOnInit(): void {
 
-      this.isAuthenticated = auth 
-      console.log(auth)
-    }
-      );
   }
 
   // ngOnDestroy() {

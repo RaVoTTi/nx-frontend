@@ -1,5 +1,5 @@
 <p-toast></p-toast>
-<div class="admin-page" *ngIf="(editMode && form) || editMode === false ">
+<div class="admin-page" *ngIf="(editMode && form) || editMode === false">
   <p-card
     [header]="editMode ? 'Edit books' : 'Add books'"
     subheader="You can add or edit bookss"
@@ -65,7 +65,6 @@
               </small>
             </div>
 
-
             <div class="field col-6 md:col-3">
               <label for="subject">Subject</label><br />
               <p-dropdown
@@ -73,11 +72,11 @@
                 formControlName="subject"
                 optionLabel="name"
                 optionValue="id"
-                
                 placeholder="Select a Subject"
                 [filter]="true"
                 filterBy="name"
-              ></p-dropdown><br>
+              ></p-dropdown
+              ><br />
               <small *ngIf="validateCamp('subject')" class="ml-2 p-error"
                 >*Subject is required
               </small>
@@ -89,11 +88,11 @@
                 formControlName="autor"
                 optionLabel="name"
                 optionValue="id"
-
                 placeholder="Select a Autor"
                 [filter]="true"
                 filterBy="name"
-              ></p-dropdown><br>
+              ></p-dropdown
+              ><br />
               <small *ngIf="validateCamp('autor')" class="ml-2 p-error"
                 >*Autor is required
               </small>
@@ -121,27 +120,112 @@
                 >*Description is required
               </small>
             </div>
+
             <div class="field col-12">
-              <p-editor formControlName="content" [style]="{ height: '320px' }"></p-editor>
+              <p-editor
+                formControlName="content"
+                [style]="{ height: '320px' }"
+              ></p-editor>
               <small *ngIf="validateCamp('content')" class="p-error"
-              >*Content is required
-            </small>
+                >*Content is required
+              </small>
             </div>
-            <div class="field col-12">
-              <label for="image">Image</label><br />
-              <div
-                class="p-2 border-solid outline-none text-color surface-overlay border-1 surface-border border-round"
-              >
+          </div>
+
+          <div class="field col-12">
+            <label for="image">Image</label><br />
+            <div
+              class="p-2 border-solid outline-none text-color surface-overlay border-1 surface-border border-round"
+            >
+              <input
+                id="image"
+                type="file"
+                accept="image/*"
+                (change)="onImageUpload($event)"
+              />
+              <div class="p-2 col-4">
+                <img style="width: 100%" [src]="imageDisplay" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="col-12" formArrayName="evaluation">
+            <label for="evaluation">Evaluation</label>
+
+            <button class="mt-2 button-primary" (click)="addEvaluation()">
+              Add Evaluation
+            </button>
+
+            <div
+              class="field col-12"
+              *ngFor="test; of: getEvaluationArray().controls; let i = index"
+              [formArrayName]="i"
+            >
+              <div class="flex align-items-center gap-2">
+                <h2>{{ i + 1 + ')' }}</h2>
                 <input
-                  id="image"
-                  type="file"
-                  accept="image/*"
-                  (change)="onImageUpload($event)"
+                  style="height: max-content; width: 100%"
+                  type="text"
+                  formControlName="question"
+                  pInputText
+                  placeholder="Question"
                 />
-                <div class="p-2 col-4">
-                  <img style="width: 100%" [src]="imageDisplay" alt="" />
+                <button
+                  class="button-primary"
+                  style="min-width: 80px; max-width: 100px"
+                  [disabled]="getEvaluationArray().controls.length <= 1"
+                  (click)="removeEvaluation(i)"
+                >
+                  Remove
+                </button>
+              </div>
+
+              <div
+                class="pl-4"
+                formArrayName="options"
+                *ngFor="
+                  let optionnn of getOptionArray(i).controls;
+                  let y = index
+                "
+              >
+                <div [formGroupName]="y" class="flex field-checkbox gap-2">
+                  <h2>{{ y + 1 + ')' }}</h2>
+
+                  <p-radioButton
+                    [name]="i.toString()"
+                    [formControl]="getCorrectKey(i)"
+                    [value]="getKey(i,y).value"
+                  ></p-radioButton>
+
+                  <input
+                    type="text"
+                    formControlName="key"
+                    pInputText
+                    maxlength="1"
+                    style="text-transform: uppercase"
+                    placeholder="Key"
+                  />
+
+                  <input
+                    type="text"
+                    style="width: 100%"
+                    formControlName="option"
+                    pInputText
+                    placeholder="Option"
+                  />
+
+                  <button
+                    class="button-primary"
+                    style="min-width: 80px; max-width: 100px"
+                    [disabled]="getOptionArray(i).controls.length <= 1"
+                    (click)="removeOption(i, y)"
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
+              <button class="button-primary" (click)="addOption(i)">
+                Add Option
+              </button>
             </div>
           </div>
         </form>
@@ -149,3 +233,6 @@
     </div>
   </p-card>
 </div>
+<pre>
+  {{ getEvaluationArray().value | json }} 
+</pre>

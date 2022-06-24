@@ -13,22 +13,32 @@ export class LocalStorageService {
   getToken() {
     return localStorage.getItem(this.TOKEN);
   }
+  getTokenDecode() {
+    const token = this.getToken();
+    if (token) {
+      return JSON.parse(atob(token.split('.')[1])) as IToken;
+    }
+    return null
+  }
   deleteToken() {
     localStorage.removeItem(this.TOKEN);
   }
   isValidToken() {
     const token = this.getToken();
     if (token) {
-      const tokenDecode = JSON.parse(atob(token.split('.')[1])) as IToken;
-      return !this.isExpiredToken(tokenDecode.exp) && tokenDecode.uid ;
+      const tokenDecode = this.decodeJWT(token)
+      return !this.isExpiredToken(tokenDecode.exp) && tokenDecode.uid;
     } else {
       return false;
     }
   }
+  decodeJWT( token: string){
+    return JSON.parse(atob(token.split('.')[1])) as IToken;
+  }
+
   isExpiredToken(expiration: number): boolean {
     return Math.floor(new Date().getTime() / 1000) >= expiration;
   }
-
 
   // verifyJWT(): Observable<boolean> {
   //   const token = localStorage.getItem('super-token') || ''

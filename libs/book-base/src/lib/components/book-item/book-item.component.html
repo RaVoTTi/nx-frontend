@@ -1,15 +1,14 @@
-
-  <div class="itembook">
-    <div class="flex flex-column">
+<div class="itembook">
+  <div class="flex flex-column">
     <div
       class="itembook-upper flex align-items-center justify-content-center"
       [routerLink]="['/app/books/', book._id]"
-      >
+    >
       <img
-      class="image"
-      src="{{ rawUrl + book.image }}"
-      alt=""
-      style="max-width: 90%; height: 300px; object-fit: contain"
+        class="image"
+        src="{{ rawUrl + book.image }}"
+        alt=""
+        style="max-width: 90%; height: 300px; object-fit: contain"
       />
     </div>
     <div class="itembook-lower" [routerLink]="['/app/books/', book._id]">
@@ -19,25 +18,25 @@
         <h5>{{ 'By ' + book.autor.name | titlecase }}</h5>
       </div>
     </div>
-    <div class="itembook-toolfooter flex justify-content-between align-items-center"  >
-      <h2 style="color: #fff; font-size: 1.5rem; margin-left: 0.5rem; width: 100%;" [routerLink]="['/app/books/', book._id]">
-        
-        {{book.minPrice | currency }}
+    <div
+      class="itembook-toolfooter flex justify-content-between align-items-center"
+    >
+      <h2
+        style="color: #fff; font-size: 1.5rem; margin-left: 0.5rem; width: 100%"
+        [routerLink]="['/app/books/', book._id]"
+      >
+        {{ book.minPrice | currency }}
       </h2>
-      <div class="flex flex-row justify-content-end ">
-        <button 
-        [class]="isFavorite ? 'button-icon pi pi-heart-fill' : 'button-icon pi pi-heart' "
-        (click)="addBookToWishlist()"
-        >
-      </button>
-      <button class="button-icon pi pi-chevron-right "
-      (click)="menu.toggle($event)"
+      <div class="flex flex-row justify-content-end">
+        <button
+          [class]="
+            isFavorite
+              ? 'button-icon pi pi-heart-fill'
+              : 'button-icon pi pi-heart'
+          "
+          (click)="addBookToWishlist()"
         ></button>
-        <div></div>
-        <p-menu #menu [popup]="true" [model]="items"></p-menu>
-        
       </div>
-
     </div>
   </div>
 </div>

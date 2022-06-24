@@ -1,6 +1,6 @@
 import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { WishlistService } from '../../services/wishlist.service';
 
@@ -8,7 +8,7 @@ import { WishlistService } from '../../services/wishlist.service';
   selector: 'frontend-book-item',
   templateUrl: './book-item.component.html'
 })
-export class BookItemComponent implements OnInit {
+export class BookItemComponent {
   rawUrl = environment.rawUrl
   @Input() book! : IBook;
   @Input() isFavorite! : boolean;
@@ -18,18 +18,6 @@ export class BookItemComponent implements OnInit {
 
   constructor( private wishlistService:WishlistService ,private messageService: MessageService) { }
 
-    ngOnInit(): void {
-      this.items = [
-        {label: 'Update', icon: 'pi pi-refresh', command: () => {
-            console.log('asdasdsa');
-        },},
-        {label: 'Delete', icon: 'pi pi-times', command: () => {
-            console.log('asdasdsa');
-        },},
-        {label: 'Angular.io', icon: 'pi pi-info', url: 'http://angular.io'},
-    
-    ];
-    }
 
 addBookToWishlist(){
   if( this.isFavorite === false){

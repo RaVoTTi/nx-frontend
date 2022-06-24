@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '@frontend/auth';
 
 @Component({
@@ -6,10 +7,8 @@ import { AuthService } from '@frontend/auth';
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
-  constructor( private authService: AuthService){
-
-  }
+  constructor(private authService: AuthService, private router: Router) {}
   ngOnInit(): void {
-      this.authService.initAppSession()
+    this.authService.loginJWT();
   }
 }

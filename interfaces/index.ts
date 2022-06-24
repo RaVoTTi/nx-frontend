@@ -7,6 +7,7 @@ export * from './IUser'
 export * from './IOrder'
 export * from './ILogin';
 export * from './IToken';
+export * from './IEvaluation';
 
 export * from './IRegister';
 export * from './IWishlist';
