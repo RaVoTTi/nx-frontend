@@ -25,7 +25,7 @@ import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
 })
 export class BooksFormComponent implements OnInit {
   form!: FormGroup;
-
+  continue = false;
   editMode = false;
   bookId = '';
   subjects: ISubject[] = [];
@@ -180,7 +180,7 @@ export class BooksFormComponent implements OnInit {
       });
   }
   _checkEditMode() {
-    this.route.params.subscribe((params) => {
+    this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
         this.editMode = true;
         this.bookId = params['id'];
@@ -188,12 +188,46 @@ export class BooksFormComponent implements OnInit {
           .getBookByIdAdmin(this.bookId)
           .pipe(take(1))
           .subscribe(({ result }) => {
-            this.form.reset({ ...result });
+            if (result?.evaluation != undefined) {
+              const { evaluation, ...rest } = result;
+              this.form.reset({ ...rest });
+              evaluation.forEach((test, index) => {
+                this.addEvaluationWithValues(index, test);
+              });
+              console.log(this.form.value)
+              this.continue = true
+            } else {
+              this.back();
+            }
           });
       } else {
         this.editMode = false;
       }
     });
+  }
+  addEvaluationWithValues(index: number, evaluation: IEvaluation) {
+    if (!evaluation.options) {
+      return;
+    }
+
+    this.getEvaluationArray().push(
+      this.formBuilder.group({
+        question: [evaluation.question, Validators.required],
+        correctKey: [evaluation.correctKey, Validators.required],
+        options: this.formBuilder.array([])
+      })
+    );
+    evaluation.options.forEach((option) => {
+      this.addOptionWithValues(index, option);
+    });
+  }
+  addOptionWithValues(i: number, option: IOption) {
+    this.getOptionArray(i).push(
+      this.formBuilder.group({
+        option: [option.option, Validators.required],
+        key: [option.key, Validators.required],
+      })
+    );
   }
   private _initForm() {
     this.form = this.formBuilder.group({
@@ -206,56 +240,15 @@ export class BooksFormComponent implements OnInit {
       autor: ['', Validators.required],
       subject: ['', Validators.required],
       description: ['', Validators.required],
-      evaluation: this.formBuilder.array([
-        this.formBuilder.group({
-          question: [
-            'Valentin',
-            [Validators.required, Validators.minLength(5)],
-          ],
-          correctKey: [
-            'V',
-            [
-              Validators.required,
-              Validators.maxLength(1),
-              Validators.minLength(1),
-            ],
-          ],
-
-          options: this.formBuilder.array([
-            this.formBuilder.group({
-              option: ['es un crack', Validators.required],
-              key: ['c', [Validators.required]],
-            }),
-            this.formBuilder.group({
-              option: ['es un huevon', Validators.required],
-              key: ['h', [Validators.required]],
-            }),
-          ]),
-        }),
-        this.formBuilder.group({
-          question: ['', [Validators.required, Validators.minLength(5)]],
-          correctKey: [
-            '',
-            [
-              Validators.required,
-              Validators.maxLength(1),
-              Validators.minLength(1),
-            ],
-          ],
-
-          options: this.formBuilder.array([
-            this.formBuilder.group({
-              option: ['', Validators.required],
-              key: [null, [Validators.required]],
-            }),
-          ]),
-        }),
-      ]),
+      evaluation: this.formBuilder.array([]),
       content: ['', [Validators.required, Validators.minLength(20)]],
       image: [''],
     });
   }
-
+  // modifyKey(i:number, y: number){
+  //   console.log(this.getKey(i,y).value.toUpperCase())
+  //   this.getKey(i,y).patchValue(this.getKey(i,y).value.toUpperCase())
+  // }
   onSubmit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
@@ -263,7 +256,6 @@ export class BooksFormComponent implements OnInit {
       return;
     }
 
-    console.log('paso');
     const bookFormData = new FormData();
 
     Object.keys(this.form.value).map((key) => {
@@ -281,7 +273,16 @@ export class BooksFormComponent implements OnInit {
         bookFormData.append(key, this.form.value[key]);
       }
     });
-    this._postBook(bookFormData);
+
+    if (this.editMode) {
+      if (this.form.pristine) {
+        this.back();
+      } else {
+        this._putBook(this.bookId, bookFormData);
+      }
+    } else {
+      this._postBook(bookFormData);
+    }
   }
 
   getOptionsJSON(i: number): IOption[] {

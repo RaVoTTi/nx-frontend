@@ -43,7 +43,6 @@ import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detai
 import { AuthModule, JwtInterceptor } from '@frontend/auth';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { EvaluationComponent } from './books/components/evaluation/evaluation.component';
 
 const UX_MODULE = [
   CardModule,
@@ -79,7 +78,6 @@ const UX_MODULE = [
     UsersFormComponent,
     OrdersListComponent,
     OrdersDetailComponent,
-    EvaluationComponent,
   ],
   imports: [
     BrowserModule,

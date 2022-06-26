@@ -4,6 +4,8 @@
     cursor: pointer;
     border-style: solid;
     border-color: var(--primary-color);
+    background-color: var(--secondary-color);
+
     h2 {
       font-size: 1.2em;
     }
@@ -17,10 +19,8 @@
     }
     &-upper {
       padding: 1rem;
-      background-color: white;
     }
     &-lower {
-      background-color: var(--secondary-color);
       padding-left: 1rem;
     }
     &-toolfooter {
@@ -65,6 +65,11 @@
         background-color: #020122;
         transition-duration: 0.5s;
       }
+    }
+    .image {
+      transition-duration: 0.5s;
+
+      box-shadow: 5px 5px #020122;
     }
     .price-toolbar {
       background-color: #020122;

@@ -1,4 +1,5 @@
 import { IAutor } from "./IAutor"
+import { IEvaluation } from "./IEvaluation"
 import { ISubject } from "./ISubject"
 
 export interface IBook {
@@ -14,7 +15,7 @@ export interface IBook {
   dateCreated: Date
   rating?: number
   description?: string
-  evaluation?: string
+  evaluation?: IEvaluation[]
   content?: string
   numReviews?: number
 }

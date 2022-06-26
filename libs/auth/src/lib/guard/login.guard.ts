@@ -26,7 +26,11 @@ export class LoginGuard implements CanActivate, CanLoad {
   constructor(
     private router: Router,
     private store: Store<AuthState>,
-  ) {}
+  ) {
+
+    
+  }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

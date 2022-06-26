@@ -3,10 +3,17 @@
 
             <img  src="assets/x2.png" alt="">
     
-            <h2>Thank you for Shopping with us!</h2>
-            <h3>We hope to complete the book soon</h3>
-            
-            <button class="button-secondary mb-3" style="max-width: 300px;  " routerLink="/app/books">
+            <ng-container *ngIf="!evaluation">
+
+                <h2>Thanks you for Shopping with us!</h2>
+                <h3>We hope to complete the book soon</h3>
+            </ng-container>
+            <ng-container *ngIf="evaluation">
+
+                <h2>Thanks you for Complete the Evaluation!</h2>
+                <h3>Soon you will receive the giftback</h3>
+            </ng-container>
+            <button class="button-secondary mb-3" style="max-width: 300px;  " routerLink="/app/order/mylearning">
                 Go to My Learning
             </button>
             <button class="button-primary" style="max-width: 300px;" routerLink="/app/books">

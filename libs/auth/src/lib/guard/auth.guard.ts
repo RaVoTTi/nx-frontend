@@ -28,8 +28,13 @@ private router:Router,
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.authService.getVerifyJWT().pipe(map(({ ok }) => ok));
-
+    return this.authService.getVerifyJWT().pipe(map(({ ok }) => {
+      if(!ok){
+        this.router.navigate(['/app'])
+        return false
+      }
+      return true
+    }));
   }
 
 

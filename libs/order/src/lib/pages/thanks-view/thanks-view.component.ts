@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { take } from 'rxjs';
+
 
 @Component({
   selector: 'frontend-thanks-view',
@@ -6,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThanksViewComponent implements OnInit {
 
-  constructor() { }
+  evaluation = false
+  constructor(
+    private router: Router
+  ) { 
+    this.router.url.includes('evaluation') ? (this.evaluation = true) : (this.evaluation = false);
+
+
+  }
 
   ngOnInit(): void {
   }

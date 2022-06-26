@@ -7,7 +7,7 @@ import { environment } from '@env/environment';
   selector: 'frontend-learning-item',
   templateUrl: './learning-item.component.html',
 })
-export class LearningItemComponent implements OnInit {
+export class LearningItemComponent {
   
   rawUrl = environment.rawUrl
   
@@ -18,16 +18,5 @@ export class LearningItemComponent implements OnInit {
   constructor(
   ) {}
 
-  ngOnInit(): void {
-    this.items = [
-      {label: 'Update', icon: 'pi pi-refresh', command: () => {
-          console.log('asdasdsa');
-      },},
-      {label: 'Delete', icon: 'pi pi-times', command: () => {
-          console.log('asdasdsa');
-      },},
-      {label: 'Angular.io', icon: 'pi pi-info', url: 'http://angular.io'},
-  
-  ];
-  }
+
   }

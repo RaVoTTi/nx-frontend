@@ -1,0 +1,47 @@
+<ng-container *ngIf="book">
+  <div class="book-header">
+    <div class="flex book-search align-items-center justify-content-start">
+      <div class="icon-back" (click)="back()">
+        <i class="pi pi-arrow-left" style="font-size: 1.5rem"></i>
+      </div>
+      <h1>{{ book.name | titlecase }}</h1>
+    </div>
+  </div>
+<ng-container *ngIf="getEvaluationArray().length > 0">
+
+  <div [formGroup]="evaluationForm" class="robin-container">
+    <div
+      class="field col-12"
+      *ngFor="let evaluation of getEvaluationArray(); let i = index"
+    >
+      <h2>{{ i + 1 + ')' }} {{ getQuestion(i) | titlecase }}</h2>
+      <div class="pl-4">
+        <div
+          class="flex field-checkbox gap-2"
+          *ngFor="let option of getOptionArray(i); let y = index"
+        >
+          <input
+            [name]="i.toString()"
+            [value]="getKey(i, y)"
+            [formControl]="getOptionArrayForm(i)"
+            type="radio"
+            class="radio"
+          />
+
+          <h2>{{ getOption(i, y) }}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="flex justify-content-end field col-12">
+      <button
+        class="button-primary"
+        style="min-width: 80px; max-width: 100px"
+        (click)="onSubmit()"
+      >
+        SEND
+      </button>
+    </div>
+  </div>
+</ng-container>
+</ng-container>
+

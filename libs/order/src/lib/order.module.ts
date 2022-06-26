@@ -19,6 +19,9 @@ import { DropdownModule } from 'primeng/dropdown';
 import {InputTextModule} from 'primeng/inputtext';
 import { ThanksViewComponent } from './pages/thanks-view/thanks-view.component';
 import { BookBaseModule } from '@frontend/book-base';
+import { MyEvaluationViewComponent } from './pages/my-evaluation-view/my-evaluation-view.component';
+import {RadioButtonModule} from 'primeng/radiobutton';
+
 const routes: Routes = [
   {
     path: 'checkout/:id',
@@ -33,11 +36,19 @@ const routes: Routes = [
     component: MyLearningViewComponent,
   },
   {
+    path: 'myevaluation/:id',
+    component: MyEvaluationViewComponent,
+  },
+  {
     path: 'myordering',
     component: MyOrderingComponent,
   },
   {
-    path: 'thanks',
+    path: 'thanks/checkout',
+    component: ThanksViewComponent,
+  },
+  {
+    path: 'thanks/evaluation',
     component: ThanksViewComponent,
   },
 
@@ -47,7 +58,8 @@ const UX_MODULE = [
   RatingModule,
   TagModule,
   DropdownModule,
-  ToastModule
+  ToastModule,
+  RadioButtonModule
 ];
 
 @NgModule({
@@ -65,7 +77,8 @@ const UX_MODULE = [
     MyOrderingComponent,
     LearningItemComponent,
     OrderItemComponent,
-    ThanksViewComponent
+    ThanksViewComponent,
+    MyEvaluationViewComponent
   ],
 })
 export class OrderModule {}

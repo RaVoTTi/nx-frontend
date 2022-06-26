@@ -66,7 +66,7 @@ export class CheckoutViewComponent implements OnInit {
       .pipe(take(1))
       .subscribe((response) => {
         if (response.ok === true) {
-          this.router.navigate([`app/order/thanks`]);
+          this.router.navigate([`app/order/thanks/checkout`]);
 
         } else {
           this.messageService.add({

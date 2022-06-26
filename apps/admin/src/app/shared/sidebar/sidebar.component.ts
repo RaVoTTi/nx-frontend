@@ -10,6 +10,6 @@ export class SidebarComponent  {
 
 
   logout() {
-    this.authService.logout('/auth/login');
+    this.authService.logout('auth/login/admin/pppp');
   }
 }

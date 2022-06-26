@@ -14,7 +14,7 @@
         "tsConfig": "apps/robinbook/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/robinbook/src/favicon.ico",
+          "apps/robinbook/src/favicon.png",
           "apps/robinbook/src/assets"
         ],
         "styles": ["apps/robinbook/src/styles.scss"],

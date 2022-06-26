@@ -15,32 +15,35 @@ import { AuthViewComponent } from './pages/auth-view/auth-view.component';
 import { AdminAuthViewComponent } from './pages/admin-auth-view/admin-auth-view.component';
 import { authReducer } from './state/auth.reducer';
 import { AuthEffects } from './state/auth.effects';
-import { AuthGuard } from './guard/auth.guard';
 import { LoginGuard } from './guard/login.guard';
 
 const routes: Routes = [
   {
     path: '',
+    canLoad: [LoginGuard],
     canActivate: [LoginGuard],
+
     children: [
       {
-        path: 'auth/login',
+        path: 'login',
         component: AuthViewComponent,
       },
       {
-        path: 'auth/signup',
+        path: 'signup',
         component: AuthViewComponent,
       },
       {
-        path: 'auth/login/admin/pppp',
+        path: 'admin/login/pppp',
+
         component: AdminAuthViewComponent,
       },
       {
         path: '**',
-        redirectTo: '/auth/login',
+        redirectTo: 'auth/login',
       },
     ],
   },
+
 ];
 @NgModule({
   imports: [
@@ -52,8 +55,8 @@ const routes: Routes = [
     ReactiveFormsModule,
 
     InputTextModule,
-    StoreModule.forFeature( 'auth' , authReducer ),
-    EffectsModule.forFeature([AuthEffects])
+    StoreModule.forFeature('auth', authReducer),
+    EffectsModule.forFeature([AuthEffects]),
   ],
   declarations: [AuthViewComponent, AdminAuthViewComponent],
   providers: [MessageService],

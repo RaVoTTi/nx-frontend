@@ -148,7 +148,7 @@
               </div>
             </div>
           </div>
-          <div class="col-12" formArrayName="evaluation">
+          <div class="col-12" *ngIf="editMode === continue" formArrayName="evaluation">
             <label for="evaluation">Evaluation</label>
 
             <button class="mt-2 button-primary" (click)="addEvaluation()">
@@ -156,8 +156,9 @@
             </button>
 
             <div
+
               class="field col-12"
-              *ngFor="test; of: getEvaluationArray().controls; let i = index"
+              *ngFor="let test of getEvaluationArray().controls; let i = index"
               [formArrayName]="i"
             >
               <div class="flex align-items-center gap-2">
@@ -200,6 +201,7 @@
                     type="text"
                     formControlName="key"
                     pInputText
+                    
                     maxlength="1"
                     style="text-transform: uppercase"
                     placeholder="Key"
@@ -233,6 +235,4 @@
     </div>
   </p-card>
 </div>
-<pre>
-  {{ getEvaluationArray().value | json }} 
-</pre>
+

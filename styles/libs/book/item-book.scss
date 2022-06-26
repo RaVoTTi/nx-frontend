@@ -4,6 +4,8 @@
   cursor: pointer;
   border-style: solid;
   border-color: var(--primary-color);
+  background-color: var(--secondary-color);
+
   h2 {
     font-size: 1.2em;
   }
@@ -17,26 +19,22 @@
   }
   &-upper {
     padding: 1rem;
-    background-color: white;
   }
   &-lower {
-    background-color: var(--secondary-color);
     padding-left: 1rem;
   }
   &-toolfooter {
     height: 50px;
     width: 100%;
     background-color: var(--primary-color);
-    div{
+    div {
       margin-top: 3px;
       height: 90%;
-      button{
+      button {
         margin-right: 3px;
         min-width: 35px;
       }
-
     }
-
   }
   .button {
     &-ellipsis {
@@ -61,14 +59,18 @@
       background-color: #020122;
       transition-duration: 0.5s;
 
-    //   i{
-    //     color: white
-    //   }
+      //   i{
+      //     color: white
+      //   }
+    }
+    .image {
+      transition-duration: 0.5s;
+
+      box-shadow: 5px 5px #020122;
     }
     .button-arrow {
       background-color: #020122;
       transition-duration: 0.5s;
     }
   }
-
 }
