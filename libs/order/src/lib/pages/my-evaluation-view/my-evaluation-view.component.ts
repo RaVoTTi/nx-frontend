@@ -39,7 +39,7 @@ export class MyEvaluationViewComponent implements OnInit {
       if (params['id']) {
         this.orderId = params['id'];
         this.orderService
-          .getMyOrderById(this.orderId)
+          .getEvaluationById(this.orderId)
           .pipe(take(1))
           .subscribe(({ result }) => {
             if (result?.book) {
@@ -64,7 +64,7 @@ export class MyEvaluationViewComponent implements OnInit {
       this.back();
     } else {
       this.orderService
-        .patchMyOrder(this.orderId)
+        .getEvaluationConfirm(this.orderId)
         .pipe(take(1))
         .subscribe((response) => {
           if (response.ok) {

@@ -36,6 +36,11 @@
       }
     }
   }
+  .image {
+    max-width: 90%;
+    max-height: 260px;
+    object-fit: cover;
+  }
   .button {
     &-ellipsis {
       padding-left: 0.5rem;
@@ -64,6 +69,7 @@
       //   }
     }
     .image {
+      height: fit-content;
       transition-duration: 0.5s;
 
       box-shadow: 5px 5px #020122;

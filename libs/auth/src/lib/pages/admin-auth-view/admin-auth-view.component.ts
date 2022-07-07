@@ -17,7 +17,7 @@ import { AuthService } from './../../services/auth.service';
 })
 export class AdminAuthViewComponent implements OnInit {
   form!: FormGroup;
-  rawUrl = environment.rawUrl;
+  RAW_URL = environment.RAW_URL;
 
   constructor(
     private formBuilder: FormBuilder,

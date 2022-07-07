@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { AuthState , authSelector} from '@frontend/auth';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -12,15 +14,19 @@ import { Location } from '@angular/common';
   templateUrl: './books-view.component.html',
 })
 export class BooksViewComponent implements OnInit {
-  rawUrl = environment.rawUrl
+  RAW_URL = environment.RAW_URL
   book!: IBook;
   bookId!: string;
+  isAuth$ = this.store.select(authSelector.selectIsAuth)
+
   constructor(
     private bookBaseService: BookBaseService,
     private wishlistService:WishlistService,
     private route: ActivatedRoute,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private store: Store<AuthState>
+
   ) {}
 
   ngOnInit(): void {
@@ -47,7 +53,14 @@ export class BooksViewComponent implements OnInit {
       this.wishlistService.setBookWishlist(this.bookId)
   }
   toCheckOut(){
-          this.router.navigate([`app/order/checkout/${this.bookId}`]);
+    if(this.isAuth$){
+
+      this.router.navigate([`app/order/placeorder/${this.bookId}`]);
+    }else{
+      this.router.navigate([`auth/login`]);
+
+    }
+
 
   }
 }

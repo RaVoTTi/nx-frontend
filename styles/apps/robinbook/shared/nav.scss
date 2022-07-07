@@ -3,14 +3,14 @@
 
 
   li {
-    margin-top: 20px;
+    margin-top: 23px;
     list-style: none;
     display: inline-block;
     margin-right: 1rem;
 
     a {
-      font-size: 1.4em;
-      color: black;
+      font-size: 1.2em;
+      color: var(--third-color);
       cursor: pointer;
       &:hover {
         color: var(--primary-color);
@@ -26,7 +26,7 @@
 
 }
 .icons{
-  color: black;
+  color: var(--third-color);
   cursor: pointer;
   &:hover {
     color: var(--primary-color);

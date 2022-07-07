@@ -6,9 +6,9 @@
     >
       <img
         class="image"
-        src="{{ rawUrl + book.image }}"
+        src="{{ RAW_URL + book.image }}"
         alt=""
-        style="max-width: 90%; height: 300px; object-fit: contain"
+        
       />
     </div>
     <div class="itembook-lower" [routerLink]="['/app/books/', book._id]">
@@ -22,13 +22,14 @@
       class="itembook-toolfooter flex justify-content-between align-items-center"
     >
       <h2
-        style="color: #fff; font-size: 1.5rem; margin-left: 0.5rem; width: 100%"
+        style="color: #fff; font-size: 1.2rem; margin-left: 0.5rem; width: 100%"
         [routerLink]="['/app/books/', book._id]"
       >
         {{ book.minPrice | currency }}
       </h2>
       <div class="flex flex-row justify-content-end">
         <button
+          style="font-size: 1.2em;"
           [class]="
             isFavorite
               ? 'button-icon pi pi-heart-fill'

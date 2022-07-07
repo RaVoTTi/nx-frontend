@@ -26,23 +26,25 @@
 // SHARED
 @import './apps/robinbook/shared/footer.scss';
 @import './apps/robinbook/shared/radio.scss';
+@import './apps/robinbook/shared/input.scss';
 
 @import './apps/robinbook/shared/header.scss';
 @import './apps/robinbook/shared/nav.scss';
 @import './apps/robinbook/shared/button.scss';
 @import './apps/robinbook/shared/auth.scss';
-@import './libs/ui/price.scss';
+@import './libs/order/price.scss';
 
 // COMPONENTS
 @import './libs/book/item-book.scss';
+@import './libs/checkout/checkout.scss';
+
 @import './libs/order/item-order.scss';
 @import './libs/order/item-learning.scss';
 @import './libs/order/item-summary.scss';
 
 
 
-//LIBS
-@import './libs/ui/ui.scss';
+
 
 // html , body {
 //     // background-image: linear-gradient(90deg, #ffecd2 10%, #FFD5C4 100%);
@@ -57,7 +59,7 @@
     &-container{
         max-width: 1200px;
         padding: 15px;
-        margin:0 auto;
+
         position: relative;
     }
     &-shell{

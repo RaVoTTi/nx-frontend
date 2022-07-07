@@ -8,7 +8,7 @@ import { ORDER_CONDITION } from '../../helpers/order-conditions';
   templateUrl: './order-item.component.html',
 })
 export class OrderItemComponent implements OnInit {
-  rawUrl = environment.rawUrl;
+  RAW_URL = environment.RAW_URL;
   orderCondition = ORDER_CONDITION;
 
   @Input() order!: IOrder;

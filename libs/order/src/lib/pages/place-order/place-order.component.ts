@@ -17,16 +17,20 @@ import { OrderService } from '../../services/order.service';
 import { MessageService } from 'primeng/api';
 
 @Component({
-  selector: 'frontend-checkout-view',
-  templateUrl: './checkout-view.component.html',
+  selector: 'frontend-place-order',
+  templateUrl: './place-order.component.html',
 })
-export class CheckoutViewComponent implements OnInit {
+export class PlaceOrderComponent implements OnInit {
   orderForm!: FormGroup;
-  rawUrl = environment.rawUrl;
+  RAW_URL = environment.RAW_URL;
   couponForm = new FormControl('');
   bookId!: string;
   book!: IBook;
   checkoutComplete = false;
+  minPrice!: number;
+  maxPrice!: number;
+  init = false;
+  price!:number;
 
   defaultCondition = ORDER_CONDITION[0];
 
@@ -38,20 +42,26 @@ export class CheckoutViewComponent implements OnInit {
     private orderService: OrderService,
     private messageService: MessageService,
     private router: Router
-
   ) {}
 
   ngOnInit(): void {
     this._getBook();
-    this._initForm();
   }
   back() {
     this.location.back();
   }
 
-  private _initForm() {
+  private _initForm(min: number, max: number) {
     this.orderForm = this.formBuilder.group({
-      price: [1, [Validators.required]],
+      price: [
+        min,
+        [
+          Validators.required,
+          Validators.min(min),
+          Validators.max(max),
+          // Validators.pattern(/d+/),
+        ],
+      ],
       addressLTC: ['', Validators.required],
     });
   }
@@ -60,21 +70,19 @@ export class CheckoutViewComponent implements OnInit {
       this.orderForm.markAllAsTouched();
       return;
     }
-    console.log(this.orderForm.value)
     this.orderService
       .postMyOrder(this.bookId, this.orderForm.value)
       .pipe(take(1))
       .subscribe((response) => {
         if (response.ok === true) {
-          this.router.navigate([`app/order/thanks/checkout`]);
-
+          this.router.navigate([`checkout/stripe/${response.result}`]);
         } else {
           this.messageService.add({
             severity: 'error',
             summary: 'Error',
             detail: response.msg[0] as
               | string
-              | 'The book could not be purchased'
+              | 'The book could not be purchased',
           });
         }
       });
@@ -93,6 +101,12 @@ export class CheckoutViewComponent implements OnInit {
           .subscribe(({ result }) => {
             if (result) {
               this.book = result;
+              this.minPrice = this.book.minPrice;
+              this.maxPrice = this.book.maxPrice;
+              this.price = this.book.minPrice
+
+              this._initForm(this.minPrice, this.maxPrice);
+              this.init = true;
             }
           });
       }
@@ -106,5 +120,22 @@ export class CheckoutViewComponent implements OnInit {
   }
   validateCoupon() {
     return this.couponForm.touched;
+  }
+  getPrice() {
+    return this.orderForm.get('price')?.value;
+  }
+  getPriceFormated() {
+    if (
+      !this.getPrice() ||
+      this.orderForm.get('price')?.value < this.minPrice
+    ) {
+      this.price = this.minPrice;
+      this.orderForm.patchValue({ price: this.minPrice });
+    } else if (this.orderForm.get('price')?.value > this.maxPrice) {
+      this.price = this.maxPrice;
+      this.orderForm.patchValue({ price: this.maxPrice });
+    }else{
+      this.price = this.getPrice()
+    }
   }
 }

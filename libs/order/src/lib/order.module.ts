@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CheckoutViewComponent } from './pages/checkout-view/checkout-view.component';
+import { PlaceOrderComponent } from './pages/place-order/place-order.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyLearningListComponent } from './pages/my-learning/my-learning-list/my-learning-list.component';
@@ -16,7 +16,6 @@ import { ToastModule } from 'primeng/toast';
 import {RatingModule} from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
-import {InputTextModule} from 'primeng/inputtext';
 import { ThanksViewComponent } from './pages/thanks-view/thanks-view.component';
 import { BookBaseModule } from '@frontend/book-base';
 import { MyEvaluationViewComponent } from './pages/my-evaluation-view/my-evaluation-view.component';
@@ -24,8 +23,8 @@ import {RadioButtonModule} from 'primeng/radiobutton';
 
 const routes: Routes = [
   {
-    path: 'checkout/:id',
-    component: CheckoutViewComponent,
+    path: 'placeorder/:id',
+    component: PlaceOrderComponent,
   },
   {
     path: 'mylearning',
@@ -54,12 +53,12 @@ const routes: Routes = [
 
 ];
 const UX_MODULE = [
-  InputTextModule,
   RatingModule,
   TagModule,
   DropdownModule,
   ToastModule,
-  RadioButtonModule
+  RadioButtonModule,
+
 ];
 
 @NgModule({
@@ -71,7 +70,7 @@ const UX_MODULE = [
     ...UX_MODULE,
   ],
   declarations: [
-    CheckoutViewComponent,
+    PlaceOrderComponent,
     MyLearningListComponent,
     MyLearningViewComponent,
     MyOrderingComponent,

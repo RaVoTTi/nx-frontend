@@ -39,14 +39,11 @@ const UX_MODULE = [
   MenubarModule,
   AccordionModule,
   DividerModule,
-  ButtonModule,
   CardModule,
   MenuModule,
   ToastModule,
 
-  InputTextModule,
   RatingModule,
-  SplitButtonModule
   // InputTextModule,
   // ToastModule,
   // ToolbarModule,

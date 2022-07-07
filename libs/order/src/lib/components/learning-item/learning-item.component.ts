@@ -9,7 +9,7 @@ import { environment } from '@env/environment';
 })
 export class LearningItemComponent {
   
-  rawUrl = environment.rawUrl
+  RAW_URL = environment.RAW_URL
   
   @Input() order!: IOrder;
 

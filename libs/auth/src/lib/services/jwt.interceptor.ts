@@ -16,7 +16,7 @@ export class JwtInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.localStorageService.getToken()
-    const isApiUrl = request.url.startsWith(environment.apiUrl)
+    const isApiUrl = request.url.startsWith(environment.API_URL)
    
     if(token && isApiUrl){
       request = request.clone({

@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8081/api/v1',
-  rawUrl: 'http://localhost:8081',
-  result: 'zi4jba#cxlkNMzI'
+  API_URL: 'http://localhost:8081/api/v1',
+  RAW_URL: 'http://localhost:8081',
+  result: 'zi4jba#cxlkNMzI',
+  STRIPE_KEY:'pk_test_51JR3R0G7Fajw9ng5oRoNhplTjd5Y05j15LdPRjG95oiBjoCYZKd2MWY8JRTRv7dtu8oMdYRiXAPJtkbVkbepTaqF0050q6vbD4'
 };
 
 /*

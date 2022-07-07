@@ -25,7 +25,7 @@ export class MyLearningViewComponent implements OnInit {
       if (params['id']) {
         this.orderId = params['id'];
         this.orderService
-          .getMyOrderById(this.orderId)
+          .getContentById(this.orderId)
           .pipe(take(1))
           .subscribe(({ result }) => {
             if (result) {

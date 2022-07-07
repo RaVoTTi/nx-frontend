@@ -9,15 +9,15 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class BookBaseService {
-  apiUrl = environment.apiUrl;
+  API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) {}
   getBooks(): Observable<IResponse<IBook[]>> {
     return this.http.get<IResponse<IBook[]>>(
-      `${this.apiUrl}/book`
+      `${this.API_URL}/book`
     );
   }
   getBookBaseById(id: string): Observable<IResponse<IBook>> {
-    return this.http.get<IResponse<IBook>>(`${this.apiUrl}/book/${id}`);
+    return this.http.get<IResponse<IBook>>(`${this.API_URL}/book/${id}`);
   }
 }

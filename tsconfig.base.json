@@ -19,6 +19,7 @@
       "@frontend/auth": ["libs/auth/src/index.ts"],
       "@frontend/book-admin": ["libs/book-admin/src/index.ts"],
       "@frontend/book-base": ["libs/book-base/src/index.ts"],
+      "@frontend/checkout": ["libs/checkout/src/index.ts"],
       "@frontend/order": ["libs/order/src/index.ts"],
       "@frontend/ui": ["libs/ui/src/index.ts"],
       "@frontend/user": ["libs/user/src/index.ts"],

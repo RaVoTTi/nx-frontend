@@ -18,7 +18,7 @@ import * as AuthActions from '../state/auth.actions';
   providedIn: 'root',
 })
 export class AuthService {
-  apiUrl = environment.apiUrl;
+  API_URL = environment.API_URL;
   // isAuthenticated$ : BehaviorSubject<boolean> = new BehaviorSubject(false)
 
   constructor(
@@ -38,23 +38,23 @@ export class AuthService {
 
   postLogin(login: ILogin): Observable<IResponse> {
     return this.http
-      .post<IResponse>(`${this.apiUrl}/auth/login`, login)
+      .post<IResponse>(`${this.API_URL}/auth/login`, login)
       .pipe(catchError((err) => of(err.error as IResponse)));
   }
   getVerifyJWT(): Observable<IResponse> {
     return this.http
-      .get<IResponse>(`${this.apiUrl}/auth/verify`)
+      .get<IResponse>(`${this.API_URL}/auth/verify`)
       .pipe(catchError((err) => of(err.error as IResponse)));
   }
   getVerifyAdminJWT(): Observable<IResponse> {
     return this.http
-      .get<IResponse>(`${this.apiUrl}/auth/verify/admin`)
+      .get<IResponse>(`${this.API_URL}/auth/verify/admin`)
       .pipe(catchError((err) => of(err.error as IResponse)));
   }
 
   postSignUp(user: IRegister): Observable<IResponse> {
     return this.http
-      .post<IResponse>(`${this.apiUrl}/auth/signup`, user)
+      .post<IResponse>(`${this.API_URL}/auth/signup`, user)
       .pipe(catchError((err) => of(err.error as IResponse)));
   }
 

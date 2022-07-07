@@ -6,6 +6,7 @@
     "auth": "libs/auth",
     "book-admin": "libs/book-admin",
     "book-base": "libs/book-base",
+    "checkout": "libs/checkout",
     "order": "libs/order",
     "robinbook": "apps/robinbook",
     "robinbook-e2e": "apps/robinbook-e2e",

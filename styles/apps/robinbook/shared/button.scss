@@ -97,12 +97,17 @@
     background-color: var(--primary-color);
     cursor: pointer;
     outline: none;
+    height: 40px;
+
     font-weight: bold;
     font-size: 1rem;
     &:hover {
       background-color: var(--primary-color-dark);
       transition-duration: 0.3s;
 
+    }
+    &:disabled{
+      opacity: .5;
     }
   }
   &-icon {

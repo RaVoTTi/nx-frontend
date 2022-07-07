@@ -9,7 +9,7 @@ import { WishlistService } from '../../services/wishlist.service';
   templateUrl: './book-item.component.html'
 })
 export class BookItemComponent {
-  rawUrl = environment.rawUrl
+  RAW_URL = environment.RAW_URL
   @Input() book! : IBook;
   @Input() isFavorite! : boolean;
 
