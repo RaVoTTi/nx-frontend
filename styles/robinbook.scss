@@ -1,41 +1,49 @@
 // BASE
-@import '~normalize.css/normalize.css';
-@import './base/colors.scss';
-@import './base/fonts.scss';
-@import './base/mixins.scss';
-@import './base/configuration.scss';
+// @import '~normalize.css/normalize.css';
+@use './base/_reset.scss';
+// @import './base/fonts.scss';
+// @import './base/configuration.scss';
 
 // LIBRARIES
 @import '~primeicons/primeicons.css';
 // @import '~primeng/resources/themes/saga-orange/theme.css';
 // @import '~primeng/resources/themes/saga-blue/theme.css';
-@import '~primeng/resources/themes/saga-green/theme.css';
+// @import '~primeng/resources/themes/saga-green/theme.css';
 
 
 // @import '~primeng/resources/themes/fluent-light/theme.css';
-@import '~primeng/resources/primeng.min.css';
-@import '~primeflex/primeflex.css';
+// @import '~primeng/resources/primeng.min.css';
+// @import '~primeflex/primeflex.css';
 
 // PAGES
-@import './apps/robinbook/pages/book.scss';
+@import './apps/robinbook/pages/books-list.scss';
+@import './apps/robinbook/pages/book-view.scss';
+
+@import './apps/robinbook/pages/test.scss';
+@import './apps/robinbook/pages/main.scss';
+
 @import './apps/robinbook/pages/home.scss';
 @import './apps/robinbook/pages/thanks.scss';
 
 
 
-// SHARED
+// // SHARED
 @import './apps/robinbook/shared/footer.scss';
-@import './apps/robinbook/shared/radio.scss';
+@import './apps/robinbook/shared/search-header.scss';
 @import './apps/robinbook/shared/input.scss';
+
 
 @import './apps/robinbook/shared/header.scss';
 @import './apps/robinbook/shared/nav.scss';
 @import './apps/robinbook/shared/button.scss';
-@import './apps/robinbook/shared/auth.scss';
-@import './libs/order/price.scss';
+@import './apps/robinbook/shared/loader.scss';
+// @import './libs/order/price.scss';
 
 // COMPONENTS
-@import './libs/book/item-book.scss';
+// @import './libs/book/item-book.scss';
+@import './libs/book/wishlist-icon.scss';
+@import './libs/book/card-book.scss';
+
 @import './libs/checkout/checkout.scss';
 
 @import './libs/order/item-order.scss';
@@ -51,19 +59,5 @@
    
 //     // background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);
 // }
-.robin{
-    &-main{
-        width: 100%;
-        min-width: 300px;
-    }
-    &-container{
-        max-width: 1200px;
-        padding: 15px;
 
-        position: relative;
-    }
-    &-shell{
-        padding-top: 15px;
-    }
-}
 //   --primary-color:#D93829;

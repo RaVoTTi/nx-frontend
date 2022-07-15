@@ -1,26 +1,5 @@
-<div class="book-header">
-  <div class="flex book-search align-items-center justify-content-between">
-    <h2>My Learning </h2>
-    <div class="flex align-items-center">
-
-
-        <input type="text" class="robin-input" placeholder="Search">
-
-
-      <div class="icon-filter">
-
-        <i class="pi pi-filter" style="font-size: 1.5rem"></i>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="book-container">
-  <div class="grid" *ngIf="orders">
-  <frontend-learning-item class="col-6 md:col-4 lg:col-3" *ngFor="let order of orders" [order]="order" >
-
-    </frontend-learning-item>
-  </div>
-
+<frontend-search-header></frontend-search-header>
+<div class="list-container">
+  <frontend-card-learning *ngFor="let order of orders" [order]="order">
+  </frontend-card-learning>
 </div>

@@ -1,13 +1,27 @@
-<div class="book-header" *ngIf="book">
-  <div class="flex book-search align-items-center justify-content-start">
-    <div class="icon-back" (click)="back()">
-      <i class="pi pi-arrow-left" style="font-size: 1.5rem"></i>
+<frontend-search-header></frontend-search-header>
+
+<div class="book-view-container">
+  <div class="back-icon">
+    <i class="pi pi-angle-left"></i>
+    <span> Back to books</span>
+  </div>
+  <div class="book-view">
+    <div class="image-container">
+      <div class="image"></div>
     </div>
-    <h1>Back</h1>
+    <div class="text-container">
+    <h2>{{ book.name | uppercase }}</h2>
+    <p-rating [readonly]="true" [cancel]="false"></p-rating>
+    <h3>{{ book.minPrice | currency }} - {{ book.maxPrice | currency }}</h3>
+    <h4>{{ book.subject.name | uppercase }}</h4>
+    <h5>{{ 'By ' + book.autor.name | titlecase }}</h5>
+    <p>{{ book.description }}</p>
+  </div>
   </div>
 </div>
 
-<div class="robin-container grid">
+
+<!-- <div class="robin-container grid">
   <div
     class="col-12 sm:col-5 book-img align-self-center flex justify-content-center"
   >
@@ -39,4 +53,5 @@
       </button>
     </div>
   </div>
-</div>
+</div> -->
+

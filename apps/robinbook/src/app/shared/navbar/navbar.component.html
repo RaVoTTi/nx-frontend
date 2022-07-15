@@ -1,31 +1,19 @@
 <div>
-
-  <ul class="flex nav justify-content-end">
+  <ul class="nav">
     <li><a routerLinkActive="active" routerLink="/app/home">Home</a></li>
 
     <li><a routerLinkActive="active" routerLink="/app/books">Books</a></li>
 
-
     <li>
-      <frontend-wishlist-icon
-
-      ></frontend-wishlist-icon>
+      <frontend-wishlist-icon></frontend-wishlist-icon>
     </li>
-
-
-    <button class="button-header-secondary" 
-    routerLink="/auth/login"
-    >
-      LOGIN
-
-    </button>
-    <button class="button-header-primary"
-    routerLink="/auth/signup"
-    
-    >
-      SIGN UP FOR FREE
-    </button>
+    <div class="login-container">
+      <button class="button-secondary" routerLink="/auth/login">Login</button>
+    </div>
+    <div class="signup-container">
+      <button class="button-primary" routerLink="/auth/signup">
+        Sign Up For Free
+      </button>
+    </div>
   </ul>
-  
 </div>
-

@@ -1,4 +1,4 @@
-<div class="itemlearning">
+<!-- <div class="itemlearning">
   <div
     class="flex flex-column"
     [routerLink]="['/app/order/mylearning/', order._id]"
@@ -15,9 +15,9 @@
     </div>
     <div class="itemlearning-lower">
       <div>
-        <!-- <h4>{{ order.book.subject.name | uppercase }}</h4> -->
+       
         <h2>{{ order.book.name | uppercase }}</h2>
-        <!-- <h5>{{ 'By ' + order.book.autor.name | titlecase }}</h5> -->
+       
       </div>
     </div>
     <div
@@ -41,11 +41,39 @@
           [routerLink]="['/app/order/myevaluation/', order._id]"
         ></button>
         <div></div>
-        <!-- <p-menu #menu [popup]="true" [model]="items"></p-menu> -->
+        <p-menu #menu [popup]="true" [model]="items"></p-menu>
       </div>
     </div>
     <div class="price-toolbar">
       <span>{{ order.price | currency }}</span>
     </div>
   </div>
+</div> -->
+
+<div class="card-book">
+
+  <div
+    class="card-container"
+    [routerLink]="['/app/order/mylearning/', order._id]"
+  >
+    <div class="upper-container">
+      <img class="image" 
+      src="{{ RAW_URL + order.book.image }}"
+      alt="{{ RAW_URL + order.book.image }}"
+
+      />
+    </div>
+    <div class="lower-container">
+      <!-- <span>{{ order.price | currency }}</span> -->
+      <h2>{{ order.book.name }}</h2>
+    </div>
+  </div>
+
+  <span class="toolbar-price"> {{ order.price | currency}}</span>
+    
+  <button class="toolbar-button" title="Claim"
+  [routerLink]="['/app/order/myevaluation/', order._id]"
+  >
+    <i class="pi pi-dollar"></i>
+  </button>
 </div>

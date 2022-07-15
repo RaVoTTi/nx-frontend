@@ -12,10 +12,10 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
-import {MenuModule} from 'primeng/menu';
+import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { RatingModule } from 'primeng/rating';
-import {SplitButtonModule} from 'primeng/splitbutton';
+import { SplitButtonModule } from 'primeng/splitbutton';
 // ME
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -33,7 +33,7 @@ import { AuthModule, JwtInterceptor } from '@frontend/auth';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component';
 import { ToastModule } from 'primeng/toast';
-
+import { TestComponent } from './pages/test/test.component';
 
 const UX_MODULE = [
   MenubarModule,
@@ -71,8 +71,7 @@ const UX_MODULE = [
     AuthNavbarComponent,
 
     MainComponent,
-
-
+    TestComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,15 +84,14 @@ const UX_MODULE = [
 
     UiModule,
     ...UX_MODULE,
-    
+
     AuthModule,
     StoreModule.forRoot({}),
-    EffectsModule.forRoot([])
-
+    EffectsModule.forRoot([]),
   ],
   providers: [
     MessageService,
-    {provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

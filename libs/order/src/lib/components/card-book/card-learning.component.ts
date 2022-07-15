@@ -4,8 +4,8 @@ import { MenuItem } from 'primeng/api';
 import { environment } from '@env/environment';
 
 @Component({
-  selector: 'frontend-learning-item',
-  templateUrl: './learning-item.component.html',
+  selector: 'frontend-card-learning',
+  templateUrl: './card-learning.component.html',
 })
 export class LearningItemComponent {
   

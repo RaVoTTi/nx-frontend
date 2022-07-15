@@ -1,0 +1,28 @@
+.wishlist-icon-container {
+  position: relative;
+  cursor: pointer;
+
+  & i {
+    color: var(--gray-color);
+    font-size: 2em;
+    &:hover{
+      color: var(--primary-color);
+    }
+  }
+  & span {
+    background: var(--complementary-color);
+    border-radius: 50%;
+    font-family: var(--primary-font);
+    color: var(--background-color);
+    padding: 0.2em;
+    height: 1.4em;
+    width: 1.4em;
+
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // top: 0;
+    transform: translate(20px,-45px);
+  }
+}

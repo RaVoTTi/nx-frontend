@@ -1,58 +1,70 @@
-.robin-input{
-    border: 1px solid #efefef;
-    padding: .5rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 2px;
-    width:-webkit-fill-available;
-    box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
-    &::placeholder{
-    color: #E3E2EC;
+.input , .input-gradient  {
+  border: 1px solid #efefef;
+  padding: 0.5rem 1em;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  overflow: hidden;
+  border-radius: 50vh;
 
-    }
-    *:focus {
-        outline: none;
-      }
-}
-
-.input-stripe-custom, input, .InputElement  {
-    border: 1px solid #efefef;
-    padding: .5rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
-    font-weight: 500;
-    border-radius: 2px;
-    width:-webkit-fill-available;
-    box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
+  width: 100%;
+  outline: none;
+  border: none;
+  &::placeholder {
+    color: var(--gray-color);
   }
-  
-  button{
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-  }
-  
-  
-  input::placeholder {
-    color: #E3E2EC;
-  }
-  
   *:focus {
-    outline: none;
+    border: #efefef;
+  }
+  &:invalid {
+    box-shadow: -2px 5px 20px 0 var(--complementary-color);
   }
   
-  .label{
-    display: block;
-    padding: .35rem .25rem;
-    font-size: 80%;
-    font-weight: 500;
+}
+.input{
+  background: var(--background-color) ;
+}
+.input-gradient{
+  background: var(--background-color);
+  background: -webkit-linear-gradient(
+    to top,
+    var(--light-gray-color),
+    var(--background-color)
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to top,
+    var(--light-gray-color),
+    var(--background-color)
+  );
+   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
-  
-  
-  a{
-    text-decoration: none;
+
+  .input-split{
+    position: relative;
+    
+    & .input-icon{
+
+      position: absolute;
+      // background-color: aqua;
+      height: 100%;
+      padding: .5em;
+      font-size: 1.2em;
+      right: 0em;
+      top: 0em;
+      padding-right: .5em;
+      padding-top: .4em;
+      cursor: pointer;
+
+
+      color: var(--gray-color);
+      z-index: 1;
+    }
+    &:hover{
+      & .input-icon{
+
+        color: var(--primary-color);
+        transition: .4s;
+      }
+    }
   }
-  
-  button:disabled {
-    opacity: .5;
-  }
+

@@ -6,6 +6,7 @@ import { WishlistComponent } from '@frontend/book-base';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
 import { BooksViewComponent } from './pages/books/books-view/books-view.component';
 import { HomeComponent } from './pages/home/home.component';
+import { TestComponent } from './pages/test/test.component';
 import { MainComponent } from './shared/main/main.component';
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+        // component: TestComponent,
+        canActivate: [LoginGuard],
+
+
       },
       {
         path: 'books',
@@ -39,7 +44,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: '/app/home',
+        redirectTo: '/app/books',
       },
 
     ],

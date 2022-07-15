@@ -11,20 +11,22 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WishlistService } from './services/wishlist.service';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { WishlistIconComponent } from './components/wishlist-icon/wishlist-icon.component';
-import { BookItemComponent } from './components/book-item/book-item.component';
+import { CardBookComponent } from './components/card-book/card-book.component';
 import { MessageService } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
 import { InputTextModule } from 'primeng/inputtext';
+import { SearchHeaderComponent } from './components/search-header/search-header.component';
 
 const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
 @NgModule({
-  imports: [CommonModule, BrowserAnimationsModule, ...UX_MODULE],
+  imports: [CommonModule,  ...UX_MODULE],
   declarations: [
     WishlistComponent,
     WishlistIconComponent,
-    BookItemComponent,
+    CardBookComponent,
+    SearchHeaderComponent
   ],
-  exports: [WishlistIconComponent, BookItemComponent],
+  exports: [WishlistIconComponent, CardBookComponent, SearchHeaderComponent],
   providers: [MessageService],
 })
 export class BookBaseModule {

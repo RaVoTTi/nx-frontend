@@ -1,29 +1,18 @@
 <div>
-    <ul class="flex nav justify-content-end ">
-      <li><a routerLinkActive="active" routerLink="/app/home">Home</a></li>
-  
-      <li><a routerLinkActive="active" routerLink="/app/books">Books</a></li>
-      <li>
-        <a routerLinkActive="active" routerLink="/app/order/mylearning">MyLearning</a>
-      </li>
-  
-      <li>
-        <frontend-wishlist-icon
-  
-        ></frontend-wishlist-icon>
-      </li>
-      <li style="margin-right: 0.4rem">
-        <i
-          class="pi pi-bars icons"
-          style="font-size: 1.8rem"
-          (click)="menu.toggle($event)"
-        >
-        </i>
-      </li>
-      <p-menu #menu [popup]="true" [model]="items"></p-menu>
-  
+  <ul class="nav">
 
-    </ul>
-  </div>
-  
-  
+    <li><a routerLinkActive="active" routerLink="/app/books">Books</a></li>
+    <li>
+      <a routerLinkActive="active" routerLink="/app/order/mylearning"
+        >MyLearning</a
+      >
+    </li>
+
+    <li>
+      <frontend-wishlist-icon></frontend-wishlist-icon>
+    </li>
+    <li>
+      <i class="pi pi-bars icon" style="font-size: 1.8rem"> </i>
+    </li>
+  </ul>
+</div>

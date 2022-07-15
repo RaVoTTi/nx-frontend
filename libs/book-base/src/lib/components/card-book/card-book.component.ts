@@ -5,10 +5,10 @@ import { MenuItem, MessageService } from 'primeng/api';
 import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
-  selector: 'frontend-book-item',
-  templateUrl: './book-item.component.html'
+  selector: 'frontend-card-book',
+  templateUrl: './card-book.component.html'
 })
-export class BookItemComponent {
+export class CardBookComponent {
   RAW_URL = environment.RAW_URL
   @Input() book! : IBook;
   @Input() isFavorite! : boolean;
