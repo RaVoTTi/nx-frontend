@@ -4,7 +4,7 @@ import { AuthGuard, LoginGuard } from '@frontend/auth';
 // import { AuthGuard } from '@frontend/auth';
 import { WishlistComponent } from '@frontend/book-base';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
-import { BooksViewComponent } from './pages/books/books-view/books-view.component';
+import { BookViewComponent } from './pages/books/book-view/book-view.component';
 import { HomeComponent } from './pages/home/home.component';
 import { TestComponent } from './pages/test/test.component';
 import { MainComponent } from './shared/main/main.component';
@@ -20,7 +20,6 @@ const routes: Routes = [
         // component: TestComponent,
         canActivate: [LoginGuard],
 
-
       },
       {
         path: 'books',
@@ -28,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'books/:id',
-        component: BooksViewComponent,
+        component: BookViewComponent,
       },
 
       {

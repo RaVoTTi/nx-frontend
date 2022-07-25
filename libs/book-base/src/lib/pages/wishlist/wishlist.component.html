@@ -1,7 +1,19 @@
 <frontend-search-header></frontend-search-header>
-  
-  <div class="list-container">
-      <frontend-card-book class="col-6 md:col-4 lg:col-3" *ngFor="let book of wishlistBooks" [book]="book" [isFavorite]="true">
-      </frontend-card-book>
-  
-  </div>
+
+<div class="list-container">
+  <ng-container *ngIf="wishlistBooks ; else loading">
+    <frontend-card-book
+      *ngFor="let book of wishlistBooks"
+      [book]="book"
+      [isFavorite]="true"
+    >
+    </frontend-card-book>
+  </ng-container>
+
+  <ng-template #loading>
+    <div
+      *ngFor="let card of wishlistLocal"
+      class="card-loading"
+    ></div>
+  </ng-template>
+</div>

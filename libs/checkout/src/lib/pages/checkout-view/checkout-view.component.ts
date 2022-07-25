@@ -105,21 +105,21 @@ export class CheckoutViewComponent implements OnInit {
       placeholder: '4242 4242 4242 4242',
       style,
       classes: {
-        base: 'input-stripe-custom',
+        base: 'input',
       },
     });
     const cardExp = this.elementStripe.create('cardExpiry', {
       placeholder: 'MM/AA',
       style,
       classes: {
-        base: 'input-stripe-custom',
+        base: 'input',
       },
     });
     const cardCvc = this.elementStripe.create('cardCvc', {
       placeholder: '000',
       style,
       classes: {
-        base: 'input-stripe-custom',
+        base: 'input',
       },
     });
 

@@ -9,7 +9,7 @@
       color: var(--primary-color);
     }
   }
-  & span {
+  & div{
     background: var(--complementary-color);
     border-radius: 50%;
     font-family: var(--primary-font);
@@ -17,12 +17,12 @@
     padding: 0.2em;
     height: 1.4em;
     width: 1.4em;
+    transform: translate(20px,-45px);
 
     position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    // top: 0;
-    transform: translate(20px,-45px);
   }
+
 }

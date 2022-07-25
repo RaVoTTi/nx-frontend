@@ -12,47 +12,55 @@
         <b><a href="https://stripe.com/" target="_blank">stripe</a></b>
       </div>
       <form action="" [formGroup]="checkoutForm" (submit)="initPay()">
-        <div class="input input-amount">
+        <div class="input-label ">
           <label class="label">Amount</label>
-          <input
+          <div class="input-split">
+
+            <input
+            class="input"
             type="text"
             readonly
             formControlName="amount"
             placeholder="0.00"
-          />
-          <span class="currency">USD</span>
+            />
+            <span class="input-text">USD</span>
+          </div>
         </div>
         <hr />
-        <div class="input">
+        <div class="input-label">
           <label class="label">Card Number</label>
           <div id="card"></div>
         </div>
         <hr />
 
         <hr />
-        <div class="grid">
-          <div class="input col-6">
+        <div class="row-container">
+          <div class="input-label">
             <label class="label">Expiration Date</label>
             <div id="exp"></div>
           </div>
-          <div class="input col-6">
+          <div class="input-label">
             <label class="label">CVC</label>
             <div id="cvc"></div>
           </div>
         </div>
         <div class="terms">
 
-          <b>Powered by <a href="https://stripe.com/" target="_blank">stripe</a></b>
-        </div>
+         <a href="https://stripe.com/" > Stripe</a>
 
-        <button
+         
+        </div>
+        <div class="button-container">
+
+          <button
           [disabled]="checkoutForm.invalid || checkoutForm.disabled"
-          class="button-expand"
+          class="button-primary"
           type="submit"
           
-        >
+          >
           BUY NOW
         </button>
+      </div>
       </form>
     </div>
   </div>

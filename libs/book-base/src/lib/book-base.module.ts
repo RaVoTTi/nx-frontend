@@ -7,7 +7,6 @@ import { RatingModule } from 'primeng/rating';
 import { BadgeModule } from 'primeng/badge';
 // ME
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { WishlistService } from './services/wishlist.service';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { WishlistIconComponent } from './components/wishlist-icon/wishlist-icon.component';
@@ -19,14 +18,16 @@ import { SearchHeaderComponent } from './components/search-header/search-header.
 
 const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
 @NgModule({
-  imports: [CommonModule,  ...UX_MODULE],
+  imports: [CommonModule, ...UX_MODULE],
   declarations: [
     WishlistComponent,
     WishlistIconComponent,
     CardBookComponent,
-    SearchHeaderComponent
+    SearchHeaderComponent,
   ],
-  exports: [WishlistIconComponent, CardBookComponent, SearchHeaderComponent],
+  exports: [WishlistIconComponent,
+    
+    CardBookComponent, SearchHeaderComponent],
   providers: [MessageService],
 })
 export class BookBaseModule {

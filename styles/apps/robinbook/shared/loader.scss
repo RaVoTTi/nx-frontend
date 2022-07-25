@@ -1,6 +1,7 @@
-.loading-card,
+
 .loading-text {
   background: var(--light-gray-color);
+  // background-color: red;
   animation: blinking 1.5s linear infinite alternate;
 }
 .loading-text {

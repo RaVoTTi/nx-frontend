@@ -20,7 +20,7 @@ import { SplitButtonModule } from 'primeng/splitbutton';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
-import { BooksViewComponent } from './pages/books/books-view/books-view.component';
+import { BookViewComponent } from './pages/books/book-view/book-view.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -63,7 +63,7 @@ const UX_MODULE = [
   declarations: [
     AppComponent,
     BooksListComponent,
-    BooksViewComponent,
+    BookViewComponent,
     FooterComponent,
     HomeComponent,
     HeaderComponent,

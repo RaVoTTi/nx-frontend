@@ -1,0 +1,117 @@
+@use '../../base/mixins.scss';
+
+.place-order-container {
+  max-width: 81em;
+  min-height: 80vh;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  font-family: var(--primary-font);
+  gap: 1em;
+  @include breakpoint(sm) {
+    flex-direction: row;
+align-items: flex-start;
+  }
+
+  & .card-book-container {
+    min-width: 14rem;
+    max-width: 16rem;
+    height: 30rem;
+  }
+  & .cards-container {
+    width: 100%;
+    height: max-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    & .card-summary {
+      width: 100%;
+      height: max-content;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--background-color);
+      box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
+      border-radius: 20px;
+      & .card-header {
+        background: var(--primary-color);
+        background: -webkit-linear-gradient(
+          to top,
+          var(--primary-color),
+          var(--mono-primary-color)
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to top,
+          var(--primary-color),
+          var(--mono-primary-color)
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: white;
+        text-align: center;
+      }
+      & .card-table {
+        height: 100%;
+        width: 100%;
+        & tr {
+          padding: 1rem;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+    }
+
+    & .card-form-container {
+      background: green;
+      width: 100%;
+      height: max-content;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--background-color);
+      box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
+      border-radius: 20px;
+
+      & .card-header {
+        background: var(--primary-color);
+        background: -webkit-linear-gradient(
+          to top,
+          var(--primary-color),
+          var(--mono-primary-color)
+        ); /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(
+          to top,
+          var(--primary-color),
+          var(--mono-primary-color)
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.5rem;
+        color: white;
+        text-align: center;
+        
+
+      }
+      & .form-container{
+        padding: 1rem;
+      }
+    }
+    & .button-container{
+      height: 50px;
+      min-width: 250px;
+      max-width: 400px;
+      align-self: flex-end;
+    }
+  }
+}

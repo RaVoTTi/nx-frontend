@@ -10,10 +10,10 @@ import { Store } from '@ngrx/store';
 
 
 @Component({
-  selector: 'robinbook-books-view',
-  templateUrl: './books-view.component.html',
+  selector: 'robinbook-book-view',
+  templateUrl: './book-view.component.html',
 })
-export class BooksViewComponent implements OnInit {
+export class BookViewComponent implements OnInit {
   RAW_URL = environment.RAW_URL
   book!: IBook;
   bookId!: string;

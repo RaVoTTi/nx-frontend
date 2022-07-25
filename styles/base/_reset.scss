@@ -20,7 +20,7 @@
   --shaft-color: #B08F1A;
   --fletching-color: #B03200;
   --complementary-color: #B03200;
-
+  --stripe-color: #5433FF;
 
   --footer-color: #CCFCCB;
   --primary-color: #146356;
@@ -39,7 +39,10 @@
 
  
   
-  --header-shadow: 20px 20px 20px 0 rgb(173 173 173 / 19%); 
+  --header-shadow: 0 20px 20px 0 rgb(173 173 173 / 19%); 
+  --input-shadow: 5px 5px 15px 0 rgb(173 173 173 / 15%); 
+  --footer-shadow: 20px -20px 20px 0 rgb(173 173 173 / 10%); 
+
 
   --gray-color: #6A6262;
         // color: #9C9990;
@@ -205,6 +208,7 @@ svg {
 /* Configuramos la tipografía para toda la web */
 body {
   min-height: 100vh;
+  font-family: var(--primary-font);
   // font-size: 100%;
   // font-family: var(--primary-font);
   // color: var(--negro);
@@ -219,6 +223,19 @@ body {
   // -webkit-font-smoothing: antialiased;
   // /* opcional */
   // -moz-osx-font-smoothing: grayscale;
+}
+
+// INPUT
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
 
 // SCROLL BAR

@@ -43,24 +43,25 @@
 </div> -->
 
 <div class="card-book">
-
-  <div class="card-container"
-    [routerLink]="['/app/books/', book._id]">
-
+  <div class="card-container" [routerLink]="['/app/books/', book._id]">
     <div class="upper-container">
       <img class="image" src="{{ RAW_URL + book.image }}" alt="" />
     </div>
     <div class="lower-container">
       <h2>{{ book.name }}</h2>
-      <div>
-        By<h3>{{ book.autor.name }}</h3>
-      </div>
+      <h3>
+        {{ book.autor.name }}
+      </h3>
     </div>
   </div>
-    <span class="toolbar-tag"> # {{ book.subject.name }}</span>
-    
-    <button class="toolbar-button" title="To Bookmarks" (click)="addBookToWishlist()">
-      <i [class]="isFavorite ? ' pi pi-bookmark-fill' : ' pi pi-bookmark'"></i>
-    </button>
-  <hr>
+  <span class="toolbar-tag"> # {{ book.subject.name }}</span>
+
+  <button
+    class="toolbar-button"
+    title="To Bookmarks"
+    (click)="addBookToWishlist()"
+  >
+    <i [class]="isFavorite ? ' pi pi-bookmark-fill' : ' pi pi-bookmark'"></i>
+  </button>
+  <hr />
 </div>

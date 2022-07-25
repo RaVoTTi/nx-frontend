@@ -1,10 +1,17 @@
 <frontend-search-header></frontend-search-header>
 
 <div class="list-container">
-  <frontend-card-book
-    *ngFor="let book of books; let i = index"
-    [book]="book"
-    [isFavorite]="isFavorite(book._id)"
-  >
-  </frontend-card-book>
+  <ng-container *ngIf="books; else loading">
+    <frontend-card-book
+      *ngFor="let book of books; let i = index"
+      [book]="book"
+      [isFavorite]="isFavorite(book._id)"
+    >
+    </frontend-card-book>
+  </ng-container>
+
+  <ng-template #loading>
+    <div *ngFor="let card of [0, 1, 2, 3, 4, 5, 6, 7]" class="card-loading"></div>
+
+  </ng-template>
 </div>

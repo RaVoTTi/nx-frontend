@@ -1,6 +1,8 @@
 // BASE
 // @import '~normalize.css/normalize.css';
 @use './base/_reset.scss';
+@import  './base/mixins.scss';
+
 // @import './base/fonts.scss';
 // @import './base/configuration.scss';
 
@@ -27,6 +29,7 @@
 
 
 
+
 // // SHARED
 @import './apps/robinbook/shared/footer.scss';
 @import './apps/robinbook/shared/search-header.scss';
@@ -41,14 +44,17 @@
 
 // COMPONENTS
 // @import './libs/book/item-book.scss';
+@import './libs/book/book-content.scss';
 @import './libs/book/wishlist-icon.scss';
 @import './libs/book/card-book.scss';
 
 @import './libs/checkout/checkout.scss';
 
-@import './libs/order/item-order.scss';
-@import './libs/order/item-learning.scss';
-@import './libs/order/item-summary.scss';
+// @import './libs/order/item-order.scss';
+// @import './libs/order/item-learning.scss';
+// @import './libs/order/item-summary.scss';
+@import './libs/order/place-order.scss';
+
 
 
 
