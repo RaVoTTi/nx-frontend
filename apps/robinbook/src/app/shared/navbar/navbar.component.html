@@ -1,19 +1,42 @@
 <div>
   <ul class="nav">
-    <li><a routerLinkActive="active" routerLink="/app/home">Home</a></li>
+    <ng-container *ngIf="screenWidth > 580">
+      <li><a routerLinkActive="active" routerLink="/app/home">Home</a></li>
 
-    <li><a routerLinkActive="active" routerLink="/app/books">Books</a></li>
-
-    <li>
-      <frontend-wishlist-icon></frontend-wishlist-icon>
-    </li>
-    <div class="login-container">
-      <button class="button-secondary" routerLink="/auth/login">Login</button>
-    </div>
-    <div class="signup-container">
-      <button class="button-primary" routerLink="/auth/signup">
-        Sign Up For Free
-      </button>
-    </div>
+      <li><a routerLinkActive="active" routerLink="/app/books">Books</a></li>
+    </ng-container>
+    <ng-container *ngIf="screenWidth > 768">
+      <li>
+        <frontend-wishlist-icon></frontend-wishlist-icon>
+      </li>
+    </ng-container>
+    <ng-container *ngIf="screenWidth > 700">
+      <div class="login-container">
+        <button class="button-secondary" routerLink="/auth/login">Login</button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="screenWidth > 450">
+      <div class="signup-container">
+        <button class="button-primary" routerLink="/auth/signup">
+          Sign Up For Free
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="screenWidth < 768">
+      <div
+        class="dropdown-relative"
+        clickOutside
+        (clickOutside)="clickedOutside()"
+      >
+        <div class="pi pi-bars icon" (click)="toggleDropdown()"></div>
+        <div
+          class="dropdown-container"
+          *ngIf="isDropdownOpened"
+          (click)="clickedOutside()"
+        >
+          <frontend-dropdown [items]="getItems()"></frontend-dropdown>
+        </div>
+      </div>
+    </ng-container>
   </ul>
 </div>

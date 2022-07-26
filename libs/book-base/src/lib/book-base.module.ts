@@ -15,6 +15,8 @@ import { MessageService } from 'primeng/api';
 import { MenuModule } from 'primeng/menu';
 import { InputTextModule } from 'primeng/inputtext';
 import { SearchHeaderComponent } from './components/search-header/search-header.component';
+import { DropdownComponent } from './components/dropdown/dropdown.component';
+import { ClickOutsideDirective } from './directives/click-outside.directive';
 
 const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
 @NgModule({
@@ -24,10 +26,17 @@ const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
     WishlistIconComponent,
     CardBookComponent,
     SearchHeaderComponent,
+    DropdownComponent,
+    ClickOutsideDirective,
   ],
-  exports: [WishlistIconComponent,
-    
-    CardBookComponent, SearchHeaderComponent],
+  exports: [
+    WishlistIconComponent,
+    ClickOutsideDirective,
+    DropdownComponent,
+
+    CardBookComponent,
+    SearchHeaderComponent,
+  ],
   providers: [MessageService],
 })
 export class BookBaseModule {

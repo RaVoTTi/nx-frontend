@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IItem } from 'interfaces';
 
 @Component({
   selector: 'frontend-search-header',
@@ -7,8 +8,24 @@ import { Component, OnInit } from '@angular/core';
 export class SearchHeaderComponent implements OnInit {
 
   constructor() { }
-
+  isDropdownOpened = false;
+  items : IItem[] = [
+    {
+      label: 'MyWishlist',
+      icon: 'pi pi-heart',
+      onClick: () => {
+        console.log('juju')
+      },
+    },
+  ]
   ngOnInit(): void {
   }
 
+  toggleDropdown() {
+    this.isDropdownOpened = !this.isDropdownOpened;
+  }
+
+  clickedOutside() {
+    this.isDropdownOpened = false;
+  }
 }

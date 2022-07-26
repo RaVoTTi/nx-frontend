@@ -69,7 +69,6 @@ const UX_MODULE = [
     HeaderComponent,
     NavbarComponent,
     AuthNavbarComponent,
-
     MainComponent,
     TestComponent,
   ],

@@ -27,18 +27,24 @@
     padding: 1em;
     margin: 0 auto;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     & .input-container {
       height: 40px;
       margin: 5px;
       width: 100%;
-      @include breakpoint(xs) {
-        width: 300px;
+      @include breakpoint('500') {
+        width: 400px;
         
       }
-      @include breakpoint(md) {
-        width: 400px;
-      }
+
     }
   }
+}
+.searchdown-container{
+  height: max-content;
+  min-width: 100% ;
+  z-index: 10;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
 }

@@ -1,20 +1,33 @@
 <div>
   <ul class="nav">
+    <ng-container *ngIf="screenWidth > 500">
 
-    <li><a routerLinkActive="active" routerLink="/app/books">Books</a></li>
-    <li>
-      <a routerLinkActive="active" routerLink="/app/order/mylearning"
+      <li><a routerLinkActive="active" routerLink="/app/books">Books</a></li>
+      <li>
+        <a routerLinkActive="active" routerLink="/app/order/mylearning"
         >MyLearning</a
-      >
-    </li>
+        >
+      </li>
+    </ng-container>
+    <ng-container *ngIf="screenWidth > 540">
 
-    <li>
-      <frontend-wishlist-icon></frontend-wishlist-icon>
-    </li>
-    <li>
-      <i class="pi pi-bars icon" 
-      > </i>
-    </li>
-
+      <li>
+        <frontend-wishlist-icon> </frontend-wishlist-icon>
+      </li>
+    </ng-container>
+    <div
+    class="dropdown-relative"
+    clickOutside
+    (clickOutside)="clickedOutside()"
+  >
+    <div class="pi pi-bars icon" (click)="toggleDropdown()"></div>
+    <div
+      class="dropdown-container"
+      *ngIf="isDropdownOpened"
+      (click)="clickedOutside()"
+    >
+      <frontend-dropdown [items]="getItems()"></frontend-dropdown>
+    </div>
+  </div>
   </ul>
 </div>

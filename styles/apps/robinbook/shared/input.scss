@@ -1,5 +1,6 @@
-.input,
-.input-gradient {
+.input
+// ,.input-gradient 
+{
   border: 1px solid #efefef;
   padding: 0.5rem 1em;
   font-family: 'Poppins', sans-serif;
@@ -10,6 +11,8 @@
   width: 100%;
 
   box-shadow: var(--input-shadow);
+
+
   &::placeholder {
     color: var(--gray-color);
   }
@@ -21,20 +24,20 @@
 .input {
   background: var(--background-color);
 }
-.input-gradient {
-  background: var(--background-color);
-  background: -webkit-linear-gradient(
-    to top,
-    var(--light-gray-color),
-    var(--background-color)
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to top,
-    var(--light-gray-color),
-    var(--background-color)
-  );
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
+// .input-gradient {
+//   background: var(--background-color);
+//   background: -webkit-linear-gradient(
+//     to top,
+//     var(--light-gray-color),
+//     var(--background-color)
+//   ); /* Chrome 10-25, Safari 5.1-6 */
+//   background: linear-gradient(
+//     to top,
+//     var(--light-gray-color),
+//     var(--background-color)
+//   );
+//   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+// }
 *:focus {
   outline: none;
 }
@@ -88,6 +91,9 @@ input::placeholder {
     display: block;
     padding: .45rem .45rem;
     font-weight: 400;
+  }
+  & small{
+    color: var(--complementary-color);
   }
 }
 
