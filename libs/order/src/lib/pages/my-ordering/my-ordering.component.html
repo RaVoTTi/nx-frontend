@@ -1,16 +1,37 @@
-<div class="book-header">
-    <div class="flex book-search align-items-center justify-content-start">
-      <div class="icon-back" (click)="back()">
-        <i class="pi pi-arrow-left" style="font-size: 1.5rem"></i>
-      </div>
-      <h2>My Ordering</h2>
+
+<div class="order-list-container">
+  <div class="card-summary">
+    <div class="card-header">
+      <h3>My Ordering</h3>
     </div>
-    </div>
-    
-    <div class="book-container">
-      <div class="grid" *ngIf="orders">
-        <frontend-order-item class="col-12 " *ngFor="let order of orders" [order]="order" >
-        </frontend-order-item>
-      </div>
-    
-    </div>
+<table class="card-table">
+  <tr>
+    <th>Order id</th>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Condition</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngFor="let order of orders">
+
+    <td> <a [routerLink]="['/app/books/', order._id]">{{order._id}} </a> </td>
+    <td>{{order.book.name | titlecase}}</td>
+    <td>Date</td>
+    <td>la</td>
+    <td>{{order.price | currency}}</td>
+  </tr>
+</table>
+  </div>
+  
+</div>
+
+<!-- <div class="book-container">
+  <div class="grid" *ngIf="orders">
+    <frontend-order-item
+      class="col-12"
+      *ngFor="let order of orders"
+      [order]="order"
+    >
+    </frontend-order-item>
+  </div>
+</div> -->

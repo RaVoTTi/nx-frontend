@@ -30,47 +30,7 @@ align-items: flex-start;
     flex-direction: column;
     gap: 1rem;
 
-    & .card-summary {
-      width: 100%;
-      height: max-content;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      background: var(--background-color);
-      box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
-      border-radius: 20px;
-      & .card-header {
-        background: var(--primary-color);
-        background: -webkit-linear-gradient(
-          to top,
-          var(--primary-color),
-          var(--mono-primary-color)
-        ); /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(
-          to top,
-          var(--primary-color),
-          var(--mono-primary-color)
-        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-        width: 100%;
-        padding: 1rem;
-        font-size: 1.5rem;
-        text-transform: uppercase;
-        color: white;
-        text-align: center;
-      }
-      & .card-table {
-        height: 100%;
-        width: 100%;
-        & tr {
-          padding: 1rem;
-          width: 100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: space-between;
-        }
-      }
-    }
 
     & .card-form-container {
       background: green;

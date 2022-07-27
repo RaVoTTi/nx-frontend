@@ -12,7 +12,7 @@ export class SearchHeaderComponent implements OnInit {
   items : IItem[] = [
     {
       label: 'MyWishlist',
-      icon: 'pi pi-heart',
+      icon: 'pi pi-book',
       onClick: () => {
         console.log('juju')
       },

@@ -1,57 +1,43 @@
-<p-toast></p-toast>
-
-<div class="login-register">
-  <div class="login-register-panel">
-    <div class="grid">
-      <div class="col-6">
-        <img
-          src="{{ RAW_URL + '/public/uploads/default.jpeg' }}"
-          style="width: 100%; object-fit: contain"
-        />
-      </div>
-      <div class="pr-6 pl-3 mt-6 col-6">
-        <h3>Welcome</h3>
-        <h2>Login Page</h2>
-        <form [formGroup]="form"> 
-          <div class="grid">
-            <div class="col-12">
-              <span class="p-input-icon-left full-btn">
-                <i class="pi pi-user"></i>
-                <input
-                  type="text"
-                  pInputText
-                  class="full-btn"
-                  placeholder="Email"
-                  formControlName="email"
-                />
-            </span>
-            <small *ngIf="validateCamp('email')" class="ml-2 p-error"
-              >*Email is required
-            </small>
-            </div>
-            <div class="col-12">
-
-              <span class="p-input-icon-left full-btn">
-                <i class="pi pi-lock"></i>
-                <input
-
-                  type="password"
-                  pInputText
-                  class="full-btn"
-                  placeholder="Password"
-                  formControlName="password"
-                />
-            </span>
-            <small *ngIf="validateCamp('password')" class="ml-2 p-error"
-              >*Password is required
-            </small>
-            </div>
-            <div class="col-12">
-              <p-button label="Submit" styleClass="full-btn" (onClick)="onSubmit()"> </p-button>
-            </div>
-          </div>
-        </form>
-      </div>
+<div class="auth-container">
+  <div class="auth-in">
+    <div class="auth-logo">
+      <img class="logo" src="assets/word@2x.png" alt="" routerLink="/app/books" />
     </div>
-  </div>
+
+    <div class="auth-card">
+      <div class="auth-alert">
+        📌Salid de aqui pillo <br />
+      </div>
+      <form [formGroup]="form">
+        <div>
+          <div class="input-label">
+            <label class="label"> Email</label>
+            <input
+              placeholder="Email"
+              formControlName="email"
+              type="text"
+              class="input"
+            />
+          </div>
+          <small *ngIf="validateCamp('email')">*Email is required </small>
+        </div>
+        <div>
+          <div class="input-label">
+            <label class="label"> Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              class="input"
+            />
+          </div>
+          <small *ngIf="validateCamp('password')">*password is required </small>
+        </div>
+
+        <div class="button-container">
+          <button class="button-primary" (click)="onSubmit()">LOGIN</button>
+        </div>
+
+      </form>
+    </div>
 </div>

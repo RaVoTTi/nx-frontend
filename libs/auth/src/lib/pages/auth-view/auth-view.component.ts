@@ -35,9 +35,13 @@ export class AuthViewComponent implements OnInit {
     this._initForm();
   }
   onSubmit() {
+
     if (this.login) {
+      this.loginForm.disable();
       this._login();
     } else {
+      this.signUpForm.disable();
+
       this._postSignUp();
     }
   }
