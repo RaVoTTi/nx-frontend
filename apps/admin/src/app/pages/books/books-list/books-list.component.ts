@@ -12,7 +12,7 @@ import { take } from 'rxjs';
 })
 export class BooksListComponent implements OnInit {
   books: IBook[] = [];
-  rawUrl = environment.rawUrl
+  RAW_URL = environment.RAW_URL
   
   constructor(
     private bookService: BookService,

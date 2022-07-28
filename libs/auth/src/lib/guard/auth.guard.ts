@@ -30,7 +30,7 @@ private router:Router,
   ): Observable<boolean> {
     return this.authService.getVerifyJWT().pipe(map(({ ok }) => {
       if(!ok){
-        this.router.navigate(['/app'])
+        this.router.navigate(['/auth/signup'])
         return false
       }
       return true
@@ -42,7 +42,7 @@ private router:Router,
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
     return this.authService.getVerifyJWT().pipe(map(({ ok }) => {
       if(!ok){
-        this.router.navigate(['/app'])
+        this.router.navigate(['/auth/signup'])
         return false
       }
       return true

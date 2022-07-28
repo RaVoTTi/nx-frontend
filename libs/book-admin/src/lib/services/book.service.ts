@@ -9,34 +9,34 @@ import { catchError, Observable, of } from 'rxjs';
   providedIn: 'root',
 })
 export class BookService {
-  apiUrl = environment.apiUrl;
+  API_URL = environment.API_URL;
   constructor(private http: HttpClient) {}
 
   getBooks(state = ''): Observable<IResponse<IBook[]>> {
     return this.http.get<IResponse<IBook[]>>(
-      `${this.apiUrl}/book?state=${state}`
+      `${this.API_URL}/book?state=${state}`
     );
   }
   getBookCount(): Observable<IResponse<number>> {
-    return this.http.get<IResponse<number>>(`${this.apiUrl}/book/admin/count`);
+    return this.http.get<IResponse<number>>(`${this.API_URL}/book/admin/count`);
   }
 
   getBookByIdAdmin(id: string): Observable<IResponse<IBook>> {
-    return this.http.get<IResponse<IBook>>(`${this.apiUrl}/book/admin/${id}`);
+    return this.http.get<IResponse<IBook>>(`${this.API_URL}/book/admin/${id}`);
   }
   postBook(book: FormData): Observable<IResponse> {
     return this.http
-      .post<IResponse>(`${this.apiUrl}/book`, book)
+      .post<IResponse>(`${this.API_URL}/book`, book)
       .pipe(catchError((err) => of(err.error as IResponse)));
   }
   putBook(id: string, book: FormData): Observable<IResponse> {
     return this.http
-      .put<IResponse>(`${this.apiUrl}/book/${id}`, book)
+      .put<IResponse>(`${this.API_URL}/book/${id}`, book)
       .pipe(catchError((err) => of(err.error as IResponse)));
   }
   deleteBook(id: string): Observable<IResponse> {
     return this.http
-      .delete<IResponse>(`${this.apiUrl}/book/${id}`)
+      .delete<IResponse>(`${this.API_URL}/book/${id}`)
       .pipe(catchError((err) => of(err.error as IResponse)));
   }
 }

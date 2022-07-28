@@ -26,7 +26,7 @@ export class AuthAdminGuard implements CanLoad, CanActivate {
     return this.authService.getVerifyAdminJWT().pipe(
       map(({ ok }) => {
         if (!ok) {
-          this.router.navigate(['admin/login/pppp']);
+          this.router.navigate(['/auth/admin/login/pppp']);
           return false;
         }
         return true;
@@ -40,7 +40,7 @@ export class AuthAdminGuard implements CanLoad, CanActivate {
     return this.authService.getVerifyAdminJWT().pipe(
       map(({ ok }) => {
         if (!ok) {
-          this.router.navigate(['admin/login/pppp']);
+          this.router.navigate(['/auth/admin/login/pppp']);
           return false;
         }
         return true;
