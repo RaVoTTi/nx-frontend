@@ -33,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component';
 import { ToastModule } from 'primeng/toast';
 import { TestComponent } from './pages/test/test.component';
+import { UtilsModule } from '@frontend/utils';
 
 const UX_MODULE = [
   MenubarModule,
@@ -79,6 +80,7 @@ const UX_MODULE = [
     BookBaseModule,
     ReactiveFormsModule,
     FormsModule,
+    UtilsModule,
     AuthBaseModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
