@@ -9,7 +9,6 @@ import { IResponse, IOrder, ICheckout } from 'interfaces/index';
 })
 export class OrderService {
   API_URL = environment.API_URL;
-  result = environment.result
   constructor(private http: HttpClient) {}
 
   // USER

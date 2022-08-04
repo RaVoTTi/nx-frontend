@@ -24,6 +24,41 @@
 .input {
   background: var(--background-color);
 }
+.checkbox-container{
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  margin-left: .5rem;
+  align-items: center;
+
+  .input-checkbox{
+    height: 1.2rem;
+    width: 1.2rem;
+    min-height: 1.2rem;
+    min-width: 1.2rem;
+    border: 2px solid var(--gray-color)  ;
+    margin-right: 4px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    
+    &::before {
+      margin: 0 auto;
+      content: "";
+      width: .6rem;
+      height: .6rem;
+      border-radius:2px ;
+      transform: scale(0);
+      background: var(--primary-color)  ;
+      transition: 60ms transform ease-in-out;
+    }
+
+    &:checked::before{
+      transform: scale(1);
+    }
+  
+  }
+}
 // .input-gradient {
 //   background: var(--background-color);
 //   background: -webkit-linear-gradient(

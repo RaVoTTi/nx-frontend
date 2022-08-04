@@ -25,11 +25,10 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { UiModule } from '@frontend/ui';
 import { MessageService } from 'primeng/api';
 import { BookBaseModule } from '@frontend/book-base';
 import { MainComponent } from './shared/main/main.component';
-import { AuthModule, JwtInterceptor } from '@frontend/auth';
+import { AuthBaseModule, JwtInterceptor } from '@frontend/auth-base';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component';
 import { ToastModule } from 'primeng/toast';
@@ -80,11 +79,7 @@ const UX_MODULE = [
     BookBaseModule,
     ReactiveFormsModule,
     FormsModule,
-
-    UiModule,
-    ...UX_MODULE,
-
-    AuthModule,
+    AuthBaseModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
   ],

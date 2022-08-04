@@ -1,0 +1,17 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/auth-base/src",
+  "prefix": "frontend",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/auth-base/**/*.ts",
+          "libs/auth-base/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

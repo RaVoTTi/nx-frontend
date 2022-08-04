@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AuthState , authSelector} from '@frontend/auth';
+import { AuthState , authSelector} from '@frontend/auth-base';
 import { Store } from '@ngrx/store';
 
 

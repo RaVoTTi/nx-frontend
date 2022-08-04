@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthService, AuthState , authSelector } from '@frontend/auth';
+import { AuthService, AuthState , authSelector } from '@frontend/auth-base';
 import { Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
 import { of, Subject, take, takeUntil } from 'rxjs';

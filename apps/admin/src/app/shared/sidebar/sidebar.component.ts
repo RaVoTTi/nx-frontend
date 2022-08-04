@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@frontend/auth';
+import { AuthService } from 'libs/auth-base/src';
 
 @Component({
   selector: 'admin-sidebar',

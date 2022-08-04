@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, LocalStorageService } from '@frontend/auth';
+import { AuthService, LocalStorageService } from '@frontend/auth-base';
 import { IItem } from 'interfaces';
 import { MenuItem } from 'primeng/api';
 @Component({
