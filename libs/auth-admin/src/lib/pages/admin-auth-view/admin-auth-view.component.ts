@@ -6,10 +6,11 @@ import { Router } from '@angular/router';
 import { environment } from '@env/environment';
 // PRIMENG
 import { MessageService } from 'primeng/api';
-import { LocalStorageService } from '../../services/local-storage.service';
+// import { LocalStorageService } from '../../services/local-storage.service';
 
 // ME
-import { AuthService } from '../../services/auth.service';
+import { AuthService, LocalStorageService } from '@frontend/auth-base';
+
 
 @Component({
   selector: 'frontend-admin-auth-view',

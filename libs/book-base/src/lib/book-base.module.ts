@@ -17,10 +17,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { SearchHeaderComponent } from './components/search-header/search-header.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
+import { UtilsModule } from '@frontend/utils';
 
 const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
 @NgModule({
-  imports: [CommonModule, ...UX_MODULE],
+  imports: [CommonModule, UtilsModule,...UX_MODULE],
   declarations: [
     WishlistComponent,
     WishlistIconComponent,

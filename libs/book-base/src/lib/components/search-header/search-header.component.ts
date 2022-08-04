@@ -25,7 +25,7 @@ export class SearchHeaderComponent implements OnInit {
     this.isDropdownOpened = !this.isDropdownOpened;
   }
 
-  clickedOutside() {
+  actionOutside() {
     this.isDropdownOpened = false;
   }
 }
