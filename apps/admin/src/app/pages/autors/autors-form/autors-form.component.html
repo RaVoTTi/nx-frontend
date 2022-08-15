@@ -35,7 +35,7 @@
                 type="text"
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
-              <small *ngIf="validateCamp('name')" class="p-error"
+              <small [errorMsg]="errorMsg('name')" class="p-error"
                 >*Name is required
               </small>
             </div>
@@ -47,7 +47,7 @@
                 type="text"
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
-              <small *ngIf="this.validateCamp('urlWiki')" class="p-error"
+              <small [errorMsg]="errorMsg('urlWiki')" class="p-error"
                 >*urlWiki is required
               </small>
             </div>

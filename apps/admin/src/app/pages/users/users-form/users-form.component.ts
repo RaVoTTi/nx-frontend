@@ -4,14 +4,15 @@ import { Location } from '@angular/common';
 import { UserService } from '@frontend/user-admin';
 import { IUser } from 'interfaces';
 import { MessageService } from 'primeng/api';
-import { take, timer } from 'rxjs';
+import { take, timer, VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { ErrorHandlerService, ValidatorsService } from '@frontend/utils';
 @Component({
   selector: 'admin-users-form',
   templateUrl: './users-form.component.html',
 })
 export class UsersFormComponent implements OnInit {
-  userForm!: FormGroup;
+  form!: FormGroup;
   addressForm!: FormGroup;
   cryptoAddressForm!: FormGroup;
 
@@ -22,7 +23,8 @@ export class UsersFormComponent implements OnInit {
     private userService: UserService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-
+    private errorH: ErrorHandlerService,
+    private vs : ValidatorsService,
     private formBuilder: FormBuilder,
     private location: Location
   ) {}
@@ -32,18 +34,18 @@ export class UsersFormComponent implements OnInit {
     this._checkEditMode();
   }
   onSubmit() {
-    if (this.userForm.invalid) {
-      this.userForm.markAllAsTouched();
+    if (this.form.invalid) {
+      this.form.markAllAsTouched();
       return;
     }
     if (this.editMode) {
-      if (this.userForm.pristine) {
+      if (this.form.pristine) {
         this.back();
       } else {
-        this._putUser(this.userId, this.userForm.value);
+        this._putUser(this.userId, this.form.value);
       }
     } else {
-      this._postUser(this.userForm.value);
+      this._postUser(this.form.value);
     }
   }
   private _postUser(user: IUser) {
@@ -92,7 +94,7 @@ export class UsersFormComponent implements OnInit {
   }
   validateCamp(key: string) {
     return (
-      this.userForm.controls[key].errors && this.userForm.controls[key].touched
+      this.form.controls[key].errors && this.form.controls[key].touched
     );
   }
   back() {
@@ -105,29 +107,33 @@ export class UsersFormComponent implements OnInit {
         this.editMode = true;
         this.userId = params['id'];
         this.userService.getUserById(this.userId).subscribe(({ result }) => {
-          this.userForm.reset({ ...result });
+          this.form.reset({ ...result });
         });
       } else {
         this.editMode = false;
       }
     });
   }
+
+  errorMsg(key: string){
+    return this.errorH.errorMsg(this.form.controls[key])
+  }
   private _initForm() {
-    this.addressForm = this.formBuilder.group({});
-    this.cryptoAddressForm = this.formBuilder.group({});
 
-    this.userForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
-      phone: [Number, Validators.required],
 
+    this.form = this.formBuilder.group(        {
+      name: ['', [Validators.required, this.vs.validatePat('namePat')]],
+      lastName: ['', [Validators.required, this.vs.validatePat('namePat')]],
+      email: ['', [Validators.required, this.vs.validatePat('emailPat')]],
+      phone: ['', [Validators.required, this.vs.validatePat('minMaxPat')]],
+      password: [
+        '',
+        [Validators.required, this.vs.validatePat('passwordPat')],
+      ],
       state: [true, Validators.required],
       isAdmin: [false, Validators.required],
-
-      address: this.addressForm,
-      cryptoAddress: this.cryptoAddressForm,
-    });
+    }
+    
+    );
   }
 }

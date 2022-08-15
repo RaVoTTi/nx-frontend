@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { take, timer } from 'rxjs';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { ErrorHandlerService } from '@frontend/utils';
 
 @Component({
   selector: 'admin-subjects-form',
@@ -21,6 +22,8 @@ export class SubjectsFormComponent implements OnInit {
     private subjectService: SubjectService,
     private messageService: MessageService,
     private location: Location,
+    private errorH: ErrorHandlerService,
+    
     private route: ActivatedRoute
   ) {}
 
@@ -99,6 +102,9 @@ export class SubjectsFormComponent implements OnInit {
           });
         }
       });
+  }
+  errorMsg(key: string){
+    return this.errorH.errorMsg(this.form.controls[key])
   }
   private _postSubject(subject: ISubject) {
     this.subjectService

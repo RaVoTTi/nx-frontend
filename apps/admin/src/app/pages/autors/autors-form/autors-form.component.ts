@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AutorService } from '@frontend/book-admin';
 import { IAutor } from '../../../../../../../interfaces';
@@ -6,6 +6,7 @@ import { MessageService } from 'primeng/api';
 import { take, timer } from 'rxjs';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
+import { ErrorHandlerService } from '@frontend/utils';
 
 @Component({
   selector: 'admin-autors-form',
@@ -21,7 +22,8 @@ export class AutorsFormComponent implements OnInit {
     private autorService: AutorService,
     private messageService: MessageService,
     private location: Location,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private errorH: ErrorHandlerService
   ) {}
 
   ngOnInit(): void {
@@ -48,6 +50,9 @@ export class AutorsFormComponent implements OnInit {
     } else {
       this._postAutor(this.form.value);
     }
+  }
+  errorMsg(key:string){
+    return this.errorH.errorMsg(this.form.controls[key])
   }
 
   validateCamp(key: string) {
