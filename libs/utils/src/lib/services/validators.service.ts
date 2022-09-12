@@ -24,8 +24,6 @@ export class ValidatorsService {
   };
   //
 
-  constructor() {}
-
   passwordMismatch(camp1: string, camp2: string) {
     return (formGroup: AbstractControl): ValidationErrors | null => {
       const one = formGroup.get(camp1)?.value;
@@ -52,7 +50,6 @@ export class ValidatorsService {
           [type]: true,
         };
       }
-      console.log(regExp);
       formControl.setErrors(null);
       return null;
     };
