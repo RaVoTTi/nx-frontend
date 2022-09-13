@@ -1,93 +1,71 @@
-<!-- <frontend-search-header></frontend-search-header> -->
-
 <div class="place-order-container">
   <ng-container *ngIf="init; else loading">
-  <div class="card-book-container">
-    
-    <frontend-card-book [book]="book"></frontend-card-book>
-  </div>
-  <div class="cards-container">
-    <div class="card-form-container">
-      <div class="card-header">
-        <h3>Please fill in the required information</h3>
-      </div>
+    <div class="card-book-container">
+      <frontend-card-book [book]="book"></frontend-card-book>
+    </div>
+    <div class="cards-container">
+      <div class="card-form-container">
+        <div class="card-header">
+          <h3>Please fill in the required information</h3>
+        </div>
 
-      <form [formGroup]="orderForm" class="form-container">
-        <div class="input-label">
-          <label class="label" for="price" >Price</label>
-          <div class="input-split">
-
-            <input
-            type="number"
-            id="price"
-            (blur)="getPriceFormated()"
-            class="input"
-            formControlName="price"
-            min="0"
-            maxlength="6"
-            />
-            <span class="input-text">USD</span>
+        <form [formGroup]="orderForm" class="form-container">
+          <div class="input-label">
+            <label class="label" for="price">Price</label>
+            <div class="input-split">
+              <input
+                type="number"
+                id="price"
+                (blur)="getPriceFormated()"
+                class="input"
+                formControlName="price"
+                min="0"
+                maxlength="6"
+                readonly
+              />
+              <span class="input-text">USD</span>
+            </div>
+            <small *ngIf="validateCamp('price')" class="ml-2 p-error"
+              >*Price is required
+            </small>
           </div>
-          <small *ngIf="validateCamp('price')" class="ml-2 p-error"
-            >*Price is required
-          </small>
-        </div>
-        <div class="input-label">
-          <label class="label" for="addressLTC">Address LTC</label>
-
-          <input type="text" class="input" formControlName="addressLTC" />
-          <small *ngIf="validateCamp('addressLTC')" class="ml-2 p-error"
-            >*Address LTC is required
-          </small>
-        </div>
-      </form>
-    </div>
-    <div class="card-summary">
-      <div class="card-header">
-        <h3>Order Summary</h3>
+        </form>
       </div>
-      <table class="card-table">
-        <tr>
-          <th>{{ book.name | titlecase }}</th>
-          <td>{{ price | currency }}</td>
-        </tr>
-        <tr>
-          <th>Delivery</th>
+      <div class="card-summary">
+        <div class="card-header">
+          <h3>Order Summary</h3>
+        </div>
+        <table class="card-table">
+          <tr>
+            <th>{{ book.name | titlecase }}</th>
+            <td>{{ price | currency }}</td>
+          </tr>
+          <tr>
+            <th>Delivery</th>
 
-          <td>FREE</td>
-        </tr>
+            <td>FREE</td>
+          </tr>
 
-        <tr>
-          <th>Commition to Robin</th>
-          <td>-{{ price * 0.2 | currency }}</td>
-        </tr>
-        <tr>
-          <th>Total Giftback</th>
-          <td>{{ price * 0.8 | currency }}</td>
-        </tr>
-        <tr>
-          <th>Total to pay</th>
-
-          <td>{{ price | currency }}</td>
-        </tr>
-      </table>
+          <tr>
+            <th>Total to pay</th>
+            <td>{{ price | currency }}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="button-container">
+        <button
+          class="button-primary"
+          [disabled]="orderForm.invalid || orderForm.disabled"
+          style="height: 35px"
+          (click)="onSubmit()"
+        >
+          Continue to Payment
+        </button>
+      </div>
     </div>
-    <div class="button-container">
-      <button
-        class="button-primary"
-        [disabled]="orderForm.invalid || orderForm.disabled"
-        style="height: 35px"
-        (click)="onSubmit()"
-      >
-        Continue to Payment
-      </button>
-    </div>
-  </div>
-</ng-container>
+  </ng-container>
 </div>
 
 <ng-template #loading>
   <div *ngFor="let card of [0, 1, 2]" class="card-loading"></div>
-
-
 </ng-template>

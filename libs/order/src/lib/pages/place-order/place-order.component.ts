@@ -62,7 +62,6 @@ export class PlaceOrderComponent implements OnInit {
           // Validators.pattern(/d+/),
         ],
       ],
-      addressLTC: ['', Validators.required],
     });
   }
   onSubmit() {
@@ -71,7 +70,7 @@ export class PlaceOrderComponent implements OnInit {
       return;
     }
     this.orderService
-      .postMyOrder(this.bookId, this.orderForm.value)
+      .postMyOrder(this.bookId)
       .pipe(take(1))
       .subscribe((response) => {
         if (response.ok === true) {

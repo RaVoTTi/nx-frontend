@@ -1,4 +1,4 @@
 export interface ICheckout {
   price: number;
-  addressLTC: string,
+  addressLTC?: string,
 }
