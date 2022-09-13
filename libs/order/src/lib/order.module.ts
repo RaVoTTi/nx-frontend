@@ -7,7 +7,7 @@ import { MyLearningListComponent } from './pages/my-learning/my-learning-list/my
 import { MyLearningViewComponent } from './pages/my-learning/my-learning-view/my-learning-view.component';
 import { MyOrderingComponent } from './pages/my-ordering/my-ordering.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
-import { LearningItemComponent } from './components/card-book/card-learning.component';
+import { LearningItemComponent } from './components/card-learning/card-learning.component';
 
 
 // PRIME NG 
