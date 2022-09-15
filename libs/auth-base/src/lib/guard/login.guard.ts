@@ -40,7 +40,7 @@ export class LoginGuard implements CanActivate, CanLoad {
         if (!isAuth) {
           return true;
         }
-        this.router.navigate(['/app']);
+        this.router.navigate(['/app/books']);
         return false;
       })
     );

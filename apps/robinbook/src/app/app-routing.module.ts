@@ -43,7 +43,7 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: '/app/books',
+        redirectTo: '/app/home',
       },
 
     ],
@@ -51,14 +51,18 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('@frontend/auth-user').then((m) => m.AuthUserModule),
-
+    
   },
   {
     path: 'checkout',
     loadChildren: () => import('@frontend/checkout').then((m) => m.CheckoutModule),
-
+    
   },
-
+  {
+    path:'**',
+    redirectTo: 'app'
+  }
+  
 
 ];
 
