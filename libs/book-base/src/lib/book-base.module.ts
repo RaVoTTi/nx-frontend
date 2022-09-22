@@ -18,10 +18,11 @@ import { SearchHeaderComponent } from './components/search-header/search-header.
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { UtilsModule } from '@frontend/utils';
-
+import { BrowseBookComponent } from './components/browse-book/browse-book.component';
+import { SpinnerComponent } from './components/spinner/spinner.component';
 const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
 @NgModule({
-  imports: [CommonModule, UtilsModule,...UX_MODULE],
+  imports: [CommonModule, UtilsModule, ...UX_MODULE],
   declarations: [
     WishlistComponent,
     WishlistIconComponent,
@@ -29,14 +30,18 @@ const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
     SearchHeaderComponent,
     DropdownComponent,
     ClickOutsideDirective,
+    BrowseBookComponent,
+    SpinnerComponent,
   ],
   exports: [
     WishlistIconComponent,
     ClickOutsideDirective,
     DropdownComponent,
+    BrowseBookComponent,
 
     CardBookComponent,
     SearchHeaderComponent,
+    SpinnerComponent,
   ],
   providers: [MessageService],
 })

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CheckoutViewComponent } from './pages/checkout-view/checkout-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { UtilsModule } from '@frontend/utils';
 const routes: Routes = [
   {
     path: '',
@@ -17,10 +17,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, 
+  imports: [
+    CommonModule,
     ReactiveFormsModule,
-    
-    RouterModule.forChild(routes)],
+    UtilsModule,
+    RouterModule.forChild(routes),
+  ],
   declarations: [CheckoutViewComponent],
 })
 export class CheckoutModule {}

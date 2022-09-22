@@ -7,12 +7,15 @@ import { ActionOutsideDirective } from './directives/action-outside.directive';
   imports: [CommonModule],
   declarations: [
     ErrorMsgDirective,
-    ActionOutsideDirective
+    ActionOutsideDirective,
+
   ],
   exports: [
     ErrorMsgDirective,
-    ActionOutsideDirective
+    ActionOutsideDirective,
+
 
   ],
+  
 })
 export class UtilsModule {}

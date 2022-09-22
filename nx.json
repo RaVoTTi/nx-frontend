@@ -45,5 +45,10 @@
       "style": "scss"
     }
   },
-  "defaultProject": "robinbook"
+  "defaultProject": "robinbook",
+  "targetDefaults": {
+    "test": {
+      "inputs": ["default", "^default", "{workspaceRoot}/jest.preset.js"]
+    }
+  }
 }

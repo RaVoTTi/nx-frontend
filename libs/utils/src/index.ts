@@ -1,4 +1,4 @@
 export * from './lib/utils.module';
 export * from './lib/services/validators.service';
 export * from './lib/services/error-handler.service';
-
+export * from './lib/services/alert.service';

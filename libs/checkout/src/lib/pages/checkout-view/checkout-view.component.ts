@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '@env/environment';
 import { take } from 'rxjs';
 import { CheckoutService } from '../../services/checkout.service';
+import { AlertService } from '@frontend/utils';
 declare global {
   interface Window {
     Stripe?: any;
@@ -15,6 +16,9 @@ declare global {
   templateUrl: './checkout-view.component.html',
 })
 export class CheckoutViewComponent implements OnInit {
+  // @ViewChild('deleteSwal')
+
+  // public readonly deleteSwal!: SwalComponent;
   orderId!: string;
   orderData!: any;
 
@@ -28,6 +32,7 @@ export class CheckoutViewComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     // private cd: ChangeDetectorRef,
+    private alert: AlertService,
     private checkoutService: CheckoutService,
     private route: ActivatedRoute
   ) {
@@ -47,7 +52,6 @@ export class CheckoutViewComponent implements OnInit {
     this._getPreOrder();
     this.createStripeElement();
   }
-
   private _getPreOrder() {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
@@ -60,10 +64,7 @@ export class CheckoutViewComponent implements OnInit {
 
               if (result?.condition > 0) {
                 this.checkoutForm.disable();
-                // this.toaster.open({
-                //   text: '🔴 Error con orden',
-                //   caption: 'Ya se ha pagado'
-                // });
+                this.alert.errorRedirectAlert('The order has already paid');
               }
               this.checkoutForm.patchValue({
                 amount: result.price,
@@ -148,29 +149,30 @@ export class CheckoutViewComponent implements OnInit {
       this.checkoutService
         .patchSendPayment(this.orderId, token.id)
         .pipe(take(1))
-        .subscribe(({result}) => {
+        .subscribe(({ result }) => {
           this.STRIPE.confirmCardPayment(result?.client_secret)
             .then(async () => {
-              console.log('MONEY')
+              console.log('MONEY');
+              this.alert.succeRedirectAlert({});
+
               //TODO: 👌 Money Money!!!
               // this.toaster.open({text: 'Dinerito dineron', caption: 'Yeah!', type: 'success'})
               //TODO: Enviamos el id "localizador" de nuestra orden para decirle al backend que confirme con stripe si es verdad!
-              this.checkoutService.getConfirmOrder(this.orderId).pipe(take(1)).subscribe(({result})=>{
-                console.log('Really Money')
-              })
+              this.checkoutService
+                .getConfirmOrder(this.orderId)
+                .pipe(take(1))
+                .subscribe(({ result }) => {
+                  console.log('Really Money');
+                });
             })
             .catch(() => {
-              console.log('Something Happend')
-
-              // this.toaster.open('Error con el pago')
+              this.alert.errorRedirectAlert('Something happened');
             });
         });
       //TODO: Nuestra api devolver un "client_secret" que es un token unico por intencion de pago
       //TODO: SDK de stripe se encarga de verificar si el banco necesita autorizar o no
     } catch (e) {
-      console.log('Something Happend')
-
-      // this.toaster.open({text: 'Algo ocurrio mientras procesaba el pago', caption: 'ERROR', type: 'danger'})
+      this.alert.errorRedirectAlert('Something happened');
     }
   }
 
