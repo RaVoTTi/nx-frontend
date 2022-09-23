@@ -16,7 +16,13 @@
   &::placeholder {
     color: var(--gray-color);
   }
-
+  &::selection{
+    background:var(--selection-color);
+  }
+  
+  &::-moz-selection{
+    background:var(--selection-color);
+  }
   &:invalid {
     box-shadow: -2px 5px 20px 0 var(--complementary-color);
   }

@@ -84,6 +84,7 @@ export class AuthViewComponent implements OnInit {
           this.router.navigate(['/auth/login']);
         });
       } else {
+        console.log()
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
@@ -110,7 +111,7 @@ export class AuthViewComponent implements OnInit {
           name: ['', [Validators.required, this.vs.validatePat('namePat')]],
           lastName: ['', [Validators.required, this.vs.validatePat('namePat')]],
           email: ['', [Validators.required, this.vs.validatePat('emailPat')]],
-          phone: ['', [Validators.required, this.vs.validatePat('minMaxPat')]],
+          phone: ['', [Validators.required, this.vs.validatePat('phone')]],
           password: [
             '',
             [Validators.required, this.vs.validatePat('passwordPat')],

@@ -15,11 +15,13 @@ interface IPat {
 })
 export class ValidatorsService {
   pats: IPat = {
-    emailPat: /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+    emailPat: /^([a-z0-9._%+-]+@(((\bgmail\b))|(\boutlook\b)|(\blive\b)|(\byahoo\b)|(\bhotmail\b)|(\btest\b))+(\.[a-z]{2,4}$))/,
     passwordPat: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{6,12}$/,
     namePat:
       /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,12}$/,
     minMaxPat: /^.{2,4}$/,
+    phone: /^[0-9]{9,15}$/,
+    // phoneInt: RegExp('^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$')
     // ltcPat: /^{2,15}$/,
   };
   //
