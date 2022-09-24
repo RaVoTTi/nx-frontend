@@ -36,23 +36,21 @@
   margin-top: 1rem;
   margin-left: .5rem;
   align-items: center;
-
-  .input-checkbox{
+}
+  .input-checkbox, .input-radio{
     height: 1.2rem;
     width: 1.2rem;
     min-height: 1.2rem;
     min-width: 1.2rem;
     border: 2px solid var(--gray-color)  ;
     margin-right: 4px;
-    border-radius: 2px;
     display: flex;
     align-items: center;
-    
+    cursor: pointer;
     &::before {
       margin: 0 auto;
       content: "";
-      width: .6rem;
-      height: .6rem;
+
       border-radius:2px ;
       transform: scale(0);
       background: var(--primary-color)  ;
@@ -64,7 +62,33 @@
     }
   
   }
+
+.input-checkbox{
+  border-radius: 2px;
+
+
+  &::before {
+    width: .6rem;
+    height: .6rem;
+    border-radius: 2px;
+
+
+  }
 }
+
+.input-radio{
+  border-radius: 50vh;
+
+  &::before {
+    width: .5rem;
+    height: .5rem;
+    border-radius: 50vh ;
+
+  }
+}
+
+  
+
 // .input-gradient {
 //   background: var(--background-color);
 //   background: -webkit-linear-gradient(

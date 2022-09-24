@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
+import Swal, { SweetAlertOptions } from 'sweetalert2';
+
+interface IRoutes {
+  urlConfi?: string;
+  urlDeny?: string;
+  urlCancel?: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +19,7 @@ export class AlertService {
       title: 'alert-title',
       confirmButton: ' alert-confirm',
       denyButton: 'alert-deny',
-      icon: 'alert-icon'
+      icon: 'alert-icon',
     },
     // showCancelButton: true,
     reverseButtons: true,
@@ -21,42 +27,34 @@ export class AlertService {
     buttonsStyling: false,
   });
   constructor(private router: Router) {}
-  
-  errorRedirectAlert(text = "You won't be able to revert this!" , url = '/app/books' ) {
-    this.swalCustom
-      .fire({
-        title: '🔴 Error!',
-        text,
-        confirmButtonText: 'OK',
-        // buttonsStyling: true
-      })
-      .then(() => {
-        this.router.navigate([url]);
-      });
-  }
-  
-  succeRedirectAlert({text = "Your paid was aproved" , confirmButtonText = 'To MyLearning', denyButtonText = 'To Books' , urlDeny = '/app/books' ,  urlConfi= '/app/order/mylearning' }) {
-    this.swalCustom
-    .fire({
-      icon: 'success',
-      text,
-      showDenyButton: true,
-      denyButtonText,
-      confirmButtonText,
-      // buttonsStyling: true
-    })
-    .then((result) => {
-      if(result.isConfirmed){
 
-        this.router.navigate([urlConfi]);
-      }
-      else{
-        this.router.navigate([urlDeny]);
+  // errorRedirectAlert(text = "You won't be able to revert this!", url?: string) {
+  //   this.swalCustom
+  //     .fire({
+  //       // title: '🔴 Error!',
+  //       icon: 'error',
+  //       text,
+  //       confirmButtonText: 'OK',
+  //       // buttonsStyling: true
+  //     })
+  //     .then(() => {
+  //       if (url) {
+  //         this.router.navigate([url]);
+  //       }
+  //     });
+  // }
 
+  fire<T = any>(options: SweetAlertOptions<T>, routes?: IRoutes) {
+    this.swalCustom.fire({ ...options }).then((result) => {
+      if (result.isConfirmed && routes?.urlConfi) {
+        this.router.navigate([routes?.urlConfi]);
+      } else if (result.isDenied && routes?.urlDeny) {
+        this.router.navigate([routes?.urlDeny]);
+      } else if (result.isDismissed && routes?.urlCancel) {
+        this.router.navigate([routes?.urlCancel]);
+      } else {
+        this.swalCustom.close()
       }
     });
   }
 }
-
-
-

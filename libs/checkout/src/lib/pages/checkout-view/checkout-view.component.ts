@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '@env/environment';
@@ -58,13 +58,14 @@ export class CheckoutViewComponent implements OnInit {
         this.orderId = params['id'];
         this.checkoutService
           .getPreOrder(this.orderId)
+          .pipe(take(1))
           .subscribe(({ result }) => {
             if (result) {
               this.orderData = result;
 
               if (result?.condition > 0) {
                 this.checkoutForm.disable();
-                this.alert.errorRedirectAlert('The order has already paid');
+                this.alert.fire({text:'The order has already paid', icon:'error'});
               }
               this.checkoutForm.patchValue({
                 amount: result.price,
@@ -153,7 +154,7 @@ export class CheckoutViewComponent implements OnInit {
           this.STRIPE.confirmCardPayment(result?.client_secret)
             .then(async () => {
               console.log('MONEY');
-              this.alert.succeRedirectAlert({});
+              this.alert.fire({},{});
 
               //TODO: 👌 Money Money!!!
               // this.toaster.open({text: 'Dinerito dineron', caption: 'Yeah!', type: 'success'})
@@ -166,13 +167,13 @@ export class CheckoutViewComponent implements OnInit {
                 });
             })
             .catch(() => {
-              this.alert.errorRedirectAlert('Something happened');
+              this.alert.fire({text:'Something happened', icon: 'error'});
             });
         });
       //TODO: Nuestra api devolver un "client_secret" que es un token unico por intencion de pago
       //TODO: SDK de stripe se encarga de verificar si el banco necesita autorizar o no
     } catch (e) {
-      this.alert.errorRedirectAlert('Something happened');
+      this.alert.fire({text:'Something happened', icon: 'error'});
     }
   }
 

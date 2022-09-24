@@ -1,172 +1,3 @@
-<!-- <div class="auth-main">
-  <div class="grid-nogutter">
-    <div class="col-5" *ngIf="loginForm">
-      <form [formGroup]="loginForm">
-        <div
-          class="flex auth-card flex-column justify-content-center align-items-center"
-        >
-          <h2 class="flex align-self-start ml-3">Login to Robin Book</h2>
-
-          <div>
-            <div class="input-label">
-              <label class="label"> Email</label>
-              <input
-                placeholder="Email"
-                formControlName="email"
-                type="text"
-                class="input"
-              />
-            </div>
-            <small *ngIf="validateCamp('email')"
-              >
-            </small>
-          </div>
-          <div>
-            <div class="input-label">
-              <label class="label"> Password</label>
-              <input
-                type="password"
-                placeholder="Password"
-                formControlName="password"
-                class="input"
-              />
-            </div>
-            <small *ngIf="validateCamp('password')"
-              >
-            </small>
-          </div>
-
-          <div class="button-container">
-            <button
-              class="button-primary"
-              (click)="onSubmit()"
-            >
-              LOGIN
-            </button>
-          </div>
-          <div class="flex justify-content-end">
-            <span
-              >New to Robin Book?
-              <a routerLink="/auth/signup"> SIGN UP NOW </a></span
-            >
-          </div>
-          <div class="flex justify-content-end">
-            <a> Forgot Password? </a>
-          </div>
-        </div>
-      </form>
-    </div>
-    <div class="col-5" *ngIf="signUpForm">
-      <form [formGroup]="signUpForm">
-        <div
-          class="flex auth-card flex-column justify-content-center align-items-center"
-        >
-          <h2 class="flex align-self-start ml-3">Sign Up to Robin Book</h2>
-          <div>
-            <span class="p-input-icon-left auth-item">
-              <i class="pi pi-id-card"></i>
-              <input
-                type="text"
-                pInputText
-                placeholder="Name"
-                formControlName="name"
-                class="auth-item"
-              />
-            </span>
-            <small *ngIf="validateCamp('name')" class="ml-2 p-error"
-              >
-            </small>
-          </div>
-          <div>
-            <span class="p-input-icon-left auth-item">
-              <i class="pi pi-id-card"></i>
-              <input
-                type="text"
-                pInputText
-                placeholder="LastName"
-                formControlName="lastName"
-                class="auth-item"
-              />
-            </span>
-            <small *ngIf="validateCamp('lastName')" class="ml-2 p-error"
-              >
-            </small>
-          </div>
-          <div>
-            <span class="p-input-icon-left auth-item">
-              <i class="pi pi-user"></i>
-              <input
-                type="text"
-                pInputText
-                placeholder="Email"
-                formControlName="email"
-                class="auth-item"
-              />
-            </span>
-            <small *ngIf="validateCamp('email')" class="ml-2 p-error"
-              >
-            </small>
-          </div>
-          <div>
-            <span class="p-input-icon-left auth-item">
-              <i class="pi pi-lock"></i>
-              <input
-                type="password"
-                pInputText
-                class="auth-item"
-                placeholder="Password"
-                formControlName="password"
-              />
-            </span>
-
-            <small *ngIf="validateCamp('password')" class="ml-2 p-error"
-              >
-            </small>
-          </div>
-          <div>
-            <span class="p-input-icon-left auth-item">
-              <i class="pi pi-phone"></i>
-              <input
-                type="number"
-                pInputText
-                class="auth-item"
-                placeholder="Phone"
-                formControlName="phone"
-              />
-            </span>
-
-            <small *ngIf="validateCamp('phone')" class="ml-2 p-error"
-              >
-            </small>
-          </div>
-          <div>
-            <small>
-              By creating an account, you agree to the
-              <a> Terms of Service</a> and <a>Privacy Policy.</a>
-            </small>
-          </div>
-          <div>
-            <button
-              class="button-expand auth-item"
-              (click)="onSubmit()"
-              style="height: 40px"
-            >
-              SIGN UP
-            </button>
-          </div>
-          <div class="flex justify-content-end">
-            <span
-              >Already have an account?
-              <a routerLink="/auth/login"> LOGIN NOW </a></span
-            >
-          </div>
-        </div>
-      </form>
-    </div>
-
-    <div class="col-8"></div>
-  </div>
-</div> -->
 <div class="auth-container">
   <div class="auth-in">
     <div class="auth-logo">
@@ -177,18 +8,18 @@
         routerLink="/app/books"
       />
     </div>
+    
 
     <div class="auth-card" *ngIf="loginForm; else signup">
       <div class="auth-alert">
-        📌 A continuación debes de introducir los datos de tu tarjeta para
-        procesar el pago! <br />
-        El pago se procesara mediante la platforma de
+        <i>🏹</i> 
+        A continuación debes de introducir los datos de tu tarjeta para procesar el pago! El pago se procesara mediante la platforma de
       </div>
       <form [formGroup]="loginForm" autocomplete="off">
         <div class="input-label">
           <label class="label"> Email</label>
           <input
-            placeholder="Email"
+            placeholder="robin@boook.com"
             formControlName="email"
             type="text"
             class="input"
@@ -199,20 +30,20 @@
           <label class="label"> Password</label>
           <input
             type="password"
-            placeholder="Password"
+            placeholder="*********"
             formControlName="password"
             class="input"
           />
           <small [errorMsg]="errorMsg('password')"> </small>
         </div>
-        <div class="checkbox-container">
+        <div class="auth-check">
           <input
           class="input-checkbox"
           id="flexCheckDefault"
 
           type="checkbox"
           />
-          <label> Remember Password</label>
+          <label> Remember Me</label>
         </div>
 
 
@@ -223,7 +54,7 @@
           
           >LOGIN</button>
         </div>
-        <div class="signup-terms">
+        <div class="details">
           <span>New to Robin Boook?</span>
 
           <a routerLink="/auth/signup"> Sign up Now </a>
@@ -236,15 +67,14 @@
 <ng-template #signup>
   <div class="auth-card">
     <div class="auth-alert">
-      📌 A continuación debes de introducir los datos de tu tarjeta para
-      procesar el pago! <br />
-      El pago se procesara mediante la platforma de
+      <i>🏹</i> A continuación debes de introducir los datos de tu tarjeta para
+      procesar el pago! El pago se procesara mediante la platforma de
     </div>
     <form [formGroup]="signUpForm" autocomplete="off">
       <div class="input-label">
         <label class="label"> Name</label>
         <input
-          placeholder="Name"
+          placeholder="Robin"
           formControlName="name"
           type="text"
           class="input"
@@ -255,7 +85,7 @@
         <label class="label"> LastName</label>
         <input
           type="text"
-          placeholder="LastName"
+          placeholder="Boook"
           formControlName="lastName"
           class="input"
         />
@@ -264,7 +94,7 @@
       <div class="input-label">
         <label class="label"> Email</label>
         <input
-          placeholder="Email"
+          placeholder="robin@boook.com"
           formControlName="email"
           type="text"
           class="input"
@@ -275,7 +105,7 @@
         <label class="label"> Phone</label>
         <input
           type="number"
-          placeholder="Phone"
+          placeholder="(111) 111-1111"
           formControlName="phone"
           class="input"
         />
@@ -285,7 +115,7 @@
         <label class="label"> Password</label>
         <input
           type="password"
-          placeholder="Password"
+          placeholder="********"
           formControlName="password"
           class="input"
         />
@@ -295,11 +125,19 @@
         <label class="label">Confirm Password</label>
         <input
           type="password"
-          placeholder="Password"
+          placeholder="********"
           formControlName="password2"
           class="input"
         />
         <small [errorMsg]="errorMsg('password2')"> </small>
+      </div>
+      <div class="auth-check">
+        <input
+        formControlName="terms"
+        type="checkbox"
+        class="input-radio"
+        />
+        <b>Accept </b> <a href="">Terms & Conditions</a>
       </div>
 
       <div class="button-container">
@@ -308,7 +146,7 @@
         
         (click)="onSubmit()">SIGN UP</button>
       </div>
-      <div class="login-terms">
+      <div class="details">
         <span>Already have an account?</span>
         <a routerLink="/auth/login"> Login Now </a>
       </div>

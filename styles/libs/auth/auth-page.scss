@@ -24,15 +24,41 @@
   }
   & .auth-card {
     & .auth-alert {
-      font-size: 0.9rem;
-      padding: 0.75rem;
-      font-weight: 500;
+
       border-radius: 20px;
-      box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
-      margin-bottom: 1rem;
+      // box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
+      margin: .5rem 0;
+      display: flex;
+      align-items: center;
+      i {
+        margin-right: .5rem;
+        font-size: 2rem;
+      }
+      p {
+        text-justify: auto;
+        font-size: 0.9rem;
+        padding: 0.75rem;
+        font-weight: 500;
+      }
     }
-    & .login-terms,
-    .signup-terms {
+    & .auth-check{
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 1rem;
+      align-items: center;
+      b {
+        color: var(--gray-color);
+        margin: 0px 5px;
+      }
+      a {
+      color: var(--primary-color);
+      font-weight: 400;
+      &:hover{
+        color: var(--complementary-color);
+      }
+      }
+    }
+    & .details {
       display: flex;
       justify-content: flex-end;
       font-weight: 800;

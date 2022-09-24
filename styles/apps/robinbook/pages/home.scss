@@ -67,6 +67,7 @@
         & a {
           color: var(--fletching-color);
           cursor: pointer;
+          margin-top: 1rem;
         }
       }
 
@@ -77,9 +78,9 @@
         font-family: var(--primary-font);
       }
       & .enroll-container {
-        max-width: 30%;
         margin-top: 5vh;
         display: flex;
+        justify-content: space-evenly;
         flex-direction: row;
         align-items: center;
         & .enroll-button {
@@ -89,57 +90,59 @@
           font-weight: 600;
 
         }
-        
-
-        & .arrow-container {
-          width: 100%;
-          height: 50px;
-          display: flex;
-          align-items: center;
-          flex-wrap: nowrap;
-
-          .arrow {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            align-items: center;
-            margin-left: 3em;
-            transition: .3s;
-            & .point {
-              position: relative;
-              height: 1.5em;
-              width: 1.5em;
-              background: var(--light-gray-color);
-              clip-path: polygon(80% 10%, 100% 50%, 80% 90%, 0% 50%);
-            }
-            & .shaft {
-              position: relative;
-
-              height: 0.35em;
-              width: 7em;
-              background: var(--shaft-color);
-              z-index: 1;
-            }
-
-            & .fletching {
-              position: relative;
-
-              background: var(--fletching-color);
-              height: 1.5em;
-              width: 2em;
-              z-index: 0;
-              transform: translate(-1.5em, 0);
-              clip-path: polygon(
-                100% 0%,
-                75% 50%,
-                100% 100%,
-                25% 100%,
-                0% 50%,
-                25% 0%
-              );
-            }
-          }
+        i{
+          font-size: 5rem;
         }
+
+        // & .arrow-container {
+        //   width: 100%;
+        //   height: 50px;
+        //   display: flex;
+        //   align-items: center;
+        //   flex-wrap: nowrap;
+
+        //   .arrow {
+        //     display: flex;
+        //     flex-direction: row;
+        //     flex-wrap: nowrap;
+        //     align-items: center;
+        //     margin-left: 3em;
+        //     transition: .3s;
+        //     & .point {
+        //       position: relative;
+        //       height: 1.5em;
+        //       width: 1.5em;
+        //       background: var(--light-gray-color);
+        //       clip-path: polygon(80% 10%, 100% 50%, 80% 90%, 0% 50%);
+        //     }
+        //     & .shaft {
+        //       position: relative;
+
+        //       height: 0.35em;
+        //       width: 7em;
+        //       background: var(--shaft-color);
+        //       z-index: 1;
+        //     }
+
+        //     & .fletching {
+        //       position: relative;
+
+        //       background: var(--fletching-color);
+        //       height: 1.5em;
+        //       width: 2em;
+        //       z-index: 0;
+        //       transform: translate(-1.5em, 0);
+        //       clip-path: polygon(
+        //         100% 0%,
+        //         75% 50%,
+        //         100% 100%,
+        //         25% 100%,
+        //         0% 50%,
+        //         25% 0%
+        //       );
+        //     }
+        //   }
+        // }
       }
     }
   }
