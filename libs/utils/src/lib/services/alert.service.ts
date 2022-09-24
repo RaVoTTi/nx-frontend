@@ -22,7 +22,6 @@ export class AlertService {
       icon: 'alert-icon',
     },
     // showCancelButton: true,
-    reverseButtons: true,
 
     buttonsStyling: false,
   });
@@ -53,6 +52,7 @@ export class AlertService {
       } else if (result.isDismissed && routes?.urlCancel) {
         this.router.navigate([routes?.urlCancel]);
       } else {
+
         this.swalCustom.close()
       }
     });
