@@ -20,6 +20,7 @@ import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { UtilsModule } from '@frontend/utils';
 import { BrowseBookComponent } from './components/browse-book/browse-book.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { NothingComponent } from './nothing/nothing.component';
 const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
 @NgModule({
   imports: [CommonModule, UtilsModule, ...UX_MODULE],
@@ -32,6 +33,7 @@ const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
     ClickOutsideDirective,
     BrowseBookComponent,
     SpinnerComponent,
+    NothingComponent,
   ],
   exports: [
     WishlistIconComponent,
@@ -42,6 +44,7 @@ const UX_MODULE = [MenuModule, InputTextModule, RatingModule, BadgeModule];
     CardBookComponent,
     SearchHeaderComponent,
     SpinnerComponent,
+    NothingComponent,
   ],
   providers: [MessageService],
 })

@@ -4,3 +4,4 @@ export * from './lib/services/wishlist.service';
 export * from './lib/pages/wishlist/wishlist.component';
 export * from './lib/components/spinner/spinner.component';
 
+export * from './lib/nothing/nothing.component';

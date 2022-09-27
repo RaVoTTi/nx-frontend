@@ -11,7 +11,7 @@ export class AuthNavbarComponent implements OnInit {
   whislist: IItem[] = [
     {
       label: 'MyWishlist',
-      icon: 'pi pi-heart',
+      icon: '💚',
       onClick: () => {
         this.router.navigate(["/app/wishlist"]);
       },
@@ -21,14 +21,14 @@ export class AuthNavbarComponent implements OnInit {
   primary: IItem[] = [
     {
       label: 'Books',
-      icon: 'pi pi-book',
+      icon: '📚',
       onClick: () => {
         this.router.navigate(['/app/books']);
       },
     },
     {
       label: 'MyLearning',
-      icon: 'pi pi-paperclip',
+      icon: '📝',
       onClick: () => {
         this.router.navigate(['/app/order/mylearning']);
       },
@@ -37,7 +37,7 @@ export class AuthNavbarComponent implements OnInit {
   secondary: IItem[] = [
     {
       label: 'MyOrdering',
-      icon: 'pi pi-money-bill',
+      icon: '💵',
       onClick: () => {
         this.router.navigate(['/app/order/myordering']);
       },
@@ -45,21 +45,22 @@ export class AuthNavbarComponent implements OnInit {
     {
       label: 'MySupport',
       // routerLink: 'order/myordering',
-      icon: 'pi pi-phone',
+      icon: '📞',
       onClick: () => {
         this.router.navigate(['/app/order/myordering']);
       },
     },
     {
       label: 'MySettings',
-      icon: 'pi pi-cog',
+      icon: '🧰',
       onClick: () => {
         console.log('asdasdsa');
       },
     },
     {
+      
       label: 'Log Out',
-      icon: 'pi pi-power-off',
+      icon: '🚪',
       onClick: () => {
         this.authService.logout('/app/home');
       },
