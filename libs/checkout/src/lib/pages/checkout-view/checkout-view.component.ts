@@ -5,11 +5,11 @@ import { environment } from '@env/environment';
 import { take } from 'rxjs';
 import { CheckoutService } from '../../services/checkout.service';
 import { AlertService } from '@frontend/utils';
-declare global {
-  interface Window {
-    Stripe?: any;
-  }
-}
+// declare global {
+//   interface Window {
+//     Stripe?: any;
+//   }
+// }
 
 @Component({
   selector: 'frontend-checkout-view',
@@ -19,11 +19,11 @@ export class CheckoutViewComponent implements OnInit {
   orderId!: string;
   orderData!: any;
 
-  private readonly STRIPE!: any; //TODO: window.Stripe
-  private elementStripe!: any;
-  cardNumber: any;
-  cardCvv: any;
-  cardExp: any;
+  // private readonly STRIPE!: any; //TODO: window.Stripe
+  // private elementStripe!: any;
+  // cardNumber: any;
+  // cardCvv: any;
+  // cardExp: any;
   checkoutForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -32,7 +32,7 @@ export class CheckoutViewComponent implements OnInit {
     private checkoutService: CheckoutService,
     private route: ActivatedRoute
   ) {
-    this.STRIPE = window.Stripe(environment.STRIPE_KEY);
+    // this.STRIPE = window.Stripe(environment.STRIPE_KEY);
   }
 
   ngOnInit(): void {
@@ -46,7 +46,7 @@ export class CheckoutViewComponent implements OnInit {
       cardExp: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
     });
     this._getPreOrder();
-    this.createStripeElement();
+    // this.createStripeElement();
   }
   private _getPreOrder() {
     this.route.params.pipe(take(1)).subscribe((params) => {
@@ -58,8 +58,20 @@ export class CheckoutViewComponent implements OnInit {
           .subscribe(({ result }) => {
             if (result) {
               this.orderData = result;
+              if(result?.condition === 5){
+                this.checkoutForm.disable();
+                this.alert.fire({
+                  text: "The pays haven't worked yet",
+                  icon: 'error',
+                },
+                {
+                  urlConfi: '/app/books', // 🔴 TODOOO 
+                  urlCancel: '/app/books'
+                }
+                );
+              }
 
-              if (result?.condition > 0) {
+              else if (result?.condition > 0) {
                 this.checkoutForm.disable();
                 this.alert.fire({
                   text: 'The order has already paid',
@@ -71,6 +83,7 @@ export class CheckoutViewComponent implements OnInit {
                 }
                 );
               }
+              
               this.checkoutForm.patchValue({
                 amount: result.price,
               });
@@ -79,111 +92,113 @@ export class CheckoutViewComponent implements OnInit {
       }
     });
   }
+  initPay(){
+    this.alert.fire({text: 'We are hiring', icon:'question'})
+  }
+  // private createStripeElement = () => {
+  //   const style = {
+  //     base: {
+  //       color: '#000000',
+  //       fontWeight: 400,
+  //       fontFamily: "'Poppins', sans-serif",
+  //       fontSize: '20px',
+  //       '::placeholder': {
+  //         color: '#E3E2EC',
+  //       },
+  //     },
+  //     invalid: {
+  //       color: '#dc3545',
+  //     },
+  //   };
 
-  private createStripeElement = () => {
-    const style = {
-      base: {
-        color: '#000000',
-        fontWeight: 400,
-        fontFamily: "'Poppins', sans-serif",
-        fontSize: '20px',
-        '::placeholder': {
-          color: '#E3E2EC',
-        },
-      },
-      invalid: {
-        color: '#dc3545',
-      },
-    };
+    // this.elementStripe = this.STRIPE.elements({
+    //   fonts: [
+    //     {
+    //       cssSrc:
+    //         'https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap',
+    //     },
+    //   ],
+    // });
 
-    this.elementStripe = this.STRIPE.elements({
-      fonts: [
-        {
-          cssSrc:
-            'https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap',
-        },
-      ],
-    });
+    // const cardNumber = this.elementStripe.create('cardNumber', {
+    //   placeholder: '4242 4242 4242 4242',
+    //   style,
+    //   classes: {
+    //     base: 'input',
+    //   },
+    // });
+    // const cardExp = this.elementStripe.create('cardExpiry', {
+    //   placeholder: 'MM/AA',
+    //   style,
+    //   classes: {
+    //     base: 'input',
+    //   },
+    // });
+    // const cardCvc = this.elementStripe.create('cardCvc', {
+    //   placeholder: '000',
+    //   style,
+    //   classes: {
+    //     base: 'input',
+    //   },
+    // });
 
-    const cardNumber = this.elementStripe.create('cardNumber', {
-      placeholder: '4242 4242 4242 4242',
-      style,
-      classes: {
-        base: 'input',
-      },
-    });
-    const cardExp = this.elementStripe.create('cardExpiry', {
-      placeholder: 'MM/AA',
-      style,
-      classes: {
-        base: 'input',
-      },
-    });
-    const cardCvc = this.elementStripe.create('cardCvc', {
-      placeholder: '000',
-      style,
-      classes: {
-        base: 'input',
-      },
-    });
+    // cardNumber.mount('#card');
+    // cardExp.mount('#exp');
+    // cardCvc.mount('#cvc');
 
-    cardNumber.mount('#card');
-    cardExp.mount('#exp');
-    cardCvc.mount('#cvc');
+    // this.cardNumber = cardNumber;
+    // this.cardExp = cardExp;
+    // this.cardCvv = cardCvc;
 
-    this.cardNumber = cardNumber;
-    this.cardExp = cardExp;
-    this.cardCvv = cardCvc;
-
-    this.cardNumber.addEventListener('change', this.onChangeCard.bind(this));
-    this.cardExp.addEventListener('change', this.onChangeExp.bind(this));
-    this.cardCvv.addEventListener('change', this.onChangeCvv.bind(this));
+    // this.cardNumber.addEventListener('change', this.onChangeCard.bind(this));
+    // this.cardExp.addEventListener('change', this.onChangeExp.bind(this));
+    // this.cardCvv.addEventListener('change', this.onChangeCvv.bind(this));
   };
 
-  async initPay(): Promise<any> {
-    try {
-      this.checkoutForm.disable();
-      const { token } = await this.STRIPE.createToken(this.cardNumber);
+  // async initPay(): Promise<any> {
+  //   try {
+  //     this.checkoutForm.disable();
+  //     const { token } = await this.STRIPE.createToken(this.cardNumber);
 
-      this.checkoutService
-        .patchSendPayment(this.orderId, token.id)
-        .pipe(take(1))
-        .subscribe(({ result }) => {
-          this.STRIPE.confirmCardPayment(result?.client_secret)
-            .then(async () => {
-              this.alert.fire(
-                { icon: 'success', text: 'Your paid was aproved' },
-                {}
-              );
+  //     this.checkoutService
+  //       .patchSendPayment(this.orderId, token.id)
+  //       .pipe(take(1))
+  //       .subscribe(({ result }) => {
+  //         this.STRIPE.confirmCardPayment(result?.client_secret)
+  //           .then(async () => {
+  //             this.alert.fire(
+  //               { icon: 'success', text: 'Your paid was aproved' },
+  //               {}
+  //             );
 
-              this.checkoutService
-                .getConfirmOrder(this.orderId)
-                .pipe(take(1))
-                .subscribe(({ result }) => {
-                  console.log('Really Money');
-                });
-            })
-            .catch(() => {
-              this.alert.fire({
-                text: 'Something wrong have happened',
-                icon: 'error',
-              });
-            });
-        });
-    } catch (e) {
-      this.alert.fire({ text: 'Something wrong have happened', icon: 'error' });
-    }
-  }
+  //             this.checkoutService
+  //               .getConfirmOrder(this.orderId)
+  //               .pipe(take(1))
+  //               .subscribe(({ result }) => {
+  //                 console.log('Really Money');
+  //               });
+  //           })
+  //           .catch(() => {
+  //             this.alert.fire({
+  //               text: 'Something wrong have happened',
+  //               icon: 'error',
+  //             });
+  //           });
+  //       });
+  //   } catch (e) {
+  //     this.alert.fire({ text: 'Something wrong have happened', icon: 'error' });
+  //   }
+  // }
 
-  onChangeCard({ error }: any) {
-    this.checkoutForm.patchValue({ cardNumber: !error });
-  }
+  // onChangeCard({ error }: any) {
+  //   this.checkoutForm.patchValue({ cardNumber: !error });
+  // }
 
-  onChangeCvv({ error }: any) {
-    this.checkoutForm.patchValue({ cardCvv: !error });
-  }
+  // onChangeCvv({ error }: any) {
+  //   this.checkoutForm.patchValue({ cardCvv: !error });
+  // }
 
-  onChangeExp({ error }: any) {
-    this.checkoutForm.patchValue({ cardExp: !error });
-  }
-}
+  // onChangeExp({ error }: any) {
+  //   this.checkoutForm.patchValue({ cardExp: !error });
+  // }
+// }
