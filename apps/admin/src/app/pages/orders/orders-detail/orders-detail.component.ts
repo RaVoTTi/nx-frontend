@@ -52,7 +52,7 @@ export class OrdersDetailComponent implements OnInit {
   onSubmit() {
     if (!this.condition.pristine) {
       this.orderService
-        .patchOrder(this.orderId, this.condition.value)
+        .patchOrder(this.orderId, this.condition.get('index')?.value)
         .pipe(take(1))
         .subscribe((response) => {
           if (response.ok === true) {

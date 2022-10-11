@@ -17,7 +17,6 @@ import { IAutor, IBook, IEvaluation, IOption, ISubject } from 'interfaces';
 import { MessageService } from 'primeng/api';
 import { take, timer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
 import { ErrorHandlerService } from '@frontend/utils';
 
 @Component({
