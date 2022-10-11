@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '@frontend/auth';
+import { AuthService } from 'libs/auth-base/src';
 
 @Component({
   selector: 'admin-sidebar',
@@ -10,6 +10,6 @@ export class SidebarComponent  {
 
 
   logout() {
-    this.authService.logout('auth/login/admin/pppp');
+    this.authService.logout('/auth/admin/login/pppp');
   }
 }

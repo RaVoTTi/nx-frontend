@@ -9,7 +9,6 @@ import { IResponse, IOrder, ICheckout } from 'interfaces/index';
 })
 export class OrderService {
   API_URL = environment.API_URL;
-  result = environment.result
   constructor(private http: HttpClient) {}
 
   // USER
@@ -21,9 +20,9 @@ export class OrderService {
   getContentById(id: string): Observable<IResponse<IOrder>> {
     return this.http.get<IResponse<IOrder>>(`${this.API_URL}/order/content/${id}`);
   }
-  postMyOrder(id: string, checkout: ICheckout): Observable<IResponse> {
+  postMyOrder(id: string): Observable<IResponse> {
     return this.http
-    .post<IResponse>(`${this.API_URL}/order/checkout/${id}`, checkout)
+    .post<IResponse>(`${this.API_URL}/order/checkout/${id}`, {})
     .pipe(catchError((err) => of(err.error as IResponse)));
   }
   getEvaluationById(id: string): Observable<IResponse<IOrder>> {

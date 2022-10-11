@@ -9,7 +9,7 @@ import { WishlistService } from '@frontend/book-base';
   templateUrl: './books-list.component.html',
 })
 export class BooksListComponent implements OnInit {
-  books: IBook[] = [];
+  books!: IBook[]| undefined;
   wishlistBooks: string[] = [];
 
   constructor(
@@ -25,7 +25,7 @@ export class BooksListComponent implements OnInit {
       .getBooks()
       .pipe(take(1))
       .subscribe((response) => {
-        this.books = response.result ? response.result : [];
+        this.books = response.result;
       });
   }
   isFavorite(id:string): boolean{

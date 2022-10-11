@@ -1,0 +1,170 @@
+@use '../../../base/mixins.scss';
+
+.book-view-container {
+  max-width: 81em;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  font-family: var(--primary-font);
+
+  gap: 1em;
+
+  & .back-icon {
+    color: var(--gray-color);
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+    flex-direction: row;
+    align-items: center;
+
+    font-family: var(--primary-font);
+    cursor: pointer;
+    & i {
+      font-size: 1.5em;
+    }
+
+    &:hover {
+      color: var(--complementary-color);
+    }
+  }
+
+  & .book-view {
+    // flex-wrap: wrap;
+    // display: flex;
+    // justify-content: flex-start;
+    // align-items: center;
+    // flex-direction: row;
+    width: 100%;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    // @include breakpoint(sm){
+    // };
+    @include breakpoint(md) {
+      flex-direction: row;
+      justify-content: space-around;
+    }
+
+    & .image-container {
+      // max-width: 30em;
+      max-width: 648px;
+      min-width: 150px;
+      border: 1px solid var(--light-gray-color);
+      display: flex;
+      justify-content: center;
+      border-radius: 20px;
+      padding: 3em;
+      & .image {
+        overflow: hidden;
+        border-radius: 20px;
+        max-width: 250px;
+        object-fit: cover;
+        @include breakpoint(md) {
+          max-width: 350px;
+        }
+      }
+    }
+
+    & .text-container {
+      height: 400px;
+      max-width: 500px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @include breakpoint(md) {
+        margin-left: 2em;
+      }
+      & h2 {
+        margin-top: 1em;
+        font-size: 2em;
+        word-wrap: break-word;
+        text-overflow: clip;
+        text-transform: capitalize;
+        font-family: inherit;
+      }
+      & h4 {
+        font-size: 1.5em;
+        font-weight: 400;
+        // color: var(--complementary-color);
+        word-wrap: break-word;
+        text-overflow: clip;
+      }
+      & h3 {
+        font-size: 1em;
+        color: var(--primary-color);
+        font-weight: 400;
+        text-transform: capitalize;
+        &::before {
+          content: 'Written By';
+          display: block;
+          font-weight: 400;
+          color: var(--gray-color);
+          font-size: 0.7em;
+        }
+      }
+      & span {
+        bottom: 1em;
+        left: 0.5em;
+        font-size: 0.9em;
+        max-width: fit-content;
+        text-transform: uppercase;
+        border-radius: 50vh;
+        color: var(--primary-color);
+      }
+      & .buttons-container {
+        display: flex;
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        gap: 1em;
+        margin: 0 auto;
+
+
+        @include breakpoint(md) {
+          flex-direction: row;
+        }
+        & .button-container {
+          min-width: 200px;
+          height: 40px;
+          min-height: 40px;
+          @include breakpoint(md) {
+            flex-direction: row;
+          }
+        }
+      }
+    }
+  }
+
+  & hr {
+    margin-top: 1em;
+    border-top: 1px solid var(--light-gray-color);
+    width: 100%;
+  }
+  & .book-description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+
+    text-align: justify;
+    text-justify: inter-word;
+
+    & h2 {
+      color: black;
+      font-size: 1.5em;
+    }
+    & p {
+      padding: 0 1em;
+
+      text-align: justify;
+      margin-top: 0.5em;
+      color: var(--gray-color);
+    }
+  }
+}

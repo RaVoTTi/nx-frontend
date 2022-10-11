@@ -8,24 +8,24 @@ import { IResponse, IAutor } from '../../../../../interfaces/index';
   providedIn: 'root',
 })
 export class AutorService {
-  apiUrl = environment.apiUrl
+  API_URL = environment.API_URL
   constructor(private http: HttpClient) {}
 
   getAutors(state = ''): Observable<IResponse<IAutor[]>> {
     return this.http.get<IResponse<IAutor[]>>(
-      `${this.apiUrl}/autor?state=${state}`
+      `${this.API_URL}/autor?state=${state}`
     );
   }
 
   getAutorById(id: string): Observable<IResponse<IAutor>> {
     return this.http.get<IResponse<IAutor>>(
-      `${this.apiUrl}/autor/${id}`
+      `${this.API_URL}/autor/${id}`
     );
   }
   postAutor(Autor: IAutor): Observable<IResponse> {
     return this.http
       .post<IResponse>(
-        `${this.apiUrl}/autor`,
+        `${this.API_URL}/autor`,
         Autor
       )
       .pipe(catchError((err) => of(err.error as IResponse)));
@@ -36,7 +36,7 @@ export class AutorService {
   ): Observable<IResponse> {
     return this.http
       .put<IResponse>(
-        `${this.apiUrl}/autor/${id}`,
+        `${this.API_URL}/autor/${id}`,
         Autor
       )
       .pipe(catchError((err) => of(err.error as IResponse)));
@@ -44,7 +44,7 @@ export class AutorService {
   deleteAutor(id: string): Observable<IResponse> {
     return this.http
       .delete<IResponse>(
-        `${this.apiUrl}/autor/${id}`
+        `${this.API_URL}/autor/${id}`
       )
       .pipe(catchError((err) => of(err.error as IResponse)));
   }

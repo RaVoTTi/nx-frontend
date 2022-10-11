@@ -1,63 +1,94 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { MenuItem, MessageService } from 'primeng/api';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { IItem } from 'interfaces';
 
 @Component({
   selector: 'robinbook-navbar',
   templateUrl: './navbar.component.html',
 })
 export class NavbarComponent implements OnInit {
-  items: MenuItem[] = [];
+  wishlist: IItem[] = [
+    {
+      label: 'MyWishlist',
+      icon: 'pi pi-heart',
+      onClick: () => {
+        this.router.navigate(["/app/wishlist"]);
+      },
+    },
+  ];
+  login: IItem[] = [
+    {
+      label: 'Login',
+      icon: 'pi pi-user',
+      onClick: () => {
+        this.router.navigate(['/auth/login']);
+      },
+    },
+  ];
+  signUp: IItem[] = [
+    {
+      label: 'Sign Up',
+      icon: 'pi pi-user-plus',
+      onClick: () => {
+        this.router.navigate(['/auth/signup']);
+      },
+    },
+  ];
 
-  constructor(private router: Router, private messageService: MessageService) {}
+  primary: IItem[] = [
+    {
+      label: 'Books',
+      icon: 'pi pi-book',
+      onClick: () => {
+        this.router.navigate(['/app/books']);
+      },
+    },
+    {
+      label: 'MyLearning',
+      icon: 'pi pi-paperclip',
+      onClick: () => {
+        this.router.navigate(['/app/order/mylearning']);
+      },
+    },
+  ];
+  screenWidth: any;
+  isDropdownOpened = false;
+
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    
-    this.items = [
+    this.screenWidth = window.innerWidth;
+  }
 
-      {
-        label: 'MyOrdering',
-        styleClass: 'menu',
-        routerLink: 'app/order/myordering',
-        icon: 'pi pi-money-bill',
-        command: () => {
-          console.log('asdasdsa');
-        },
-      },
-      {
-        label: 'MySupport',
-        styleClass: 'menu',
+  toggleDropdown() {
+    this.isDropdownOpened = !this.isDropdownOpened;
+  }
 
-        icon: 'pi pi-phone',
-        command: () => {
-          console.log('asdasdsa');
-        },
-      },
-      {
-        label: 'MySettings',
-        styleClass: 'menu',
-        icon: 'pi pi-cog',
-        command: () => {
-          console.log('asdasdsa');
-        },
-      },
-      {
-        styleClass: 'menu-separator',
-        disabled: true,
-      },
-      {
-        label: 'Log Out',
-        styleClass: 'menu',
-        icon: 'pi pi-power-off',
+  clickedOutside() {
+    this.isDropdownOpened = false;
+  }
 
-        command: () => {
-          console.log('asdasdsa');
-        },
-      },
-    ];
+  getItems() {
+    if (this.screenWidth < 450){
+      return this.primary.concat(this.wishlist, this.login, this.signUp);
+
+    }
+    else if (this.screenWidth < 580) {
+      return this.primary.concat(this.wishlist, this.login);
+    } else if (this.screenWidth < 700) {
+      return this.wishlist.concat(this.login);
+    } else if (this.screenWidth < 768) {
+      return this.wishlist;
+    }
+    return [];
   }
 
   toLogin() {
     this.router.navigate(['/login']);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.screenWidth = window.innerWidth;
   }
 }

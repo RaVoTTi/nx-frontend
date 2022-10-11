@@ -1,16 +1,16 @@
-<div class="book-header">
-  <div class="flex book-search align-items-center justify-content-start">
-    <div class="icon-back" (click)="back()">
-      <i class="pi pi-arrow-left" style="font-size: 1.5rem"></i>
-    </div>
-    <h2>My Wishlist</h2>
+<frontend-search-header></frontend-search-header>
+
+<ng-container *ngIf="wishlistBooks.length > 0; else loading">
+  <div class="list-container">
+    <frontend-card-book
+      *ngFor="let book of wishlistBooks"
+      [book]="book"
+      [isFavorite]="true"
+    >
+    </frontend-card-book>
   </div>
-  </div>
-  
-  <div class="robin-container">
-    <div class="grid" *ngIf="wishlistBooks">
-      <frontend-book-item class="col-6 md:col-4 lg:col-3" *ngFor="let book of wishlistBooks" [book]="book" [isFavorite]="true">
-      </frontend-book-item>
-    </div>
-  
-  </div>
+</ng-container>
+
+<ng-template #loading>
+  <frontend-nothing></frontend-nothing>
+</ng-template>

@@ -3,14 +3,16 @@
   "projects": {
     "admin": "apps/admin",
     "admin-e2e": "apps/admin-e2e",
-    "auth": "libs/auth",
+    "auth-admin": "libs/auth-admin",
+    "auth-base": "libs/auth-base",
+    "auth-user": "libs/auth-user",
     "book-admin": "libs/book-admin",
     "book-base": "libs/book-base",
     "checkout": "libs/checkout",
     "order": "libs/order",
     "robinbook": "apps/robinbook",
     "robinbook-e2e": "apps/robinbook-e2e",
-    "ui": "libs/ui",
-    "user-admin": "libs/user-admin"
+    "user-admin": "libs/user-admin",
+    "utils": "libs/utils"
   }
 }

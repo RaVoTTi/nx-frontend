@@ -1,0 +1,43 @@
+<div class="auth-container">
+  <div class="auth-in">
+    <div class="auth-logo">
+      <img class="logo" src="assets/word@2x.png" alt="" routerLink="/app/books" />
+    </div>
+
+    <div class="auth-card">
+      <div class="auth-alert">
+        📌Salid de aqui pillo <br />
+      </div>
+      <form [formGroup]="form">
+        <div>
+          <div class="input-label">
+            <label class="label"> Email</label>
+            <input
+              placeholder="Email"
+              formControlName="email"
+              type="text"
+              class="input"
+            />
+          </div>
+          <small *ngIf="validateCamp('email')">*Email is required </small>
+        </div>
+        <div>
+          <div class="input-label">
+            <label class="label"> Password</label>
+            <input
+              type="password"
+              placeholder="Password"
+              formControlName="password"
+              class="input"
+            />
+          </div>
+          <small *ngIf="validateCamp('password')">*password is required </small>
+        </div>
+
+        <div class="button-container">
+          <button class="button-primary" (click)="onSubmit()">LOGIN</button>
+        </div>
+
+      </form>
+    </div>
+</div>

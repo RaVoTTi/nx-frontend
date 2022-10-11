@@ -40,9 +40,10 @@ import { UsersListComponent } from './pages/users/users-list/users-list.componen
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
-import { AuthModule, JwtInterceptor } from '@frontend/auth';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { AuthBaseModule, JwtInterceptor } from '@frontend/auth-base';
+import { UtilsModule } from '@frontend/utils';
 
 const UX_MODULE = [
   CardModule,
@@ -86,9 +87,10 @@ const UX_MODULE = [
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
+    UtilsModule,
     ...UX_MODULE,
 
-    AuthModule,
+    AuthBaseModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([])
   ],

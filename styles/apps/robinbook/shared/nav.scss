@@ -1,48 +1,68 @@
+@use '../../../base/mixins.scss';
+
 .nav {
-  padding-top: 10px;
-
-
-  li {
-    margin-top: 23px;
+  padding-top: 1.6rem;
+  display: flex;
+  align-items: center;
+  & li {
     list-style: none;
-    display: inline-block;
     margin-right: 1rem;
 
-    a {
+    & a,
+    i {
+      font-family: var(--primary-font);
       font-size: 1.2em;
-      color: var(--third-color);
+      color: var(--gray-color);
       cursor: pointer;
       &:hover {
         color: var(--primary-color);
       }
     }
-    .active{
-      cursor: pointer;
+    & i {
+      margin-right: 0.4rem;
+    }
+    .active {
       color: var(--primary-color);
     }
-  
   }
 
+}
 
+.login-container,
+.signup-container {
+  height: 40px;
 }
-.icons{
-  color: var(--third-color);
-  cursor: pointer;
-  &:hover {
-    color: var(--primary-color);
-  }
+
+
+.login-container {
+  margin-right: 10px;
+
+  width: 120px;
+  font-weight: 600;
 }
-.menu{
-  width: 100%;
-  color: --primary-color;
-  &-separator{
-    height: 2px;
-    max-height: 2px;
-    width: 100%;
+.signup-container {
+
+  word-wrap: nowrap;
+  min-width: 170px;
+  & .button-primary {
     background-color: var(--primary-color);
   }
 
 
-
+}
+.icon {
+  color: var(--primary-text-color);
+  cursor: pointer;
+  font-size: 1.8rem;
+  &:hover {
+    color: var(--primary-color);
+  }
 }
 
+.dropdown-container{
+  height: max-content;
+  min-width: 250px ;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.4rem);
+}

@@ -1,0 +1,9 @@
+<div class="dropdown " >
+    <ng-container *ngFor="let item of items" >
+        <div (click)="item.onClick()">
+            <i >{{item.icon}}</i>
+            <h3>{{item.label}}</h3>
+        </div>
+
+    </ng-container>
+</div> 

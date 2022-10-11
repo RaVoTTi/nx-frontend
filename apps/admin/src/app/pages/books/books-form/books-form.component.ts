@@ -18,6 +18,7 @@ import { MessageService } from 'primeng/api';
 import { take, timer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
+import { ErrorHandlerService } from '@frontend/utils';
 
 @Component({
   selector: 'admin-books-form',
@@ -38,7 +39,7 @@ export class BooksFormComponent implements OnInit {
     private bookService: BookService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-
+    private errorH : ErrorHandlerService,
     private formBuilder: FormBuilder,
     private location: Location
   ) {}
@@ -157,9 +158,13 @@ export class BooksFormComponent implements OnInit {
         }
       });
   }
-  validateCamp(key: string) {
-    return this.form.controls[key].errors && this.form.controls[key].touched;
+  // validateCamp(key: string) {
+  //   return this.form.controls[key].errors && this.form.controls[key].touched;
+  // }
+  errorMsg(key:string){
+    return this.errorH.errorMsg(this.form.controls[key])
   }
+
   back() {
     this.location.back();
   }

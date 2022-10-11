@@ -1,0 +1,12 @@
+
+.list-container {
+  max-width: 81em;
+  margin: 0 auto;
+  padding: 1em;
+  gap: 1em;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(min(14em, 100%), 1fr));
+  grid-auto-rows: 40em;
+}
+

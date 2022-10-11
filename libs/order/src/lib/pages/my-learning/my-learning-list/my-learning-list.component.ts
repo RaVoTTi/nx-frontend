@@ -9,7 +9,8 @@ import { OrderService } from '../../../services/order.service';
 })
 export class MyLearningListComponent implements OnInit {
 
-  orders: IOrder[] = []
+  orders: IOrder[]| undefined
+
   constructor(
     private orderService:OrderService
   ) { }

@@ -1,0 +1,34 @@
+.header {
+    /*background-color: red;*/
+    z-index: 1;
+    position: fixed;
+    background-color: var(--header-color);
+    width: 100%;
+    height: 80px;
+    box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
+    &__logo{
+        background-color: aqua;
+    }
+  }
+
+
+.header{
+
+    &-main{
+        width:100%;
+        // background-color: white;
+
+        box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
+        background-color: #F2FBE0;
+        border-bottom: lightgrey;
+        border-style: none none solid;
+        border-width: 1px;
+        color: var(--primary-text-color);
+    }
+
+    
+}
+.logo{
+    height: 60px;
+    margin-top: 5px;
+}

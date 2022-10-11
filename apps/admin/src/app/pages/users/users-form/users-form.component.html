@@ -24,7 +24,7 @@
         </p-toolbar>
       </div>
       <div class="col-12">
-        <form [formGroup]="userForm">
+        <form [formGroup]="form">
           <h2>Personal Information</h2><br>
           <div class="grid formgrid">
             <div class="field col-12 md:col-6">
@@ -35,7 +35,7 @@
                 type="text"
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
-              <small *ngIf="validateCamp('name')" class="ml-2 p-error"
+              <small [errorMsg]="errorMsg('name')" class="ml-2 p-error"
                 >*Name is required
               </small>
             </div>
@@ -47,7 +47,7 @@
                 type="text"
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
-              <small *ngIf="validateCamp('lastName')" class="ml-2 p-error"
+              <small [errorMsg]="errorMsg('lastName')" class="ml-2 p-error"
                 >*LastName is required
               </small>
             </div>
@@ -59,7 +59,7 @@
                 type="text"
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
-              <small *ngIf="validateCamp('email')" class="ml-2 p-error"
+              <small [errorMsg]="errorMsg('email')" class="ml-2 p-error"
                 >*Email is required
               </small>
             </div>
@@ -71,7 +71,7 @@
                 type="password"
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
-              <small *ngIf="validateCamp('password')" class="ml-2 p-error"
+              <small [errorMsg]="errorMsg('password')" class="ml-2 p-error"
                 >*Password is required
               </small>
             </div>
@@ -83,7 +83,7 @@
                 type="number"
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
-              <small *ngIf="validateCamp('phone')" class="ml-2 p-error"
+              <small [errorMsg]="errorMsg('phone')" class="ml-2 p-error"
                 >*Phone is required
               </small>
             </div>

@@ -1,24 +1,57 @@
-.footer{
+@use '../../../base/mixins.scss';
 
-    &-main{
-        position: absolute;
-        width:100%;
-        background-color: #F2FBE0;
-        height: 300px;
-        border-bottom: lightgrey;
-        border-style: none none solid;
-        border-width: 1px;
+.footer-container {
+  
+  width: 100%;
+  margin-top: 2rem;
+  background: var(--header-color);
+  border-top: 1px solid var(--light-gray-color);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  & .footer {
+    max-width: 81rem;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.5rem;
+
+    & a {
+      font-family: var(--primary-font);
+      font-size: 1em;
+      color: var(--gray-color);
+      border-left: 1px solid var(--light-gray-color);
+      padding-left: 0.5rem;
+      cursor: pointer;
+      &:hover {
+        color: var(--primary-color);
+      }
     }
-    &-container{
-        max-width: 1200px;
-        margin:0 auto;
-        padding: 15px;
-        color: #020122;
-        h4{
-            font-size: 1.5rem;
-        }
+  }
+  & .copyright-container {
+    max-width: 81rem;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
 
-
+    flex-direction: row;
+    padding: 0.5rem 1rem;
+    justify-content: space-between;
+    align-items: center;
+    & span {
+      color: var(--primary-color);
+      margin-right: 0.5rem;
     }
-    
+    & img {
+      object-fit: cover;
+      height: 40px;
+      width: fit-content;
+    }
+  }
 }

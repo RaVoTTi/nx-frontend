@@ -34,8 +34,7 @@
                 type="text"
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
-              <small *ngIf="validateCamp('name')" class="ml-2 p-error"
-                >*Name is required
+              <small [errorMsg]="errorMsg('name')" class="ml-2 p-error">
               </small>
             </div>
             <div class="field col-12 sm:col-6 md:col-3">
@@ -47,8 +46,7 @@
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
 
-              <small *ngIf="validateCamp('minPrice')" class="ml-2 p-error"
-                >*Price is required
+              <small [errorMsg]="errorMsg('minPrice')" class="ml-2 p-error">
               </small>
             </div>
             <div class="field col-12 sm:col-6 md:col-3">
@@ -60,8 +58,7 @@
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               />
 
-              <small *ngIf="validateCamp('maxPrice')" class="ml-2 p-error"
-                >*Price is required
+              <small [errorMsg]="errorMsg('maxPrice')" class="ml-2 p-error">
               </small>
             </div>
 
@@ -77,8 +74,7 @@
                 filterBy="name"
               ></p-dropdown
               ><br />
-              <small *ngIf="validateCamp('subject')" class="ml-2 p-error"
-                >*Subject is required
+              <small [errorMsg]="errorMsg('subject')" class="ml-2 p-error">
               </small>
             </div>
             <div class="field col-6 md:col-3">
@@ -93,8 +89,7 @@
                 filterBy="name"
               ></p-dropdown
               ><br />
-              <small *ngIf="validateCamp('autor')" class="ml-2 p-error"
-                >*Autor is required
+              <small [errorMsg]="errorMsg('autor')" class="ml-2 p-error">
               </small>
             </div>
             <div class="text-center col field md:col-3">
@@ -116,8 +111,7 @@
                 class="p-2 w-full text-base border-solid appearance-none outline-none text-color surface-overlay border-1 surface-border border-round focus:border-primary"
               ></textarea>
 
-              <small *ngIf="validateCamp('description')" class="p-error"
-                >*Description is required
+              <small [errorMsg]="errorMsg('description')" class="p-error">
               </small>
             </div>
 
@@ -126,9 +120,7 @@
                 formControlName="content"
                 [style]="{ height: '320px' }"
               ></p-editor>
-              <small *ngIf="validateCamp('content')" class="p-error"
-                >*Content is required
-              </small>
+              <small [errorMsg]="errorMsg('content')" class="p-error"> </small>
             </div>
           </div>
 
@@ -148,20 +140,25 @@
               </div>
             </div>
           </div>
-          <div class="col-12" *ngIf="editMode === continue" formArrayName="evaluation">
+          <div
+            class="col-12"
+            *ngIf="editMode === continue"
+            formArrayName="evaluation"
+          >
             <label for="evaluation">Evaluation</label>
+          <div class="generic-container">
 
             <button class="mt-2 button-primary" (click)="addEvaluation()">
               Add Evaluation
             </button>
-
+            
+          </div>
             <div
-
-              class="field col-12"
+              class="field col-12 mt-2"
               *ngFor="let test of getEvaluationArray().controls; let i = index"
               [formArrayName]="i"
             >
-              <div class="flex align-items-center gap-2">
+              <div class="flex align-items-center mt-4">
                 <h2>{{ i + 1 + ')' }}</h2>
                 <input
                   style="height: max-content; width: 100%"
@@ -170,18 +167,20 @@
                   pInputText
                   placeholder="Question"
                 />
-                <button
-                  class="button-primary"
-                  style="min-width: 80px; max-width: 100px"
-                  [disabled]="getEvaluationArray().controls.length <= 1"
-                  (click)="removeEvaluation(i)"
-                >
-                  Remove
-                </button>
+                <div class="generic-container">
+                  <button
+                    class="button-primary"
+                    style="min-width: 80px; max-width: 100px"
+                    [disabled]="getEvaluationArray().controls.length <= 1"
+                    (click)="removeEvaluation(i)"
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
 
               <div
-                class="pl-4"
+                class="pl-4 mt-4"
                 formArrayName="options"
                 *ngFor="
                   let optionnn of getOptionArray(i).controls;
@@ -194,14 +193,13 @@
                   <p-radioButton
                     [name]="i.toString()"
                     [formControl]="getCorrectKey(i)"
-                    [value]="getKey(i,y).value"
+                    [value]="getKey(i, y).value"
                   ></p-radioButton>
 
                   <input
                     type="text"
                     formControlName="key"
                     pInputText
-                    
                     maxlength="1"
                     style="text-transform: uppercase"
                     placeholder="Key"
@@ -214,20 +212,23 @@
                     pInputText
                     placeholder="Option"
                   />
-
-                  <button
-                    class="button-primary"
-                    style="min-width: 80px; max-width: 100px"
-                    [disabled]="getOptionArray(i).controls.length <= 1"
-                    (click)="removeOption(i, y)"
-                  >
-                    Remove
-                  </button>
+                  <div class="generic-container">
+                    <button
+                      class="button-primary"
+                      style="min-width: 80px; max-width: 100px"
+                      [disabled]="getOptionArray(i).controls.length <= 1"
+                      (click)="removeOption(i, y)"
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
               </div>
-              <button class="button-primary" (click)="addOption(i)">
-                Add Option
-              </button>
+              <div class="generic-container">
+                <button class="button-primary" (click)="addOption(i)">
+                  Add Option
+                </button>
+              </div>
             </div>
           </div>
         </form>
@@ -235,4 +236,3 @@
     </div>
   </p-card>
 </div>
-

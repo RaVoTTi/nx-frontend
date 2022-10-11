@@ -1,9 +1,19 @@
-<i
-  class="pi pi-heart icons"
-  pBadge
+<div class="wishlist-icon-container">
+  <!-- <i
+    class="pi pi-bookmark icon"
+    routerLink="/app/wishlist"
+    routerLinkActive="active"
+  >
+  </i> -->
+  <i
   routerLink="/app/wishlist"
   routerLinkActive="active"
-  style="font-size: 1.8rem"
-  value="{{ wishlistCount }}"
-  severity="danger"
-></i>
+  >
+  Wishlist
+</i>
+
+
+    <span>
+      {{ wishlistCount }}
+    </span>
+</div>

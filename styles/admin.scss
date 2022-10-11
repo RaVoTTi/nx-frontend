@@ -1,9 +1,11 @@
 // BASE
-@import '~normalize.css/normalize.css';
-@import './base/colors.scss';
-@import './base/fonts.scss';
-@import './base/mixins.scss';
-@import './base/configuration.scss';
+// @import '~normalize.css/normalize.css';
+@use './base/_reset.scss';
+
+// @import './base/colors.scss';
+// @import './base/fonts.scss';
+// @import './base/mixins.scss';
+// @import './base/configuration.scss';
 
 // LIBRARIES
 @import '~primeicons/primeicons.css';
@@ -20,14 +22,15 @@
 @import './apps/admin/dashboard.scss';
 
 // COMPONENTS
-@import './apps/admin/button.scss';
+// @import './apps/admin/button.scss';
 // SHARED
 @import './apps/admin/shell.scss';
-@import './apps/robinbook/shared/auth.scss';
+@import './libs/auth/auth-page.scss';
+@import './base/shared/input.scss';
+@import './base/shared/button.scss';
 
 
 //LIBS
-@import './libs/ui/ui.scss';
 
 // LOGIN
 @import './libs/user/user.scss';

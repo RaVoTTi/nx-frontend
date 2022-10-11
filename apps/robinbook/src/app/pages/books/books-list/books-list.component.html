@@ -1,23 +1,17 @@
-<div class="book-header">
-  <div class="flex book-search align-items-center justify-content-between">
-    <h2>Search Book</h2>
-    <div class="flex align-items-center">
-      <input type="text" class="robin-input" placeholder="Search" />
-      <div class="icon-filter">
-        <i class="pi pi-filter" style="font-size: 1.5rem"></i>
-      </div>
-    </div>
-  </div>
-</div>
+<frontend-search-header></frontend-search-header>
 
-<div class="book-container">
-  <div class="grid" *ngIf="books">
-    <frontend-book-item
-      class="col-6 md:col-4 lg:col-3"
-      *ngFor="let book of books"
+<div class="list-container">
+  <ng-container *ngIf="books; else loading">
+    <frontend-card-book
+      *ngFor="let book of books; let i = index"
       [book]="book"
       [isFavorite]="isFavorite(book._id)"
     >
-    </frontend-book-item>
-  </div>
+    </frontend-card-book>
+  </ng-container>
+
+  <ng-template #loading>
+    <div *ngFor="let card of [0, 1, 2, 3, 4, 5, 6, 7]" class="card-loading"></div>
+
+  </ng-template>
 </div>

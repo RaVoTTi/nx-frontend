@@ -13,8 +13,8 @@ import { AutorsListComponent } from './pages/autors/autors-list/autors-list.comp
 import { UsersListComponent } from './pages/users/users-list/users-list.component';
 import { UsersFormComponent } from './pages/users/users-form/users-form.component';
 import { OrdersListComponent } from './pages/orders/orders-list/orders-list.component';
-import { AuthAdminGuard, } from '@frontend/auth';
 import { OrdersDetailComponent } from './pages/orders/orders-detail/orders-detail.component';
+import { AuthAdminGuard } from '@frontend/auth-base';
 
 const routes: Routes = [
 
@@ -95,7 +95,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('@frontend/auth').then((m) => m.AuthModule),
+    loadChildren: () => import('@frontend/auth-admin').then((m) => m.AuthAdminModule),
 
   },
   {

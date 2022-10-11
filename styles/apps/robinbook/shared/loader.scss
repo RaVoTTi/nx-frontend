@@ -1,0 +1,22 @@
+
+.loading-text {
+  background: var(--light-gray-color);
+  // background-color: red;
+  animation: blinking 1.5s linear infinite alternate;
+}
+.loading-text {
+  height: 1.2em;
+  width: 80%;
+  margin: 1em;
+  border-radius: 2px;
+}
+
+@keyframes blinking {
+  0% {
+    opacity: 0.2;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

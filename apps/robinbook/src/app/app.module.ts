@@ -12,28 +12,28 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
-import {MenuModule} from 'primeng/menu';
+import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { RatingModule } from 'primeng/rating';
-import {SplitButtonModule} from 'primeng/splitbutton';
+import { SplitButtonModule } from 'primeng/splitbutton';
 // ME
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
-import { BooksViewComponent } from './pages/books/books-view/books-view.component';
+import { BookViewComponent } from './pages/books/book-view/book-view.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
-import { UiModule } from '@frontend/ui';
 import { MessageService } from 'primeng/api';
 import { BookBaseModule } from '@frontend/book-base';
 import { MainComponent } from './shared/main/main.component';
-import { AuthModule, JwtInterceptor } from '@frontend/auth';
+import { AuthBaseModule, JwtInterceptor } from '@frontend/auth-base';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component';
 import { ToastModule } from 'primeng/toast';
-
+import { TestComponent } from './pages/test/test.component';
+import { UtilsModule } from '@frontend/utils';
 
 const UX_MODULE = [
   MenubarModule,
@@ -63,16 +63,14 @@ const UX_MODULE = [
   declarations: [
     AppComponent,
     BooksListComponent,
-    BooksViewComponent,
+    BookViewComponent,
     FooterComponent,
     HomeComponent,
     HeaderComponent,
     NavbarComponent,
     AuthNavbarComponent,
-
     MainComponent,
-
-
+    TestComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,18 +80,14 @@ const UX_MODULE = [
     BookBaseModule,
     ReactiveFormsModule,
     FormsModule,
-
-    UiModule,
-    ...UX_MODULE,
-    
-    AuthModule,
+    UtilsModule,
+    AuthBaseModule,
     StoreModule.forRoot({}),
-    EffectsModule.forRoot([])
-
+    EffectsModule.forRoot([]),
   ],
   providers: [
     MessageService,
-    {provide: HTTP_INTERCEPTORS , useClass: JwtInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

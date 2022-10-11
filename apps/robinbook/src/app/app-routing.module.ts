@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard, LoginGuard } from '@frontend/auth';
 // import { AuthGuard } from '@frontend/auth';
 import { WishlistComponent } from '@frontend/book-base';
 import { BooksListComponent } from './pages/books/books-list/books-list.component';
-import { BooksViewComponent } from './pages/books/books-view/books-view.component';
+import { BookViewComponent } from './pages/books/book-view/book-view.component';
 import { HomeComponent } from './pages/home/home.component';
+import { TestComponent } from './pages/test/test.component';
 import { MainComponent } from './shared/main/main.component';
+import { AuthGuard, LoginGuard } from '@frontend/auth-base';
 
 const routes: Routes = [
   {
@@ -16,6 +17,9 @@ const routes: Routes = [
       {
         path: 'home',
         component: HomeComponent,
+        // component: TestComponent,
+        canActivate: [LoginGuard],
+
       },
       {
         path: 'books',
@@ -23,7 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'books/:id',
-        component: BooksViewComponent,
+        component: BookViewComponent,
       },
 
       {
@@ -46,15 +50,19 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('@frontend/auth').then((m) => m.AuthModule),
-
+    loadChildren: () => import('@frontend/auth-user').then((m) => m.AuthUserModule),
+    
   },
   {
     path: 'checkout',
     loadChildren: () => import('@frontend/checkout').then((m) => m.CheckoutModule),
-
+    
   },
-
+  {
+    path:'**',
+    redirectTo: 'app'
+  }
+  
 
 ];
 
