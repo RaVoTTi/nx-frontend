@@ -153,7 +153,9 @@ export class CheckoutViewComponent implements OnInit {
             .then(async () => {
               this.alert.fire(
                 { icon: 'success', text: 'Your paid was aproved' },
-                {}
+                {
+                  urlConfi: '/app/books', // 🔴 TODOOO 
+                }
               );
 
               this.checkoutService

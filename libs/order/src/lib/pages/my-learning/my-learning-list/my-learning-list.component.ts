@@ -9,7 +9,7 @@ import { OrderService } from '../../../services/order.service';
 })
 export class MyLearningListComponent implements OnInit {
 
-  orders: IOrder[]| undefined
+  orders: IOrder[] = []
 
   constructor(
     private orderService:OrderService
@@ -20,8 +20,10 @@ export class MyLearningListComponent implements OnInit {
        .getMyOrders(1)
        .pipe(take(1))
        .subscribe(({result}) => {
+        console.log(this.orders)
          if(result){
            this.orders = result;
+        console.log(this.orders)
 
          }
        });

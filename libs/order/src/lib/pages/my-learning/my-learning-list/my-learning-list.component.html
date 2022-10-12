@@ -1,10 +1,10 @@
 <frontend-search-header></frontend-search-header>
-<ng-container *ngIf="orders; else loading">
+<ng-container *ngIf="orders.length > 0">
 <div class="list-container">
     <frontend-card-learning *ngFor="let order of orders" [order]="order">
     </frontend-card-learning>
   </div>
 </ng-container>
-<ng-template #loading>
+<ng-container *ngIf="orders.length === 0 ">
 <frontend-nothing></frontend-nothing>
-</ng-template>
+</ng-container>
