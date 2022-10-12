@@ -10,7 +10,7 @@ import { MenuItem } from 'primeng/api';
 export class AuthNavbarComponent implements OnInit {
   whislist: IItem[] = [
     {
-      label: 'MyWishlist',
+      label: 'Wishlist',
       icon: '💚',
       onClick: () => {
         this.router.navigate(["/app/wishlist"]);
@@ -27,31 +27,31 @@ export class AuthNavbarComponent implements OnInit {
       },
     },
     {
-      label: 'MyLearning',
+      label: 'Learning',
       icon: '📝',
       onClick: () => {
-        this.router.navigate(['/app/order/mylearning']);
+        this.router.navigate(['/app/order/learning']);
       },
     },
   ];
   secondary: IItem[] = [
     {
-      label: 'MyOrdering',
+      label: 'Orders',
       icon: '💵',
       onClick: () => {
-        this.router.navigate(['/app/order/myordering']);
+        this.router.navigate(['/app/order/orders']);
       },
     },
     {
-      label: 'MySupport',
+      label: 'Support',
       // routerLink: 'order/myordering',
       icon: '📞',
       onClick: () => {
-        this.router.navigate(['/app/order/myordering']);
+        this.router.navigate(['/app/support']);
       },
     },
     {
-      label: 'MySettings',
+      label: 'Settings',
       icon: '🧰',
       onClick: () => {
         console.log('asdasdsa');

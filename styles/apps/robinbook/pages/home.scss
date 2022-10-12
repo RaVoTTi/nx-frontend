@@ -1,36 +1,3 @@
-// .home {
-//     padding-top: 85px;
-
-//   &-text {
-//     max-width: 600px;
-//     h2 {
-//       color: var(--primary-color);
-//       font-size: 4em;
-//       line-height: 1.4em;
-//       font-weight: 600;
-//     }
-//     p {
-//       color: #333;
-//       font-size: 1.5em;
-//       line-height: 1.4em;
-//       font-weight: 200;
-//     }
-//   }
-
-//   &-img {
-//     position: relative;
-//     right: 40px;
-//     top: 40px;
-//     width: 600px;
-//     display: flex;
-//     justify-content: flex-end;
-//     align-self: start;
-//     img {
-//       width: 200px;
-//     }
-//   }
-// }
-
 .home-container {
   max-width: 81rem;
   margin: 0 auto;
@@ -103,56 +70,6 @@
         i{
           font-size: 5rem;
         }
-
-        // & .arrow-container {
-        //   width: 100%;
-        //   height: 50px;
-        //   display: flex;
-        //   align-items: center;
-        //   flex-wrap: nowrap;
-
-        //   .arrow {
-        //     display: flex;
-        //     flex-direction: row;
-        //     flex-wrap: nowrap;
-        //     align-items: center;
-        //     margin-left: 3em;
-        //     transition: .3s;
-        //     & .point {
-        //       position: relative;
-        //       height: 1.5em;
-        //       width: 1.5em;
-        //       background: var(--light-gray-color);
-        //       clip-path: polygon(80% 10%, 100% 50%, 80% 90%, 0% 50%);
-        //     }
-        //     & .shaft {
-        //       position: relative;
-
-        //       height: 0.35em;
-        //       width: 7em;
-        //       background: var(--shaft-color);
-        //       z-index: 1;
-        //     }
-
-        //     & .fletching {
-        //       position: relative;
-
-        //       background: var(--fletching-color);
-        //       height: 1.5em;
-        //       width: 2em;
-        //       z-index: 0;
-        //       transform: translate(-1.5em, 0);
-        //       clip-path: polygon(
-        //         100% 0%,
-        //         75% 50%,
-        //         100% 100%,
-        //         25% 100%,
-        //         0% 50%,
-        //         25% 0%
-        //       );
-        //     }
-        //   }
-        // }
       }
     }
   }
@@ -168,17 +85,7 @@
       font-size: 2em;
       text-transform: capitalize;
   }
-  //   & .home-list{
-  //     background-color: red;
-  //     max-width: 81em;
-  //     margin: 0 auto;
-  //     padding: 1em;
-  //     gap: 1em;
-  //     display: grid;
-  //     justify-content: center;
-  //     grid-template-columns: repeat(auto-fill, minmax(min(14em, 100%), 1fr));
-  //     grid-auto-rows: 40em;
-  // }
+ 
 }}
 @keyframes moveArrow {
   0% {

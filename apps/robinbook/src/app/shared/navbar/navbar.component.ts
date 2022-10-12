@@ -9,8 +9,8 @@ import { IItem } from 'interfaces';
 export class NavbarComponent implements OnInit {
   wishlist: IItem[] = [
     {
-      label: 'MyWishlist',
-      icon: 'pi pi-heart',
+      label: 'Wishlist',
+      icon: '💚',
       onClick: () => {
         this.router.navigate(["/app/wishlist"]);
       },
@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
   login: IItem[] = [
     {
       label: 'Login',
-      icon: 'pi pi-user',
+      icon: '🤓',
       onClick: () => {
         this.router.navigate(['/auth/login']);
       },
@@ -28,7 +28,7 @@ export class NavbarComponent implements OnInit {
   signUp: IItem[] = [
     {
       label: 'Sign Up',
-      icon: 'pi pi-user-plus',
+      icon: '📝',
       onClick: () => {
         this.router.navigate(['/auth/signup']);
       },
@@ -38,18 +38,12 @@ export class NavbarComponent implements OnInit {
   primary: IItem[] = [
     {
       label: 'Books',
-      icon: 'pi pi-book',
+      icon: '📚',
       onClick: () => {
         this.router.navigate(['/app/books']);
       },
     },
-    {
-      label: 'MyLearning',
-      icon: 'pi pi-paperclip',
-      onClick: () => {
-        this.router.navigate(['/app/order/mylearning']);
-      },
-    },
+
   ];
   screenWidth: any;
   isDropdownOpened = false;
