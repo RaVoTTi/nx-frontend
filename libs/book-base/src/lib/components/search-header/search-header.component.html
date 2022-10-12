@@ -1,38 +1,15 @@
 <div class="search-container">
   <div class="search">
     <div
-      class="input-container dropdown-relative"
-      actionOutside
-      (actionOutside)="actionOutside()"
+      class="input-container"
     >
       <div class="input-split" (click)="toggleDropdown()">
         <input type="text" class="input" placeholder="Search" />
         <i class="pi pi-search input-icon"></i>
       </div>
 
-      <div
-        class="searchdown-container"
-        *ngIf="isDropdownOpened"
-        (click)="actionOutside()"
-      >
-        <frontend-dropdown [items]="items"></frontend-dropdown>
-      </div>
+
     </div>
   </div>
 </div>
 
-<!-- <div class="search-container">
-  <div class="search">
-    <div class="input-container dropdown-relative">
-      <div class="input-split" (click)="toggleDropdown()">
-        <input type="text" class="input" placeholder="Search" />
-
-        <i class="pi pi-search input-icon"></i>
-      </div>
-
-      <div *actionOutside="isDropdownOpened" class="searchdown-container" >
-        <frontend-dropdown [items]="items"></frontend-dropdown>
-      </div>
-    </div>
-  </div>
-</div> -->

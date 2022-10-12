@@ -33,20 +33,7 @@
       transition: 0.4s;
       animation: ease;
     }
-    // &[title]:hover::after {
-    //   content: attr(title);
-    //   position: absolute;
-    //   display: block;
-    //   top: 100%;
-    //   left: 50%;
-    //   font-size: .5em;
-    //   z-index: 11;
-    //   color: var(--background-color);
-    //   background: var(--primary-color);
-    // }
-    // &[title]:hover{
-    //   border-radius: 20px;
-    // }
+
   }
 
   & .toolbar-tag {
@@ -77,19 +64,6 @@
       font-size: 0.6em;
     }
   }
-  // & .footer-container {
-  //   width: 100%;
-  //   align-self: center;
-  //   padding: 0 .4em;
-  //   height: 2.5em;
-  //   border-radius: 50%;
-  //   bottom: 0.5em;
-  //   cursor: pointer;
-  //   display: flex;
-  //   align-items: center;
-  //   justify-content: space-between;
-
-  // }
 
   & .card-container {
     padding: 16px;
@@ -98,14 +72,23 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    // border: 1px solid var(--primary-color);
+    border: 1px solid var(--light-gray-color);
+
+
+    border-radius: 20px;
+
+
     & .upper-container {
       height: 60%;
       width: 100%;
-      border: 1px solid var(--primary-color);
-      border-radius: 20px;
       overflow: hidden;
       display: flex;
       justify-content: center;
+    border-radius: 20px;
+
+    // border: 1px solid var(--primary-color);
+
       align-items: center;
       & img {
         max-height: 90%;
@@ -156,6 +139,7 @@
   transform: translate(-1px, 4px);
   animation: ease;
   transition-duration: 0.4s;
+
 }
 .featured {
   grid-column: span 2;
