@@ -30,7 +30,7 @@ export class AuthNavbarComponent implements OnInit {
       label: 'Learning',
       icon: '📝',
       onClick: () => {
-        this.router.navigate(['/app/order/learning']);
+        this.router.navigate(['/app/order/mylearning']);
       },
     },
   ];
@@ -39,7 +39,7 @@ export class AuthNavbarComponent implements OnInit {
       label: 'Orders',
       icon: '💵',
       onClick: () => {
-        this.router.navigate(['/app/order/orders']);
+        this.router.navigate(['/app/order/myordering']);
       },
     },
     {
@@ -54,7 +54,7 @@ export class AuthNavbarComponent implements OnInit {
       label: 'Settings',
       icon: '🧰',
       onClick: () => {
-        console.log('asdasdsa');
+        this.router.navigate(['/app/settings']);
       },
     },
     {
