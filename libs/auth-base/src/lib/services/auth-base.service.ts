@@ -12,12 +12,11 @@ import { Router } from '@angular/router';
 // import { AuthFacade } from '../state/auth.facade';
 import { WishlistService } from '@frontend/book-base';
 import { Store } from '@ngrx/store';
-import * as AuthActions from '../state/auth.actions';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthBaseService {
   API_URL = environment.API_URL;
   // isAuthenticated$ : BehaviorSubject<boolean> = new BehaviorSubject(false)
 
@@ -33,7 +32,7 @@ export class AuthService {
   ) {}
 
   login(login: ILogin) {
-    this.store.dispatch(AuthActions.loginRequest({ login }));
+    // this.store.dispatch(AuthActions.loginRequest({ login }));
   }
 
   postLogin(login: ILogin): Observable<IResponse> {
@@ -64,14 +63,14 @@ export class AuthService {
   }
 
   loginJWT() {
-    this.store.dispatch(AuthActions.loginJWT());
+    // this.store.dispatch(AuthActions.loginJWT());
   }
 
   logout(route: string) {
     this.router.navigateByUrl(route);
     this.wishlistService.emptyBookWishlist();
     this.localService.deleteToken();
-    this.store.dispatch(AuthActions.logout());
+    // this.store.dispatch(AuthActions.logout());
   }
   // initAppSession() {
   //   this.authFacade.buildAuthSession();

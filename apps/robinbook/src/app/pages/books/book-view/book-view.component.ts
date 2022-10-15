@@ -2,10 +2,10 @@ import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
 import { BookBaseService, WishlistService } from '@frontend/book-base';
 import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs';
+import { of, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { AuthState , authSelector} from '@frontend/auth-base';
+// import { AuthState , authSelector} from '@frontend/auth-base';
 import { Store } from '@ngrx/store';
 
 
@@ -17,7 +17,8 @@ export class BookViewComponent implements OnInit {
   RAW_URL = environment.RAW_URL
   book!: IBook;
   bookId!: string;
-  isAuth$ = this.store.select(authSelector.selectIsAuth)
+  // isAuth$ = this.store.select(authSelector.selectIsAuth)
+  isAuth$ = of(false)
 
   constructor(
     private bookBaseService: BookBaseService,
@@ -25,7 +26,7 @@ export class BookViewComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private router: Router,
-    private store: Store<AuthState>
+    // private store: Store<AuthState>
 
   ) {}
 

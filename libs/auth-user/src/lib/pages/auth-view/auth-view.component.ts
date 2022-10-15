@@ -3,10 +3,10 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { min, tap, timer } from 'rxjs';
-// import { AuthService } from '../../services/auth.service';
+// import { AuthBaseService } from '../../services/auth.service';
 // import { LocalStorageService } from '../../services/local-storage.service';
 import { Store } from '@ngrx/store';
-import { AuthService, LocalStorageService } from '@frontend/auth-base';
+import { AuthBaseService, LocalStorageService } from '@frontend/auth-base';
 import {
   AlertService,
   ErrorHandlerService,
@@ -26,7 +26,7 @@ export class AuthViewComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private authService: AuthService,
+    private authBaseService: AuthBaseService,
     private store: Store,
     private localStorageService: LocalStorageService,
     private alert: AlertService,
@@ -56,14 +56,12 @@ export class AuthViewComponent implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
-    this.authService
+    this.authBaseService
       .postLogin(this.loginForm.value)
       .pipe(
         tap((response) => {
           if (response.token) {
-            this.authService.login(this.loginForm.value);
             this.router.navigate(['/app']);
-            this.localStorageService.setToken(response.token); // 🔴 CHANGE IT
           }
         })
       )
@@ -82,7 +80,7 @@ export class AuthViewComponent implements OnInit {
       this.signUpForm.markAllAsTouched();
       return;
     }
-    this.authService.postSignUp(this.signUpForm.value).pipe(
+    this.authBaseService.postSignUp(this.signUpForm.value).pipe(
       tap((response) => {
         if (response.ok) {
           this.alert.fire({icon:'success', text:'User Created succesful'});
@@ -99,7 +97,7 @@ export class AuthViewComponent implements OnInit {
 
     }});
 
-    this.authService.postSignUp(this.signUpForm.value);
+    this.authBaseService.postSignUp(this.signUpForm.value);
     // .subscribe((response) => {
     //   if (response.ok) {
     //     this.messageService.add({

@@ -20,13 +20,11 @@ export class MyLearningListComponent implements OnInit {
        .getMyOrders(1)
        .pipe(take(1))
        .subscribe(({result}) => {
-        console.log(this.orders)
          if(result){
            this.orders = result;
-        console.log(this.orders)
 
          }
-       });
+       })
 
   }
 

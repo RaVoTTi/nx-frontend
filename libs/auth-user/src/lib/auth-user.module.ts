@@ -31,7 +31,6 @@ const routes: Routes = [
     UtilsModule,
     FormsModule,
     ReactiveFormsModule,
-    AuthBaseModule,
   ],
   declarations: [AuthViewComponent],
 })

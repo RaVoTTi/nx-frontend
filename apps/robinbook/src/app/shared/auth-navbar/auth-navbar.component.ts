@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, LocalStorageService } from '@frontend/auth-base';
+import { AuthBaseService, LocalStorageService } from '@frontend/auth-base';
 import { IItem } from 'interfaces';
 import { MenuItem } from 'primeng/api';
 @Component({
@@ -62,7 +62,7 @@ export class AuthNavbarComponent implements OnInit {
       label: 'Log Out',
       icon: '🚪',
       onClick: () => {
-        this.authService.logout('/app/home');
+        this.authBaseService.logout('/app/home');
       },
     },
   ];
@@ -73,7 +73,7 @@ export class AuthNavbarComponent implements OnInit {
   constructor(
     private router: Router,
 
-    private authService: AuthService
+    private authBaseService: AuthBaseService
   ) {}
 
   ngOnInit(): void {

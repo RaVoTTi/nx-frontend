@@ -7,12 +7,14 @@
         <img src="assets/word@2x.png" class="logo" alt="" 
         />
       </div>
-      <div class="">
+      <!-- <div class="">
         <robinbook-navbar 
         *ngIf="(isAuth$ | async) === false"></robinbook-navbar>
         <robinbook-auth-navbar
           *ngIf="(isAuth$ | async)"
         ></robinbook-auth-navbar>
-      </div>
+      </div> -->
+      <h2>No Autorizado</h2>
+      <h2 *ngIf="false"> Autorizado</h2>
     </div>
 </div>

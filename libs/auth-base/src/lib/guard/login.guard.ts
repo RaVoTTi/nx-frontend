@@ -12,20 +12,18 @@ import {
 import { select, Store } from '@ngrx/store';
 import { IToken } from 'interfaces';
 import { map, Observable, of, take, tap } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { LocalStorageService } from '../services/local-storage.service';
-import { AuthState } from '../state/auth.reducer';
-import * as authSelector from '../state/auth.selectors';
+// import { AuthState } from '../state/auth.reducer';
+// import * as authSelector from '../state/auth.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginGuard implements CanActivate, CanLoad {
-  isAuth$ = this.store.pipe(select(authSelector.selectIsAuth));
-
+  // isAuth$ = this.store.pipe(select(authSelector.selectIsAuth));
+  isAuth$ = of(false)
   constructor(
     private router: Router,
-    private store: Store<AuthState>,
+    // private store: Store<AuthState>,
   ) {
 
     

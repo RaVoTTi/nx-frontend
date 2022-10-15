@@ -1,58 +1,32 @@
 // ANGULAR
-import { NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// PRIME NG
-// import { ButtonModule } from 'primeng/button';
-// import { InputTextModule } from 'primeng/inputtext';
-// import { MessageService } from 'primeng/api';
-// import { ToastModule } from 'primeng/toast';
-// ME
+// NGRX
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-
-import { authReducer } from './state/auth.reducer';
-import { AuthEffects } from './state/auth.effects';
+// ME
+// import { authReducer } from './state/auth.reducer';
+// import { AuthEffects } from './state/auth.effects';
+import { AuthBaseService } from './services/auth-base.service';
+import * as fromAuth from './reducers';
 import { LoginGuard } from './guard/login.guard';
+// import { LoginGuard } from './guard/login.guard';
+// import { JwtInterceptor } from './services/jwt.interceptor';
 
-// const routes: Routes = [
-//   {
-//     path: '',
-//     canLoad: [LoginGuard],
-//     canActivate: [LoginGuard],
-
-//     children: [
-//       {
-//         path: 'login',
-//         component: AuthViewComponent,
-//       },
-//       {
-//         path: 'signup',
-//         component: AuthViewComponent,
-//       },
-//       {
-//         path: 'admin/login/pppp',
-
-//         component: AdminAuthViewComponent,
-//       },
-//       {
-//         path: '**',
-//         redirectTo: 'auth/login',
-//       },
-//     ],
-//   },
-
-// ];
 @NgModule({
   imports: [
-    // ToastModule,
     CommonModule,
-
-
-    StoreModule.forFeature('auth', authReducer),
-    EffectsModule.forFeature([AuthEffects]),
+    StoreModule.forFeature('auth', fromAuth.reducers),
   ],
- 
 })
-export class AuthBaseModule {}
+export class AuthBaseModule {
+  static forRoot(): ModuleWithProviders<AuthBaseModule> {
+    return {
+      ngModule: AuthBaseModule,
+      providers: [
+        AuthBaseService,
+        LoginGuard
+      ],
+    };
+  }
+}

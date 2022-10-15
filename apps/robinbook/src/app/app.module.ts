@@ -2,20 +2,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-// PRIME NG
-import { AccordionModule } from 'primeng/accordion';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { DividerModule } from 'primeng/divider';
-import { InputTextModule } from 'primeng/inputtext';
-import { MenuModule } from 'primeng/menu';
-import { MenubarModule } from 'primeng/menubar';
-import { RatingModule } from 'primeng/rating';
-import { SplitButtonModule } from 'primeng/splitbutton';
+
 // ME
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -31,33 +22,13 @@ import { MainComponent } from './shared/main/main.component';
 import { AuthBaseModule, JwtInterceptor } from '@frontend/auth-base';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component';
-import { ToastModule } from 'primeng/toast';
 import { TestComponent } from './pages/test/test.component';
 import { UtilsModule } from '@frontend/utils';
+import * as fromRoot from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '@env/environment';
 
-const UX_MODULE = [
-  MenubarModule,
-  AccordionModule,
-  DividerModule,
-  CardModule,
-  MenuModule,
-  ToastModule,
 
-  RatingModule,
-  // InputTextModule,
-  // ToastModule,
-  // ToolbarModule,
-  // ButtonModule,
-  // TableModule,
-  // ConfirmDialogModule,
-  // InputSwitchModule,
-  // ColorPickerModule,
-  // TagModule,
-  // DropdownModule,
-  // EditorModule,
-  // InputMaskModule,
-  // FieldsetModule
-];
 
 @NgModule({
   declarations: [
@@ -81,13 +52,16 @@ const UX_MODULE = [
     ReactiveFormsModule,
     FormsModule,
     UtilsModule,
-    AuthBaseModule,
-    StoreModule.forRoot({}),
+    AuthBaseModule.forRoot(),
     EffectsModule.forRoot([]),
+    StoreModule.forRoot(fromRoot.reducers, { metaReducers: fromRoot.metaReducers }),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+  
   ],
   providers: [
     MessageService,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    
   ],
   bootstrap: [AppComponent],
 })
