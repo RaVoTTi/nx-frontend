@@ -12,7 +12,7 @@ export class NavbarComponent implements OnInit {
       label: 'Wishlist',
       icon: '💚',
       onClick: () => {
-        this.router.navigate(["/app/wishlist"]);
+        this.router.navigate(["/app/books/wishlist"]);
       },
     },
   ];

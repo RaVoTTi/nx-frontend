@@ -5,7 +5,9 @@ export * from './lib/auth-base.module';
 
 
 // NGRX
-export * from './lib/reducers/index'
+export * from './lib/reducer/index'
+export * as authSelectors from './lib/auth.selectors'
+
 export * from './lib/actions/action-type'
 
 // INTERFACES
@@ -14,8 +16,9 @@ export * from './lib/interfaces/IRegister'
 
 
 // GUARDS
-export * from './lib/guards/auth.guard';
-export * from './lib/guards/login.guard';
+export * from './lib/guards/IsLoggedOut.guard';
+
+export * from './lib/guards/IsLoggedIn.guard';
 export * from './lib/guards/auth-admin.guard';
 
 // SERVICES

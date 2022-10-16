@@ -8,8 +8,11 @@ import { EffectsModule } from '@ngrx/effects';
 // import { authReducer } from './state/auth.reducer';
 // import { AuthEffects } from './state/auth.effects';
 import { AuthBaseService } from './services/auth-base.service';
-import { LoginGuard } from './guards/login.guard';
-import { authReducer } from './reducers';
+import { authReducer } from './reducer';
+import { IsLoggedIn } from './guards/IsLoggedIn.guard';
+import { IsLoggedOut } from './guards/IsLoggedOut.guard';
+
+import { AuthEffects } from './auth.effects';
 // import { LoginGuard } from './guard/login.guard';
 // import { JwtInterceptor } from './services/jwt.interceptor';
 
@@ -17,6 +20,7 @@ import { authReducer } from './reducers';
   imports: [
     CommonModule,
     StoreModule.forFeature('auth', authReducer),
+    EffectsModule.forFeature([AuthEffects])
   ],
 })
 export class AuthBaseModule {
@@ -25,7 +29,9 @@ export class AuthBaseModule {
       ngModule: AuthBaseModule,
       providers: [
         AuthBaseService,
-        LoginGuard
+        IsLoggedIn,
+        IsLoggedOut
+
       ],
     };
   }

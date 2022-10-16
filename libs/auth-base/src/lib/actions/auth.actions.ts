@@ -1,9 +1,8 @@
 import { createAction, props } from "@ngrx/store";
-import { IAuth } from "../interfaces/IAuth";
 
 export const login = createAction(
   "[Auth Page] User Login",
-  props<{user: IAuth}>()
+  props<{token: string}>()
 )
 
 export const logout = createAction(

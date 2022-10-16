@@ -1,9 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthBaseService } from '@frontend/auth-base';
+import { AuthBaseService, authSelectors, LocalStorageService } from '@frontend/auth-base';
 // import { AuthBaseService, AuthState , authSelector } from '@frontend/auth-base';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
-import { of, Subject, take, takeUntil } from 'rxjs';
+import { map, Observable, of, Subject, take, takeUntil } from 'rxjs';
+import { AppState } from '../../reducers';
 
 @Component({
   selector: 'robinbook-header',
@@ -11,20 +12,26 @@ import { of, Subject, take, takeUntil } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   items!: MenuItem[];
-  isAuthenticated!: boolean;
+  
+  isLoggedIn$!: Observable<boolean>;
+  isLoggedOut$!: Observable<boolean>;
+  
   // isAuth$ = this.store.select(authSelector.selectIsAuth)
 
   constructor(
-    private authBaseService: AuthBaseService,
-    private store: Store
-  ) {}
+    private localStorageService : LocalStorageService,
+    private store: Store<AppState>) {}
 
   ngOnInit(): void {
 
+    this.isLoggedIn$ = this.store.pipe(
+      select(authSelectors.isLoggedIn)
+    )
+    this.isLoggedOut$ = this.store.pipe(
+      select(authSelectors.isLoggedOut)
+    )
   }
 
-  // ngOnDestroy() {
-  //   this.unsubscribe$.next();
-  //   this.unsubscribe$.complete();
-  // }
+
+
 }

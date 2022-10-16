@@ -1,6 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthBaseService, LocalStorageService } from '@frontend/auth-base';
+import { AuthAction, AuthBaseService, LocalStorageService } from '@frontend/auth-base';
+import { Store } from '@ngrx/store';
 import { IItem } from 'interfaces';
 import { MenuItem } from 'primeng/api';
 @Component({
@@ -13,7 +14,7 @@ export class AuthNavbarComponent implements OnInit {
       label: 'Wishlist',
       icon: '💚',
       onClick: () => {
-        this.router.navigate(["/app/wishlist"]);
+        this.router.navigate(["/app/books/wishlist"]);
       },
     },
   ];
@@ -62,7 +63,7 @@ export class AuthNavbarComponent implements OnInit {
       label: 'Log Out',
       icon: '🚪',
       onClick: () => {
-        this.authBaseService.logout('/app/home');
+        this.store.dispatch(AuthAction.logout())
       },
     },
   ];
@@ -72,8 +73,7 @@ export class AuthNavbarComponent implements OnInit {
 
   constructor(
     private router: Router,
-
-    private authBaseService: AuthBaseService
+    private store: Store
   ) {}
 
   ngOnInit(): void {

@@ -1,20 +1,10 @@
 <div class="header-container">
   <div class="header">
-      <div class="logo-container"
-      routerLink="/app/books"
-      
-      >
-        <img src="assets/word@2x.png" class="logo" alt="" 
-        />
-      </div>
-      <!-- <div class="">
-        <robinbook-navbar 
-        *ngIf="(isAuth$ | async) === false"></robinbook-navbar>
-        <robinbook-auth-navbar
-          *ngIf="(isAuth$ | async)"
-        ></robinbook-auth-navbar>
-      </div> -->
-      <h2>No Autorizado</h2>
-      <h2 *ngIf="false"> Autorizado</h2>
+    <div class="logo-container" routerLink="/app/books">
+      <img src="assets/word@2x.png" class="logo" alt="" />
     </div>
+    <robinbook-navbar *ngIf="isLoggedOut$ | async"></robinbook-navbar>
+    <robinbook-auth-navbar *ngIf="isLoggedIn$ | async"></robinbook-auth-navbar>
+
+  </div>
 </div>

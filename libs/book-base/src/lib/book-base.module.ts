@@ -1,50 +1,88 @@
 // ANGULAR
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {  RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
+// NGRX
+import {
+  EntityDataService,
+  EntityDefinitionService,
+  EntityMetadataMap,
+} from '@ngrx/data';
 
 // ME
+import { UtilsModule } from '@frontend/utils';
 import { WishlistService } from './services/wishlist.service';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
-import { WishlistIconComponent } from './components/wishlist-icon/wishlist-icon.component';
-import { CardBookComponent } from './components/card-book/card-book.component';
 import { MessageService } from 'primeng/api';
-import { SearchHeaderComponent } from './components/search-header/search-header.component';
-import { DropdownComponent } from './components/dropdown/dropdown.component';
+
 import { ClickOutsideDirective } from './directives/click-outside.directive';
-import { UtilsModule } from '@frontend/utils';
-import { BrowseBookComponent } from './components/browse-book/browse-book.component';
-import { SpinnerComponent } from './components/spinner/spinner.component';
-import { NothingComponent } from './nothing/nothing.component';
+import { NothingComponent } from './pages/nothing/nothing.component';
+import { BooksListComponent } from './pages/books-list/books-list.component';
+import { BookViewComponent } from './pages/book-view/book-view.component';
+import { BooksResolver } from './services/books.resolver';
+import { BookBaseEntityService } from './services/book-base-entity.service';
+import { CardBookComponent } from '../../../book-base/src/lib/components/card-book/card-book.component';
+import { WishlistIconComponent } from './components/wishlist-icon/wishlist-icon.component';
+
+const entityMetadata: EntityMetadataMap = {
+  Book: {},
+  Wishlist: {},
+};
+
+const routes: Routes = [
+  {
+    path: '',
+    component: BooksListComponent,
+    resolve: {
+      books: BooksResolver,
+    },
+  },
+  {
+    path: 'id/:id',
+    component: BookViewComponent,
+  },
+
+  {
+    path: 'wishlist',
+    component: WishlistComponent,
+
+  },
+];
+
 @NgModule({
-  imports: [CommonModule, UtilsModule, RouterModule ],
+  imports: [
+    CommonModule,
+    UtilsModule,
+    RouterModule,
+    RouterModule.forChild(routes),
+  ],
   declarations: [
-    WishlistComponent,
     WishlistIconComponent,
     CardBookComponent,
-    SearchHeaderComponent,
-    DropdownComponent,
+    WishlistComponent,
+
     ClickOutsideDirective,
-    BrowseBookComponent,
-    SpinnerComponent,
+    BooksListComponent,
+    BookViewComponent,
     NothingComponent,
   ],
   exports: [
-    WishlistIconComponent,
     ClickOutsideDirective,
-    DropdownComponent,
-    BrowseBookComponent,
-
+    WishlistIconComponent,
     CardBookComponent,
-    SearchHeaderComponent,
-    SpinnerComponent,
+    BooksListComponent,
+    BookViewComponent,
     NothingComponent,
   ],
-  providers: [MessageService],
+  providers: [MessageService, BooksResolver, BookBaseEntityService],
 })
 export class BookBaseModule {
-  constructor(wishlistService: WishlistService) {
+  constructor(
+    wishlistService: WishlistService,
+    private eds: EntityDefinitionService
+  ) {
     wishlistService.initWishlistLocalStorage();
+    eds.registerMetadataMap(entityMetadata);
   }
 }

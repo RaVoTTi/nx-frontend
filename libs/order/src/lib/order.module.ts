@@ -10,6 +10,10 @@ import { OrderItemComponent } from './components/order-item/order-item.component
 import { LearningItemComponent } from './components/card-learning/card-learning.component';
 
 
+// NGRX
+import {EntityDataService, EntityDefinitionService, EntityMetadataMap} from '@ngrx/data';
+
+
 // PRIME NG 
 import { ToastModule } from 'primeng/toast';
 
@@ -20,6 +24,15 @@ import { ThanksViewComponent } from './pages/thanks-view/thanks-view.component';
 import { BookBaseModule } from '@frontend/book-base';
 import { MyEvaluationViewComponent } from './pages/my-evaluation-view/my-evaluation-view.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
+
+import { OrderEntityService } from './services/order-entity.service';
+import { UtilsModule } from '@frontend/utils';
+
+const entityMetadata : EntityMetadataMap ={
+  Order: {
+    
+  }
+}
 
 const routes: Routes = [
   {
@@ -63,11 +76,12 @@ const UX_MODULE = [
 
 @NgModule({
   imports: [
+    UtilsModule,
+    BookBaseModule,
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
     ReactiveFormsModule,
-    BookBaseModule,
     ...UX_MODULE,
   ],
   declarations: [
@@ -80,5 +94,12 @@ const UX_MODULE = [
     ThanksViewComponent,
     MyEvaluationViewComponent
   ],
+  providers:[
+    OrderEntityService
+  ]
 })
-export class OrderModule {}
+export class OrderModule {
+  constructor (private eds : EntityDefinitionService) {
+    eds.registerMetadataMap(entityMetadata)
+  }
+}

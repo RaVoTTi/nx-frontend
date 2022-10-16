@@ -3,27 +3,37 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { environment } from '@env/environment';
+import { select, Store } from '@ngrx/store';
+import { token as tokenSelector } from '../auth.selectors';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
+  constructor(
+    private store: Store,
 
-  constructor( private localStorageService: LocalStorageService) {}
+    private localStorageService: LocalStorageService
+  ) {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const token = this.localStorageService.getToken()
-    const isApiUrl = request.url.startsWith(environment.API_URL)
-   
-    if(token && isApiUrl){
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    // const token = this.store.pipe(select(tokenSelector)) ?? '';
+    const token = this.localStorageService.getToken();
+
+    const isApiUrl = request.url.startsWith(environment.API_URL);
+
+    if (token && isApiUrl) {
       request = request.clone({
         setHeaders: {
-          'super-token': token
-        }
-      })
+          'super-token': token,
+        },
+      });
     }
     return next.handle(request);
   }

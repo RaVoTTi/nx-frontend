@@ -6,12 +6,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {
+  EntityDataService,
+  EntityDefinitionService,
+  EntityDataModule,
+  EntityMetadataMap,
+} from '@ngrx/data';
 
 // ME
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BooksListComponent } from './pages/books/books-list/books-list.component';
-import { BookViewComponent } from './pages/books/book-view/book-view.component';
+import { BooksListComponent } from '../../../../libs/book-base/src/lib/pages/books-list/books-list.component';
+import { BookViewComponent } from '../../../../libs/book-base/src/lib/pages/book-view/book-view.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -22,45 +29,50 @@ import { MainComponent } from './shared/main/main.component';
 import { AuthBaseModule, JwtInterceptor } from '@frontend/auth-base';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component';
-import { TestComponent } from './pages/test/test.component';
 import { UtilsModule } from '@frontend/utils';
 import * as fromRoot from './reducers';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@env/environment';
 
+const entityMetadata: EntityMetadataMap = {
+  Book: {},
+};
 
+export const entityConfig = {
+  entityMetadata,
+};
 
 @NgModule({
   declarations: [
     AppComponent,
-    BooksListComponent,
-    BookViewComponent,
+
     FooterComponent,
     HomeComponent,
     HeaderComponent,
     NavbarComponent,
     AuthNavbarComponent,
     MainComponent,
-    TestComponent,
   ],
   imports: [
+    BookBaseModule,
+    UtilsModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    BookBaseModule,
     ReactiveFormsModule,
     FormsModule,
-    UtilsModule,
     AuthBaseModule.forRoot(),
     StoreModule.forRoot(fromRoot.reducers),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
-  
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
+    EffectsModule.forRoot([]),
+    EntityDataModule.forRoot({}),
   ],
   providers: [
     MessageService,
-    // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

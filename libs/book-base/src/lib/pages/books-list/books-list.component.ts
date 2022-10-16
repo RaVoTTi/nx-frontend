@@ -1,8 +1,10 @@
-import { BookBaseService } from '@frontend/book-base';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs';
 import { IBook } from 'interfaces';
-import { WishlistService } from '@frontend/book-base';
+import { BookBaseService } from '../../services/book-base.service';
+import { WishlistService } from '../../services/wishlist.service';
+
+
 
 @Component({
   selector: 'robinbook-books-list',
