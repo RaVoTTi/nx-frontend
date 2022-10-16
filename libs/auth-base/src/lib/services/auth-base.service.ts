@@ -6,12 +6,13 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { environment } from 'environments/environment';
 // ME
-import { ILogin, IUser, IRegister, IResponse } from 'interfaces/index';
+import { ILogin, IUser,  IResponse } from 'interfaces/index';
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
 // import { AuthFacade } from '../state/auth.facade';
 import { WishlistService } from '@frontend/book-base';
 import { Store } from '@ngrx/store';
+import { IRegister } from '../interfaces/IRegister';
 
 @Injectable({
   providedIn: 'root',

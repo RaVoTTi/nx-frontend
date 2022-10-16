@@ -53,8 +53,7 @@ import { environment } from '@env/environment';
     FormsModule,
     UtilsModule,
     AuthBaseModule.forRoot(),
-    EffectsModule.forRoot([]),
-    StoreModule.forRoot(fromRoot.reducers, { metaReducers: fromRoot.metaReducers }),
+    StoreModule.forRoot(fromRoot.reducers),
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
   
   ],

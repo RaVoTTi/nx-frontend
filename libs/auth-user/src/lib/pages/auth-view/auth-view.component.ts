@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MessageService } from 'primeng/api';
 import { min, tap, timer } from 'rxjs';
 // import { AuthBaseService } from '../../services/auth.service';
 // import { LocalStorageService } from '../../services/local-storage.service';
 import { Store } from '@ngrx/store';
-import { AuthBaseService, LocalStorageService } from '@frontend/auth-base';
+import { AuthBaseService, AuthAction } from '@frontend/auth-base';
 import {
   AlertService,
   ErrorHandlerService,
   ValidatorsService,
 } from '@frontend/utils';
+import { ILogin } from 'interfaces';
 
 @Component({
   selector: 'frontend-auth-view',
@@ -28,7 +28,7 @@ export class AuthViewComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authBaseService: AuthBaseService,
     private store: Store,
-    private localStorageService: LocalStorageService,
+    // private localStorageService: LocalStorageService,
     private alert: AlertService,
     private errorH: ErrorHandlerService,
     private vs: ValidatorsService // private messageService: MessageService
@@ -56,11 +56,13 @@ export class AuthViewComponent implements OnInit {
       this.loginForm.markAllAsTouched();
       return;
     }
+    const { email, password } = this.loginForm.value as ILogin;
     this.authBaseService
-      .postLogin(this.loginForm.value)
+      .postLogin({ email, password })
       .pipe(
-        tap((response) => {
-          if (response.token) {
+        tap(({ token }) => {
+          if (token) {
+            this.store.dispatch(AuthAction.login({ user: { token, email } }));
             this.router.navigate(['/app']);
           }
         })
@@ -80,22 +82,27 @@ export class AuthViewComponent implements OnInit {
       this.signUpForm.markAllAsTouched();
       return;
     }
-    this.authBaseService.postSignUp(this.signUpForm.value).pipe(
-      tap((response) => {
-        if (response.ok) {
-          this.alert.fire({icon:'success', text:'User Created succesful'});
-          this.router.navigate(['/auth/login']);
-          
-        }
-      })
-    ).subscribe({error: ({error}) =>{
-      this.signUpForm.enable()
-      this.alert.fire({
-        icon: 'error',
-        text: error?.msg ? error?.msg : 'Something happened',
+    this.authBaseService
+      .postSignUp(this.signUpForm.value)
+      .pipe(
+        tap((response) => {
+          if (response.ok) {
+            this.alert.fire({
+              icon: 'success',
+              text: 'User Created succesful',
+            });
+          }
+        })
+      )
+      .subscribe({
+        error: ({ error }) => {
+          this.signUpForm.enable();
+          this.alert.fire({
+            icon: 'error',
+            text: error?.msg ? error?.msg : 'Something happened',
+          });
+        },
       });
-
-    }});
 
     this.authBaseService.postSignUp(this.signUpForm.value);
     // .subscribe((response) => {
@@ -123,9 +130,12 @@ export class AuthViewComponent implements OnInit {
   private _initForm() {
     if (this.login) {
       this.loginForm = this.formBuilder.group({
-        email: ['', [Validators.required, this.vs.validatePat('emailPat')]],
+        email: [
+          'fasedaff@test.com',
+          [Validators.required, this.vs.validatePat('emailPat')],
+        ],
         password: [
-          '',
+          'aA123456',
           [Validators.required, this.vs.validatePat('passwordPat')],
         ],
       });

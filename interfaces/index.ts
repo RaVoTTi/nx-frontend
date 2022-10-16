@@ -10,7 +10,6 @@ export * from './IToken';
 export * from './IEvaluation';
 export * from './IItem';
 
-export * from './IRegister';
 export * from './IWishlist';
 export * from './ICheckout';
 

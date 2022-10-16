@@ -8,15 +8,15 @@ import { EffectsModule } from '@ngrx/effects';
 // import { authReducer } from './state/auth.reducer';
 // import { AuthEffects } from './state/auth.effects';
 import { AuthBaseService } from './services/auth-base.service';
-import * as fromAuth from './reducers';
-import { LoginGuard } from './guard/login.guard';
+import { LoginGuard } from './guards/login.guard';
+import { authReducer } from './reducers';
 // import { LoginGuard } from './guard/login.guard';
 // import { JwtInterceptor } from './services/jwt.interceptor';
 
 @NgModule({
   imports: [
     CommonModule,
-    StoreModule.forFeature('auth', fromAuth.reducers),
+    StoreModule.forFeature('auth', authReducer),
   ],
 })
 export class AuthBaseModule {
