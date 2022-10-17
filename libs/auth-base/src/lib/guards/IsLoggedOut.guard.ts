@@ -8,7 +8,7 @@ import {
   RouterStateSnapshot,
   UrlSegment,
 } from '@angular/router';
-import { isLoggedIn, isLoggedOut } from '../auth.selectors';
+import { isLoggedIn, isLoggedOut } from '../state/auth.selectors';
 import { select, Store } from '@ngrx/store';
 import { map, Observable, take, takeWhile, tap, timer } from 'rxjs';
 

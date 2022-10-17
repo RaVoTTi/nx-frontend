@@ -8,7 +8,7 @@ import {
   MetaReducer,
   on,
 } from '@ngrx/store';
-import { AuthAction } from '../actions/action-type';
+import { login, logout } from './auth.actions';
 
 export interface AuthState {
   token: string | undefined;
@@ -20,12 +20,12 @@ export const initialAuthState: AuthState = {
 
 export const authReducer = createReducer(
   initialAuthState,
-  on(AuthAction.login, (state, action) => {
+  on(login, (state, action) => {
     return {
       token: action.token,
     };
   }),
-  on(AuthAction.logout, (state, action) => {
+  on(logout, (state, action) => {
     return {
       token: undefined,
     };

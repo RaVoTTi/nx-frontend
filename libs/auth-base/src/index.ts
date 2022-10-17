@@ -5,10 +5,7 @@ export * from './lib/auth-base.module';
 
 
 // NGRX
-export * from './lib/reducer/index'
-export * as authSelectors from './lib/auth.selectors'
-
-export * from './lib/actions/action-type'
+export * from './lib/state/auth.state'
 
 // INTERFACES
 export * from './lib/interfaces/IAuth'

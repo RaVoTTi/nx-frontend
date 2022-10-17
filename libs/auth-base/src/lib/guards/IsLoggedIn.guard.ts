@@ -8,7 +8,7 @@ import {
   RouterStateSnapshot,
   UrlSegment,
 } from '@angular/router';
-import { isLoggedIn, isLoggedOut } from '../auth.selectors';
+import { AuthSelectors } from '../state/auth.state';
 import { select, Store } from '@ngrx/store';
 import { map, Observable, take, takeWhile, tap, timer } from 'rxjs';
 
@@ -22,7 +22,7 @@ export class IsLoggedIn implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     return this.store.pipe(
-      select(isLoggedIn),
+      select(AuthSelectors.isLoggedIn),
       tap((loggedIn) => {
         if (!loggedIn) {
           this.router.navigateByUrl('/auth/login');

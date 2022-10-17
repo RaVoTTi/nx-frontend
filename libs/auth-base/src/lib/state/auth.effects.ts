@@ -2,15 +2,15 @@ import { Injectable } from '@angular/core';
 import { WishlistService } from '@frontend/book-base';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap } from 'rxjs';
-import { AuthAction } from './actions/action-type';
-import { LocalStorageService } from './services/local-storage.service';
+import { login , logout } from './auth.actions';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable()
 export class AuthEffects {
   login$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthAction.login),
+        ofType(login),
         tap((action) => {
           this.localStorage.setToken(action.token);
         })
@@ -20,7 +20,7 @@ export class AuthEffects {
   logout$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType(AuthAction.logout),
+        ofType(logout),
         tap((action) => {
           this.localStorage.deleteToken();
           this.wishlistService.emptyBookWishlist();

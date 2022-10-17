@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {
-  AuthAction,
+  AuthActions,
   AuthBaseService,
   LocalStorageService,
 } from '@frontend/auth-base';
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
     const token = this.localStorageService.getToken();
 
     if (token) {
-      this.store.dispatch(AuthAction.login({ token }));
+      this.store.dispatch(AuthActions.login({ token }));
     }
   }
 }

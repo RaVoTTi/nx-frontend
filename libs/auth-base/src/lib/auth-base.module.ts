@@ -8,11 +8,11 @@ import { EffectsModule } from '@ngrx/effects';
 // import { authReducer } from './state/auth.reducer';
 // import { AuthEffects } from './state/auth.effects';
 import { AuthBaseService } from './services/auth-base.service';
-import { authReducer } from './reducer';
+import { authReducer } from './state/auth.state';
 import { IsLoggedIn } from './guards/IsLoggedIn.guard';
 import { IsLoggedOut } from './guards/IsLoggedOut.guard';
 
-import { AuthEffects } from './auth.effects';
+import { AuthEffects } from './state/auth.effects';
 // import { LoginGuard } from './guard/login.guard';
 // import { JwtInterceptor } from './services/jwt.interceptor';
 

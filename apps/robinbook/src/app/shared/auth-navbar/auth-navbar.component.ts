@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthAction, AuthBaseService, LocalStorageService } from '@frontend/auth-base';
+import { AuthActions, AuthBaseService, LocalStorageService } from '@frontend/auth-base';
 import { Store } from '@ngrx/store';
 import { IItem } from 'interfaces';
 import { MenuItem } from 'primeng/api';
@@ -63,7 +63,7 @@ export class AuthNavbarComponent implements OnInit {
       label: 'Log Out',
       icon: '🚪',
       onClick: () => {
-        this.store.dispatch(AuthAction.logout())
+        this.store.dispatch(AuthActions.logout())
       },
     },
   ];

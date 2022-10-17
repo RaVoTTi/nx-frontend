@@ -14,9 +14,7 @@ const routes: Routes = [
         path: 'home',
         component: HomeComponent,
         // component: TestComponent,
-
       },
-
       {
         path: 'books',
         loadChildren: () =>
@@ -31,7 +29,8 @@ const routes: Routes = [
       },
       {
         path: '**',
-        redirectTo: '/app/home',
+        
+        redirectTo: '/app/books/list',
       },
 
     ],

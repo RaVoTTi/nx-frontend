@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AuthBaseService, authSelectors, LocalStorageService } from '@frontend/auth-base';
+import { AuthBaseService, AuthSelectors, LocalStorageService } from '@frontend/auth-base';
 // import { AuthBaseService, AuthState , authSelector } from '@frontend/auth-base';
 import { select, Store } from '@ngrx/store';
 import { MenuItem } from 'primeng/api';
@@ -25,10 +25,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.isLoggedIn$ = this.store.pipe(
-      select(authSelectors.isLoggedIn)
+      select(AuthSelectors.isLoggedIn)
     )
     this.isLoggedOut$ = this.store.pipe(
-      select(authSelectors.isLoggedOut)
+      select(AuthSelectors.isLoggedOut)
     )
   }
 

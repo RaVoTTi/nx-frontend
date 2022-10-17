@@ -5,7 +5,7 @@ import { min, tap, timer } from 'rxjs';
 // import { AuthBaseService } from '../../services/auth.service';
 // import { LocalStorageService } from '../../services/local-storage.service';
 import { Store } from '@ngrx/store';
-import { AuthBaseService, AuthAction, AuthState } from '@frontend/auth-base';
+import { AuthBaseService, AuthActions } from '@frontend/auth-base';
 import {
   AlertService,
   ErrorHandlerService,
@@ -61,7 +61,7 @@ export class AuthViewComponent implements OnInit {
       .pipe(
         tap(({ token }) => {
           if (token) {
-            this.store.dispatch(AuthAction.login({ token }));
+            this.store.dispatch(AuthActions.login({ token }));
             this.router.navigate(['/app']);
           }
         })

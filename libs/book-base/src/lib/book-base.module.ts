@@ -21,9 +21,12 @@ import { NothingComponent } from './pages/nothing/nothing.component';
 import { BooksListComponent } from './pages/books-list/books-list.component';
 import { BookViewComponent } from './pages/book-view/book-view.component';
 import { BooksResolver } from './services/books.resolver';
-import { BookBaseEntityService } from './services/book-base-entity.service';
 import { CardBookComponent } from '../../../book-base/src/lib/components/card-book/card-book.component';
 import { WishlistIconComponent } from './components/wishlist-icon/wishlist-icon.component';
+import { StoreModule } from '@ngrx/store';
+import { booksReducer } from './state/books.reducer';
+import { EffectsModule } from '@ngrx/effects';
+// import { BookEffects } from './state/books.effects';
 
 const entityMetadata: EntityMetadataMap = {
   Book: {},
@@ -31,8 +34,9 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 const routes: Routes = [
+
   {
-    path: '',
+    path: 'list',
     component: BooksListComponent,
     resolve: {
       books: BooksResolver,
@@ -48,6 +52,11 @@ const routes: Routes = [
     component: WishlistComponent,
 
   },
+
+
+
+
+
 ];
 
 @NgModule({
@@ -56,6 +65,9 @@ const routes: Routes = [
     UtilsModule,
     RouterModule,
     RouterModule.forChild(routes),
+    StoreModule.forFeature('books', booksReducer),
+    // EffectsModule.forFeature([BookEffects]),
+
   ],
   declarations: [
     WishlistIconComponent,
@@ -75,14 +87,12 @@ const routes: Routes = [
     BookViewComponent,
     NothingComponent,
   ],
-  providers: [MessageService, BooksResolver, BookBaseEntityService],
+  providers: [MessageService, BooksResolver],
 })
 export class BookBaseModule {
   constructor(
     wishlistService: WishlistService,
-    private eds: EntityDefinitionService
   ) {
     wishlistService.initWishlistLocalStorage();
-    eds.registerMetadataMap(entityMetadata);
   }
 }

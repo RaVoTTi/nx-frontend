@@ -1,5 +1,5 @@
 // ANGULAR
-import { NgModule } from '@angular/core';
+import { isDevMode, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,13 +12,13 @@ import {
   EntityDefinitionService,
   EntityDataModule,
   EntityMetadataMap,
+  DefaultDataServiceConfig,
 } from '@ngrx/data';
 
 // ME
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BooksListComponent } from '../../../../libs/book-base/src/lib/pages/books-list/books-list.component';
-import { BookViewComponent } from '../../../../libs/book-base/src/lib/pages/book-view/book-view.component';
+
 import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -36,10 +36,13 @@ import { environment } from '@env/environment';
 const entityMetadata: EntityMetadataMap = {
   Book: {},
 };
+const defaultDataServiceConfig: DefaultDataServiceConfig = {
+  root: environment.API_URL,
+}
 
-export const entityConfig = {
-  entityMetadata,
-};
+// export const entityConfig = {
+//   entityMetadata,
+// };
 
 @NgModule({
   declarations: [
@@ -68,10 +71,11 @@ export const entityConfig = {
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
-    EntityDataModule.forRoot({}),
+    // EntityDataModule.forRoot({}),
   ],
   providers: [
     MessageService,
+    // {provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig},
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],

@@ -25,8 +25,8 @@ import { BookBaseModule } from '@frontend/book-base';
 import { MyEvaluationViewComponent } from './pages/my-evaluation-view/my-evaluation-view.component';
 import {RadioButtonModule} from 'primeng/radiobutton';
 
-import { OrderEntityService } from './services/order-entity.service';
 import { UtilsModule } from '@frontend/utils';
+import { readdir } from 'fs';
 
 const entityMetadata : EntityMetadataMap ={
   Order: {
@@ -63,6 +63,12 @@ const routes: Routes = [
     path: 'thanks/evaluation',
     component: ThanksViewComponent,
   },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/app/order/mylearning'
+
+  },
 
 ];
 const UX_MODULE = [
@@ -95,11 +101,10 @@ const UX_MODULE = [
     MyEvaluationViewComponent
   ],
   providers:[
-    OrderEntityService
   ]
 })
 export class OrderModule {
-  constructor (private eds : EntityDefinitionService) {
-    eds.registerMetadataMap(entityMetadata)
-  }
+  // constructor (private eds : EntityDefinitionService) {
+  //   eds.registerMetadataMap(entityMetadata)
+  // }
 }

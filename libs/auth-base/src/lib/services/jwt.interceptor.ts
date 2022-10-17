@@ -9,7 +9,6 @@ import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 import { environment } from '@env/environment';
 import { select, Store } from '@ngrx/store';
-import { token as tokenSelector } from '../auth.selectors';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
