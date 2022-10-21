@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs';
+import { Observable, take, takeLast } from 'rxjs';
 import { IBook } from 'interfaces';
 import { BookBaseService } from '../../services/book-base.service';
 import { WishlistService } from '../../services/wishlist.service';
+import { select, Store } from '@ngrx/store';
+import { selectAllBooks } from '../../state/books.selectors';
 
 
 
@@ -11,24 +13,23 @@ import { WishlistService } from '../../services/wishlist.service';
   templateUrl: './books-list.component.html',
 })
 export class BooksListComponent implements OnInit {
-  books!: IBook[]| undefined;
+  allBooks$!: Observable<IBook[]>;
   wishlistBooks: string[] = [];
 
   constructor(
-    private bookBaseService: BookBaseService,
+    private store: Store,
+
     private wishlistService: WishlistService,
     
     ) {}
 
   ngOnInit(): void {
     this.wishlistBooks = this.wishlistService.getWishlist().books
-
-    this.bookBaseService
-      .getBooks()
-      .pipe(take(1))
-      .subscribe((response) => {
-        this.books = response.result;
-      });
+    this.reload()
+  }
+  reload(){
+    this.allBooks$ = this.store.pipe(select(selectAllBooks))
+    
   }
   isFavorite(id:string): boolean{
     if(this.wishlistBooks.includes(id)){

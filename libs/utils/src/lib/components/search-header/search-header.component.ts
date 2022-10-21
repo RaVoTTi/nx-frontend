@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { IItem } from 'interfaces';
 
 @Component({
@@ -7,7 +8,8 @@ import { IItem } from 'interfaces';
 })
 export class SearchHeaderComponent implements OnInit {
 
-  constructor() { }
+
+  constructor( private store: Store) { }
   isDropdownOpened = false;
   items : IItem[] = [
     {
@@ -20,6 +22,9 @@ export class SearchHeaderComponent implements OnInit {
   ]
   ngOnInit(): void {
   }
+
+
+
 
   toggleDropdown() {
     this.isDropdownOpened = !this.isDropdownOpened;

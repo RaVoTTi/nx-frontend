@@ -26,17 +26,15 @@ import { WishlistIconComponent } from './components/wishlist-icon/wishlist-icon.
 import { StoreModule } from '@ngrx/store';
 import { booksReducer } from './state/books.reducer';
 import { EffectsModule } from '@ngrx/effects';
+import { BooksEffects } from './state/books.effects';
 // import { BookEffects } from './state/books.effects';
 
-const entityMetadata: EntityMetadataMap = {
-  Book: {},
-  Wishlist: {},
-};
+
 
 const routes: Routes = [
 
   {
-    path: 'list',
+    path: '',
     component: BooksListComponent,
     resolve: {
       books: BooksResolver,
@@ -55,8 +53,6 @@ const routes: Routes = [
 
 
 
-
-
 ];
 
 @NgModule({
@@ -66,7 +62,7 @@ const routes: Routes = [
     RouterModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('books', booksReducer),
-    // EffectsModule.forFeature([BookEffects]),
+    EffectsModule.forFeature([BooksEffects]),
 
   ],
   declarations: [

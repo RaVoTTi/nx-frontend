@@ -4,10 +4,10 @@ import {
   Resolve,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Store } from '@ngrx/store';
-import { finalize, first, map, Observable, of, tap } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { filter, finalize, first, map, Observable, of, tap } from 'rxjs';
 import { loadAllBooks } from '../state/books.actions';
-import { BookBaseService } from './book-base.service';
+import { areBooksLoaded } from '../state/books.selectors';
 
 @Injectable()
 export class BooksResolver implements Resolve<boolean> {
@@ -17,19 +17,19 @@ export class BooksResolver implements Resolve<boolean> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<any> {
-    // return this.booksService.getBooks().pipe(
-    //   map(books => !!books)
-    // )
+
 
     return this.store.pipe(
-      tap(() => {
-        if (!this.loading) {
+      select(areBooksLoaded),
+      tap((booksLoaded) => {
+        if (!this.loading && !booksLoaded ) {
           this.loading = true;
           this.store.dispatch(loadAllBooks());
         }
       }),
+      filter(booksLoaded => booksLoaded),
       first(),
-      finalize(()=> this.loading =false)
+      finalize(()=> this.loading = false)
     );
   }
 }

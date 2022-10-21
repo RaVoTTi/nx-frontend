@@ -16,17 +16,15 @@ import {EntityDataService, EntityDefinitionService, EntityMetadataMap} from '@ng
 
 // PRIME NG 
 import { ToastModule } from 'primeng/toast';
-
 import {RatingModule} from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
-import { ThanksViewComponent } from './pages/thanks-view/thanks-view.component';
+
+
 import { BookBaseModule } from '@frontend/book-base';
 import { MyEvaluationViewComponent } from './pages/my-evaluation-view/my-evaluation-view.component';
-import {RadioButtonModule} from 'primeng/radiobutton';
 
 import { UtilsModule } from '@frontend/utils';
-import { readdir } from 'fs';
 
 const entityMetadata : EntityMetadataMap ={
   Order: {
@@ -55,20 +53,6 @@ const routes: Routes = [
     path: 'myordering',
     component: MyOrderingComponent,
   },
-  {
-    path: 'thanks/checkout',
-    component: ThanksViewComponent,
-  },
-  {
-    path: 'thanks/evaluation',
-    component: ThanksViewComponent,
-  },
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: '/app/order/mylearning'
-
-  },
 
 ];
 const UX_MODULE = [
@@ -76,7 +60,6 @@ const UX_MODULE = [
   TagModule,
   DropdownModule,
   ToastModule,
-  RadioButtonModule,
 
 ];
 
@@ -97,7 +80,6 @@ const UX_MODULE = [
     MyOrderingComponent,
     LearningItemComponent,
     OrderItemComponent,
-    ThanksViewComponent,
     MyEvaluationViewComponent
   ],
   providers:[

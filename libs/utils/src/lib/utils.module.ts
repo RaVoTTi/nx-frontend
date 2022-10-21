@@ -4,7 +4,6 @@ import { ErrorMsgDirective } from './directives/error-msg.directive';
 import { ActionOutsideDirective } from './directives/action-outside.directive';
 import { SearchHeaderComponent } from './components/search-header/search-header.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
-import { BrowseBookComponent } from './components/browse-book/browse-book.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 @NgModule({
   imports: [CommonModule],
@@ -12,7 +11,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 
     SearchHeaderComponent,
     DropdownComponent,
-    BrowseBookComponent,
     SpinnerComponent,
     ErrorMsgDirective,
     ActionOutsideDirective,
@@ -21,7 +19,6 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
   exports: [
 
     DropdownComponent,
-    BrowseBookComponent,
     SearchHeaderComponent,
     SpinnerComponent,
     ErrorMsgDirective,

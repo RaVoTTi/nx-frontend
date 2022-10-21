@@ -3,7 +3,7 @@
     <ng-container *ngIf="screenWidth > 580">
       <li><a routerLinkActive="active" routerLink="/app/home">Home</a></li>
 
-      <li><a routerLinkActive="active" routerLink="/app/books">Books</a></li>
+      <li><a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/app/books">Books</a></li>
     </ng-container>
     <ng-container *ngIf="screenWidth > 768">
       <li>

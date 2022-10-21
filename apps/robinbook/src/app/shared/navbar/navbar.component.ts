@@ -40,7 +40,7 @@ export class NavbarComponent implements OnInit {
       label: 'Books',
       icon: '📚',
       onClick: () => {
-        this.router.navigate(['/app/books']);
+        this.router.navigate(['/app/books/list']);
       },
     },
 

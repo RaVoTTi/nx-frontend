@@ -27,11 +27,7 @@ const routes: Routes = [
           import('@frontend/order').then((m) => m.OrderModule),
         canActivate: [IsLoggedIn],
       },
-      {
-        path: '**',
-        
-        redirectTo: '/app/books/list',
-      },
+
 
     ],
   },
@@ -48,7 +44,7 @@ const routes: Routes = [
   },
   {
     path:'**',
-    redirectTo: 'app'
+    redirectTo: '/app/books'
   }
   
 
