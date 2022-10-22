@@ -17,8 +17,11 @@ export const selectSearchBooks = ( word : string) => createSelector(
 
 export const selectLiteratureBooks =  createSelector(
   selectAllBooks,
-  (books, ) => books.filter(book => book.subject.name == 'LITERATURE')
+  (books, ) => books.filter(book => book.subject.name === 'LITERATURE')
 );
+export const selectWishBooks = ( wish : string[]) =>  createSelector(
+  selectAllBooks,
+  (books, ) => books.filter( book => wish.includes(book._id)));
 export const areBooksLoaded = createSelector(
   selectBooksState,
   state => state.allBooksLoaded

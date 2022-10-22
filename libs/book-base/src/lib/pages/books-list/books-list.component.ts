@@ -4,7 +4,7 @@ import { IBook } from 'interfaces';
 import { BookBaseService } from '../../services/book-base.service';
 import { WishlistService } from '../../services/wishlist.service';
 import { select, Store } from '@ngrx/store';
-import { selectAllBooks } from '../../state/books.selectors';
+import { selectAllBooks } from '../../state/books/books.selectors';
 
 
 
@@ -29,7 +29,6 @@ export class BooksListComponent implements OnInit {
   }
   reload(){
     this.allBooks$ = this.store.pipe(select(selectAllBooks))
-    
   }
   isFavorite(id:string): boolean{
     if(this.wishlistBooks.includes(id)){

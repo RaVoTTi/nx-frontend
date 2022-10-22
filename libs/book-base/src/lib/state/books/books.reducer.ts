@@ -37,5 +37,8 @@ export const booksReducer = createReducer(
 
 export const {
 selectAll,
+selectEntities,
+selectIds,
+selectTotal
 
 } = adapter.getSelectors()

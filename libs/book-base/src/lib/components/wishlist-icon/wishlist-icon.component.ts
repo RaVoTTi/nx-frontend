@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
@@ -6,14 +6,18 @@ import { WishlistService } from '../../services/wishlist.service';
   templateUrl: './wishlist-icon.component.html'
 })
 export class WishlistIconComponent implements OnInit {
-  wishlistCount = 0;
-  constructor(private wishlistService: WishlistService) { }
+  
+  // @Input() wishlist : number
+
+  
+  constructor (private wishlistService: WishlistService) { }
 
   ngOnInit(): void {
     this.wishlistService.wishlist$.subscribe(wishlist =>{
 
-      this.wishlistCount = wishlist?.books.length ?? 0
+      // this.wishlistCount = wishlist?.books.length ?? 0
     })
   }
 
 }
+

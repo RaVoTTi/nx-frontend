@@ -1,31 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { IOrder } from 'interfaces';
-import { take } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { OrderService } from '../../../services/order.service';
+import { selectAllOrders } from '../../../state/orders.selectors';
 
 @Component({
   selector: 'frontend-my-learning-list',
-  templateUrl: './my-learning-list.component.html'
+  templateUrl: './my-learning-list.component.html',
 })
 export class MyLearningListComponent implements OnInit {
+  orders!: Observable<IOrder[]> ;
 
-  orders: IOrder[] = []
-
-  constructor(
-    private orderService:OrderService
-  ) { }
+  constructor(private orderService: OrderService, private store: Store) {}
 
   ngOnInit(): void {
-     this.orderService
-       .getMyOrders(1)
-       .pipe(take(1))
-       .subscribe(({result}) => {
-         if(result){
-           this.orders = result;
-
-         }
-       })
-
+    // this.orderService
+    //   .getMyOrders(1)
+    //   .pipe(take(1))
+    //   .subscribe(({ result }) => {
+    //     if (result) {
+    //       this.orders = result;
+    //     }
+    //   });
+    this.reload()
   }
-
+  reload() {
+    this.orders = this.store.pipe(select(selectAllOrders))
+  }
 }

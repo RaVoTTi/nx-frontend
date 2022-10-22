@@ -25,6 +25,12 @@ import { BookBaseModule } from '@frontend/book-base';
 import { MyEvaluationViewComponent } from './pages/my-evaluation-view/my-evaluation-view.component';
 
 import { UtilsModule } from '@frontend/utils';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+
+import { OrdersEffects } from './state/orders.effects';
+import { ordersReducer } from './state/orders.reducer';
+import { OrdersResolver } from './services/order.resolver';
 
 const entityMetadata : EntityMetadataMap ={
   Order: {
@@ -40,10 +46,14 @@ const routes: Routes = [
   {
     path: 'mylearning',
     component: MyLearningListComponent,
+    resolve: {
+      orders: OrdersResolver,
+    },
   },
   {
     path: 'mylearning/:id',
     component: MyLearningViewComponent,
+
   },
   {
     path: 'myevaluation/:id',
@@ -52,6 +62,9 @@ const routes: Routes = [
   {
     path: 'myordering',
     component: MyOrderingComponent,
+    resolve: {
+      orders: OrdersResolver,
+    },
   },
 
 ];
@@ -72,6 +85,9 @@ const UX_MODULE = [
     FormsModule,
     ReactiveFormsModule,
     ...UX_MODULE,
+    StoreModule.forFeature('orders', ordersReducer),
+
+    EffectsModule.forFeature([OrdersEffects]),
   ],
   declarations: [
     PlaceOrderComponent,
@@ -83,6 +99,7 @@ const UX_MODULE = [
     MyEvaluationViewComponent
   ],
   providers:[
+    OrdersResolver
   ]
 })
 export class OrderModule {

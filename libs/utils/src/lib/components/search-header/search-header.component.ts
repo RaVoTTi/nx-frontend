@@ -8,6 +8,9 @@ import { IItem } from 'interfaces';
 })
 export class SearchHeaderComponent implements OnInit {
 
+  
+
+
 
   constructor( private store: Store) { }
   isDropdownOpened = false;

@@ -6,9 +6,9 @@
       <li><a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/app/books">Books</a></li>
     </ng-container>
     <ng-container *ngIf="screenWidth > 768">
-      <li>
-        <frontend-wishlist-icon></frontend-wishlist-icon>
-      </li>
+      <li><a routerLinkActive="active" routerLink="/app/Wishlist">Wishlist</a></li>
+
+
     </ng-container>
     <ng-container *ngIf="screenWidth > 700">
       <div class="login-container">

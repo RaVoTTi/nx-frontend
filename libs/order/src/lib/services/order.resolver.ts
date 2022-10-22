@@ -6,11 +6,12 @@ import {
 } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { filter, finalize, first, map, Observable, of, tap } from 'rxjs';
-import { loadAllBooks } from '../state/books/books.actions';
-import { areBooksLoaded } from '../state/books/books.selectors';
+import { loadAllOrders } from '../state/orders.actions';
+import { areOrdersLoaded } from '../state/orders.selectors';
+
 
 @Injectable()
-export class BooksResolver implements Resolve<boolean> {
+export class OrdersResolver implements Resolve<boolean> {
   loading = false;
   constructor(private store: Store) {}
   resolve(
@@ -20,14 +21,14 @@ export class BooksResolver implements Resolve<boolean> {
 
 
     return this.store.pipe(
-      select(areBooksLoaded),
-      tap((booksLoaded) => {
-        if (!this.loading && !booksLoaded ) {
+      select(areOrdersLoaded),
+      tap((ordersLoaded) => {
+        if (!this.loading && !ordersLoaded ) {
           this.loading = true;
-          this.store.dispatch(loadAllBooks());
+          this.store.dispatch(loadAllOrders());
         }
       }),
-      filter(booksLoaded => booksLoaded),
+      filter(ordersLoaded => ordersLoaded),
       first(),
       finalize(()=> this.loading = false)
     );

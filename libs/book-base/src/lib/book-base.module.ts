@@ -24,9 +24,10 @@ import { BooksResolver } from './services/books.resolver';
 import { CardBookComponent } from '../../../book-base/src/lib/components/card-book/card-book.component';
 import { WishlistIconComponent } from './components/wishlist-icon/wishlist-icon.component';
 import { StoreModule } from '@ngrx/store';
-import { booksReducer } from './state/books.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { BooksEffects } from './state/books.effects';
+import { BooksEffects } from './state/books/books.effects';
+import { booksReducer } from './state/books/books.reducer';
+// import { WishResolver } from './services/wish.resolver';
 // import { BookEffects } from './state/books.effects';
 
 
@@ -48,7 +49,10 @@ const routes: Routes = [
   {
     path: 'wishlist',
     component: WishlistComponent,
-
+    resolve: {
+      books: BooksResolver,
+      // wish: WishResolver
+    },
   },
 
 
@@ -62,6 +66,7 @@ const routes: Routes = [
     RouterModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('books', booksReducer),
+
     EffectsModule.forFeature([BooksEffects]),
 
   ],
@@ -83,7 +88,9 @@ const routes: Routes = [
     BookViewComponent,
     NothingComponent,
   ],
-  providers: [MessageService, BooksResolver],
+  providers: [MessageService, BooksResolver, 
+    // WishResolver
+  ],
 })
 export class BookBaseModule {
   constructor(

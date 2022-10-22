@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ErrorMsgDirective } from './directives/error-msg.directive';
 import { ActionOutsideDirective } from './directives/action-outside.directive';
-import { SearchHeaderComponent } from './components/search-header/search-header.component';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
+import { SearchHeaderComponent } from './components/search-header/search-header.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [
-
     SearchHeaderComponent,
     DropdownComponent,
     SpinnerComponent,
@@ -17,9 +16,9 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 
   ],
   exports: [
+    SearchHeaderComponent,
 
     DropdownComponent,
-    SearchHeaderComponent,
     SpinnerComponent,
     ErrorMsgDirective,
     ActionOutsideDirective,

@@ -3,7 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { create } from 'domain';
 import { concatMap, map } from 'rxjs';
 import { Action } from 'rxjs/internal/scheduler/Action';
-import { BookBaseService } from '../services/book-base.service';
+import { BookBaseService } from '../../services/book-base.service';
 import {
   allBooksLoaded,
   loadAllBooks,
