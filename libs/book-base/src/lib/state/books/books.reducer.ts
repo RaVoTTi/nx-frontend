@@ -1,5 +1,4 @@
 import { state } from '@angular/animations';
-import { initialAuthState } from '@frontend/auth-base';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import {
   ActionReducer,

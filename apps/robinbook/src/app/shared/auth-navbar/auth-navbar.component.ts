@@ -13,59 +13,53 @@ export class AuthNavbarComponent implements OnInit {
     {
       label: 'Wishlist',
       icon: '💚',
-      onClick: () => {
-        this.router.navigate(["/app/books/wishlist"]);
+      url: "/app/books/wishlist"
       },
-    },
+    
   ];
 
   primary: IItem[] = [
     {
       label: 'Books',
       icon: '📚',
-      onClick: () => {
-        this.router.navigate(['/app/books']);
+      url: '/app/books'
       },
-    },
+    
     {
       label: 'Learning',
       icon: '📝',
-      onClick: () => {
-        this.router.navigate(['/app/order/mylearning']);
+      url: '/app/order/mylearning'
       },
-    },
+    
   ];
   secondary: IItem[] = [
     {
       label: 'Orders',
       icon: '💵',
-      onClick: () => {
-        this.router.navigate(['/app/order/myordering']);
+      url: '/app/order/myordering'
       },
-    },
+    
     {
       label: 'Support',
       // routerLink: 'order/myordering',
       icon: '📞',
-      onClick: () => {
-        this.router.navigate(['/app/support']);
+      url: '/app/support'
       },
-    },
+    
     {
       label: 'Settings',
       icon: '🧰',
-      onClick: () => {
-        this.router.navigate(['/app/settings']);
+      url: '/app/settings'
       },
-    },
-    {
+    
+    // {
       
-      label: 'Log Out',
-      icon: '🚪',
-      onClick: () => {
-        this.store.dispatch(AuthActions.logout())
-      },
-    },
+    //   label: 'Log Out',
+    //   icon: '🚪',
+    //   function: () => {
+    //     this.store.dispatch(AuthActions.logout())
+    //   },
+    // },
   ];
   screenWidth: any;
 

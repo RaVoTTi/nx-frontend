@@ -11,38 +11,34 @@ export class NavbarComponent implements OnInit {
     {
       label: 'Wishlist',
       icon: '💚',
-      onClick: () => {
-        this.router.navigate(["/app/books/wishlist"]);
+      url: "/app/books/wishlist"
       },
-    },
+    
   ];
   login: IItem[] = [
     {
       label: 'Login',
       icon: '🤓',
-      onClick: () => {
-        this.router.navigate(['/auth/login']);
+      url: '/auth/login'
       },
-    },
+    
   ];
   signUp: IItem[] = [
     {
       label: 'Sign Up',
       icon: '📝',
-      onClick: () => {
-        this.router.navigate(['/auth/signup']);
+      url: '/auth/signup'
       },
-    },
+    
   ];
 
   primary: IItem[] = [
     {
       label: 'Books',
       icon: '📚',
-      onClick: () => {
-        this.router.navigate(['/app/books/list']);
+      url: '/app/books/list'
       },
-    },
+    
 
   ];
   screenWidth: any;

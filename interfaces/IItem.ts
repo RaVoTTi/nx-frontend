@@ -1,5 +1,7 @@
 export interface IItem{
     label: string,
     icon: string,
-    onClick: Function
+    url: string,
+    function?: CallableFunction,
+
 }

@@ -1,9 +1,8 @@
-<div class="dropdown " >
-    <ng-container *ngFor="let item of items" >
-        <div (click)="item.onClick()">
-            <i >{{item.icon}}</i>
-            <h3>{{item.label}}</h3>
-        </div>
-
-    </ng-container>
-</div> 
+<div class="dropdown">
+  <ng-container *ngFor="let item of items">
+    <div (click)="click({ url: item.url, function: item.function })">
+      <i>{{ item.icon }}</i>
+      <h3>{{ item.label }}</h3>
+    </div>
+  </ng-container>
+</div>

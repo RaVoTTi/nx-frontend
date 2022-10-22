@@ -1,15 +1,28 @@
-<div class="search-container">
+<div class="search-container" actionOutside
+(actionOutside)="actionOutside()"
+
+>
   <div class="search">
-    <div
-      class="input-container"
-    >
+    <div class="input-container">
       <div class="input-split" (click)="toggleDropdown()">
-        <input type="text" class="input" placeholder="Search Books"  />
-        <i class="pi pi-search input-icon" ></i>
+        <input type="text" class="input" placeholder="Search Books" />
+        <i class="pi pi-search input-icon"></i>
       </div>
+      <div
+        class="dropdown-container"
+        *ngIf="isDropdownOpened"
+        (click)="actionOutside()"
+      >
+        <div class="dropdown">
+          <ng-container *ngFor="let item of items | async ">
+            <div (click)="click(item.url)">
+              <i>{{ item.icon }}</i>
+              <h3>{{ item.label }}</h3>
+            </div>
+          </ng-container>
+        </div>
 
-
+      </div>
     </div>
   </div>
 </div>
-
