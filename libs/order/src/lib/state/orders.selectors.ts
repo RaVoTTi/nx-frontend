@@ -2,6 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { OrdersState } from './orders.reducer';
 
 import * as fromOrders from './orders.reducer';
+import { IItem } from 'interfaces';
 
 export const selectOrdersState = createFeatureSelector<OrdersState>('orders');
 
@@ -19,9 +20,19 @@ export const selectAllOrders = createSelector(
 //   selectAllOrders,
 //   (orders, ) => orders.filter(book => book.subject.name === 'LITERATURE')
 // );
-export const selectWishOrders = ( wish : string[]) =>  createSelector(
+export const selectAllLearningAsItems = createSelector(
   selectAllOrders,
-  (orders, ) => orders.filter( book => wish.includes(book._id)));
+  (learnings) =>
+    learnings.map((order) => {
+      return {
+      label: order.book.name,
+        icon: '📝',
+        url: `/app/order/mylearning/${order._id}`
+      };
+    }) as IItem[]
+);
+
+
 export const areOrdersLoaded = createSelector(
   selectOrdersState,
   state => state.allOrdersLoaded

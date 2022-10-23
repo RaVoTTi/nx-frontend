@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, take } from 'rxjs';
-import { IBook, IWishlist } from 'interfaces';
+import { IBook, IItem, IWishlist } from 'interfaces';
 import { Location } from '@angular/common';
 import { BookBaseService } from '../../services/book-base.service';
 import { WishlistService } from '../../services/wishlist.service';
 import { select, Store } from '@ngrx/store';
-import { selectWishBooks } from '../../state/books/books.selectors';
+import { selectAllBooksAsItems, selectWishBooks } from '../../state/books/books.selectors';
 
 
 @Component({
@@ -14,7 +14,7 @@ import { selectWishBooks } from '../../state/books/books.selectors';
 })
 export class WishlistComponent implements OnInit {
   wishBooks$!:Observable<IBook[]>
-  wishIds$!:Observable<string[]>
+  allItems$!:Observable<IItem[]>
   ids! : string[]
 
   constructor(
@@ -25,13 +25,14 @@ export class WishlistComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._getWishlist();
+    // this._getWishlist();
     this.reload()
   }
 
   reload(){
     this.ids = this.wishlistService.getWishlist().books
     this.wishBooks$ = this.store.select(selectWishBooks(this.ids))
+    this.allItems$ = this.store.select(selectAllBooksAsItems)
 
 
   }

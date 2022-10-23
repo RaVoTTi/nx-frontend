@@ -1,5 +1,6 @@
 .dropdown-relative {
   position: relative;
+  z-index: 5;
 
   & .icon{
     margin-top: 7px;
@@ -8,10 +9,11 @@
 
   & .dropdown  {
 
-    z-index: 10;
     // min-width: min( 200px, 100%);
     width: 100%;
-    
+
+    position: absolute;
+    top: .5rem;
     
     height: max-content;
     background: var(--background-color);

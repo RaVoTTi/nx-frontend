@@ -16,7 +16,6 @@ import { WishlistService } from './services/wishlist.service';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { MessageService } from 'primeng/api';
 
-import { ClickOutsideDirective } from './directives/click-outside.directive';
 import { NothingComponent } from './pages/nothing/nothing.component';
 import { BooksListComponent } from './pages/books-list/books-list.component';
 import { BookViewComponent } from './pages/book-view/book-view.component';
@@ -75,13 +74,11 @@ const routes: Routes = [
     CardBookComponent,
     WishlistComponent,
 
-    ClickOutsideDirective,
     BooksListComponent,
     BookViewComponent,
     NothingComponent,
   ],
   exports: [
-    ClickOutsideDirective,
     WishlistIconComponent,
     CardBookComponent,
     BooksListComponent,

@@ -12,13 +12,13 @@ import { timer, take, fromEvent, filter, Subscription } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 
 @Directive({
-  selector: '[clickOutside]',
+  selector: '[pressEnter]',
 })
 // implements AfterViewInit, OnDestroy
-export class ClickOutsideDirective {
+export class PressEnterDirective {
   
 
-  @Output() public clickOutside = new EventEmitter();
+  @Output() public pressEnter = new EventEmitter();
   documentClickSubscription: Subscription | undefined;
   constructor(
     private element: ElementRef,
@@ -26,14 +26,14 @@ export class ClickOutsideDirective {
   ) 
   {}
   ngAfterViewInit(): void {
-    this.documentClickSubscription = fromEvent(this.document, 'click')
+    this.documentClickSubscription = fromEvent(this.document, 'keydown.enter')
       .pipe(
         filter((event) => {
-          return !this.isInside(event.target as HTMLElement);
+          return this.isInside(event.target as HTMLElement);
         })
       )
       .subscribe(() => {
-        this.clickOutside.emit();
+        this.pressEnter.emit();
       });
   }
   isInside(elementToCheck: HTMLElement): boolean {

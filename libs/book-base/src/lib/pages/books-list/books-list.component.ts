@@ -32,7 +32,6 @@ export class BooksListComponent implements OnInit {
   reload(){
     this.allBooks$ = this.store.pipe(select(selectAllBooks))
     this.allItems$ = this.store.pipe(select(selectAllBooksAsItems))
-    this.allItems$.subscribe(books => console.log(books))
   }
   isFavorite(id:string): boolean{
     if(this.wishlistBooks.includes(id)){

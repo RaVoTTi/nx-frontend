@@ -17,14 +17,21 @@ export const selectAllBooksAsItems = createSelector(
     books.map((book) => {
       return {
         label: book.name,
-        icon: '📗',
+        icon: '📕',
         url: `/app/books/id/${book._id}`
       };
     }) as IItem[]
 );
+export const selectSearchItems = (word: string) =>
+  createSelector(selectAllBooksAsItems, (books) => {
+    return books.filter(({label}) => (label.includes(word)))})
+
+
+
+
 
 export const selectSearchBooks = (word: string) =>
-  createSelector(selectAllBooks, (books) => {});
+  createSelector(selectAllBooks, (books =>  books.filter(({name}) => name.search((new RegExp(word) )) > 0)))
 
 export const selectLiteratureBooks = createSelector(selectAllBooks, (books) =>
   books.filter((book) => book.subject.name === 'LITERATURE')
