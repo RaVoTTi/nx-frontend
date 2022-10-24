@@ -11,7 +11,6 @@ import {
 } from '@ngrx/data';
 
 // ME
-import { UtilsModule } from '@frontend/utils';
 import { WishlistService } from './services/wishlist.service';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { MessageService } from 'primeng/api';
@@ -26,6 +25,9 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BooksEffects } from './state/books/books.effects';
 import { booksReducer } from './state/books/books.reducer';
+import { SearchHeaderComponent } from './components/search-header/search-header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UtilsModule } from '@frontend/utils';
 // import { WishResolver } from './services/wish.resolver';
 // import { BookEffects } from './state/books.effects';
 
@@ -61,24 +63,25 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    UtilsModule,
     RouterModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('books', booksReducer),
-
+    UtilsModule,
     EffectsModule.forFeature([BooksEffects]),
-
+    ReactiveFormsModule,
   ],
   declarations: [
     WishlistIconComponent,
     CardBookComponent,
     WishlistComponent,
-
+    SearchHeaderComponent,
     BooksListComponent,
     BookViewComponent,
     NothingComponent,
   ],
   exports: [
+    SearchHeaderComponent,
+
     WishlistIconComponent,
     CardBookComponent,
     BooksListComponent,

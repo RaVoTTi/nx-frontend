@@ -1,6 +1,7 @@
 export * from './lib/book-base.module';
 export * from './lib/services/book-base.service';
 
+export * from './lib/state/books/books.selectors';
 
 export * from './lib/services/books.resolver';
 export * from './lib/services/wishlist.service';

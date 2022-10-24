@@ -4,13 +4,10 @@ import { ErrorMsgDirective } from './directives/error-msg.directive';
 import { ActionOutsideDirective } from './directives/action-outside.directive';
 import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
-import { SearchHeaderComponent } from './components/search-header/search-header.component';
 import { PressEnterDirective } from './directives/press-enter.directive';
-import {  ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ],
   declarations: [
-    SearchHeaderComponent,
     DropdownComponent,
     SpinnerComponent,
     ErrorMsgDirective,
@@ -19,10 +16,7 @@ import {  ReactiveFormsModule } from '@angular/forms';
 
   ],
   exports: [
-    SearchHeaderComponent,
     PressEnterDirective,
-
-
     DropdownComponent,
     SpinnerComponent,
     ErrorMsgDirective,

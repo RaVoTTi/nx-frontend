@@ -1,8 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { selectSearchItems } from '@frontend/book-base'; 
-import { select, Store } from '@ngrx/store';
+ import { select, Store } from '@ngrx/store';
 import { IItem } from 'interfaces';
 import {
   debounceTime,
@@ -12,34 +11,39 @@ import {
   Observable,
   tap,
 } from 'rxjs';
-import { EventEmitter } from 'stream';
+import { selectAllBooksAsItems, selectSearchItems } from '../../state/books/books.selectors';
 
 @Component({
   selector: 'frontend-search-header',
   templateUrl: './search-header.component.html',
 })
 export class SearchHeaderComponent implements OnInit {
-  @Input() items$!: Observable<IItem[]>;
-  @Input() placeholder!: string;
+  items$!: Observable<IItem[]>;
+  src!: string;
+
   // @Output() public enter = new EventEmitter();
-  search = new FormControl('');
+  query = new FormControl('');
   books$! : Observable<IItem[]>
   isDropdownOpened = false;
 
-  constructor(private router: Router, private store: Store) {
-    this.search.valueChanges
-      // .pipe(debounceTime(100), distinctUntilChanged())
-      .subscribe((search) => {
-        if(search){
-          console.log(search)
+  constructor(private router: Router,
+    private store: Store) {
+    this.query.valueChanges.pipe(
+      debounceTime(100),
+      distinctUntilChanged()
+    ).subscribe(word =>{
+      console.log(word)
+     return this.items$ = this.store.pipe(select(selectSearchItems(word)))}
 
-          this.books$ = this.store.select(selectSearchItems(search))
-        }
-      });
+  
+    )
   }
-  ngOnInit(): void {
-
+  ngOnInit()  {
   }
+  // search( value : string){
+  //   this.items$ = this.store.pipe(select(selectSearchItems(value)))
+  //   // console.log(value)
+  // }
 
   toggleDropdown() {
     this.isDropdownOpened = !this.isDropdownOpened;
@@ -51,7 +55,5 @@ export class SearchHeaderComponent implements OnInit {
   click(url: string) {
     this.router.navigate([url]);
   }
-  onEnter() {
-    console.log('Valen');
-  }
+
 }

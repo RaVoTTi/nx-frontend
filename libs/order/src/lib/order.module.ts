@@ -21,7 +21,7 @@ import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 
 
-import { BookBaseModule } from '@frontend/book-base';
+import { BookBaseModule, BooksResolver } from '@frontend/book-base';
 import { MyEvaluationViewComponent } from './pages/my-evaluation-view/my-evaluation-view.component';
 
 import { UtilsModule } from '@frontend/utils';
@@ -47,6 +47,7 @@ const routes: Routes = [
     path: 'mylearning',
     component: MyLearningListComponent,
     resolve: {
+      books: BooksResolver,
       orders: OrdersResolver,
     },
   },

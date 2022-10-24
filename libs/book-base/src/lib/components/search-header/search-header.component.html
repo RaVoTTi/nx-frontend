@@ -4,17 +4,20 @@
       class="input-container"
       (click)="toggleDropdown()"
       pressEnter
-      (pressEnter)="onEnter()"
       actionOutside
       (actionOutside)="actionOutside()"
     >
       <div class="input-split">
-        <input type="text" class="input" [formControl]="search" [placeholder]="placeholder" />
-        <i class="pi pi-search input-icon"></i>
+        <input type="text" class="input" 
+         placeholder="Search Books..." 
+        [formControl]="query"
+
+         />
+        <i class=" input-icon"> 🔎</i>
       </div>
       <div class="dropdown-relative">
         <div class="dropdown" *ngIf="isDropdownOpened">
-          <ng-container *ngFor="let item of books$ | async">
+          <ng-container *ngFor="let item of items$ | async">
             <div (click)="click(item.url)">
               <i>{{ item.icon }}</i>
               <h3>{{ item.label | titlecase }}</h3>
