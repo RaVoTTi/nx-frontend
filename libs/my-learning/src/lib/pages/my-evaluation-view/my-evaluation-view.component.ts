@@ -3,7 +3,6 @@ import { take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Location } from '@angular/common';
-import { OrderService } from '../../services/order.service';
 import { IBook, IEvaluation, IOption, IOrder } from 'interfaces';
 import {
   FormArray,
@@ -12,6 +11,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { MyLearningService } from '../../services/my-learning.service';
 
 @Component({
   selector: 'frontend-my-evaluation-view',
@@ -24,7 +24,7 @@ export class MyEvaluationViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private orderService: OrderService,
+    private myLearningService: MyLearningService,
     private formBuilder: FormBuilder,
     private router: Router
 
@@ -38,23 +38,23 @@ export class MyEvaluationViewComponent implements OnInit {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
         this.orderId = params['id'];
-        this.orderService
-          .getEvaluationById(this.orderId)
-          .pipe(take(1))
-          .subscribe(({ result }) => {
-            if (result?.book) {
-              this.book = result.book;
-              console.log(this.book.evaluation)
-              this.book.evaluation?.forEach((test) => {
-                this.getEvaluationArrayForm().push(
-                  new FormControl(null, [
-                    Validators.required,
-                    Validators.pattern(test.correctKey),
-                  ])
-                );
-              });
-            }
-          });
+        // this.myLearningService
+        //   .getEvaluationById(this.orderId)
+        //   .pipe(take(1))
+        //   .subscribe(({ result }) => {
+        //     if (result?.book) {
+        //       this.book = result.book;
+        //       console.log(this.book.evaluation)
+        //       this.book.evaluation?.forEach((test) => {
+        //         this.getEvaluationArrayForm().push(
+        //           new FormControl(null, [
+        //             Validators.required,
+        //             Validators.pattern(test.correctKey),
+        //           ])
+        //         );
+        //       });
+        //     }
+        //   });
       }
     });
   }
@@ -63,14 +63,14 @@ export class MyEvaluationViewComponent implements OnInit {
     if (this.evaluationForm.invalid) {
       this.back();
     } else {
-      this.orderService
-        .getEvaluationConfirm(this.orderId)
-        .pipe(take(1))
-        .subscribe((response) => {
-          if (response.ok) {
-            this.router.navigate([`app/order/thanks/evaluation`]);
-          }
-        });
+      // this.myLearningService
+      //   .getEvaluationConfirm(this.orderId)
+      //   .pipe(take(1))
+      //   .subscribe((response) => {
+      //     if (response.ok) {
+      //       this.router.navigate([`app/order/thanks/evaluation`]);
+      //     }
+      //   });
     }
   }
 

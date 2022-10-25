@@ -8,6 +8,8 @@ export * from './IOrder'
 export * from './ILogin';
 export * from './IToken';
 export * from './IEvaluation';
+export * from './ILearning';
+
 export * from './IItem';
 
 export * from './IWishlist';

@@ -1,4 +1,5 @@
 {
+  "name": "book-admin",
   "projectType": "library",
   "sourceRoot": "libs/book-admin/src",
   "prefix": "frontend",

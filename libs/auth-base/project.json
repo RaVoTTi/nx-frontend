@@ -1,4 +1,5 @@
 {
+  "name": "auth-base",
   "projectType": "library",
   "sourceRoot": "libs/auth-base/src",
   "prefix": "frontend",

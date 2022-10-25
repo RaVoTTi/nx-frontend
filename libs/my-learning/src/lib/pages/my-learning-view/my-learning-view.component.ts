@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IOrder } from 'interfaces';
 import { take } from 'rxjs';
-import { OrderService } from '../../../services/order.service';
 import { Location } from '@angular/common';
+import { MyLearningService } from '../../services/my-learning.service';
 
 @Component({
   selector: 'frontend-my-learning-view',
@@ -17,22 +17,22 @@ export class MyLearningViewComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
 
-    private orderService: OrderService
+    private myLearningService: MyLearningService
   ) {}
 
   ngOnInit(): void {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
-        this.orderId = params['id'];
-        this.orderService
-          .getContentById(this.orderId)
-          .pipe(take(1))
-          .subscribe(({ result }) => {
-            if (result) {
-              this.order = result;
+        // this.orderId = params['id'];
+        // this.orderService
+        //   .getContentById(this.orderId)
+        //   .pipe(take(1))
+        //   .subscribe(({ result }) => {
+        //     if (result) {
+        //       this.order = result;
               
-            }
-          });
+        //     }
+        //   });
       }
     });
   }

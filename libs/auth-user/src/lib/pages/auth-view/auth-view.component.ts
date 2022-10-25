@@ -32,9 +32,9 @@ export class AuthViewComponent implements OnInit {
     private errorH: ErrorHandlerService,
     private vs: ValidatorsService // private messageService: MessageService
   ) {
-    this.router.url.includes('login')
-      ? (this.login = true)
-      : (this.login = false);
+    this.router.url.includes('signup')
+      ? (this.login = false)
+      : (this.login = true);
   }
 
   ngOnInit(): void {

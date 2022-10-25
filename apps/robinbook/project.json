@@ -1,4 +1,5 @@
 {
+  "name": "robinbook",
   "projectType": "application",
   "sourceRoot": "apps/robinbook/src",
   "prefix": "frontend",

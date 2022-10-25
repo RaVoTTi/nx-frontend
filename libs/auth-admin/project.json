@@ -1,4 +1,5 @@
 {
+  "name": "auth-admin",
   "projectType": "library",
   "sourceRoot": "libs/auth-admin/src",
   "prefix": "frontend",

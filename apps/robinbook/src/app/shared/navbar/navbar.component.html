@@ -6,13 +6,13 @@
       <li><a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/app/books">Books</a></li>
     </ng-container>
     <ng-container *ngIf="screenWidth > 768">
-      <li><a routerLinkActive="active" routerLink="/app/Wishlist">Wishlist</a></li>
+      <li><a routerLinkActive="active" routerLink="/app/books/wishlist">Wishlist</a></li>
 
 
     </ng-container>
     <ng-container *ngIf="screenWidth > 700">
       <div class="login-container">
-        <button class="button-secondary" routerLink="/auth/login">Login</button>
+        <button class="button-secondary" routerLink="/auth">Login</button>
       </div>
     </ng-container>
     <ng-container *ngIf="screenWidth > 450">

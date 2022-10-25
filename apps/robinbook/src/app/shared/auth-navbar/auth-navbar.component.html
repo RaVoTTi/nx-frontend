@@ -2,10 +2,10 @@
   <ul class="nav">
     <ng-container *ngIf="screenWidth > 500">
       <li>
-        <a routerLinkActive="active" routerLink="/app/books">Books</a>
+        <a routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/app/books">Books</a>
       </li>
       <li>
-        <a routerLinkActive="active" routerLink="/app/order/mylearning"
+        <a routerLinkActive="active" routerLink="/app/mylearning"
           >Learning</a
         >
       </li>

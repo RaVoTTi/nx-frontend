@@ -9,9 +9,11 @@
     "book-admin": "libs/book-admin",
     "book-base": "libs/book-base",
     "checkout": "libs/checkout",
+    "my-learning": "libs/my-learning",
     "order": "libs/order",
     "robinbook": "apps/robinbook",
     "robinbook-e2e": "apps/robinbook-e2e",
+    "settings": "libs/settings",
     "user-admin": "libs/user-admin",
     "utils": "libs/utils"
   }

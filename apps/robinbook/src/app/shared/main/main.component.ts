@@ -1,14 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'robinbook-main',
-  templateUrl: './main.component.html'
+  templateUrl: './main.component.html',
 })
-export class MainComponent implements OnInit {
+export class MainComponent {
+  home!: boolean;
 
-  constructor() { }
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(
+        filter(
+          (event): event is NavigationEnd => event instanceof NavigationEnd
+        )
+      )
+      .subscribe(
+        (event: NavigationEnd) => {
+          event.url.includes('home')
+          ? (this.home = true)
+          : (this.home = false);;
+        }
 
-  ngOnInit(): void {
+        // url.
+      );
   }
 
 }

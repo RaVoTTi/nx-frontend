@@ -19,7 +19,7 @@ export class NavbarComponent implements OnInit {
     {
       label: 'Login',
       icon: '🤓',
-      url: '/auth/login'
+      url: '/auth'
       },
     
   ];

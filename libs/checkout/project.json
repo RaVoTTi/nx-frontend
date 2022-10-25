@@ -1,4 +1,5 @@
 {
+  "name": "checkout",
   "projectType": "library",
   "sourceRoot": "libs/checkout/src",
   "prefix": "frontend",

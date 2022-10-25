@@ -26,25 +26,25 @@ export class AuthNavbarComponent implements OnInit {
       },
     
     {
-      label: 'Learning',
+      label: 'My Learning',
       icon: '📝',
-      url: '/app/order/mylearning'
+      url: '/app/mylearning'
       },
     
   ];
   secondary: IItem[] = [
-    {
-      label: 'Orders',
-      icon: '💵',
-      url: '/app/order/myordering'
-      },
+    // {
+    //   label: 'Orders',
+    //   icon: '💵',
+    //   url: '/app/order/myordering'
+    //   },
     
-    {
-      label: 'Support',
-      // routerLink: 'order/myordering',
-      icon: '📞',
-      url: '/app/support'
-      },
+    // {
+    //   label: 'Support',
+    //   // routerLink: 'order/myordering',
+    //   icon: '📞',
+    //   url: '/app/support'
+    //   },
     
     {
       label: 'Settings',

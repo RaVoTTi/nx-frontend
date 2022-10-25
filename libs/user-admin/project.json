@@ -1,4 +1,5 @@
 {
+  "name": "user-admin",
   "projectType": "library",
   "sourceRoot": "libs/user-admin/src",
   "prefix": "userAdmin",

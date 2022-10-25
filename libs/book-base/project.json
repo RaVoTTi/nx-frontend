@@ -1,4 +1,5 @@
 {
+  "name": "book-base",
   "projectType": "library",
   "sourceRoot": "libs/book-base/src",
   "prefix": "frontend",

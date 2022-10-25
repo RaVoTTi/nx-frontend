@@ -8,17 +8,11 @@ import { UtilsModule } from '@frontend/utils';
 const routes: Routes = [
   {
     path: '',
-
-    children: [
-      {
-        path: 'login',
-        component: AuthViewComponent,
-      },
-      {
-        path: 'signup',
-        component: AuthViewComponent,
-      },
-    ],
+    component: AuthViewComponent,
+  },
+  {
+    path: 'signup',
+    component: AuthViewComponent,
   },
 ];
 @NgModule({
