@@ -32,7 +32,6 @@ export class SearchHeaderComponent implements OnInit {
       debounceTime(100),
       distinctUntilChanged()
     ).subscribe(word =>{
-      console.log(word)
      return this.items$ = this.store.pipe(select(selectSearchItems(word)))}
 
   

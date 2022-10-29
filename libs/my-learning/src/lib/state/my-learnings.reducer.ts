@@ -17,27 +17,19 @@ export interface MyLearningsState extends EntityState<ILearning> {
   allMyLearningsLoaded: boolean;
 }
 
-
-
 export const adapter = createEntityAdapter<ILearning>({
-  selectId: myLearning => myLearning._id
+  selectId: (myLearning) => myLearning._id,
 });
 
-export const initialMyLearningsState = adapter.getInitialState({
-  
-});
+export const initialMyLearningsState = adapter.getInitialState({});
 
 export const myLearningsReducer = createReducer(
   initialMyLearningsState,
 
-  on(allMyLearningsLoaded, (state, action) => adapter.setAll(action.orders, {...state, allMyLearningsLoaded:true}))
- 
+  on(allMyLearningsLoaded, (state, action) =>
+    adapter.setAll(action.myLearnings, { ...state, allMyLearningsLoaded: true })
+  )
 );
 
-export const {
-selectAll,
-selectEntities,
-selectIds,
-selectTotal
-
-} = adapter.getSelectors()
+export const { selectAll, selectEntities, selectIds, selectTotal } =
+  adapter.getSelectors();

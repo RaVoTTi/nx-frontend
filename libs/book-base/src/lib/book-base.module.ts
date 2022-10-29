@@ -31,40 +31,41 @@ import { UtilsModule } from '@frontend/utils';
 // import { WishResolver } from './services/wish.resolver';
 // import { BookEffects } from './state/books.effects';
 
+// const routes: Routes = [
+//   // {
+//   //   path: '',
 
+//   //   children: [
+//       {
+//         path: '',
+//         // pathMatch: 'full',
+//         component: BooksListComponent,
 
-const routes: Routes = [
+//         // resolve: {
+//         //   books: BooksResolver,
+//         // },
+//       },
+//       {
+//         path: 'id/:id',
+//         component: BookViewComponent,
+//       },
 
-  {
-    path: '',
-    component: BooksListComponent,
-    resolve: {
-      books: BooksResolver,
-    },
-  },
-  {
-    path: 'id/:id',
-    component: BookViewComponent,
-  },
-
-  {
-    path: 'wishlist',
-    component: WishlistComponent,
-    resolve: {
-      books: BooksResolver,
-      // wish: WishResolver
-    },
-  },
-
-
-
-];
+//       {
+//         path: 'wishlist',
+//         component: WishlistComponent,
+//         resolve: {
+//           books: BooksResolver,
+//         },
+//       },
+//   //   ],
+//   // },
+// ];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    RouterModule.forChild(routes),
+    // RouterModule.forChild(routes),
     StoreModule.forFeature('books', booksReducer),
     UtilsModule,
     EffectsModule.forFeature([BooksEffects]),
@@ -88,14 +89,14 @@ const routes: Routes = [
     BookViewComponent,
     NothingComponent,
   ],
-  providers: [MessageService, BooksResolver, 
+  providers: [
+    MessageService,
+    BooksResolver,
     // WishResolver
   ],
 })
 export class BookBaseModule {
-  constructor(
-    wishlistService: WishlistService,
-  ) {
+  constructor(wishlistService: WishlistService) {
     wishlistService.initWishlistLocalStorage();
   }
 }

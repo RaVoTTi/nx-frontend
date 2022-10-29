@@ -1,12 +1,11 @@
 import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
-import { BookBaseService, WishlistService } from '@frontend/book-base';
 import { Component, OnInit } from '@angular/core';
 import { of, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-// import { AuthState , authSelector} from '@frontend/auth-base';
-import { Store } from '@ngrx/store';
+import { BookBaseService } from '../../services/book-base.service';
+import { WishlistService } from '../../services/wishlist.service';
 
 
 @Component({

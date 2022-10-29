@@ -17,27 +17,19 @@ export interface BooksState extends EntityState<IBook> {
   allBooksLoaded: boolean;
 }
 
-
-
 export const adapter = createEntityAdapter<IBook>({
-  selectId: book => book._id
+  selectId: (book) => book._id,
 });
 
-export const initialBooksState = adapter.getInitialState({
-  
-});
+export const initialBooksState = adapter.getInitialState({});
 
 export const booksReducer = createReducer(
   initialBooksState,
 
-  on(allBooksLoaded, (state, action) => adapter.setAll(action.books, {...state, allBooksLoaded:true}))
- 
+  on(allBooksLoaded, (state, action) =>
+    adapter.setAll(action.books, { ...state, allBooksLoaded: true })
+  )
 );
 
-export const {
-selectAll,
-selectEntities,
-selectIds,
-selectTotal
-
-} = adapter.getSelectors()
+export const { selectAll, selectEntities, selectIds, selectTotal } =
+  adapter.getSelectors();

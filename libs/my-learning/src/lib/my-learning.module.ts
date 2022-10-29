@@ -16,7 +16,7 @@ import { MyLearningsEffects } from './state/my-learnings.effects';
 const routes: Routes = [
 
   {
-    path: 'mylearning',
+    path: '',
     component: MyLearningListComponent,
     resolve: {
       books: BooksResolver,
@@ -24,7 +24,7 @@ const routes: Routes = [
     },
   },
   {
-    path: 'mylearning/:id',
+    path: ':id',
     component: MyLearningViewComponent,
     resolve: {
       books: BooksResolver,
@@ -40,8 +40,8 @@ const routes: Routes = [
 @NgModule({
   imports: [CommonModule,
     StoreModule.forFeature('myLearnings', myLearningsReducer),
-
     EffectsModule.forFeature([MyLearningsEffects]),
+
     RouterModule.forChild(routes),
   
   ],

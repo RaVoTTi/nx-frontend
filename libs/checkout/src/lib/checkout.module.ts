@@ -6,13 +6,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '@frontend/utils';
 const routes: Routes = [
   {
-    path: '',
-    children: [
-      {
-        path: 'stripe/:id',
-        component: CheckoutViewComponent,
-      },
-    ],
+    path: 'stripe/:id',
+    component: CheckoutViewComponent,
   },
 ];
 

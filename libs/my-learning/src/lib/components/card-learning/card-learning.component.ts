@@ -1,7 +1,7 @@
-import { IOrder } from '../../../../../../interfaces/IOrder';
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { environment } from '@env/environment';
+import { ILearning } from 'interfaces';
 
 @Component({
   selector: 'frontend-card-learning',
@@ -11,7 +11,7 @@ export class LearningItemComponent {
   
   RAW_URL = environment.RAW_URL
   
-  @Input() order!: IOrder;
+  @Input() learning!: ILearning;
 
   items: MenuItem[] = [];
 

@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { IBook, IOrder } from "interfaces";
+import { IBook, ILearning, IOrder } from "interfaces";
 
 export const loadAllMyLearnings = createAction(
   "[Learnings Resolver] Load All Learnings",
@@ -7,6 +7,6 @@ export const loadAllMyLearnings = createAction(
 
 export const allMyLearningsLoaded = createAction(
   "[Load Learnings Effect] All Learnings Loaded",
-  props<{orders:IOrder[]}>()
+  props<{myLearnings:ILearning[]}>()
 )
 

@@ -1,5 +1,9 @@
 <div class="list-container">
-    <frontend-card-learning *ngFor="let learning of allMyLearnings$ | async" [order]="learning">
+    <frontend-card-learning *ngFor="let learning of allMyLearnings$ | async" [learning]="learning">
     </frontend-card-learning>
   </div>
+
+<span> {{allMyLearnings$ | async | json}}</span>
+
+
 <!-- <frontend-nothing></frontend-nothing> -->
