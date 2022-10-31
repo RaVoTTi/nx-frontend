@@ -18,68 +18,14 @@ export class MyLearningsEffects {
     this.actions$.pipe(
       ofType(loadAllMyLearnings),
       concatMap((action) => this.myLearningService.getMyLearnings()),
+
       map(({ result }) => {
-        if (result) {
-          result.map(({ book: oldBook, ...rest }) => {
-            this.store
-              .pipe(select(selectBooksById(oldBook._id)), take(1))
-              .subscribe((storeBook) => {
-                if (storeBook) {
-                  // console.log(oldBook)
-                  // console.log(storeBook)
-                  console.log(this.joinBooks(oldBook, storeBook));
-                  return this.joinBooks(oldBook, storeBook);
-                } else {
-                  return {};
-                }
-
-                // const book = this.joinBooks(oldBook, storeBook);
-              });
-
-            return {
-              ...rest,
-            };
-          });
-        }
-
         const myLearnings = result ?? [];
         return allMyLearningsLoaded({ myLearnings });
       })
     )
   );
-  joinBooks(oldBook: IBook, storeBook: IBook): IBook {
-    const { content = '', evaluation = [] } = oldBook;
-    const {
-      _id,
-      autor,
-      subject,
-      name,
-      state,
-      isFeatured,
-      image,
-      minPrice,
-      maxPrice,
-      dateCreated,
-      description,
-    } = storeBook;
 
-    // return Object.assign({}, oldBook, storeBook);
-    return {
-      content,
-      evaluation,
-      _id,
-      autor,
-      subject,
-      name,
-      state,
-      isFeatured,
-      image,
-      minPrice,
-      maxPrice,
-      dateCreated,
-      description,
-    };
-  }
   constructor(
     private store: Store,
 

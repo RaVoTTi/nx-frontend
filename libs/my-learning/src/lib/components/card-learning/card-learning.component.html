@@ -4,12 +4,12 @@
     [routerLink]="['/app/order/mylearning/', learning._id]"
   >
     <div class="upper-container">
-      <img class="image" [src]="RAW_URL + learning.book.image" [alt]="RAW_URL + learning.book.image" />
+      <img class="image" [src]="RAW_URL + book?.image" [alt]="RAW_URL + book?.image" />
 
     </div>
     <div class="line"></div>
     <div class="lower-container">
-      <h2>{{ learning.book.name }}</h2>
+      <h2>{{ book?.name }}</h2>
     </div>
   </div>
 
