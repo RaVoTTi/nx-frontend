@@ -16,8 +16,10 @@ const routes: Routes = [
     component: MainComponent,
     children: [
       {
-        path: '',
+        path: 'home',
         component: HomeComponent,
+        canActivate: [IsLoggedOut],
+
         // component: TestComponent,
       },
       {
@@ -57,7 +59,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'app',
+    redirectTo: 'app/books',
   },
   {
     path: 'auth',
@@ -73,6 +75,7 @@ const routes: Routes = [
 
     loadChildren: () =>
       import('@frontend/checkout').then((m) => m.CheckoutModule),
+    canActivate: [IsLoggedIn],
   },
 ];
 

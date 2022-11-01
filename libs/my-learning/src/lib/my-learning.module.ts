@@ -24,7 +24,7 @@ const routes: Routes = [
     },
   },
   {
-    path: ':id',
+    path: 'id/:id',
     component: MyLearningViewComponent,
     resolve: {
       books: BooksResolver,

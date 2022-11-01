@@ -1,20 +1,29 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { MyLearningsState } from './my-learnings.reducer';
 
-import * as fromMyLearning from './my-learnings.reducer';
+import * as fromMyLearnings from './my-learnings.reducer';
 import { IItem } from 'interfaces';
 import { booksReducer } from '@frontend/book-base';
 
-export const selectMyLearningState =
+export const selectMyLearningsState =
   createFeatureSelector<MyLearningsState>('myLearnings');
 
 export const selectAllMyLearnings = createSelector(
-  selectMyLearningState,
-  fromMyLearning.selectAll
+  selectMyLearningsState,
+  fromMyLearnings.selectAll
 );
 
 
 export const areMyLearningsLoaded = createSelector(
-  selectMyLearningState,
+  selectMyLearningsState,
   (state) => state.allMyLearningsLoaded
 );
+export const selectMyLearningsEntities = createSelector(
+  selectMyLearningsState,
+  fromMyLearnings.selectEntities 
+);
+
+export const selectMyLearningById = (id: string) =>
+  createSelector(selectMyLearningsEntities, (learnings) =>
+    learnings[id]
+  );

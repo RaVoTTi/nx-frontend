@@ -1,7 +1,7 @@
 export interface IEvaluation {
     correctKey: string,
     question: string,
-    options?: IOption[]
+    options: IOption[]
 }
 export interface IOption{
     key:string,

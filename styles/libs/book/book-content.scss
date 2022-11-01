@@ -27,6 +27,34 @@
     }
   }
 
+  .learning-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+    width: 100%;
+    height: fit-content;
+    margin-bottom: 1em;
+    
+    div {
+      display: flex;
+      align-items: center;
+      font-family: var(--primary-font);
+      color: var(--gray-color);
+      cursor: pointer;
+
+
+      i {
+        font-size: 1.5em;
+      }
+      
+      &:hover {
+        color: var(--complementary-color);
+      }
+    }
+
+  }
+
 
   & .card-content {
     padding: 1rem;

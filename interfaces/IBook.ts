@@ -13,9 +13,7 @@ export interface IBook {
   minPrice: number
   maxPrice: number
   dateCreated: Date
-  rating?: number
-  description?: string
-  evaluation?: IEvaluation[]
-  content?: string
-  numReviews?: number
+  // rating?: number
+  // description?: string
+  // numReviews?: number
 }
