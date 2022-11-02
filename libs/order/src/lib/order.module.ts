@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PlaceOrderComponent } from './pages/place-order/place-order.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyOrderingComponent } from './pages/my-ordering/my-ordering.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
-import { LearningItemComponent } from '../../../my-learning/src/lib/components/card-learning/card-learning.component';
 
 // NGRX
 import {
@@ -35,10 +33,7 @@ const entityMetadata: EntityMetadataMap = {
 };
 
 const routes: Routes = [
-  {
-    path: 'placeorder/:id',
-    component: PlaceOrderComponent,
-  },
+
   {
     path: 'myordering',
     component: MyOrderingComponent,
@@ -63,7 +58,6 @@ const UX_MODULE = [RatingModule, TagModule, DropdownModule, ToastModule];
     EffectsModule.forFeature([OrdersEffects]),
   ],
   declarations: [
-    PlaceOrderComponent,
 
     MyOrderingComponent,
     OrderItemComponent,

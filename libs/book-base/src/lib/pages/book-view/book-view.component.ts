@@ -55,9 +55,9 @@ export class BookViewComponent implements OnInit {
   toCheckOut(){
     if(this.isAuth$){
 
-      this.router.navigate([`app/order/placeorder/${this.bookId}`]);
+      this.router.navigate([`/checkout/placeorder/${this.bookId}`]);
     }else{
-      this.router.navigate([`auth/login`]);
+      this.router.navigate([`/auth/login`]);
 
     }
 

@@ -9,12 +9,13 @@ import {
 import { ORDER_CONDITION } from '../../helpers/order-conditions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take, timer } from 'rxjs';
-import { BookBaseService } from '@frontend/book-base';
+import { BookBaseService, selectBooksById } from '@frontend/book-base';
 import { IBook } from 'interfaces';
 import { environment } from '@env/environment';
-import { OrderService } from '../../services/order.service';
 
 import { MessageService } from 'primeng/api';
+import { CheckoutService } from '../../services/checkout.service';
+import { select, Store } from '@ngrx/store';
 
 @Component({
   selector: 'frontend-place-order',
@@ -24,7 +25,7 @@ export class PlaceOrderComponent implements OnInit {
   orderForm!: FormGroup;
   RAW_URL = environment.RAW_URL;
   couponForm = new FormControl('');
-  bookId!: string;
+  id!: string;
   book!: IBook;
   checkoutComplete = false;
   minPrice!: number;
@@ -39,9 +40,12 @@ export class PlaceOrderComponent implements OnInit {
     private location: Location,
     private route: ActivatedRoute,
     private bookBaseService: BookBaseService,
-    private orderService: OrderService,
+    private checkoutService: CheckoutService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private store: Store
+    
+
   ) {}
 
   ngOnInit(): void {
@@ -69,8 +73,8 @@ export class PlaceOrderComponent implements OnInit {
       this.orderForm.markAllAsTouched();
       return;
     }
-    this.orderService
-      .postMyOrder(this.bookId)
+    this.checkoutService
+      .postMyOrder(this.id)
       .pipe(take(1))
       .subscribe((response) => {
         if (response.ok === true) {
@@ -93,13 +97,12 @@ export class PlaceOrderComponent implements OnInit {
   private _getBook() {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
-        this.bookId = params['id'];
-        this.bookBaseService
-          .getBookBaseById(this.bookId)
-          .pipe(take(1))
-          .subscribe(({ result }) => {
-            if (result) {
-              this.book = result;
+        this.id = params['id'];
+        this.store
+        .pipe(select(selectBooksById(this.id)), take(1))
+        .subscribe((book) => {
+            if (book) {
+              this.book = book;
               this.minPrice = this.book.minPrice;
               this.maxPrice = this.book.maxPrice;
               this.price = this.book.minPrice

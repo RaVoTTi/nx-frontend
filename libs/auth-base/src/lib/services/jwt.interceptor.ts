@@ -10,7 +10,9 @@ import { LocalStorageService } from './local-storage.service';
 import { environment } from '@env/environment';
 import { select, Store } from '@ngrx/store';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class JwtInterceptor implements HttpInterceptor {
   constructor(
     private store: Store,

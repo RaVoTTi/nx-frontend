@@ -57,13 +57,9 @@ const routes: Routes = [
       },
     ],
   },
-  {
-    path: '**',
-    redirectTo: 'app/books',
-  },
+
   {
     path: 'auth',
-    pathMatch: 'full',
 
     loadChildren: () =>
       import('@frontend/auth-user').then((m) => m.AuthUserModule),
@@ -71,11 +67,13 @@ const routes: Routes = [
   },
   {
     path: 'checkout',
-    pathMatch: 'full',
-
     loadChildren: () =>
       import('@frontend/checkout').then((m) => m.CheckoutModule),
     canActivate: [IsLoggedIn],
+  },
+  {
+    path: '**',
+    redirectTo: 'app/books', 
   },
 ];
 

@@ -24,22 +24,7 @@ export class OrderService {
       `${this.API_URL}/order/content/${id}`
     )
   }
-  postMyOrder(id: string): Observable<IResponse> {
-    return this.http.post<IResponse>(
-      `${this.API_URL}/order/checkout/${id}`,
-      {}
-    );
-  }
-  getEvaluationById(id: string): Observable<IResponse<IOrder>> {
-    return this.http.get<IResponse<IOrder>>(
-      `${this.API_URL}/order/evaluation/${id}`
-    );
-  }
-  getEvaluationConfirm(id: string): Observable<IResponse> {
-    return this.http.get<IResponse>(
-      `${this.API_URL}/order/evaluation/confirm/${id}`
-    );
-  }
+
 
   // ADMIN
   getOrders(state = ''): Observable<IResponse<IOrder[]>> {

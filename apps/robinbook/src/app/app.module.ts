@@ -29,7 +29,7 @@ import { MainComponent } from './shared/main/main.component';
 import { AuthBaseModule, JwtInterceptor } from '@frontend/auth-base';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component';
-import { UtilsModule } from '@frontend/utils';
+import { HttpErrorInterceptor, UtilsModule } from '@frontend/utils';
 import * as fromRoot from './reducers';
 import { environment } from '@env/environment';
 
@@ -47,7 +47,6 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-
     FooterComponent,
     HomeComponent,
     HeaderComponent,
@@ -77,6 +76,8 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
     MessageService,
     // {provide: DefaultDataServiceConfig, useValue: defaultDataServiceConfig},
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true },
+
   ],
   bootstrap: [AppComponent],
 })
