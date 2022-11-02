@@ -18,7 +18,7 @@
       <div class="dropdown-relative">
         <div class="dropdown" *ngIf="isDropdownOpened">
           <ng-container *ngFor="let item of items$ | async">
-            <div (click)="click(item.url)">
+            <div (click)="item.callback()">
               <i>{{ item.icon }}</i>
               <h3>{{ item.label | titlecase }}</h3>
             </div>

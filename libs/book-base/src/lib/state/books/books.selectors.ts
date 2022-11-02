@@ -4,6 +4,7 @@ import { BooksState } from './books.reducer';
 import * as fromBooks from './books.reducer';
 import { map } from 'rxjs';
 import { IItem } from 'interfaces';
+import { Router } from '@angular/router';
 
 export const selectBooksState = createFeatureSelector<BooksState>('books');
 
@@ -19,19 +20,19 @@ export const selectBooksById = (id: string) =>
   createSelector(selectBooksEntities, (books) =>
     books[id]
   );
-export const selectAllBooksAsItems = createSelector(
+export const selectAllBooksAsItems = (router:Router) => createSelector(
   selectAllBooks,
   (books) =>
     books.map((book) => {
       return {
         label: book.name,
         icon: '📕',
-        url: `/app/books/id/${book._id}`,
+        callback: router.navigateByUrl('/app/books/id/' + book._id),
       };
     }) as IItem[]
 );
-export const selectSearchItems = (word: string | null) =>
-  createSelector(selectAllBooksAsItems, (books) => {
+export const selectSearchItems = (router:Router ,word: string | null) =>
+  createSelector(selectAllBooksAsItems(router), (books) => {
     if (word && word.length > 0) {
       const wordUpper = word.toLowerCase();
       const search = books.filter(({ label }) => {
@@ -44,7 +45,10 @@ export const selectSearchItems = (word: string | null) =>
         {
           label: 'Book not found',
           icon: '❌',
-          url: `/app/books/`,
+          callback: () => {
+            console.log('Book not found')
+          },
+
         },
       ];
     } else {

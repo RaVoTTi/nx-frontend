@@ -11,35 +11,38 @@ export class NavbarComponent implements OnInit {
     {
       label: 'Wishlist',
       icon: '💚',
-      url: "/app/books/wishlist"
+      callback: () => {
+        this.router.navigateByUrl('/app/wishlist');
       },
-    
+    },
   ];
   login: IItem[] = [
     {
       label: 'Login',
       icon: '🤓',
-      url: '/auth'
+      callback: () => {
+        this.router.navigateByUrl('/auth');
       },
-    
+    },
   ];
   signUp: IItem[] = [
     {
       label: 'Sign Up',
       icon: '📝',
-      url: '/auth/signup'
+      callback: () => {
+        this.router.navigateByUrl('/auth/signup');
       },
-    
+    },
   ];
 
   primary: IItem[] = [
     {
       label: 'Books',
       icon: '📚',
-      url: '/app/books/list'
+      callback: () => {
+        this.router.navigateByUrl('/app/books');
       },
-    
-
+    },
   ];
   screenWidth: any;
   isDropdownOpened = false;
@@ -59,11 +62,9 @@ export class NavbarComponent implements OnInit {
   }
 
   getItems() {
-    if (this.screenWidth < 450){
+    if (this.screenWidth < 450) {
       return this.primary.concat(this.wishlist, this.login, this.signUp);
-
-    }
-    else if (this.screenWidth < 580) {
+    } else if (this.screenWidth < 580) {
       return this.primary.concat(this.wishlist, this.login);
     } else if (this.screenWidth < 700) {
       return this.wishlist.concat(this.login);

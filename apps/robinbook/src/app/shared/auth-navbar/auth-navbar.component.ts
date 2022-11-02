@@ -13,7 +13,9 @@ export class AuthNavbarComponent implements OnInit {
     {
       label: 'Wishlist',
       icon: '💚',
-      url: "/app/books/wishlist"
+      callback: () => {
+        this.router.navigateByUrl('/app/wishlist');
+      },
       },
     
   ];
@@ -22,14 +24,17 @@ export class AuthNavbarComponent implements OnInit {
     {
       label: 'Books',
       icon: '📚',
-      url: '/app/books'
+      callback: () => {
+        this.router.navigateByUrl('/app/books');
       },
+    },
     
     {
       label: 'My Learning',
       icon: '📝',
-      url: '/app/mylearning'
-      },
+      callback: () => {
+        this.router.navigateByUrl('/app/mylearning');
+      },}
     
   ];
   secondary: IItem[] = [
@@ -49,17 +54,19 @@ export class AuthNavbarComponent implements OnInit {
     {
       label: 'Settings',
       icon: '🧰',
-      url: '/app/settings'
+      callback: () => {
+        this.router.navigateByUrl('/app/settings');
+      }
       },
     
-    // {
+    {
       
-    //   label: 'Log Out',
-    //   icon: '🚪',
-    //   function: () => {
-    //     this.store.dispatch(AuthActions.logout())
-    //   },
-    // },
+      label: 'Log Out',
+      icon: '🚪',
+      callback: () => {
+        this.store.dispatch(AuthActions.logout())
+      },
+    },
   ];
   screenWidth: any;
 

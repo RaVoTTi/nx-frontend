@@ -1,6 +1,6 @@
 <div class="dropdown">
   <ng-container *ngFor="let item of items">
-    <div (click)="click({ url: item.url, function: item.function })">
+    <div (click)="item.callback ? item.callback() : null ">
       <i>{{ item.icon }}</i>
       <h3>{{ item.label }}</h3>
     </div>

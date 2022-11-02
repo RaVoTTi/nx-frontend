@@ -6,6 +6,7 @@ import { BookBaseService } from '../../services/book-base.service';
 import { WishlistService } from '../../services/wishlist.service';
 import { select, Store } from '@ngrx/store';
 import { selectAllBooksAsItems, selectWishBooks } from '../../state/books/books.selectors';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +21,9 @@ export class WishlistComponent implements OnInit {
   constructor(
     private bookBaseService: BookBaseService,
     private wishlistService: WishlistService,
-    private store: Store
+    private store: Store,
+    private router: Router
+
 
   ) {}
 
@@ -32,7 +35,7 @@ export class WishlistComponent implements OnInit {
   reload(){
     this.ids = this.wishlistService.getWishlist().books
     this.wishBooks$ = this.store.select(selectWishBooks(this.ids))
-    this.allItems$ = this.store.select(selectAllBooksAsItems)
+    this.allItems$ = this.store.select(selectAllBooksAsItems(this.router))
 
 
   }
