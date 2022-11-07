@@ -42,7 +42,7 @@ const routes: Routes = [
           books: BooksResolver,
         },
       },
-
+      
       {
         path: 'mylearning',
         loadChildren: () =>
@@ -52,8 +52,13 @@ const routes: Routes = [
       {
         path: 'settings',
         loadChildren: () =>
-          import('@frontend/settings').then((m) => m.SettingsModule),
+        import('@frontend/settings').then((m) => m.SettingsModule),
         canActivate: [IsLoggedIn],
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: '/app/books',
       },
     ],
   },
@@ -73,7 +78,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'app/books', 
+    redirectTo: '/app/books',
   },
 ];
 

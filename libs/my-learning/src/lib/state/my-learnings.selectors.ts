@@ -12,6 +12,10 @@ export const selectAllMyLearnings = createSelector(
   selectMyLearningsState,
   fromMyLearnings.selectAll
 );
+export const selectCountMyLearnings = createSelector(
+  selectAllMyLearnings,
+  (books) => books.length
+);
 
 
 export const areMyLearningsLoaded = createSelector(

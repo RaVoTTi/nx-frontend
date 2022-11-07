@@ -19,6 +19,14 @@
             ]
           }
         ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "sg",
+            "style": "kebab-case"
+          }
+        ],
 
 
 

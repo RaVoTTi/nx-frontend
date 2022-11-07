@@ -6,6 +6,7 @@ import { DropdownComponent } from './components/dropdown/dropdown.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { PressEnterDirective } from './directives/press-enter.directive';
 import { ErrorImageDirective } from './directives/error-image.directive';
+import { NothingComponent } from './components/nothing/nothing.component';
 @NgModule({
   imports: [CommonModule, ],
   declarations: [
@@ -15,6 +16,7 @@ import { ErrorImageDirective } from './directives/error-image.directive';
     ErrorImageDirective,
     ActionOutsideDirective,
     PressEnterDirective,
+    NothingComponent,
 
   ],
   exports: [
@@ -22,9 +24,9 @@ import { ErrorImageDirective } from './directives/error-image.directive';
     DropdownComponent,
     SpinnerComponent,
     ErrorImageDirective,
-
     ErrorMsgDirective,
     ActionOutsideDirective,
+    NothingComponent,
 
 
   ],

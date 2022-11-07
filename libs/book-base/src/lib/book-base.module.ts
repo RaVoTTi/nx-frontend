@@ -15,7 +15,6 @@ import { WishlistService } from './services/wishlist.service';
 import { WishlistComponent } from './pages/wishlist/wishlist.component';
 import { MessageService } from 'primeng/api';
 
-import { NothingComponent } from './pages/nothing/nothing.component';
 import { BooksListComponent } from './pages/books-list/books-list.component';
 import { BookViewComponent } from './pages/book-view/book-view.component';
 import { BooksResolver } from './services/books.resolver';
@@ -78,7 +77,6 @@ import { UtilsModule } from '@frontend/utils';
     SearchHeaderComponent,
     BooksListComponent,
     BookViewComponent,
-    NothingComponent,
   ],
   exports: [
     SearchHeaderComponent,
@@ -87,7 +85,6 @@ import { UtilsModule } from '@frontend/utils';
     CardBookComponent,
     BooksListComponent,
     BookViewComponent,
-    NothingComponent,
   ],
   providers: [
     MessageService,

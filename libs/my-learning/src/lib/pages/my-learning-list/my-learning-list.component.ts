@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { IBook, IItem, ILearning, IOrder } from 'interfaces';
 import { Observable, take } from 'rxjs';
 import { MyLearningService } from '../../services/my-learning.service';
-import { selectAllMyLearnings } from '../../state/my-learnings.selectors';
+import { selectAllMyLearnings, selectCountMyLearnings } from '../../state/my-learnings.selectors';
 
 @Component({
   selector: 'frontend-my-learning-list',
@@ -12,18 +12,19 @@ import { selectAllMyLearnings } from '../../state/my-learnings.selectors';
 })
 export class MyLearningListComponent implements OnInit {
   allMyLearnings$!: Observable<ILearning[]>;
-  allMyBooks$!: Observable<ILearning[]>;
+  countMyLearnings$!: Observable<number>;
 
   constructor(
-    private myLearningService: MyLearningService,
     private store: Store
   ) {}
 
   ngOnInit(): void {
     this.reload();
-  }
+}
   reload() {
     this.allMyLearnings$ = this.store.pipe(select(selectAllMyLearnings));
+    this.countMyLearnings$ = this.store.pipe(select(selectCountMyLearnings));
+  
   }
 
   book(id: string): IBook | undefined {

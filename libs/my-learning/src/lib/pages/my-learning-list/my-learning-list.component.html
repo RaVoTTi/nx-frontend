@@ -1,4 +1,6 @@
-<div class="list-container">
+
+
+<div *ngIf="allMyLearnings$" class="list-container">
   <frontend-card-learning
     *ngFor="let learning of allMyLearnings$ | async"
     [learning]="learning"
@@ -6,5 +8,7 @@
   >
   </frontend-card-learning>
 </div>
+<frontend-nothing *ngIf="(countMyLearnings$ | async) === 0"></frontend-nothing>
+
 
 

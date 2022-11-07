@@ -12,6 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { myLearningsReducer } from './state/my-learnings.reducer';
 import { MyLearningsEffects } from './state/my-learnings.effects';
+import { UtilsModule } from '@frontend/utils';
 
 const routes: Routes = [
 
@@ -43,6 +44,7 @@ const routes: Routes = [
     EffectsModule.forFeature([MyLearningsEffects]),
 
     RouterModule.forChild(routes),
+    UtilsModule
   
   ],
   declarations:[

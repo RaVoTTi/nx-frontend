@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-selector */
 import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
 import { Component, OnInit } from '@angular/core';
