@@ -78,7 +78,7 @@ export class PlaceOrderComponent implements OnInit {
       .pipe(take(1))
       .subscribe((response) => {
         if (response.ok === true) {
-          this.router.navigate([`checkout/stripe/${response.result}`]);
+          this.router.navigate([`/checkout/stripe/${response.result}`]);
         } else {
           this.messageService.add({
             severity: 'error',

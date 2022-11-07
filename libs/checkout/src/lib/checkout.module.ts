@@ -7,6 +7,7 @@ import { UtilsModule } from '@frontend/utils';
 import { PlaceOrderComponent } from './pages/place-order/place-order.component';
 import { BookBaseModule, BooksResolver } from '@frontend/book-base';
 const routes: Routes = [
+  
   {
     path: 'placeorder/:id',
     component: PlaceOrderComponent,
