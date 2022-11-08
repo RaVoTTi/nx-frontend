@@ -32,44 +32,6 @@ align-items: flex-start;
 
 
 
-    & .card-form-container {
-      background: green;
-      width: 100%;
-      height: max-content;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      background: var(--background-color);
-      box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
-      border-radius: 20px;
-    border: 1px solid var(--light-gray-color);
-
-
-      & .card-header {
-        background: var(--primary-color);
-        background: -webkit-linear-gradient(
-          to top,
-          var(--primary-color),
-          var(--mono-primary-color)
-        ); /* Chrome 10-25, Safari 5.1-6 */
-        background: linear-gradient(
-          to top,
-          var(--primary-color),
-          var(--mono-primary-color)
-        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-        width: 100%;
-        padding: 1rem;
-        font-size: 1.5rem;
-        color: white;
-        text-align: center;
-        
-
-      }
-      & .form-container{
-        padding: 1rem;
-      }
-    }
     & .button-container{
       height: 50px;
       min-width: 200px;
@@ -78,3 +40,47 @@ align-items: flex-start;
     }
   }
 }
+
+.card-form-container {
+    background: green;
+    width: 100%;
+    height: max-content;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--background-color);
+    box-shadow: -2px 5px 20px 0 rgb(173 173 173 / 19%);
+    border-radius: 20px;
+  border: 1px solid var(--light-gray-color);
+
+
+    & .card-header {
+      background: var(--primary-color);
+      background: -webkit-linear-gradient(
+        to top,
+        var(--primary-color),
+        var(--mono-primary-color)
+      ); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(
+        to top,
+        var(--primary-color),
+        var(--mono-primary-color)
+      ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.5rem;
+      color: white;
+      text-align: center;
+      
+
+    }
+    & .form-container{
+      padding: 1rem;
+    }
+    & .button-container{
+      margin-top: 1rem;
+      height: 40px;
+      width: 100%;
+    }
+  }

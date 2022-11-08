@@ -103,7 +103,7 @@ export class AuthViewComponent implements OnInit {
         },
       });
 
-    this.authBaseService.postSignUp(this.signUpForm.value);
+    // this.authBaseService.postSignUp(this.signUpForm.value);
     // .subscribe((response) => {
     //   if (response.ok) {
     //     this.messageService.add({
