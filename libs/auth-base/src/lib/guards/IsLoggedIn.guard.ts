@@ -25,7 +25,7 @@ export class IsLoggedIn implements CanActivate {
       select(AuthSelectors.isLoggedIn),
       tap((loggedIn) => {
         if (!loggedIn) {
-          this.router.navigateByUrl('/auth/login');
+          this.router.navigateByUrl('/auth');
         }
       })
     );

@@ -20,8 +20,8 @@ const routes: Routes = [
     path: '',
     component: MyLearningListComponent,
     resolve: {
-      books: BooksResolver,
-      myLearnings: MyLearningResolver,
+      books: BooksResolver ,
+      myLearnings: MyLearningResolver ,
     },
   },
   {

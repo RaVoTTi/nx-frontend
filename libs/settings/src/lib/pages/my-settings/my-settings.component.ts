@@ -31,8 +31,7 @@ export class MySettingsComponent implements OnInit {
   private _initForm() {
     this.settingsForm = this.formBuilder.group(
       {
-        name: ['', [Validators.required, this.vs.validatePat('namePat')]],
-        lastName: ['', [Validators.required, this.vs.validatePat('namePat')]],
+
         email: ['', [Validators.required, this.vs.validatePat('emailPat')]],
         phone: ['', [Validators.required, this.vs.validatePat('phone')]],
         password: [

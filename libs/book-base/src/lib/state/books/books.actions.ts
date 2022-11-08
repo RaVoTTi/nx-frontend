@@ -9,4 +9,3 @@ export const allBooksLoaded = createAction(
   "[Load Books Effect] All Books Loaded",
   props<{books:IBook[]}>()
 )
-

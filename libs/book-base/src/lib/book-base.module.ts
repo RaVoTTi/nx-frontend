@@ -27,6 +27,7 @@ import { booksReducer } from './state/books/books.reducer';
 import { SearchHeaderComponent } from './components/search-header/search-header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '@frontend/utils';
+import { BookDetailComponent } from './components/book-detail/book-detail.component';
 // import { WishResolver } from './services/wish.resolver';
 // import { BookEffects } from './state/books.effects';
 
@@ -77,6 +78,7 @@ import { UtilsModule } from '@frontend/utils';
     SearchHeaderComponent,
     BooksListComponent,
     BookViewComponent,
+    BookDetailComponent,
   ],
   exports: [
     SearchHeaderComponent,

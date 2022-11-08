@@ -33,6 +33,9 @@ const routes: Routes = [
       {
         path: 'books/id/:id',
         component: BookViewComponent,
+        resolve: {
+          books: BooksResolver,
+        },
       },
 
       {

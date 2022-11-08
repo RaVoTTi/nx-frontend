@@ -2,66 +2,64 @@
 import { environment } from '@env/environment';
 import { IBook } from 'interfaces';
 import { Component, OnInit } from '@angular/core';
-import { of, take } from 'rxjs';
+import { Observable, of, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { BookBaseService } from '../../services/book-base.service';
 import { WishlistService } from '../../services/wishlist.service';
-
+import { select, Store } from '@ngrx/store';
+import { selectBooksById } from '../../state/books/books.selectors';
 
 @Component({
   selector: 'robinbook-book-view',
   templateUrl: './book-view.component.html',
 })
 export class BookViewComponent implements OnInit {
-  RAW_URL = environment.RAW_URL
-  book!: IBook;
   bookId!: string;
-  // isAuth$ = this.store.select(authSelector.selectIsAuth)
-  isAuth$ = of(false)
 
   constructor(
     private bookBaseService: BookBaseService,
-    private wishlistService:WishlistService,
+    private wishlistService: WishlistService,
     private route: ActivatedRoute,
     private location: Location,
-    private router: Router,
-    // private store: Store<AuthState>
-
-  ) {}
+    private store: Store,
+    
+  )
+  {}
 
   ngOnInit(): void {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
         this.bookId = params['id'];
-        this.bookBaseService
-          .getBookBaseById(this.bookId)
-          .pipe(take(1))
-          .subscribe(({ result }) => {
-            if (result) {
-              this.book = result;
-            }
-          });
+
+
+        // this.bookBaseService
+        //   .getBookBaseById(this.bookId)
+        //   .pipe(take(1))
+        //   .subscribe(({ result }) => {
+        //     if (result) {
+        //       this.book = result;
+        //     }
+        //   });
       }
     });
   }
+  // reload(){
 
-  back(){
-    this.location.back()
+  // }
+
+  back() {
+    this.location.back();
   }
-  addBookToWishlist(){
-  
-      this.wishlistService.setBookWishlist(this.bookId)
+  addBookToWishlist() {
+    this.wishlistService.setBookWishlist(this.bookId);
   }
-  toCheckOut(){
-    if(this.isAuth$){
+  book(): IBook | undefined {
+    let data: IBook | undefined;
+    this.store
+      .pipe(select(selectBooksById(this.bookId)), take(1))
+      .subscribe((book) => (data = book));
 
-      this.router.navigate([`/checkout/placeorder/${this.bookId}`]);
-    }else{
-      this.router.navigate([`/auth/login`]);
-
-    }
-
-
+    return data;
   }
 }

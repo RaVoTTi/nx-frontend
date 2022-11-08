@@ -29,6 +29,7 @@ export const booksReducer = createReducer(
   on(allBooksLoaded, (state, action) =>
     adapter.setAll(action.books, { ...state, allBooksLoaded: true })
   )
+  
 );
 
 export const { selectAll, selectEntities, selectIds, selectTotal } =

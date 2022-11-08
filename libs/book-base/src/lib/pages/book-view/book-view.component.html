@@ -3,80 +3,9 @@
   <div class="back-icon" routerLink="/app/books">
     <i class="pi pi-angle-left"></i>
     <span> Back to books</span>
+      
+      
+      <frontend-book-detail [book]="book()"></frontend-book-detail>
   </div>
-  <div class="book-view">
-    <div class="image-container">
-      <div class="image">
-        <img src="{{ RAW_URL + book.image }}" alt="" />
-      </div>
-    </div>
-    <div class="text-container">
-      <h2>{{ book.name | uppercase }}</h2>
-      <h4>{{ book.minPrice | currency }} - {{ book.maxPrice | currency }}</h4>
-      <h3>{{ 'By ' + book.autor.name | titlecase }}</h3>
-      <span>#{{ book.subject.name | uppercase }}</span>
-      <!-- <p>{{ book.description }}</p> -->
-      <div class="buttons-container">
-        <div class="button-container">
-          <button class="button-primary" (click)="toCheckOut()">Buy Now</button>
-        </div>
-        <div class="button-container">
-          <button class="button-secondary" (click)="addBookToWishlist()">
-            To Wishlist
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr />
-  <div class="book-description">
-    <h2>DESCRIPTION</h2>
-    <!-- <p>{{ book.description }}</p> -->
 
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione beatae
-      hic, corrupti quos iusto, sint voluptatibus soluta minima in ullam sit
-      dolores molestiae autem sapiente error voluptates quia eveniet nam. Lorem
-      ipsum dolor sit amet consectetur adipisicing elit. Eius veritatis amet
-      quod soluta libero veniam accusamus aperiam corporis, doloribus ea quaerat
-      similique ab illo sit, fugiat suscipit architecto ex debitis? Lorem ipsum
-      dolor sit amet consectetur adipisicing elit. Incidunt rerum dolores
-      reprehenderit a? Dolore, quo? Consequuntur quasi doloremque architecto,
-      totam, nulla esse, eligendi ex odio vero dolores nostrum expedita ipsa.
-    </p>
-  </div>
-</div>
 
-<!-- <div class="robin-container grid">
-  <div
-    class="col-12 sm:col-5 book-img align-self-center flex justify-content-center"
-  >
-    <img
-      src="{{ RAW_URL + book.image }}"
-      alt=""
-      class=""
-      style="width: 90%; object-fit: contain"
-    />
-  </div>
-  <div class="col-12 sm:col-6 sm:col-offset-1 book-content">
-    <h2>{{ book.name | uppercase }}</h2>
-    <p-rating [readonly]="true" [cancel]="false"></p-rating>
-    <h3>{{ book.minPrice | currency }} - {{ book.maxPrice | currency }}</h3>
-    <h4>{{ book.subject.name | uppercase }}</h4>
-    <h5>{{ 'By ' + book.autor.name | titlecase }}</h5>
-    <p>{{ book.description }}</p>
-    <div class="grid row-gap-3">
-      <button class="col-12 sm:col-5 button-primary" 
-      (click)="toCheckOut()
-      ">
-        {{ 'buy now' | uppercase }}
-      </button>
-      <button
-        class="col-12 sm:col-6 sm:col-offset-1 button-secondary"
-        (click)="addBookToWishlist()"
-      >
-        {{ 'to wishlist' | uppercase }}
-      </button>
-    </div>
-  </div>
-</div> -->
