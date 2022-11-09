@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { environment } from '@env/environment';
 import { UserService } from '@frontend/user-admin';
-import { IUser } from 'interfaces';
+import { IUser } from '@frontend/utils';
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
 import { take } from 'rxjs';

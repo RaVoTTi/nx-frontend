@@ -1,5 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
-import { IWishlist } from 'interfaces';
+import { IWishlist } from '@frontend/utils';
 import { BehaviorSubject } from 'rxjs';
 
 export const WISHLIST_KEY = 'wishlist';

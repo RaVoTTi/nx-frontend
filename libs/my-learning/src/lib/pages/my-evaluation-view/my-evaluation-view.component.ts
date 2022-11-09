@@ -3,7 +3,7 @@ import { take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Location } from '@angular/common';
-import { IBook, IEvaluation, ILearning, IOption, IOrder } from 'interfaces';
+import { IBook, IEvaluation, ILearning, IOption, IOrder } from '@frontend/utils';
 import {
   FormArray,
   FormBuilder,

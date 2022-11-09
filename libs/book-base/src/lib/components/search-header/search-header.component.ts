@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
  import { select, Store } from '@ngrx/store';
-import { IItem } from 'interfaces';
+import { IItem } from '@frontend/utils';
 import {
   debounceTime,
   distinctUntilChanged,

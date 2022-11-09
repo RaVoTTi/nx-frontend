@@ -3,7 +3,7 @@ import { BooksState } from './books.reducer';
 
 import * as fromBooks from './books.reducer';
 import { map } from 'rxjs';
-import { IItem } from 'interfaces';
+import { IItem } from '@frontend/utils';
 import { Router } from '@angular/router';
 
 export const selectBooksState = createFeatureSelector<BooksState>('books');

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ILearning, IOrder } from 'interfaces';
+import { ILearning, IOrder } from '@frontend/utils';
 import { take } from 'rxjs';
 import { Location } from '@angular/common';
 import { MyLearningService } from '../../services/my-learning.service';

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { IBook ,  IResponse} from 'interfaces';
+import { IBook ,  IResponse} from '@frontend/utils';
 import { catchError, Observable, of } from 'rxjs';
 
 

@@ -1,0 +1,26 @@
+
+<div class="order-list-container">
+  <div class="card-summary">
+    <div class="card-header">
+      <h3>Orders</h3>
+    </div>
+<table class="card-table" *ngIf="orders !== []">
+  <tr>
+    <th>Order id</th>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Condition</th>
+    <th>Price</th>
+  </tr>
+  <tr *ngFor="let order of orders">
+
+    <td> <a [routerLink]="['/app/books/', order._id]">{{order._id}} </a> </td>
+    <td>{{order.book.name| titlecase}}</td>
+    <td>Date</td>
+    <td>la</td>
+    <td>{{order.price | currency}}</td>
+  </tr>
+</table>
+  </div>
+  
+</div>

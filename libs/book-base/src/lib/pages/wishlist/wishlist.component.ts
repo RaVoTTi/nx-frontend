@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, take } from 'rxjs';
-import { IBook, IItem, IWishlist } from 'interfaces';
+import { IBook, IItem, IWishlist } from '@frontend/utils';
 import { Location } from '@angular/common';
 import { BookBaseService } from '../../services/book-base.service';
 import { WishlistService } from '../../services/wishlist.service';

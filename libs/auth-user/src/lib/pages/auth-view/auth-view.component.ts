@@ -11,7 +11,7 @@ import {
   ErrorHandlerService,
   ValidatorsService,
 } from '@frontend/utils';
-import { ILogin } from 'interfaces';
+import { ILogin } from '@frontend/utils';
 
 @Component({
   selector: 'frontend-auth-view',

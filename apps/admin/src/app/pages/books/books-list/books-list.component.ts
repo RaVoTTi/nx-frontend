@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
 import { BookService } from '@frontend/book-admin';
-import {IBook} from 'interfaces' 
+import {IBook} from '@frontend/utils' 
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
 import { take } from 'rxjs';

@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { OrdersState } from './orders.reducer';
 
 import * as fromOrders from './orders.reducer';
-import { IItem } from 'interfaces';
+import { IItem } from '@frontend/utils';
 
 export const selectOrdersState = createFeatureSelector<OrdersState>('orders');
 

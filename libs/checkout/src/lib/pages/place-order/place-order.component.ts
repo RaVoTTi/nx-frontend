@@ -10,7 +10,7 @@ import { ORDER_CONDITION } from '../../helpers/order-conditions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take, timer } from 'rxjs';
 import { BookBaseService, selectBooksById } from '@frontend/book-base';
-import { IBook } from 'interfaces';
+import { IBook } from '@frontend/utils';
 import { environment } from '@env/environment';
 
 import { MessageService } from 'primeng/api';

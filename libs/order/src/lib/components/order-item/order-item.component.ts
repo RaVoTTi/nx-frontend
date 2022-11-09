@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
-import { IOrder } from 'interfaces';
+import { IOrder } from '@frontend/utils';
 import { ORDER_CONDITION } from '../../helpers/order-conditions';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService, ORDER_CONDITION } from '@frontend/order';
-import { IOrder } from 'interfaces';
+import { IOrder } from '@frontend/utils';
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
 import { take } from 'rxjs';

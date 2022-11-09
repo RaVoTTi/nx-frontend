@@ -1,81 +1,76 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import {
   AlertService,
   ErrorHandlerService,
   ValidatorsService,
 } from '@frontend/utils';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'frontend-my-settings',
   templateUrl: './my-settings.component.html',
 })
 export class MySettingsComponent implements OnInit {
-  settingsForm!: FormGroup;
+  emailForm!: FormControl;
+  phoneForm!: FormControl;
+  disabled = false
+
+  passwordForm!: FormGroup;
 
   constructor(
-    private errorH: ErrorHandlerService,
-    private formBuilder: FormBuilder,
-    private vs: ValidatorsService,
+    // private errorH: ErrorHandlerService,
+    // private formBuilder: FormBuilder,
+    // private vs: ValidatorsService,
     private alert: AlertService
   ) {}
 
   ngOnInit(): void {
-    this._initForm()
+    this._initForm();
   }
 
-  errorMsg(key: string) {
-    return this.errorH.errorMsg(this.settingsForm.controls[key]);
-  }
+
   private _initForm() {
-    this.settingsForm = this.formBuilder.group(
-      {
-
-        email: ['', [Validators.required, this.vs.validatePat('emailPat')]],
-        phone: ['', [Validators.required, this.vs.validatePat('phone')]],
-        password: [
-          '',
-          [Validators.required, this.vs.validatePat('passwordPat')],
-        ],
-        password2: ['', [Validators.required]],
-        terms: [false, [Validators.required, Validators.requiredTrue]],
-      },
-      {
-        validators: [this.vs.passwordMismatch('password', 'password2')],
-      }
-    );
+    // this.phoneForm = this.formBuilder.control(
+    //   '',
+    //   [Validators.required, this.vs.validatePat('phone')],
+    // );
+    // this.emailForm = this.formBuilder.control(
+    //   '',
+    //   [Validators.required, this.vs.validatePat('emailPath')],
+    // );
+    // this.passwordForm = this.formBuilder.group(
+    //   {
+    //     password: [
+    //       '',
+    //       [Validators.required, this.vs.validatePat('passwordPat')],
+    //     ],
+    //     password2: ['', [Validators.required]],
+    //   },
+    //   {
+    //     validators: [this.vs.passwordMismatch('password', 'password2')],
+    //   }
+    // );
   }
+
   onSubmit() {
-    this.settingsForm.disable();
-    this._postSettings();
+    // this.phoneForm.disable();
+    // this.emailForm.disable();
+    // this.passwordForm.disable();
+    this.alert.fire({
+      text: 'User changes are unavaible',
+      icon: 'error',
+    });
   }
 
-  private _postSettings() {
-    if (this.settingsForm.invalid) {
-      this.settingsForm.markAllAsTouched();
-      return;
-    }
-    // this.authBaseService
-    //   .postSignUp(this.settingsForm.value)
-    //   .pipe(
-    //     tap((response) => {
-    //       if (response.ok) {
-    //         this.alert.fire({
-    //           icon: 'success',
-    //           text: 'User Created succesful',
-    //         });
-    //       }
-    //     })
-    //   )
-    //   .subscribe({
-    //     error: ({ error }) => {
-    //       this.settingsForm.enable();
-    //       this.alert.fire({
-    //         icon: 'error',
-    //         text: error?.msg ? error?.msg : 'Something happened',
-    //       });
-    //     },
-    //   });
-  }
+  // private _postSettings() {
+  //   this.emailForm.markAllAsTouched();
+  //   this.phoneForm.markAllAsTouched();
+  //   this.passwordForm.markAllAsTouched();
+  // }
 }

@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { selectBooksById } from '@frontend/book-base';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { select, Store } from '@ngrx/store';
-import { create } from 'domain';
-import { IBook, ILearning } from 'interfaces';
 import { concatMap, map, take } from 'rxjs';
 import { Action } from 'rxjs/internal/scheduler/Action';
 import { MyLearningService } from '../services/my-learning.service';

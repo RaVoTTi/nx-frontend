@@ -39,7 +39,8 @@ const routes: Routes = [
 
 ];
 @NgModule({
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     StoreModule.forFeature('myLearnings', myLearningsReducer),
     EffectsModule.forFeature([MyLearningsEffects]),
 

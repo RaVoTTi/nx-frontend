@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { IItem } from 'interfaces';
+import { IItem } from '@frontend/utils';
 
 @Component({
   selector: 'robinbook-navbar',

@@ -1,5 +1,5 @@
 import { environment } from '@env/environment';
-import { IBook } from 'interfaces';
+import { IBook } from '@frontend/utils';
 import { Component, Input } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 import { WishlistService } from '../../services/wishlist.service';

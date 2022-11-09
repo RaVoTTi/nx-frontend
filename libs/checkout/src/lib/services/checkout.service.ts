@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { IOrder, IResponse } from 'interfaces';
+import { IOrder, IResponse } from '@frontend/utils';
 import { firstValueFrom, Observable, take } from 'rxjs';
 
 @Injectable({

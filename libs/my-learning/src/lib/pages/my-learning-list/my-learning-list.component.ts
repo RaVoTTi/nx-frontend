@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { selectAllBooks, selectBooksById } from '@frontend/book-base';
 import { select, Store } from '@ngrx/store';
-import { IBook, IItem, ILearning, IOrder } from 'interfaces';
+import { IBook, IItem, ILearning, IOrder } from '@frontend/utils';
 import { Observable, take } from 'rxjs';
 import { MyLearningService } from '../../services/my-learning.service';
 import { selectAllMyLearnings, selectCountMyLearnings } from '../../state/my-learnings.selectors';

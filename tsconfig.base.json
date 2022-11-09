@@ -23,6 +23,7 @@
       "@frontend/book-base": ["libs/book-base/src/index.ts"],
       "@frontend/checkout": ["libs/checkout/src/index.ts"],
       "@frontend/my-learning": ["libs/my-learning/src/index.ts"],
+      "@frontend/my-orders": ["libs/my-orders/src/index.ts"],
       "@frontend/order": ["libs/order/src/index.ts"],
       "@frontend/settings": ["libs/settings/src/index.ts"],
       "@frontend/user-admin": ["libs/user-admin/src/index.ts"],

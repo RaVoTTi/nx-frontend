@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '@env/environment';
-import { IBook } from 'interfaces';
+import { IBook } from '@frontend/utils';
 import { WishlistService } from '../../services/wishlist.service';
 
 @Component({

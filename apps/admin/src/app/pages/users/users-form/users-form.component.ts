@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
 import { UserService } from '@frontend/user-admin';
-import { IUser } from 'interfaces';
+import { IUser } from '@frontend/utils';
 import { MessageService } from 'primeng/api';
 import { take, timer, VirtualTimeScheduler } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

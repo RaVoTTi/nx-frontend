@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { IItem } from 'interfaces';
+import { IItem } from '../../interfaces/IItem';
 
 interface IClick {
   url?: string;

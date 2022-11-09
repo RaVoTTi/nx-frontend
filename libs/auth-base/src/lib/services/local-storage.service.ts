@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IToken } from 'interfaces';
+import { IToken } from '@frontend/utils';
 
 @Injectable({
   providedIn: 'root',

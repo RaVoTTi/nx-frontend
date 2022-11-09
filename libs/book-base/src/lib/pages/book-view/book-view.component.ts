@@ -1,6 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector */
 import { environment } from '@env/environment';
-import { IBook } from 'interfaces';
+import { IBook } from '@frontend/utils';
 import { Component, OnInit } from '@angular/core';
 import { Observable, of, take } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { environment } from '@env/environment';
-import { IBook, ILearning } from 'interfaces';
+import { IBook, ILearning } from '@frontend/utils';
 
 @Component({
   selector: 'frontend-card-learning',

@@ -1,5 +1,5 @@
+import { ILearning } from "@frontend/utils";
 import { createAction, props } from "@ngrx/store";
-import { IBook, ILearning, IOrder } from "interfaces";
 
 export const loadAllMyLearnings = createAction(
   "[Learnings Resolver] Load All Learnings",

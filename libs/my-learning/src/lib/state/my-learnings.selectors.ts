@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { MyLearningsState } from './my-learnings.reducer';
 
 import * as fromMyLearnings from './my-learnings.reducer';
-import { IItem } from 'interfaces';
+import { IItem } from '@frontend/utils';
 import { booksReducer } from '@frontend/book-base';
 
 export const selectMyLearningsState =

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BookBaseService, WishlistService } from '@frontend/book-base';
-import { IBook } from 'interfaces';
+import { IBook } from '@frontend/utils';
 import { take } from 'rxjs';
 
 @Component({

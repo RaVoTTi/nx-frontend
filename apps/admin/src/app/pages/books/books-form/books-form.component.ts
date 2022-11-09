@@ -13,7 +13,7 @@ import {
   BookService,
   SubjectService,
 } from '@frontend/book-admin';
-import { IAutor, IBook, IEvaluation, IOption, ISubject } from 'interfaces';
+import { IAutor, IBook, IEvaluation, IOption, ISubject } from '@frontend/utils';
 import { MessageService } from 'primeng/api';
 import { take, timer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

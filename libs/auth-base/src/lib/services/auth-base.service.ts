@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { environment } from 'environments/environment';
 // ME
-import { ILogin, IUser,  IResponse } from 'interfaces/index';
+import { ILogin, IUser,  IResponse } from '@frontend/utils';
 import { LocalStorageService } from './local-storage.service';
 import { Router } from '@angular/router';
 // import { AuthFacade } from '../state/auth.facade';

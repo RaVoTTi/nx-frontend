@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { IBook } from "interfaces";
+import { IBook } from "@frontend/utils";
 
 export const loadAllBooks = createAction(
   "[Books Resolver] Load All Books",

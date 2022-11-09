@@ -1,8 +1,12 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthActions, AuthBaseService, LocalStorageService } from '@frontend/auth-base';
+import {
+  AuthActions,
+  AuthBaseService,
+  LocalStorageService,
+} from '@frontend/auth-base';
 import { Store } from '@ngrx/store';
-import { IItem } from 'interfaces';
+import { IItem } from '@frontend/utils';
 import { MenuItem } from 'primeng/api';
 @Component({
   selector: 'robinbook-auth-navbar',
@@ -16,8 +20,7 @@ export class AuthNavbarComponent implements OnInit {
       callback: () => {
         this.router.navigateByUrl('/app/wishlist');
       },
-      },
-    
+    },
   ];
 
   primary: IItem[] = [
@@ -28,43 +31,37 @@ export class AuthNavbarComponent implements OnInit {
         this.router.navigateByUrl('/app/books');
       },
     },
-    
+
     {
       label: 'My Learning',
       icon: '📝',
       callback: () => {
         this.router.navigateByUrl('/app/mylearning');
-      },}
-    
+      },
+    },
   ];
   secondary: IItem[] = [
-    // {
-    //   label: 'Orders',
-    //   icon: '💵',
-    //   url: '/app/order/myordering'
-    //   },
-    
-    // {
-    //   label: 'Support',
-    //   // routerLink: 'order/myordering',
-    //   icon: '📞',
-    //   url: '/app/support'
-    //   },
-    
+    {
+      label: 'Orders',
+      icon: '💵',
+      callback: () => {
+        this.router.navigateByUrl('/app/myorders');
+      },
+    },
+
     {
       label: 'Settings',
       icon: '🧰',
       callback: () => {
         this.router.navigateByUrl('/app/settings');
-      }
       },
-    
+    },
+
     {
-      
       label: 'Log Out',
       icon: '🚪',
       callback: () => {
-        this.store.dispatch(AuthActions.logout())
+        this.store.dispatch(AuthActions.logout());
       },
     },
   ];
@@ -72,10 +69,7 @@ export class AuthNavbarComponent implements OnInit {
 
   isDropdownOpened = false;
 
-  constructor(
-    private router: Router,
-    private store: Store
-  ) {}
+  constructor(private router: Router, private store: Store) {}
 
   ngOnInit(): void {
     this.screenWidth = window.innerWidth;

@@ -9,7 +9,7 @@ import {
   MetaReducer,
   on,
 } from '@ngrx/store';
-import { ILearning } from 'interfaces';
+import { ILearning } from '@frontend/utils';
 import { allMyLearningsLoaded } from './my-learnings.actions';
 // import { login, logout } from './myLearning.actions';
 

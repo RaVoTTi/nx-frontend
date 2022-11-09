@@ -18,13 +18,14 @@ export class MainComponent {
       )
       .subscribe(
         (event: NavigationEnd) => {
-          event.url.includes('home') || event.url.includes('settings')
-          ? (this.home = true)
-          : (this.home = false);;
+          event.url.includes('home') ||
+          event.url.includes('settings') ||
+          event.url.includes('myorders')
+            ? (this.home = true)
+            : (this.home = false);
         }
 
         // url.
       );
   }
-
 }

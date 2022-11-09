@@ -10,7 +10,7 @@ import {
   MetaReducer,
   on,
 } from '@ngrx/store';
-import { IOrder } from 'interfaces';
+import { IOrder } from '@frontend/utils';
 import { allOrdersLoaded } from './orders.actions';
 // import { login, logout } from './order.actions';
 

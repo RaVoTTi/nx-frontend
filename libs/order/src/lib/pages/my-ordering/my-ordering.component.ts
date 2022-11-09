@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { IOrder } from 'interfaces';
+import { IOrder } from '@frontend/utils';
 import { OrderService } from '../../services/order.service';
 import { take } from 'rxjs';
 

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService, ORDER_CONDITION } from '@frontend/order';
 import { Location } from '@angular/common';
-import { IOrder } from 'interfaces';
+import { IOrder } from '@frontend/utils';
 import { FormControl } from '@angular/forms';
 // import { DropdownModule } from 'primeng/dropdown';
 import { MessageService } from 'primeng/api';

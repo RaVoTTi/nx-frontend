@@ -53,6 +53,12 @@ const routes: Routes = [
         canActivate: [IsLoggedIn],
       },
       {
+        path: 'myorders',
+        loadChildren: () =>
+          import('@frontend/my-orders').then((m) => m.MyOrdersModule),
+        canActivate: [IsLoggedIn],
+      },
+      {
         path: 'settings',
         loadChildren: () =>
         import('@frontend/settings').then((m) => m.SettingsModule),
