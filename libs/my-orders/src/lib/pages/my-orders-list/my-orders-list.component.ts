@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { IOrder } from '@frontend/utils';
+import { take } from 'rxjs';
 import { MyOrdersService } from '../../services/my-orders.service';
 
 @Component({
@@ -9,26 +10,30 @@ import { MyOrdersService } from '../../services/my-orders.service';
  export class MyOrdersListComponent implements OnInit {
 
   orders: IOrder[]=[]
+  screenWidth: any;
 
   constructor(
-    private orderService: MyOrdersService
+    private myOrdersService: MyOrdersService
 
   ) { }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-
   // ngOnInit(): void {
-  //   this.orderService
-  //   .getMyOrders(0)
-  //   .pipe(take(1))
-  //   .subscribe(({result}) => {
-  //     if(result){
-  //       this.orders = result;
-
-  //     }
-  //   });
+  //   throw new Error('Method not implemented.');
   // }
 
+  ngOnInit(): void {
+    this.myOrdersService
+    .getMyOrders(0)
+    .pipe(take(1))
+    .subscribe(({result}) => {
+      if(result){
+        this.orders = result;
 
+      }
+    });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onWindowResize() {
+    this.screenWidth = window.innerWidth;
+  }
 }

@@ -19,14 +19,14 @@ import {
 export class MySettingsComponent implements OnInit {
   emailForm!: FormControl;
   phoneForm!: FormControl;
-  disabled = false
+  disabled = false;
 
   passwordForm!: FormGroup;
 
   constructor(
-    // private errorH: ErrorHandlerService,
-    // private formBuilder: FormBuilder,
-    // private vs: ValidatorsService,
+    private errorH: ErrorHandlerService,
+    private formBuilder: FormBuilder,
+    private vs: ValidatorsService,
     private alert: AlertService
   ) {}
 
@@ -34,43 +34,41 @@ export class MySettingsComponent implements OnInit {
     this._initForm();
   }
 
-
   private _initForm() {
-    // this.phoneForm = this.formBuilder.control(
-    //   '',
-    //   [Validators.required, this.vs.validatePat('phone')],
-    // );
-    // this.emailForm = this.formBuilder.control(
-    //   '',
-    //   [Validators.required, this.vs.validatePat('emailPath')],
-    // );
-    // this.passwordForm = this.formBuilder.group(
-    //   {
-    //     password: [
-    //       '',
-    //       [Validators.required, this.vs.validatePat('passwordPat')],
-    //     ],
-    //     password2: ['', [Validators.required]],
-    //   },
-    //   {
-    //     validators: [this.vs.passwordMismatch('password', 'password2')],
-    //   }
-    // );
+    this.phoneForm = this.formBuilder.control('', [
+      Validators.required,
+    ]);
+    this.emailForm = this.formBuilder.control('', [
+      Validators.required,
+    ]);
+    this.passwordForm = this.formBuilder.group(
+      {
+        password: [
+          '',
+          [Validators.required, 
+          ],
+        ],
+        password2: ['', [Validators.required]],
+      },
+      {
+        validators: [
+          this.vs.passwordMismatch('password', 'password2')
+        ],
+      }
+    );
   }
 
   onSubmit() {
-    // this.phoneForm.disable();
-    // this.emailForm.disable();
-    // this.passwordForm.disable();
+
     this.alert.fire({
       text: 'User changes are unavaible',
       icon: 'error',
     });
   }
 
-  // private _postSettings() {
-  //   this.emailForm.markAllAsTouched();
-  //   this.phoneForm.markAllAsTouched();
-  //   this.passwordForm.markAllAsTouched();
-  // }
+
+  errorMsg() {
+    return 
+  }
+
 }
