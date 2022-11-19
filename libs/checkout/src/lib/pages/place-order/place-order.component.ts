@@ -74,7 +74,7 @@ export class PlaceOrderComponent implements OnInit {
       return;
     }
     this.checkoutService
-      .postMyOrder(this.id)
+      .postMyPlaceOrder(this.id)
       .pipe(take(1))
       .subscribe((response) => {
         if (response.ok === true) {

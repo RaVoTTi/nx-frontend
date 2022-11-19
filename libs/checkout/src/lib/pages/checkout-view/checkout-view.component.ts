@@ -45,15 +45,15 @@ export class CheckoutViewComponent implements OnInit {
       cardCvv: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
       cardExp: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
     });
-    this._getPreOrder();
+    this._getMyPlaceOrder();
     this.createStripeElement();
   }
-  private _getPreOrder() {
+  private _getMyPlaceOrder() {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
         this.orderId = params['id'];
         this.checkoutService
-          .getPreOrder(this.orderId)
+          .getMyPlaceOrder(this.orderId)
           .pipe(take(1))
           .subscribe(({ result }) => {
             if (result) {

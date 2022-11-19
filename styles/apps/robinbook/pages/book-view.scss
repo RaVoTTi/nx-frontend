@@ -141,8 +141,10 @@
     }
   }
 
-  & hr {
-    margin-top: 1em;
+  hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
     border-top: 1px solid var(--light-gray-color);
     width: 100%;
   }
