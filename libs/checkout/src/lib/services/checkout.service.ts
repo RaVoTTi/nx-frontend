@@ -24,25 +24,16 @@ export class CheckoutService {
     );
   }
 
-  patchSendPayment(orderId: string, token: string): Observable<IResponse<any>> {
-    return this.http.patch<IResponse<any>>(
-      `${this.API_URL}/order/checkout/${orderId}`,
+  patchCheckout(orderId: string, token: string): Promise<any> {
+    return this.http.patch<any>(
+      `${this.API_URL}/myorder/checkout/${orderId}`,
       { token }
-    );
+    ).toPromise()
   }
   getConfirmOrder(orderId: string): Observable<IResponse> {
     return this.http.get<IResponse>(
-      `${this.API_URL}/order/checkout/confirm/${orderId}`
+      `${this.API_URL}/myorder/confirm/${orderId}`
     );
   }
-  getEvaluationById(id: string): Observable<IResponse<IOrder>> {
-    return this.http.get<IResponse<IOrder>>(
-      `${this.API_URL}/order/evaluation/${id}`
-    );
-  }
-  getEvaluationConfirm(id: string): Observable<IResponse> {
-    return this.http.get<IResponse>(
-      `${this.API_URL}/order/evaluation/confirm/${id}`
-    );
-  }
+  
 }

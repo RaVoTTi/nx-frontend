@@ -59,16 +59,17 @@ export class CheckoutViewComponent implements OnInit {
             if (result) {
               this.orderData = result;
 
-              if (result?.condition > 0) {
+              if (result?.condition !== 'place order') {
                 this.checkoutForm.disable();
-                this.alert.fire({
-                  text: 'The order has already paid',
-                  icon: 'error',
-                },
-                {
-                  urlConfi: '/app/books', // 🔴 TODOOO 
-                  urlCancel: '/app/books'
-                }
+                this.alert.fire(
+                  {
+                    text: 'The order has already paid',
+                    icon: 'error',
+                  },
+                  {
+                    urlConfi: '/app/books', // 🔴 TODOOO
+                    urlCancel: '/app/books',
+                  }
                 );
               }
               this.checkoutForm.patchValue({
@@ -145,32 +146,27 @@ export class CheckoutViewComponent implements OnInit {
       this.checkoutForm.disable();
       const { token } = await this.STRIPE.createToken(this.cardNumber);
 
-      this.checkoutService
-        .patchSendPayment(this.orderId, token.id)
-        .pipe(take(1))
-        .subscribe(({ result }) => {
-          this.STRIPE.confirmCardPayment(result?.client_secret)
-            .then(async () => {
-              this.alert.fire(
-                { icon: 'success', text: 'Your paid was aproved' },
-                {
-                  urlConfi: '/app/books', // 🔴 TODOOO 
-                }
-              );
+      const { result } = await this.checkoutService.patchCheckout(
+        this.orderId,
+        token.id
+      );
 
-              this.checkoutService
-                .getConfirmOrder(this.orderId)
-                .pipe(take(1))
-                .subscribe(({ result }) => {
-                  console.log('Really Money');
-                });
-            })
-            .catch(() => {
-              this.alert.fire({
-                text: 'Something wrong have happened',
-                icon: 'error',
-              });
-            });
+      this.STRIPE.confirmCardPayment(result?.client_secret)
+        .then(async () => {
+          console.log('success')
+          this.alert.fire(
+            { icon: 'success', text: 'Your paid was aproved' },
+            {
+              urlConfi: '/app/books', // 🔴 TODOOO
+            }
+            );
+            await this.checkoutService.getConfirmOrder(this.orderId);
+        })
+        .catch(() => {
+          this.alert.fire({
+            text: 'Something wrong have happened',
+            icon: 'error',
+          });
         });
     } catch (e) {
       this.alert.fire({ text: 'Something wrong have happened', icon: 'error' });

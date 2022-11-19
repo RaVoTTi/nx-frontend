@@ -7,6 +7,6 @@ export interface IOrder {
     book: IBook
     state: boolean
     price: number
-    condition: number
+    condition: string
     dateCreated: Date
 }
