@@ -153,7 +153,7 @@ export class CheckoutViewComponent implements OnInit {
 
       this.STRIPE.confirmCardPayment(result?.client_secret)
         .then(async () => {
-          console.log('success')
+          console.log(result)
           this.alert.fire(
             { icon: 'success', text: 'Your paid was aproved' },
             {
