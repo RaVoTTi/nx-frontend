@@ -16,7 +16,7 @@ declare global {
   templateUrl: './checkout-view.component.html',
 })
 export class CheckoutViewComponent implements OnInit {
-  orderId!: string;
+  bookId!: string;
   orderData!: any;
 
   private readonly STRIPE!: any; //TODO: window.Stripe
@@ -36,44 +36,46 @@ export class CheckoutViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.checkoutForm = this.formBuilder.group({
-      amount: [
-        '',
-        [Validators.required, Validators.min(1), Validators.max(100000)],
-      ],
-      cardNumber: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
-      cardCvv: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
-      cardExp: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
-    });
-    this._getMyPlaceOrder();
+    // this.checkoutForm = this.formBuilder.group({
+    //   amount: [
+    //     '',
+    //     [Validators.required, Validators.min(1), Validators.max(100000)],
+    //   ],
+    //   cardNumber: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
+    //   cardCvv: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
+    //   cardExp: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
+    // });
+    this._postMyPlaceOrder();
+
     this.createStripeElement();
   }
-  private _getMyPlaceOrder() {
+  private _postMyPlaceOrder() {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
-        this.orderId = params['id'];
+        this.bookId = params['id'];
         this.checkoutService
-          .getMyPlaceOrder(this.orderId)
+          .postMyPlaceOrder(this.bookId)
           .pipe(take(1))
           .subscribe(({ result }) => {
             if (result) {
-              this.orderData = result;
+              const appearance = {
+                theme: 'flat',
+              };
+              const elements = this.STRIPE.elements({ appearance, clientSecret: result.client_secret });
 
-              if (result?.condition !== 'place order') {
-                this.checkoutForm.disable();
-                this.alert.fire(
-                  {
-                    text: 'The order has already paid',
-                    icon: 'error',
-                  },
-                  {
-                    urlConfi: '/app/books', // 🔴 TODOOO
-                    urlCancel: '/app/books',
-                  }
-                );
-              }
-              this.checkoutForm.patchValue({
-                amount: result.price,
+              const paymentElementOptions = {
+                layout: 'tabs',
+              };
+
+              const paymentElement = elements.create(
+                'payment',
+                paymentElementOptions
+              );
+              paymentElement.mount('#payment-element');
+            } else {
+              this.alert.fire({
+                text: 'Something wrong have happened',
+                icon: 'error',
               });
             }
           });
@@ -106,39 +108,39 @@ export class CheckoutViewComponent implements OnInit {
       ],
     });
 
-    const cardNumber = this.elementStripe.create('cardNumber', {
-      placeholder: '4242 4242 4242 4242',
-      style,
-      classes: {
-        base: 'input',
-      },
-    });
-    const cardExp = this.elementStripe.create('cardExpiry', {
-      placeholder: 'MM/AA',
-      style,
-      classes: {
-        base: 'input',
-      },
-    });
-    const cardCvc = this.elementStripe.create('cardCvc', {
-      placeholder: '000',
-      style,
-      classes: {
-        base: 'input',
-      },
-    });
+    // const cardNumber = this.elementStripe.create('cardNumber', {
+    //   placeholder: '4242 4242 4242 4242',
+    //   style,
+    //   classes: {
+    //     base: 'input',
+    //   },
+    // });
+    // const cardExp = this.elementStripe.create('cardExpiry', {
+    //   placeholder: 'MM/AA',
+    //   style,
+    //   classes: {
+    //     base: 'input',
+    //   },
+    // });
+    // const cardCvc = this.elementStripe.create('cardCvc', {
+    //   placeholder: '000',
+    //   style,
+    //   classes: {
+    //     base: 'input',
+    //   },
+    // });
 
-    cardNumber.mount('#card');
-    cardExp.mount('#exp');
-    cardCvc.mount('#cvc');
+    // cardNumber.mount('#card');
+    // cardExp.mount('#exp');
+    // cardCvc.mount('#cvc');
 
-    this.cardNumber = cardNumber;
-    this.cardExp = cardExp;
-    this.cardCvv = cardCvc;
+    // this.cardNumber = cardNumber;
+    // this.cardExp = cardExp;
+    // this.cardCvv = cardCvc;
 
-    this.cardNumber.addEventListener('change', this.onChangeCard.bind(this));
-    this.cardExp.addEventListener('change', this.onChangeExp.bind(this));
-    this.cardCvv.addEventListener('change', this.onChangeCvv.bind(this));
+    // this.cardNumber.addEventListener('change', this.onChangeCard.bind(this));
+    // this.cardExp.addEventListener('change', this.onChangeExp.bind(this));
+    // this.cardCvv.addEventListener('change', this.onChangeCvv.bind(this));
   };
 
   async initPay(): Promise<any> {
@@ -147,20 +149,20 @@ export class CheckoutViewComponent implements OnInit {
       const { token } = await this.STRIPE.createToken(this.cardNumber);
 
       const { result } = await this.checkoutService.patchCheckout(
-        this.orderId,
+        this.bookId,
         token.id
       );
 
       this.STRIPE.confirmCardPayment(result?.client_secret)
         .then(async () => {
-          console.log(result)
+          console.log(result);
           this.alert.fire(
             { icon: 'success', text: 'Your paid was aproved' },
             {
               urlConfi: '/app/books', // 🔴 TODOOO
             }
-            );
-            await this.checkoutService.getConfirmOrder(this.orderId);
+          );
+          await this.checkoutService.getConfirmOrder(this.bookId);
         })
         .catch(() => {
           this.alert.fire({

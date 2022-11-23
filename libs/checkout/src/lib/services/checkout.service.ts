@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { IOrder, IResponse } from '@frontend/utils';
+import { IOrder, IResponse, IStripe } from '@frontend/utils';
 import { firstValueFrom, Observable, take } from 'rxjs';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class CheckoutService {
 
   constructor(private http: HttpClient) {}
 
-  postMyPlaceOrder(id: string): Observable<IResponse> {
-    return this.http.post<IResponse>(
+  postMyPlaceOrder(id: string): Observable<IResponse<IStripe>> {
+    return this.http.post<IResponse<IStripe>>(
       `${this.API_URL}/myorder/placeorder/${id}`,
       {}
     );

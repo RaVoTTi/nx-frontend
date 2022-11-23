@@ -13,8 +13,12 @@
           procesar el pago! <br />
         </p>
       </div>
-      <form action="" [formGroup]="checkoutForm" (submit)="initPay()">
-        <div class="input-label ">
+      <form id="payment-form">
+        <div id="payment-element">
+          <!--Stripe.js injects the Payment Element-->
+        </div>
+
+        <!-- <div class="input-label ">
           <label class="label">Amount</label>
           <div class="input-split">
 
@@ -27,8 +31,8 @@
             />
             <span class="input-text">USD</span>
           </div>
-        </div>
-        <hr />
+        </div> -->
+        <!-- <hr />
         <div class="input-label">
           <label class="label">Card Number</label>
           <div id="card"></div>
@@ -51,7 +55,7 @@
          <a href="https://stripe.com/" > Stripe</a>
 
          
-        </div>
+        </div> -->
         <div class="button-container">
 
           <button

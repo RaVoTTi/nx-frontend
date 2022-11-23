@@ -12,6 +12,14 @@
     width: 100%;
     height: max-content;
 
+    
+
+    
+    #payment-element {
+      margin-bottom: 24px;
+    }
+
+   
   }  
   & .checkout-in {
     width: 100%;
@@ -67,6 +75,7 @@
   }
 
   & .button-container{
+    margin-right: 6px;
     height: 40px;
   }
 

@@ -31,7 +31,7 @@ export class PlaceOrderComponent implements OnInit {
   minPrice!: number;
   maxPrice!: number;
   init = false;
-  price!:number;
+  price!: number;
 
   defaultCondition = ORDER_CONDITION[0];
 
@@ -44,8 +44,6 @@ export class PlaceOrderComponent implements OnInit {
     private messageService: MessageService,
     private router: Router,
     private store: Store
-    
-
   ) {}
 
   ngOnInit(): void {
@@ -73,22 +71,8 @@ export class PlaceOrderComponent implements OnInit {
       this.orderForm.markAllAsTouched();
       return;
     }
-    this.checkoutService
-      .postMyPlaceOrder(this.id)
-      .pipe(take(1))
-      .subscribe((response) => {
-        if (response.ok === true) {
-          this.router.navigate([`/checkout/stripe/${response.result}`]);
-        } else {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Error',
-            detail: response.msg[0] as
-              | string
-              | 'The book could not be purchased',
-          });
-        }
-      });
+
+    this.router.navigate([`/checkout/stripe/${this.book._id}`]);
   }
 
   onSubmitCoupon() {
@@ -99,13 +83,13 @@ export class PlaceOrderComponent implements OnInit {
       if (params['id']) {
         this.id = params['id'];
         this.store
-        .pipe(select(selectBooksById(this.id)), take(1))
-        .subscribe((book) => {
+          .pipe(select(selectBooksById(this.id)), take(1))
+          .subscribe((book) => {
             if (book) {
               this.book = book;
               this.minPrice = this.book.minPrice;
               this.maxPrice = this.book.maxPrice;
-              this.price = this.book.minPrice
+              this.price = this.book.minPrice;
 
               this._initForm(this.minPrice, this.maxPrice);
               this.init = true;
@@ -136,8 +120,8 @@ export class PlaceOrderComponent implements OnInit {
     } else if (this.orderForm.get('price')?.value > this.maxPrice) {
       this.price = this.maxPrice;
       this.orderForm.patchValue({ price: this.maxPrice });
-    }else{
-      this.price = this.getPrice()
+    } else {
+      this.price = this.getPrice();
     }
   }
 }

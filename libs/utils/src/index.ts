@@ -20,6 +20,8 @@ export * from './lib/interfaces/ILearning';
 export * from './lib/interfaces/IItem';
 export * from './lib/interfaces/IWishlist';
 export * from './lib/interfaces/ICheckout';
+export * from './lib/interfaces/IStripe';
+
 
 
 
