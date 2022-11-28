@@ -32,6 +32,7 @@ import { AuthNavbarComponent } from './shared/auth-navbar/auth-navbar.component'
 import { HttpErrorInterceptor, UtilsModule } from '@frontend/utils';
 import * as fromRoot from './reducers';
 import { environment } from '@env/environment';
+import { NgxStripeModule } from 'ngx-stripe';
 
 const entityMetadata: EntityMetadataMap = {
   Book: {},
@@ -69,7 +70,10 @@ const defaultDataServiceConfig: DefaultDataServiceConfig = {
       maxAge: 25,
       logOnly: environment.production,
     }),
+
     EffectsModule.forRoot([]),
+    NgxStripeModule.forRoot(environment.STRIPE_KEY),
+    
     // EntityDataModule.forRoot({}),
   ],
   providers: [

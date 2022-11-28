@@ -6,9 +6,9 @@ import { take } from 'rxjs';
 import { CheckoutService } from '../../services/checkout.service';
 import { AlertService } from '@frontend/utils';
 declare global {
-  interface Window {
-    Stripe?: any;
-  }
+  // interface Window {
+  //   Stripe?: any;
+  // }
 }
 
 @Component({
@@ -21,9 +21,8 @@ export class CheckoutViewComponent implements OnInit {
 
   private readonly STRIPE!: any; //TODO: window.Stripe
   private elementStripe!: any;
-  cardNumber: any;
-  cardCvv: any;
-  cardExp: any;
+  private elements!: any;
+
   checkoutForm: FormGroup = new FormGroup({});
 
   constructor(
@@ -32,7 +31,7 @@ export class CheckoutViewComponent implements OnInit {
     private checkoutService: CheckoutService,
     private route: ActivatedRoute
   ) {
-    this.STRIPE = window.Stripe(environment.STRIPE_KEY);
+    // this.STRIPE = window.Stripe(environment.STRIPE_KEY);
   }
 
   ngOnInit(): void {
@@ -46,144 +45,89 @@ export class CheckoutViewComponent implements OnInit {
     //   cardExp: [false, [Validators.required, Validators.requiredTrue]], //TODO true | false
     // });
     this._postMyPlaceOrder();
+    this.checkStatus();
 
-    this.createStripeElement();
+    // this.createStripeElement();
   }
   private _postMyPlaceOrder() {
     this.route.params.pipe(take(1)).subscribe((params) => {
       if (params['id']) {
         this.bookId = params['id'];
-        this.checkoutService
-          .postMyPlaceOrder(this.bookId)
-          .pipe(take(1))
-          .subscribe(({ result }) => {
-            if (result) {
-              const appearance = {
-                theme: 'flat',
-              };
-              const elements = this.STRIPE.elements({ appearance, clientSecret: result.client_secret });
+        // this.checkoutService
+        //   .postMyPlaceOrder(this.bookId)
+        //   .pipe(take(1))
+        //   .subscribe(({ result }) => {
+        //     if (result) {
+        //       const appearance = {
+        //         theme: 'flat',
+        //       };
+        //       this.elements = this.STRIPE.elements({
+        //         appearance,
+        //         clientSecret: result.client_secret,
+        //       });
 
-              const paymentElementOptions = {
-                layout: 'tabs',
-              };
+        //       const paymentElementOptions = {
+        //         layout: 'tabs',
+        //       };
 
-              const paymentElement = elements.create(
-                'payment',
-                paymentElementOptions
-              );
-              paymentElement.mount('#payment-element');
-            } else {
-              this.alert.fire({
-                text: 'Something wrong have happened',
-                icon: 'error',
-              });
-            }
-          });
+        //       const paymentElement = this.elements.create(
+        //         'payment',
+        //         paymentElementOptions
+        //       );
+        //       paymentElement.mount('#payment-element');
+        //     } else {
+        //       this.alert.fire({
+        //         text: 'Something wrong have happened',
+        //         icon: 'error',
+        //       });
+        //     }
+        //   });
       }
     });
   }
 
-  private createStripeElement = () => {
-    const style = {
-      base: {
-        color: '#000000',
-        fontWeight: 400,
-        fontFamily: "'Poppins', sans-serif",
-        fontSize: '20px',
-        '::placeholder': {
-          color: '#E3E2EC',
-        },
-      },
-      invalid: {
-        color: '#dc3545',
-      },
-    };
-
-    this.elementStripe = this.STRIPE.elements({
-      fonts: [
-        {
-          cssSrc:
-            'https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap',
-        },
-      ],
-    });
-
-    // const cardNumber = this.elementStripe.create('cardNumber', {
-    //   placeholder: '4242 4242 4242 4242',
-    //   style,
-    //   classes: {
-    //     base: 'input',
-    //   },
-    // });
-    // const cardExp = this.elementStripe.create('cardExpiry', {
-    //   placeholder: 'MM/AA',
-    //   style,
-    //   classes: {
-    //     base: 'input',
-    //   },
-    // });
-    // const cardCvc = this.elementStripe.create('cardCvc', {
-    //   placeholder: '000',
-    //   style,
-    //   classes: {
-    //     base: 'input',
-    //   },
-    // });
-
-    // cardNumber.mount('#card');
-    // cardExp.mount('#exp');
-    // cardCvc.mount('#cvc');
-
-    // this.cardNumber = cardNumber;
-    // this.cardExp = cardExp;
-    // this.cardCvv = cardCvc;
-
-    // this.cardNumber.addEventListener('change', this.onChangeCard.bind(this));
-    // this.cardExp.addEventListener('change', this.onChangeExp.bind(this));
-    // this.cardCvv.addEventListener('change', this.onChangeCvv.bind(this));
-  };
-
   async initPay(): Promise<any> {
-    try {
-      this.checkoutForm.disable();
-      const { token } = await this.STRIPE.createToken(this.cardNumber);
-
-      const { result } = await this.checkoutService.patchCheckout(
-        this.bookId,
-        token.id
-      );
-
-      this.STRIPE.confirmCardPayment(result?.client_secret)
-        .then(async () => {
-          console.log(result);
-          this.alert.fire(
-            { icon: 'success', text: 'Your paid was aproved' },
-            {
-              urlConfi: '/app/books', // 🔴 TODOOO
-            }
-          );
-          await this.checkoutService.getConfirmOrder(this.bookId);
-        })
-        .catch(() => {
-          this.alert.fire({
-            text: 'Something wrong have happened',
-            icon: 'error',
-          });
-        });
-    } catch (e) {
-      this.alert.fire({ text: 'Something wrong have happened', icon: 'error' });
+    const { error } = await this.STRIPE.confirmPayment({
+      elements: this.elements,
+      confirmParams: {
+        // Make sure to change this to your payment completion page
+        return_url: 'http://localhost:4242/checkout.html',
+      },
+    });
+    if (error.type === 'card_error' || error.type === 'validation_error') {
+      this.alert.fire({ text: error.message, icon: 'error' });
+    } else {
+      this.alert.fire({ text: 'An unexpected error occurred.', icon: 'error' });
     }
   }
+  async checkStatus() {
+    const clientSecret = new URLSearchParams(window.location.search).get(
+      'payment_intent_client_secret'
+    );
 
-  onChangeCard({ error }: any) {
-    this.checkoutForm.patchValue({ cardNumber: !error });
-  }
+    if (!clientSecret) {
+      return;
+    }
 
-  onChangeCvv({ error }: any) {
-    this.checkoutForm.patchValue({ cardCvv: !error });
-  }
+    const { paymentIntent } = await this.STRIPE.retrievePaymentIntent(clientSecret);
 
-  onChangeExp({ error }: any) {
-    this.checkoutForm.patchValue({ cardExp: !error });
+    switch (paymentIntent.status) {
+      case 'succeeded':
+        this.alert.fire({ text: 'Payment succeeded!', icon: 'error' });
+
+        break;
+      case 'processing':
+        this.alert.fire({ text: 'Your payment is processing.', icon: 'error' });
+
+        break;
+      case 'requires_payment_method':
+        this.alert.fire({ text:'Your payment was not successful, please try again.', icon: 'error' });
+
+        break;
+      default:
+        this.alert.fire({ text: 'Something went wrong.', icon: 'error' });
+
+        break;
+    }
   }
 }

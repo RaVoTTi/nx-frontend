@@ -10,12 +10,13 @@ import { ORDER_CONDITION } from '../../helpers/order-conditions';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take, timer } from 'rxjs';
 import { BookBaseService, selectBooksById } from '@frontend/book-base';
-import { IBook } from '@frontend/utils';
+import { AlertService, IBook } from '@frontend/utils';
 import { environment } from '@env/environment';
 
 import { MessageService } from 'primeng/api';
 import { CheckoutService } from '../../services/checkout.service';
 import { select, Store } from '@ngrx/store';
+import { StripeService } from 'ngx-stripe';
 
 @Component({
   selector: 'frontend-place-order',
@@ -42,6 +43,7 @@ export class PlaceOrderComponent implements OnInit {
     private bookBaseService: BookBaseService,
     private checkoutService: CheckoutService,
     private messageService: MessageService,
+    private alertService: AlertService,
     private router: Router,
     private store: Store
   ) {}
@@ -71,8 +73,19 @@ export class PlaceOrderComponent implements OnInit {
       this.orderForm.markAllAsTouched();
       return;
     }
-
-    this.router.navigate([`/checkout/stripe/${this.book._id}`]);
+    this.checkoutService
+      .postMyPlaceOrder(this.id)
+      .subscribe(
+        error => {
+          if(error){
+            this.alertService.fire({
+              text: 'Something wrong have happened',
+              icon: 'error',
+            });
+          }
+        }
+      );
+    // this.router.navigate([`/checkout/stripe/${this.book._id}`]);
   }
 
   onSubmitCoupon() {

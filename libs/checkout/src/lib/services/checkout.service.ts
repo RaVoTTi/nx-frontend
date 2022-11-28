@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import { IOrder, IResponse, IStripe } from '@frontend/utils';
-import { firstValueFrom, Observable, take } from 'rxjs';
+import { StripeService } from 'ngx-stripe';
+import { firstValueFrom, Observable, switchMap, take } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,13 +11,16 @@ import { firstValueFrom, Observable, take } from 'rxjs';
 export class CheckoutService {
   API_URL = environment.API_URL;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private stripeService: StripeService) {}
 
-  postMyPlaceOrder(id: string): Observable<IResponse<IStripe>> {
-    return this.http.post<IResponse<IStripe>>(
-      `${this.API_URL}/myorder/placeorder/${id}`,
-      {}
-    );
+  postMyPlaceOrder(id: string) {
+    return this.http
+      .post<IStripe>(`${this.API_URL}/myorder/placeorder/${id}`, {})
+      .pipe(
+        switchMap(({ id }) => {
+          return this.stripeService.redirectToCheckout({ sessionId: id });
+        })
+      );
   }
   getMyPlaceOrder(id: string): Observable<IResponse<IOrder>> {
     return this.http.get<IResponse<IOrder>>(
@@ -25,15 +29,13 @@ export class CheckoutService {
   }
 
   patchCheckout(orderId: string, token: string): Promise<any> {
-    return this.http.patch<any>(
-      `${this.API_URL}/myorder/checkout/${orderId}`,
-      { token }
-    ).toPromise()
+    return this.http
+      .patch<any>(`${this.API_URL}/myorder/checkout/${orderId}`, { token })
+      .toPromise();
   }
   getConfirmOrder(orderId: string): Observable<IResponse> {
     return this.http.get<IResponse>(
       `${this.API_URL}/myorder/confirm/${orderId}`
     );
   }
-  
 }

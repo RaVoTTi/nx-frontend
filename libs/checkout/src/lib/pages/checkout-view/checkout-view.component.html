@@ -8,7 +8,6 @@
       <div class="checkbox-alert">
         <i>🏹</i>
         <p>
-
           A continuación debes de introducir los datos de tu tarjeta para
           procesar el pago! <br />
         </p>
@@ -57,16 +56,13 @@
          
         </div> -->
         <div class="button-container">
-
           <button
-          [disabled]="checkoutForm.invalid || checkoutForm.disabled"
-          class="button-primary"
-          type="submit"
-          
-          >
-          BUY NOW
-        </button>
-      </div>
+            class="button-primary"
+            (click)="initPay()"
+            >
+            BUY NOW
+          </button>
+        </div>
       </form>
     </div>
   </div>
