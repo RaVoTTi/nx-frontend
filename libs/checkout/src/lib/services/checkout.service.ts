@@ -13,9 +13,9 @@ export class CheckoutService {
 
   constructor(private http: HttpClient, private stripeService: StripeService) {}
 
-  postMyPlaceOrder(id: string) {
+  postMyPlaceOrder(id: string, price: number) {
     return this.http
-      .post<IStripe>(`${this.API_URL}/myorder/placeorder/${id}`, {})
+      .post<IStripe>(`${this.API_URL}/myorder/placeorder/${id}`, {price})
       .pipe(
         switchMap(({ id }) => {
           return this.stripeService.redirectToCheckout({ sessionId: id });

@@ -63,7 +63,7 @@ export class PlaceOrderComponent implements OnInit {
           Validators.required,
           Validators.min(min),
           Validators.max(max),
-          // Validators.pattern(/d+/),
+          // Validators.pattern(/d+/)
         ],
       ],
     });
@@ -74,7 +74,7 @@ export class PlaceOrderComponent implements OnInit {
       return;
     }
     this.checkoutService
-      .postMyPlaceOrder(this.id)
+      .postMyPlaceOrder(this.id, this.price)
       .subscribe(
         error => {
           if(error){
