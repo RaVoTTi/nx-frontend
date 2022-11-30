@@ -13,7 +13,8 @@
     <div class="auth-card" *ngIf="loginForm; else signup">
       <div class="auth-alert">
         <i>🏹</i> 
-        A continuación debes de introducir los datos de tu tarjeta para procesar el pago! El pago se procesara mediante la platforma de
+        Enter your details below to continue
+       
       </div>
       <form [formGroup]="loginForm" autocomplete="off">
         <div class="input-label">
@@ -67,8 +68,7 @@
 <ng-template #signup>
   <div class="auth-card">
     <div class="auth-alert">
-      <i>🏹</i> A continuación debes de introducir los datos de tu tarjeta para
-      procesar el pago! El pago se procesara mediante la platforma de
+      <i>🏹</i> Fill the gaps and discover a great amount of new oppotunities!
     </div>
     <form [formGroup]="signUpForm" autocomplete="off">
       <div class="input-label">

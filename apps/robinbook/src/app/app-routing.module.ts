@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import {
   BooksListComponent,
   BooksResolver,
@@ -24,6 +24,7 @@ const routes: Routes = [
       },
       {
         path: 'books',
+
         component: BooksListComponent,
 
         resolve: {
@@ -103,3 +104,15 @@ export class AppRoutingModule {}
 //     import('@frontend/order').then((m) => m.OrderModule),
 //   canActivate: [IsLoggedIn],
 // },
+function matcherFunction(url: UrlSegment[]) {
+  if (url.length == 1) {
+      const path = url[0].path;
+       if(path.startsWith('mylearning') 
+         || path.startsWith('mylearning/success') 
+         || path.startsWith('books/cancel')
+         ){
+        return {consumed: url};
+      }
+  }
+  return null;
+}

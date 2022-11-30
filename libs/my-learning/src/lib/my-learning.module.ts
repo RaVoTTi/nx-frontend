@@ -7,7 +7,7 @@ import { LearningItemComponent } from './components/card-learning/card-learning.
 import { BooksResolver } from '@frontend/book-base';
 import { MyLearningService } from './services/my-learning.service';
 import { MyLearningResolver } from './services/my-learning.resolver';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { myLearningsReducer } from './state/my-learnings.reducer';
@@ -15,13 +15,12 @@ import { MyLearningsEffects } from './state/my-learnings.effects';
 import { UtilsModule } from '@frontend/utils';
 
 const routes: Routes = [
-
   {
     path: '',
     component: MyLearningListComponent,
     resolve: {
-      books: BooksResolver ,
-      myLearnings: MyLearningResolver ,
+      books: BooksResolver,
+      myLearnings: MyLearningResolver,
     },
   },
   {
@@ -36,7 +35,6 @@ const routes: Routes = [
     path: 'myevaluation/:id',
     component: MyEvaluationViewComponent,
   },
-
 ];
 @NgModule({
   imports: [
@@ -45,21 +43,14 @@ const routes: Routes = [
     EffectsModule.forFeature([MyLearningsEffects]),
 
     RouterModule.forChild(routes),
-    UtilsModule
-  
+    UtilsModule,
   ],
-  declarations:[
+  declarations: [
     LearningItemComponent,
     MyLearningListComponent,
     MyLearningViewComponent,
-    MyEvaluationViewComponent
-
+    MyEvaluationViewComponent,
   ],
-  providers:[
-    MyLearningService,
-    MyLearningResolver
-
-  ]
+  providers: [MyLearningService, MyLearningResolver],
 })
-
 export class MyLearningModule {}

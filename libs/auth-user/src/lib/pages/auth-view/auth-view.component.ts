@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { min, tap, timer } from 'rxjs';
-// import { AuthBaseService } from '../../services/auth.service';
-// import { LocalStorageService } from '../../services/local-storage.service';
+
 import { Store } from '@ngrx/store';
 import { AuthBaseService, AuthActions } from '@frontend/auth-base';
 import {
@@ -130,11 +129,11 @@ export class AuthViewComponent implements OnInit {
     if (this.login) {
       this.loginForm = this.formBuilder.group({
         email: [
-          'fasedaff@test.com',
+          '',
           [Validators.required, this.vs.validatePat('emailPat')],
         ],
         password: [
-          'aA123456',
+          '',
           [Validators.required, this.vs.validatePat('passwordPat')],
         ],
       });

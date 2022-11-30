@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CheckoutViewComponent } from './pages/checkout-view/checkout-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UtilsModule } from '@frontend/utils';
@@ -18,10 +17,7 @@ const routes: Routes = [
       books: BooksResolver,
     },
   },
-  {
-    path: 'stripe/:id',
-    component: CheckoutViewComponent,
-  },
+
 ];
 
 @NgModule({
@@ -34,6 +30,6 @@ const routes: Routes = [
     NgxStripeModule.forChild(environment.STRIPE_KEY),
 
   ],
-  declarations: [CheckoutViewComponent, PlaceOrderComponent],
+  declarations: [PlaceOrderComponent],
 })
 export class CheckoutModule {}
