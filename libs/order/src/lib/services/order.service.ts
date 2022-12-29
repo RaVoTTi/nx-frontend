@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
 import { environment } from '@env/environment';
-import { IResponse, IOrder, ICheckout } from 'interfaces/index';
+import { IResponse, IOrder, ICheckout } from '@frontend/utils';
 import { Injectable } from '@angular/core';
 
 @Injectable({

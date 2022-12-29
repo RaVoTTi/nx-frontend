@@ -51,31 +51,31 @@ export class OrdersDetailComponent implements OnInit {
 
   onSubmit() {
     if (!this.condition.pristine) {
-      this.orderService
-        .patchOrder(this.orderId, this.condition.value)
-        .pipe(take(1))
-        .subscribe((response) => {
-          if (response.ok === true) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: response.msg[0],
-            });
-            timer(1000)
-              .pipe(take(1))
-              .subscribe(() => {
-                this.back();
-              });
-          } else {
-            this.messageService.add({
-              severity: 'error',
-              summary: 'Error',
-              detail: response.msg[0] as
-                | string
-                | "The order couldn't be modificated",
-            });
-          }
-        });
+      // this.orderService
+      //   .patchOrder(this.orderId, this.condition.value)
+      //   .pipe(take(1))
+      //   .subscribe((response) => {
+      //     if (response.ok === true) {
+      //       this.messageService.add({
+      //         severity: 'success',
+      //         summary: 'Success',
+      //         detail: response.msg[0],
+      //       });
+      //       timer(1000)
+      //         .pipe(take(1))
+      //         .subscribe(() => {
+      //           this.back();
+      //         });
+      //     } else {
+      //       this.messageService.add({
+      //         severity: 'error',
+      //         summary: 'Error',
+      //         detail: response.msg[0] as
+      //           | string
+      //           | "The order couldn't be modificated",
+      //       });
+      //     }
+      //   });
     }
   }
 

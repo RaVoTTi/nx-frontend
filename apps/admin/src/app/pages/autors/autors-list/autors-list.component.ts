@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AutorService } from '@frontend/book-admin';
-import {IAutor} from '../../../../../../../interfaces' 
+import {IAutor} from '@frontend/utils' 
 import { MessageService } from 'primeng/api';
 import { ConfirmationService } from 'primeng/api';
 import { take } from 'rxjs';

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubjectService } from '@frontend/book-admin';
-import { ISubject } from '../../../../../../../interfaces';
+import { ISubject } from '@frontend/utils';
 import { MessageService } from 'primeng/api';
 import { take, timer } from 'rxjs';
 import { Location } from '@angular/common';
@@ -31,9 +31,9 @@ export class SubjectsFormComponent implements OnInit {
     this._checkEditMode();
     this.form = this.formBuilder.group({
       name: ['', Validators.required],
-      icon: ['', Validators.required],
-      state: [true, Validators.required],
-      color: ['#ffffff', Validators.required],
+      // icon: ['', Validators.required],
+      // state: [true, Validators.required],
+      // color: ['#ffffff', Validators.required],
     });
   }
 

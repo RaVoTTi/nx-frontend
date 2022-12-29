@@ -14,6 +14,7 @@ export interface IBook {
   maxPrice: number
   dateCreated: Date
   // rating?: number
-  // description?: string
+  description?: string
+  
   // numReviews?: number
 }

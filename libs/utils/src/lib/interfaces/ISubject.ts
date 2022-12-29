@@ -1,7 +1,7 @@
 export interface ISubject {
+    id:    string;
     name:  string;
-    icon: string;
-    state?: boolean;
-    color?: string;
-    id?:    string;
+    state: boolean;
+    // icon: string;
+    // color?: string;
 }

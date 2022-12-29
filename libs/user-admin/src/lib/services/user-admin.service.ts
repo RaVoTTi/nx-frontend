@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
 import {environment} from '@env/environment'
-import { IResponse, IUser } from 'interfaces/index';
+import { IResponse, IUser } from '@frontend/utils';
 
 @Injectable({
   providedIn: 'root',

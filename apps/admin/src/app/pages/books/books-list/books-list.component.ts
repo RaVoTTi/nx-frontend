@@ -25,7 +25,6 @@ export class BooksListComponent implements OnInit {
     this._getBooks();
     
   }
-
   deleteBook(id: string) {
     this.confirmationService.confirm({
       message: 'Do you want to delete this Book?',

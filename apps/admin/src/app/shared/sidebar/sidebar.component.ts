@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'libs/auth-base/src';
+import { AuthBaseService } from '@frontend/auth-base';
 
 @Component({
   selector: 'admin-sidebar',
   templateUrl: './sidebar.component.html',
 })
 export class SidebarComponent  {
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthBaseService) {}
 
 
   logout() {

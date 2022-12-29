@@ -9,7 +9,7 @@ import { MessageService } from 'primeng/api';
 // import { LocalStorageService } from '../../services/local-storage.service';
 
 // ME
-import { AuthService, LocalStorageService } from '@frontend/auth-base';
+import { AuthBaseService, LocalStorageService } from '@frontend/auth-base';
 
 
 @Component({
@@ -24,7 +24,7 @@ export class AdminAuthViewComponent implements OnInit {
     private formBuilder: FormBuilder,
     private messageService: MessageService,
     private localStorageService: LocalStorageService,
-    private auth: AuthService,
+    private auth: AuthBaseService,
     private router: Router
   ) {}
 

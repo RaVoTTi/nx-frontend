@@ -17,7 +17,6 @@ import { IAutor, IBook, IEvaluation, IOption, ISubject } from '@frontend/utils';
 import { MessageService } from 'primeng/api';
 import { take, timer } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { temporaryAllocator } from '@angular/compiler/src/render3/view/util';
 import { ErrorHandlerService } from '@frontend/utils';
 
 @Component({
@@ -39,7 +38,7 @@ export class BooksFormComponent implements OnInit {
     private bookService: BookService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private errorH : ErrorHandlerService,
+    private errorH: ErrorHandlerService,
     private formBuilder: FormBuilder,
     private location: Location
   ) {}
@@ -161,8 +160,8 @@ export class BooksFormComponent implements OnInit {
   // validateCamp(key: string) {
   //   return this.form.controls[key].errors && this.form.controls[key].touched;
   // }
-  errorMsg(key:string){
-    return this.errorH.errorMsg(this.form.controls[key])
+  errorMsg(key: string) {
+    return this.errorH.errorMsg(this.form.controls[key]);
   }
 
   back() {
@@ -193,17 +192,19 @@ export class BooksFormComponent implements OnInit {
           .getBookByIdAdmin(this.bookId)
           .pipe(take(1))
           .subscribe(({ result }) => {
-            if (result?.evaluation != undefined) {
-              const { evaluation, ...rest } = result;
-              this.form.reset({ ...rest });
-              evaluation.forEach((test, index) => {
-                this.addEvaluationWithValues(index, test);
-              });
-              console.log(this.form.value)
-              this.continue = true
-            } else {
-              this.back();
-            }
+            // if (result?.evaluation != undefined) {
+              
+
+
+            this.form.reset({ ...result, isFeatured: false });
+            // evaluation.forEach((test, index:number) => {
+            //   this.addEvaluationWithValues(index, test);
+            // });
+            // console.log(this.form.value)
+            //   this.continue = true
+            // } else {
+            //   this.back();
+            // }
           });
       } else {
         this.editMode = false;
@@ -219,7 +220,7 @@ export class BooksFormComponent implements OnInit {
       this.formBuilder.group({
         question: [evaluation.question, Validators.required],
         correctKey: [evaluation.correctKey, Validators.required],
-        options: this.formBuilder.array([])
+        options: this.formBuilder.array([]),
       })
     );
     evaluation.options.forEach((option) => {
@@ -242,10 +243,10 @@ export class BooksFormComponent implements OnInit {
 
       state: [true, Validators.required],
       isFeatured: [false, Validators.required],
-      autor: ['', Validators.required],
-      subject: ['', Validators.required],
+      autor: [''],
+      subject: [''],
       description: ['', Validators.required],
-      evaluation: this.formBuilder.array([]),
+      // evaluation: this.formBuilder.array([]),
       content: ['', [Validators.required, Validators.minLength(20)]],
       image: [''],
     });
@@ -255,6 +256,11 @@ export class BooksFormComponent implements OnInit {
   //   this.getKey(i,y).patchValue(this.getKey(i,y).value.toUpperCase())
   // }
   onSubmit() {
+    console.log(this.form.value);
+    console.log(this.form.invalid);
+    console.log(this.form.errors);
+
+
     if (this.form.invalid) {
       this.form.markAllAsTouched();
 
@@ -264,19 +270,19 @@ export class BooksFormComponent implements OnInit {
     const bookFormData = new FormData();
 
     Object.keys(this.form.value).map((key) => {
-      if (key === 'evaluation') {
-        const evaluations: IEvaluation[] =
-          this.getEvaluationArray().controls.map((test, index) => {
-            return {
-              question: test.get('question')?.value,
-              correctKey: test.get('correctKey')?.value,
-              options: this.getOptionsJSON(index),
-            } as IEvaluation;
-          });
-        bookFormData.append(key, JSON.stringify(evaluations));
-      } else {
-        bookFormData.append(key, this.form.value[key]);
-      }
+      // if (key === 'evaluation') {
+      //   const evaluations: IEvaluation[] =
+      //     this.getEvaluationArray().controls.map((test, index) => {
+      //       return {
+      //         question: test.get('question')?.value,
+      //         correctKey: test.get('correctKey')?.value,
+      //         options: this.getOptionsJSON(index),
+      //       } as IEvaluation;
+      //     });
+      //     bookFormData.append(key, JSON.stringify(evaluations));
+      //   } else {
+      bookFormData.append(key, this.form.value[key]);
+      //   }
     });
 
     if (this.editMode) {

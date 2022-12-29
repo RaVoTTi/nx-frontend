@@ -2,15 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthBaseModule, LoginGuard } from '@frontend/auth-base';
+import { AuthBaseModule } from '@frontend/auth-base';
 import { AdminAuthViewComponent } from './pages/admin-auth-view/admin-auth-view.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    canLoad: [LoginGuard],
-    canActivate: [LoginGuard],
+
 
     children: [
       {
